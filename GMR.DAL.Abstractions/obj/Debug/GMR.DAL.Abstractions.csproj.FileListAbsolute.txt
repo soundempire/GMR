@@ -14,9 +14,3 @@ C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.pd
 C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.csprojAssemblyReference.cache
 C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.dll
 C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.pdb
-D:\GMR\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.dll
-D:\GMR\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.pdb
-D:\GMR\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.csprojAssemblyReference.cache
-D:\GMR\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.csproj.CoreCompileInputs.cache
-D:\GMR\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.dll
-D:\GMR\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.pdb
