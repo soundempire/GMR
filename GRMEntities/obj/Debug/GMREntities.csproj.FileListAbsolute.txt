@@ -1,0 +1,9 @@
+D:\WORK\GMR\GRMEntities\bin\Debug\GRMEntities.dll
+D:\WORK\GMR\GRMEntities\bin\Debug\GRMEntities.pdb
+D:\WORK\GMR\GRMEntities\bin\Debug\AutoMapper.dll
+D:\WORK\GMR\GRMEntities\bin\Debug\AutoMapper.pdb
+D:\WORK\GMR\GRMEntities\bin\Debug\AutoMapper.xml
+D:\WORK\GMR\GRMEntities\obj\Debug\GMREntities.csprojAssemblyReference.cache
+D:\WORK\GMR\GRMEntities\obj\Debug\GMREntities.csproj.CopyComplete
+D:\WORK\GMR\GRMEntities\obj\Debug\GRMEntities.dll
+D:\WORK\GMR\GRMEntities\obj\Debug\GRMEntities.pdb

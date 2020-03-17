@@ -1,0 +1,16 @@
+D:\WORK\GMR\GMR.Animation\obj\Debug\GMR.Animation.csprojAssemblyReference.cache
+D:\WORK\GMR\GMR.Animation\bin\Debug\GMR.Animation.dll
+D:\WORK\GMR\GMR.Animation\bin\Debug\GMR.Animation.pdb
+D:\WORK\GMR\GMR.Animation\obj\Debug\GMR.Animation.dll
+D:\WORK\GMR\GMR.Animation\obj\Debug\GMR.Animation.pdb
+d:\Courses\GMR\GMR.Animation\bin\Debug\GMR.Animation.dll
+d:\Courses\GMR\GMR.Animation\bin\Debug\GMR.Animation.pdb
+d:\Courses\GMR\GMR.Animation\obj\Debug\GMR.Animation.csprojAssemblyReference.cache
+d:\Courses\GMR\GMR.Animation\obj\Debug\GMR.Animation.csproj.CoreCompileInputs.cache
+d:\Courses\GMR\GMR.Animation\obj\Debug\GMR.Animation.dll
+d:\Courses\GMR\GMR.Animation\obj\Debug\GMR.Animation.pdb
+C:\Users\user\Desktop\GMR\GMR.Animation\bin\Debug\GMR.Animation.dll
+C:\Users\user\Desktop\GMR\GMR.Animation\bin\Debug\GMR.Animation.pdb
+C:\Users\user\Desktop\GMR\GMR.Animation\obj\Debug\GMR.Animation.csprojAssemblyReference.cache
+C:\Users\user\Desktop\GMR\GMR.Animation\obj\Debug\GMR.Animation.dll
+C:\Users\user\Desktop\GMR\GMR.Animation\obj\Debug\GMR.Animation.pdb

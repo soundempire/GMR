@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GMRDataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblPasswords">
+    <Key>
+      <PropertyRef Name="uidPasswordID" />
+    </Key>
+    <Property Name="uidPasswordID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="uidPersonID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="strPassword" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="strNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetimeoffset" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="GMRDataBaseModelStoreContainer">
+    <EntitySet Name="tblPasswords" EntityType="Self.tblPasswords" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

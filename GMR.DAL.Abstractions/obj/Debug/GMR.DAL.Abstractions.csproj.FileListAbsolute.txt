@@ -1,0 +1,16 @@
+D:\WORK\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.dll
+D:\WORK\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.pdb
+D:\WORK\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.dll
+D:\WORK\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.pdb
+D:\WORK\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.csprojAssemblyReference.cache
+d:\Courses\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.dll
+d:\Courses\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.pdb
+d:\Courses\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.csprojAssemblyReference.cache
+d:\Courses\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.csproj.CoreCompileInputs.cache
+d:\Courses\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.dll
+d:\Courses\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.pdb
+C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.dll
+C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\bin\Debug\GMR.DAL.Abstractions.pdb
+C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.csprojAssemblyReference.cache
+C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.dll
+C:\Users\user\Desktop\GMR\GMR.DAL.Abstractions\obj\Debug\GMR.DAL.Abstractions.pdb
