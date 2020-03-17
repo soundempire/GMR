@@ -90,13 +90,10 @@ namespace GMR
                 string fileName = string.Empty;
 
                 if (ofd.ShowDialog() == DialogResult.OK)
-                {
                     fileName = ofd.FileName;
-                }
                 else
-                {
                     return;
-                }
+
 
                 try
                 {
