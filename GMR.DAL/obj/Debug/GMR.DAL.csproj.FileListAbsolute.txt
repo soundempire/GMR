@@ -38,3 +38,17 @@ C:\Users\user\Desktop\GMR\GMR.DAL\obj\Debug\GMR.DAL.csprojAssemblyReference.cach
 C:\Users\user\Desktop\GMR\GMR.DAL\obj\Debug\GMR.DAL.csproj.CopyComplete
 C:\Users\user\Desktop\GMR\GMR.DAL\obj\Debug\GMR.DAL.dll
 C:\Users\user\Desktop\GMR\GMR.DAL\obj\Debug\GMR.DAL.pdb
+D:\GMR\GMR\GMR.DAL\bin\Debug\GMR.DAL.dll.config
+D:\GMR\GMR\GMR.DAL\bin\Debug\GMR.DAL.dll
+D:\GMR\GMR\GMR.DAL\bin\Debug\GMR.DAL.pdb
+D:\GMR\GMR\GMR.DAL\bin\Debug\EntityFramework.dll
+D:\GMR\GMR\GMR.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\GMR\GMR\GMR.DAL\bin\Debug\GMR.DAL.Abstractions.dll
+D:\GMR\GMR\GMR.DAL\bin\Debug\GMR.DAL.Abstractions.pdb
+D:\GMR\GMR\GMR.DAL\bin\Debug\EntityFramework.xml
+D:\GMR\GMR\GMR.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\GMR\GMR\GMR.DAL\obj\Debug\GMR.DAL.csprojAssemblyReference.cache
+D:\GMR\GMR\GMR.DAL\obj\Debug\GMR.DAL.csproj.CoreCompileInputs.cache
+D:\GMR\GMR\GMR.DAL\obj\Debug\GMR.DAL.csproj.CopyComplete
+D:\GMR\GMR\GMR.DAL\obj\Debug\GMR.DAL.dll
+D:\GMR\GMR\GMR.DAL\obj\Debug\GMR.DAL.pdb
