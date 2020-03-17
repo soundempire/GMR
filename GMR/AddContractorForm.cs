@@ -96,6 +96,7 @@ namespace GMR
                 else
                     return;
 
+
                 try
                 {
                     var importResult = new List<ImportResultRow<ContractorModel>>();
