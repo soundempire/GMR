@@ -37,6 +37,8 @@ namespace GMR.LayoutRoot
             builder.RegisterType<PersonService>().As<IPersonService>();
             builder.RegisterType<ContractorService>().As<IContractorService>();
             builder.RegisterType<TransactionService>().As<ITransactionService>();
+            builder.RegisterType<ImportService>().As<IImportService>();
+
 
             return builder.Build();
         }

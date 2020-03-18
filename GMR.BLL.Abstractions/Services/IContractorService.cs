@@ -11,7 +11,5 @@ namespace GMR.BLL.Abstractions.Services
         Task<IEnumerable<ContractorModel>> GetContractorsAsync(long personId, string filter = null);
 
         Task<ContractorModel> UpdateContractorAsync(ContractorModel contractor);
-
-        List<ImportResultRow<ContractorModel>> ImportContractors(string fileName);
     }
 }

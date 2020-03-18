@@ -14,14 +14,17 @@ namespace GMR
 
         private readonly ITransactionService _transactionService;
 
+        private readonly IImportService _importService;
+
         public long SelectedContractorId { get; set; }
 
-        public AddContractorForm(IContractorService contractorService, ITransactionService transactionService)
+        public AddContractorForm(IContractorService contractorService, ITransactionService transactionService, IImportService importService)
         {
             InitializeComponent();
 
             _contractorService = contractorService;
             _transactionService = transactionService;
+            _importService = importService;
         }
 
         private async void AddContractorForm_Load(object sender, EventArgs e)
@@ -73,13 +76,13 @@ namespace GMR
             transactionPriceTBox.Enabled = isCurrencyValueEntered;
         }
 
-        private void ImportBtn_Click(object sender, EventArgs e)
+        private async void ImportBtn_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog()
             {
                 Filter = "Книга Excel 97-2003|*.xls|" +
-                                                                       "Книга Excel|*.xlsx|" +
-                                                                       "CSV (разделитель - запятая)|*.csv",
+                         "Книга Excel|*.xlsx|" +
+                         "CSV (разделитель - запятая)|*.csv",
                 CheckFileExists = true,
                 CheckPathExists = true,
                 Multiselect = false,
@@ -94,19 +97,11 @@ namespace GMR
                 else
                     return;
 
+                var importResult = new List<ImportResultRow<ContractorModel>>();
 
-                try
-                {
-                    var importResult = new List<ImportResultRow<ContractorModel>>();
+                importResult = (await _importService.ImportContractors(fileName, Session.Person.ID)).ToList();
 
-                    importResult = _contractorService.ImportContractors(fileName);
-
-                    DisplayImportResult(importResult);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                DisplayImportResult(importResult);
             }
         }
 
