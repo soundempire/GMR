@@ -27,6 +27,7 @@ namespace GMR.LayoutRoot
             builder.RegisterType<MainForm>();
             builder.RegisterType<AddContractorForm>();
             builder.RegisterType<UserAccountForm>();
+            builder.RegisterType<ImportMasterForm>();
 
             builder.RegisterType<PasswordRepository>().As<IRepository<Password>>();
             builder.RegisterType<ContractorRepository>().As<ISpecifyRepository<Contractor>>();
@@ -38,6 +39,8 @@ namespace GMR.LayoutRoot
             builder.RegisterType<ContractorService>().As<IContractorService>();
             builder.RegisterType<TransactionService>().As<ITransactionService>();
             builder.RegisterType<ImportService>().As<IImportService>();
+            builder.RegisterType<ValidateService>().As<IValidateService>();
+
 
 
             return builder.Build();

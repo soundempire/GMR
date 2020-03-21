@@ -42,6 +42,10 @@
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.personPanel = new System.Windows.Forms.Panel();
             this.controlBtnsPanel = new System.Windows.Forms.Panel();
+            this.closeBtn = new GMR.Controls.GMRButton();
+            this.addBtn = new GMR.Controls.GMRButton();
+            this.deleteBtn = new GMR.Controls.GMRButton();
+            this.printBtn = new GMR.Controls.GMRButton();
             this.CenterSplitContainer = new System.Windows.Forms.SplitContainer();
             this.transactionsDGVPanel = new System.Windows.Forms.Panel();
             this.totalTransactionsPanel = new System.Windows.Forms.Panel();
@@ -49,10 +53,6 @@
             this.totalPriceTB = new System.Windows.Forms.TextBox();
             this.totalTransactionTB = new System.Windows.Forms.TextBox();
             this.totalSumTB = new System.Windows.Forms.TextBox();
-            this.closeBtn = new GMR.Controls.GMRButton();
-            this.addBtn = new GMR.Controls.GMRButton();
-            this.deleteBtn = new GMR.Controls.GMRButton();
-            this.printBtn = new GMR.Controls.GMRButton();
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).BeginInit();
             this.topPanel.SuspendLayout();
@@ -85,7 +85,7 @@
             this.contractorsDGView.RowHeadersWidth = 15;
             this.contractorsDGView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.contractorsDGView.RowTemplate.Height = 28;
-            this.contractorsDGView.Size = new System.Drawing.Size(426, 539);
+            this.contractorsDGView.Size = new System.Drawing.Size(425, 538);
             this.contractorsDGView.TabIndex = 0;
             this.contractorsDGView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ContractorsDGView_CellBeginEdit);
             this.contractorsDGView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ContractorsDGView_CellEndEdit);
@@ -107,7 +107,7 @@
             this.transactionsDGView.RowHeadersWidth = 15;
             this.transactionsDGView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.transactionsDGView.RowTemplate.Height = 28;
-            this.transactionsDGView.Size = new System.Drawing.Size(856, 487);
+            this.transactionsDGView.Size = new System.Drawing.Size(856, 486);
             this.transactionsDGView.TabIndex = 1;
             this.transactionsDGView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.TransactionsDGView_CellBeginEdit);
             this.transactionsDGView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionsDGView_CellEndEdit);
@@ -194,7 +194,7 @@
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1294, 52);
+            this.topPanel.Size = new System.Drawing.Size(1293, 52);
             this.topPanel.TabIndex = 16;
             // 
             // contractorsCBoxPanel
@@ -203,7 +203,7 @@
             this.contractorsCBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contractorsCBoxPanel.Location = new System.Drawing.Point(0, 0);
             this.contractorsCBoxPanel.Name = "contractorsCBoxPanel";
-            this.contractorsCBoxPanel.Size = new System.Drawing.Size(912, 52);
+            this.contractorsCBoxPanel.Size = new System.Drawing.Size(911, 52);
             this.contractorsCBoxPanel.TabIndex = 16;
             // 
             // datesPanel
@@ -213,7 +213,7 @@
             this.datesPanel.Controls.Add(this.lblStarts);
             this.datesPanel.Controls.Add(this.endsDTP);
             this.datesPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.datesPanel.Location = new System.Drawing.Point(912, 0);
+            this.datesPanel.Location = new System.Drawing.Point(911, 0);
             this.datesPanel.Name = "datesPanel";
             this.datesPanel.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.datesPanel.Size = new System.Drawing.Size(382, 52);
@@ -224,9 +224,9 @@
             this.bottomPanel.Controls.Add(this.personPanel);
             this.bottomPanel.Controls.Add(this.controlBtnsPanel);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel.Location = new System.Drawing.Point(0, 591);
+            this.bottomPanel.Location = new System.Drawing.Point(0, 590);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(1294, 69);
+            this.bottomPanel.Size = new System.Drawing.Size(1293, 69);
             this.bottomPanel.TabIndex = 17;
             // 
             // personPanel
@@ -245,112 +245,11 @@
             this.controlBtnsPanel.Controls.Add(this.deleteBtn);
             this.controlBtnsPanel.Controls.Add(this.printBtn);
             this.controlBtnsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.controlBtnsPanel.Location = new System.Drawing.Point(434, 0);
+            this.controlBtnsPanel.Location = new System.Drawing.Point(433, 0);
             this.controlBtnsPanel.Name = "controlBtnsPanel";
             this.controlBtnsPanel.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.controlBtnsPanel.Size = new System.Drawing.Size(860, 69);
             this.controlBtnsPanel.TabIndex = 20;
-            // 
-            // CenterSplitContainer
-            // 
-            this.CenterSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CenterSplitContainer.Location = new System.Drawing.Point(0, 52);
-            this.CenterSplitContainer.Name = "CenterSplitContainer";
-            // 
-            // CenterSplitContainer.Panel1
-            // 
-            this.CenterSplitContainer.Panel1.AutoScroll = true;
-            this.CenterSplitContainer.Panel1.Controls.Add(this.contractorsDGView);
-            this.CenterSplitContainer.Panel1.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            // 
-            // CenterSplitContainer.Panel2
-            // 
-            this.CenterSplitContainer.Panel2.Controls.Add(this.transactionsDGVPanel);
-            this.CenterSplitContainer.Panel2.Controls.Add(this.totalTransactionsPanel);
-            this.CenterSplitContainer.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.CenterSplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CenterSplitContainer.Size = new System.Drawing.Size(1294, 539);
-            this.CenterSplitContainer.SplitterDistance = 430;
-            this.CenterSplitContainer.TabIndex = 18;
-            this.CenterSplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.CenterSplitContainer_SplitterMoved);
-            // 
-            // transactionsDGVPanel
-            // 
-            this.transactionsDGVPanel.Controls.Add(this.transactionsDGView);
-            this.transactionsDGVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transactionsDGVPanel.Location = new System.Drawing.Point(0, 0);
-            this.transactionsDGVPanel.Name = "transactionsDGVPanel";
-            this.transactionsDGVPanel.Size = new System.Drawing.Size(856, 487);
-            this.transactionsDGVPanel.TabIndex = 4;
-            // 
-            // totalTransactionsPanel
-            // 
-            this.totalTransactionsPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalTransactionsPanel.Controls.Add(this.totalCurencyTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalPriceTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalTransactionTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalSumTB);
-            this.totalTransactionsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 487);
-            this.totalTransactionsPanel.Name = "totalTransactionsPanel";
-            this.totalTransactionsPanel.Size = new System.Drawing.Size(856, 52);
-            this.totalTransactionsPanel.TabIndex = 3;
-            // 
-            // totalCurencyTB
-            // 
-            this.totalCurencyTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalCurencyTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalCurencyTB.Enabled = false;
-            this.totalCurencyTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalCurencyTB.Location = new System.Drawing.Point(634, 0);
-            this.totalCurencyTB.Multiline = true;
-            this.totalCurencyTB.Name = "totalCurencyTB";
-            this.totalCurencyTB.Size = new System.Drawing.Size(216, 52);
-            this.totalCurencyTB.TabIndex = 2;
-            this.totalCurencyTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.totalCurencyTB.Visible = false;
-            // 
-            // totalPriceTB
-            // 
-            this.totalPriceTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalPriceTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalPriceTB.Enabled = false;
-            this.totalPriceTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalPriceTB.Location = new System.Drawing.Point(422, 0);
-            this.totalPriceTB.Multiline = true;
-            this.totalPriceTB.Name = "totalPriceTB";
-            this.totalPriceTB.Size = new System.Drawing.Size(214, 52);
-            this.totalPriceTB.TabIndex = 2;
-            this.totalPriceTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.totalPriceTB.Visible = false;
-            // 
-            // totalTransactionTB
-            // 
-            this.totalTransactionTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalTransactionTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalTransactionTB.Enabled = false;
-            this.totalTransactionTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalTransactionTB.Location = new System.Drawing.Point(213, 0);
-            this.totalTransactionTB.Multiline = true;
-            this.totalTransactionTB.Name = "totalTransactionTB";
-            this.totalTransactionTB.Size = new System.Drawing.Size(213, 54);
-            this.totalTransactionTB.TabIndex = 1;
-            this.totalTransactionTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.totalTransactionTB.Visible = false;
-            // 
-            // totalSumTB
-            // 
-            this.totalSumTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalSumTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalSumTB.Enabled = false;
-            this.totalSumTB.Font = new System.Drawing.Font("Tahoma", 17F, System.Drawing.FontStyle.Bold);
-            this.totalSumTB.Location = new System.Drawing.Point(0, 0);
-            this.totalSumTB.Multiline = true;
-            this.totalSumTB.Name = "totalSumTB";
-            this.totalSumTB.Size = new System.Drawing.Size(213, 54);
-            this.totalSumTB.TabIndex = 0;
-            this.totalSumTB.Text = " Итого:";
-            this.totalSumTB.Visible = false;
             // 
             // closeBtn
             // 
@@ -415,11 +314,112 @@
             this.printBtn.Text = "Печать";
             this.printBtn.UseVisualStyleBackColor = false;
             // 
+            // CenterSplitContainer
+            // 
+            this.CenterSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CenterSplitContainer.Location = new System.Drawing.Point(0, 52);
+            this.CenterSplitContainer.Name = "CenterSplitContainer";
+            // 
+            // CenterSplitContainer.Panel1
+            // 
+            this.CenterSplitContainer.Panel1.AutoScroll = true;
+            this.CenterSplitContainer.Panel1.Controls.Add(this.contractorsDGView);
+            this.CenterSplitContainer.Panel1.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            // 
+            // CenterSplitContainer.Panel2
+            // 
+            this.CenterSplitContainer.Panel2.Controls.Add(this.transactionsDGVPanel);
+            this.CenterSplitContainer.Panel2.Controls.Add(this.totalTransactionsPanel);
+            this.CenterSplitContainer.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            this.CenterSplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CenterSplitContainer.Size = new System.Drawing.Size(1293, 538);
+            this.CenterSplitContainer.SplitterDistance = 429;
+            this.CenterSplitContainer.TabIndex = 18;
+            this.CenterSplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.CenterSplitContainer_SplitterMoved);
+            // 
+            // transactionsDGVPanel
+            // 
+            this.transactionsDGVPanel.Controls.Add(this.transactionsDGView);
+            this.transactionsDGVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transactionsDGVPanel.Location = new System.Drawing.Point(0, 0);
+            this.transactionsDGVPanel.Name = "transactionsDGVPanel";
+            this.transactionsDGVPanel.Size = new System.Drawing.Size(856, 486);
+            this.transactionsDGVPanel.TabIndex = 4;
+            // 
+            // totalTransactionsPanel
+            // 
+            this.totalTransactionsPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalTransactionsPanel.Controls.Add(this.totalCurencyTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalPriceTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalTransactionTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalSumTB);
+            this.totalTransactionsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 486);
+            this.totalTransactionsPanel.Name = "totalTransactionsPanel";
+            this.totalTransactionsPanel.Size = new System.Drawing.Size(856, 52);
+            this.totalTransactionsPanel.TabIndex = 3;
+            // 
+            // totalCurencyTB
+            // 
+            this.totalCurencyTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalCurencyTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalCurencyTB.Enabled = false;
+            this.totalCurencyTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalCurencyTB.Location = new System.Drawing.Point(634, 0);
+            this.totalCurencyTB.Multiline = true;
+            this.totalCurencyTB.Name = "totalCurencyTB";
+            this.totalCurencyTB.Size = new System.Drawing.Size(220, 52);
+            this.totalCurencyTB.TabIndex = 2;
+            this.totalCurencyTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.totalCurencyTB.Visible = false;
+            // 
+            // totalPriceTB
+            // 
+            this.totalPriceTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalPriceTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalPriceTB.Enabled = false;
+            this.totalPriceTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalPriceTB.Location = new System.Drawing.Point(422, 0);
+            this.totalPriceTB.Multiline = true;
+            this.totalPriceTB.Name = "totalPriceTB";
+            this.totalPriceTB.Size = new System.Drawing.Size(215, 52);
+            this.totalPriceTB.TabIndex = 2;
+            this.totalPriceTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.totalPriceTB.Visible = false;
+            // 
+            // totalTransactionTB
+            // 
+            this.totalTransactionTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalTransactionTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalTransactionTB.Enabled = false;
+            this.totalTransactionTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalTransactionTB.Location = new System.Drawing.Point(213, 0);
+            this.totalTransactionTB.Multiline = true;
+            this.totalTransactionTB.Name = "totalTransactionTB";
+            this.totalTransactionTB.Size = new System.Drawing.Size(213, 54);
+            this.totalTransactionTB.TabIndex = 1;
+            this.totalTransactionTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.totalTransactionTB.Visible = false;
+            // 
+            // totalSumTB
+            // 
+            this.totalSumTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalSumTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalSumTB.Enabled = false;
+            this.totalSumTB.Font = new System.Drawing.Font("Tahoma", 17F, System.Drawing.FontStyle.Bold);
+            this.totalSumTB.Location = new System.Drawing.Point(0, 0);
+            this.totalSumTB.Multiline = true;
+            this.totalSumTB.Name = "totalSumTB";
+            this.totalSumTB.Size = new System.Drawing.Size(213, 54);
+            this.totalSumTB.TabIndex = 0;
+            this.totalSumTB.Text = " Итого:";
+            this.totalSumTB.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1294, 660);
+            this.ClientSize = new System.Drawing.Size(1293, 659);
             this.Controls.Add(this.CenterSplitContainer);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.topPanel);

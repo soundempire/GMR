@@ -1,5 +1,6 @@
 ﻿using GMR.BLL.Abstractions.Models;
 using GMR.BLL.Abstractions.Services;
+using GMR.LayoutRoot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,43 +79,47 @@ namespace GMR
 
         private async void ImportBtn_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog()
-            {
-                Filter = "Книга Excel 97-2003|*.xls|" +
-                         "Книга Excel|*.xlsx|" +
-                         "CSV (разделитель - запятая)|*.csv",
-                CheckFileExists = true,
-                CheckPathExists = true,
-                Multiselect = false,
-                ValidateNames = true
-            })
+            //using (OpenFileDialog ofd = new OpenFileDialog()
+            //{
+            //    Filter = "Книга Excel 97-2003|*.xls|" +
+            //             "Книга Excel|*.xlsx|" +
+            //             "CSV (разделитель - запятая)|*.csv",
+            //    CheckFileExists = true,
+            //    CheckPathExists = true,
+            //    Multiselect = false,
+            //    ValidateNames = true
+            //})
 
-            {
-                string fileName = string.Empty;
+            //{
+            //    string fileName = string.Empty;
 
-                if (ofd.ShowDialog() == DialogResult.OK)
-                    fileName = ofd.FileName;
-                else
-                    return;
+            //    if (ofd.ShowDialog() == DialogResult.OK)
+            //        fileName = ofd.FileName;
+            //    else
+            //        return;
 
-                var importResult = new List<ImportResultRow<ContractorModel>>();
+            //    var importResult = (await _contractorService.GetImportedContractors(fileName, Session.Person.ID)).ToList();
 
-                importResult = (await _importService.ImportContractors(fileName, Session.Person.ID)).ToList();
+               
+                var importForm = DIContainer.Resolve<ImportMasterForm>();
+                if (importForm.ShowDialog() == DialogResult.OK)
+                {
+                }
 
-                DisplayImportResult(importResult);
-            }
+            //DisplayImportResult(importResult);
+            //}
         }
 
-        private void DisplayImportResult(List<ImportResultRow<ContractorModel>> importResult)
+        private void DisplayImportResult(List<ValidatedContractorModel>/*<ImportResultRow<ContractorModel>>*/ importResult)
         {
             var errors = new StringBuilder();
 
             for (var i = 0; i < importResult.Count; i++)
-                if (!importResult[i].IsSuccess)
+                if (!importResult[i].IsValid)
                     errors.AppendLine($"Строка {i + 1}: {importResult[i].Error}");
 
             var sb = new StringBuilder();
-            sb.AppendLine($"{importResult.Count(x => x.IsSuccess)} из {importResult.Count} строк было импортировано удачно.");
+            sb.AppendLine($"{importResult.Count(x => x.IsValid)} из {importResult.Count} строк было импортировано удачно.");
 
             if (errors.Length > 0)
             {

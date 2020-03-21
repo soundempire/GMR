@@ -12,14 +12,9 @@ namespace GMR.BLL.Services
 {
     public class ImportService : IImportService
     {
-        private readonly IContractorService _contractorService;
-
-        public ImportService(IContractorService contractorService) =>
-            _contractorService = contractorService;
-
-        public async Task<IEnumerable<ImportResultRow<ContractorModel>>> ImportContractors(string fileName, long personId)
+        public async Task<IEnumerable<ContractorModel>> ImportContractors(string fileName)
         {
-            var resultList = new List<ImportResultRow<ContractorModel>>();
+            var resultList = new List<ContractorModel>();
 
             using (FileStream fStream = File.Open(fileName, FileMode.Open, FileAccess.Read))
             {
@@ -35,7 +30,7 @@ namespace GMR.BLL.Services
                         {
                             var dt = result.Tables[0];
 
-                            List<string> columnNames = new List<string>();
+                            var columnNames = new List<string>();
 
                             foreach (var item in dt.Columns)
                                 columnNames.Add(item.ToString());
@@ -46,20 +41,7 @@ namespace GMR.BLL.Services
                             {
                                 IEnumerable<DataRow> contractorRows = dt.AsEnumerable().Select(row => row);
 
-                                var validatedEntries = await CreateContractorEntries(contractorRows, personId);
-
-                                //var importResult = SaveImportedVendors(validatedEntries.Where(x => x.IsValid).Select(x => x.Item).ToList());
-
-                                foreach (var validatedRow in validatedEntries)
-                                {
-                                    var resultItem = new ImportResultRow<ContractorModel> { Item = validatedRow.Item, Error = validatedRow.Error };
-                                    //if (validatedRow.IsValid)
-                                    //{
-                                    //    resultItem.Error = importResult.Single(x => x.Item == validatedRow.Item).Error;
-                                    //}
-
-                                    resultList.Add(resultItem);
-                                }
+                                resultList = await Task.Run(() => CreateContractorEntries(contractorRows));
                             }
                         }
                     }
@@ -67,14 +49,14 @@ namespace GMR.BLL.Services
                 }
             }
         }
-
-        private async Task<List<ValidatedImportRow<ContractorModel>>> CreateContractorEntries(IEnumerable<DataRow> contractorRows, long personId)
+       
+        private List<ContractorModel> CreateContractorEntries(IEnumerable<DataRow> contractorRows)
         {
-            var validatedEntries = new List<ValidatedImportRow<ContractorModel>>();
+            var contractors = new List<ContractorModel>();
 
             ContractorModel contractor;
 
-            for (int i = 0; i < contractorRows.Count(); i++)
+            for (int i = 0; i < contractorRows.ToList().Count; i++)
             {
                 DataRow dr = contractorRows.ElementAt(i);
                 TransactionModel transaction;
@@ -98,73 +80,13 @@ namespace GMR.BLL.Services
 
                 contractor.Transactions = new List<TransactionModel>();
 
-                if (contractor.Name.Length > 50)
-                {
-                    validatedEntries.Add(ValidatedImportRow<ContractorModel>.CreateWithError("Импортируемые данные не в корректном формате. Длина имени контрагента не может превышать 50 символов."));
-                    continue;
-                }
-
-                if (transaction.Value != null && transaction.Value < 0)
-                {
-                    validatedEntries.Add(ValidatedImportRow<ContractorModel>.CreateWithError("Импортируемые данные не в корректном формате. Значение транзакции не может быть отрицательным."));
-                    continue;
-                }
-
-                if (transaction.Price != null && transaction.Value < 0)
-                {
-                    validatedEntries.Add(ValidatedImportRow<ContractorModel>.CreateWithError("Импортируемые данные не в корректном формате. Значение платежа не может быть отрицательным."));
-                    continue;
-                }
-
-                if (transaction.Currency < 0)
-                {
-                    validatedEntries.Add(ValidatedImportRow<ContractorModel>.CreateWithError("Импортируемые данные не в корректном формате. Курс не может быть отрицательным."));
-                    continue;
-                }
-
-                var validateContractorError = await ValidateContractor(contractor, personId);
-
-                if (string.IsNullOrEmpty(validateContractorError.ToString()))
-                {
-                    if (validatedEntries.Count(x => x.IsValid && x.Item.Name == contractor.Name && x.Item.Transactions.Contains(transaction)) >= 1)
-                        validatedEntries.Add(new ValidatedImportRow<ContractorModel> { Error = "Контрагент с такой транзакцией уже присутствует в файле импорта." });
-                    else
-                    {
-                        contractor.Transactions.Add(transaction);
-                        validatedEntries.Add(new ValidatedImportRow<ContractorModel> { Item = contractor });
-                    }
-                }
-                else
-                {
-                    validatedEntries.Add(new ValidatedImportRow<ContractorModel> { Error = $"Импортируемые данные не в корректном формате. {validateContractorError}" });
-                    continue;
-                }
-
-                //check if contractor already exist
-                //var existContractors = _contractorRepository.GetAll()
-                //                                            .Include(c => c.Transactions)
-                //                                            .ToList();
-
-                //if (existContractors.Find(c => dr[2].ToString().Contains(c.Name)) == null) {}
+                contractor.Transactions.Add(transaction);
+                contractors.Add(contractor);
             }
-            return validatedEntries;
+
+            return contractors;
         }
-
-        private async Task<string> ValidateContractor(ContractorModel contractor, long personId)
-        {           
-            if (string.IsNullOrEmpty(contractor.Name))
-                return "Имя контрагента не может быть пустым.";
-
-            var contractors = (await _contractorService.GetContractorsAsync(personId)).Select(c=>c);
-
-            if (contractors != null)
-                foreach (ContractorModel c in contractors)
-                    if (contractor ==c)
-                        return "Контрагент уже существует.";              
-
-            return string.Empty;
-        }
-
+       
         private string IsContractorFormat(List<string> headerFormat)
         {
             string error = string.Empty;

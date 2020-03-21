@@ -63,6 +63,16 @@ namespace GMR.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap greenPlus {
+            get {
+                object obj = ResourceManager.GetObject("greenPlus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hidePassword {
             get {
                 object obj = ResourceManager.GetObject("hidePassword", resourceCulture);

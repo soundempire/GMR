@@ -84,6 +84,7 @@
     <Compile Include="Services\ImportService.cs" />
     <Compile Include="Services\PersonService.cs" />
     <Compile Include="Services\TransactionService.cs" />
+    <Compile Include="Services\ValidateService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GMR.BLL.Abstractions\GMR.BLL.Abstractions.csproj">

@@ -39,13 +39,13 @@
             this.transactionPriceTBox = new System.Windows.Forms.TextBox();
             this.transactionValueTBox = new System.Windows.Forms.TextBox();
             this.transactionCurrencyTBox = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.currentUserPanel = new System.Windows.Forms.Panel();
             this.controlBtnsPanel = new System.Windows.Forms.Panel();
             this.okBtn = new GMR.Controls.GMRButton();
             this.cancelBtn = new GMR.Controls.GMRButton();
             this.closeBtn = new GMR.Controls.GMRButton();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.currentUserPanel.SuspendLayout();
             this.controlBtnsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,16 +185,16 @@
             this.transactionCurrencyTBox.TabIndex = 0;
             this.transactionCurrencyTBox.TextChanged += new System.EventHandler(this.transactionCurrencyTBox_TextChanged);
             // 
-            // panel2
+            // currentUserPanel
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.controlBtnsPanel);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 406);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(908, 80);
-            this.panel2.TabIndex = 1;
+            this.currentUserPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.currentUserPanel.Controls.Add(this.controlBtnsPanel);
+            this.currentUserPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.currentUserPanel.Location = new System.Drawing.Point(0, 406);
+            this.currentUserPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.currentUserPanel.Name = "currentUserPanel";
+            this.currentUserPanel.Size = new System.Drawing.Size(908, 80);
+            this.currentUserPanel.TabIndex = 1;
             // 
             // controlBtnsPanel
             // 
@@ -260,7 +260,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 486);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.currentUserPanel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -271,7 +271,7 @@
             this.Load += new System.EventHandler(this.AddContractorForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.currentUserPanel.ResumeLayout(false);
             this.controlBtnsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -284,7 +284,7 @@
         private System.Windows.Forms.TextBox transactionPriceTBox;
         private System.Windows.Forms.TextBox transactionValueTBox;
         private System.Windows.Forms.TextBox transactionCurrencyTBox;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel currentUserPanel;
         private System.Windows.Forms.DateTimePicker transactionDateDTPicker;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

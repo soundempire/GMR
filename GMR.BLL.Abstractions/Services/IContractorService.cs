@@ -8,8 +8,10 @@ namespace GMR.BLL.Abstractions.Services
     {
         Task<ContractorModel> GetContractorAsync(long id);
 
-        Task<IEnumerable<ContractorModel>> GetContractorsAsync(long personId, string filter = null);
+        Task<IEnumerable<ContractorModel>> GetContractorsAsync(long personId, string filter = null, params string[] includes);
 
         Task<ContractorModel> UpdateContractorAsync(ContractorModel contractor);
+
+        //Task<IEnumerable<ValidatedContractorModel>> GetImportedContractors(string fileName, long personId);
     }
 }
