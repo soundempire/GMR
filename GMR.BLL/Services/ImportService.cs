@@ -12,9 +12,9 @@ namespace GMR.BLL.Services
 {
     public class ImportService : IImportService
     {
-        public async Task<IEnumerable<ContractorModel>> ImportContractors(string fileName)
+        public async Task<IEnumerable<ImportDataModel>> ImportContractors(string fileName)
         {
-            var resultList = new List<ContractorModel>();
+            var resultList = new List<ImportDataModel>();
 
             using (FileStream fStream = File.Open(fileName, FileMode.Open, FileAccess.Read))
             {
@@ -39,9 +39,9 @@ namespace GMR.BLL.Services
 
                             if (string.IsNullOrEmpty(error))
                             {
-                                IEnumerable<DataRow> contractorRows = dt.AsEnumerable().Select(row => row);
+                                IEnumerable<DataRow> importDataRows = dt.AsEnumerable().Select(row => row);
 
-                                resultList = await Task.Run(() => CreateContractorEntries(contractorRows));
+                                resultList = await Task.Run(() => CreateImportDataEntries(importDataRows));
                             }
                         }
                     }
@@ -50,41 +50,30 @@ namespace GMR.BLL.Services
             }
         }
        
-        private List<ContractorModel> CreateContractorEntries(IEnumerable<DataRow> contractorRows)
+        private List<ImportDataModel> CreateImportDataEntries(IEnumerable<DataRow> importDataRows)
         {
-            var contractors = new List<ContractorModel>();
+            var importDataEntries = new List<ImportDataModel>();
 
-            ContractorModel contractor;
+            ImportDataModel importDataEntry;
 
-            for (int i = 0; i < contractorRows.ToList().Count; i++)
+            for (int i = 0; i < importDataRows.ToList().Count; i++)
             {
-                DataRow dr = contractorRows.ElementAt(i);
-                TransactionModel transaction;
+                DataRow dr = importDataRows.ElementAt(i);
 
-                contractor = new ContractorModel()
+                importDataEntry = new ImportDataModel()
                 {
                     ID = Convert.ToInt64(dr[0].ToString().Trim()),
                     ContractorID = dr[1].ToString().Trim(),
-                    Name = dr[2].ToString().Trim()
-                };
-
-                transaction = new TransactionModel()
-                {
-                    ContractorID = contractor.ID,
+                    Name = dr[2].ToString().Trim(),
                     Date = Convert.ToDateTime(dr[3].ToString()),
                     Value = (string.IsNullOrEmpty(dr[4].ToString().Trim()) ? (double?)null : double.Parse(dr[4].ToString().Trim())),
                     Price = (string.IsNullOrEmpty(dr[5].ToString().Trim()) ? (double?)null : double.Parse(dr[5].ToString().Trim())),
-                    Currency = double.Parse(dr[6].ToString().Trim()),
-                    Contractor = contractor
+                    Currency = double.Parse(dr[6].ToString().Trim())
                 };
 
-                contractor.Transactions = new List<TransactionModel>();
-
-                contractor.Transactions.Add(transaction);
-                contractors.Add(contractor);
+                importDataEntries.Add(importDataEntry);
             }
-
-            return contractors;
+            return importDataEntries;
         }
        
         private string IsContractorFormat(List<string> headerFormat)

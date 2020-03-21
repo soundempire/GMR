@@ -79,26 +79,7 @@ namespace GMR
 
         private async void ImportBtn_Click(object sender, EventArgs e)
         {
-            //using (OpenFileDialog ofd = new OpenFileDialog()
-            //{
-            //    Filter = "Книга Excel 97-2003|*.xls|" +
-            //             "Книга Excel|*.xlsx|" +
-            //             "CSV (разделитель - запятая)|*.csv",
-            //    CheckFileExists = true,
-            //    CheckPathExists = true,
-            //    Multiselect = false,
-            //    ValidateNames = true
-            //})
-
-            //{
-            //    string fileName = string.Empty;
-
-            //    if (ofd.ShowDialog() == DialogResult.OK)
-            //        fileName = ofd.FileName;
-            //    else
-            //        return;
-
-            //    var importResult = (await _contractorService.GetImportedContractors(fileName, Session.Person.ID)).ToList();
+            
 
                
                 var importForm = DIContainer.Resolve<ImportMasterForm>();

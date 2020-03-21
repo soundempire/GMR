@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ContractorModel.cs" />
+    <Compile Include="Models\ImportDataModel.cs" />
     <Compile Include="Models\ImportResultRow.cs" />
     <Compile Include="Models\PasswordModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
@@ -53,7 +54,6 @@
     <Compile Include="Services\IImportService.cs" />
     <Compile Include="Services\IPersonService.cs" />
     <Compile Include="Services\ITransactionService.cs" />
-    <Compile Include="Models\ValidatedImportRow.cs" />
     <Compile Include="Services\IValidateService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
-﻿using GMR.BLL.Abstractions.Services;
+﻿using GMR.BLL.Abstractions.Models;
+using GMR.BLL.Abstractions.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,11 +60,49 @@ namespace GMR
             bool isRowChecked = chooseColumnsDGV.Rows[e.RowIndex].Cells.OfType<DataGridViewCell>().Any(c => c.Value == _greenPlus);
             bool isColumnChecked = chooseColumnsDGV.Rows.Cast<DataGridViewRow>().Any(r => r.Cells[e.ColumnIndex].Value == _greenPlus);
 
-            if (isCellChecked)
-                chooseColumnsDGV[e.ColumnIndex, e.RowIndex].Value = null;
-            else
+            if (e.ColumnIndex != chooseColumnsDGV.Columns["idImageColumn"].Index && e.ColumnIndex != chooseColumnsDGV.Columns["contractorImageColumn"].Index)
+            {
+                if (isCellChecked)
+                    chooseColumnsDGV[e.ColumnIndex, e.RowIndex].Value = null;
+                else
                 if (!isRowChecked && !isColumnChecked)
                     chooseColumnsDGV[e.ColumnIndex, e.RowIndex].Value = _greenPlus;
+            }
         }
+
+        private async void OpenFileBtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Filter = "Книга Excel 97-2003|*.xls|" +
+                         "Книга Excel|*.xlsx|" +
+                         "CSV (разделитель - запятая)|*.csv",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Multiselect = false,
+                ValidateNames = true
+            })
+
+            {
+                string fileName = string.Empty;
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                    fileName = ofd.FileName;
+                else
+                    return;
+
+                var importResult = (await _importService.ImportContractors(fileName));
+                await BindImportDataToDataGridViewAsync(importResult.ToList());
+                //DisplayImportResult(importResult);
+            }
+        }
+
+        private async Task BindImportDataToDataGridViewAsync(ICollection<ImportDataModel> importResult)
+        {
+
+            importingDataDGV.DataSource = importResult;
+
+        }
+
     }
 }
