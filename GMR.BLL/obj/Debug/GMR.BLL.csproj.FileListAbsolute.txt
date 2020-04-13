@@ -89,3 +89,10 @@ C:\Users\user\Desktop\GMR\GMR.BLL\bin\Debug\ExcelDataReader.pdb
 C:\Users\user\Desktop\GMR\GMR.BLL\bin\Debug\ExcelDataReader.xml
 C:\Users\user\Desktop\GMR\GMR.BLL\bin\Debug\ExcelDataReader.DataSet.pdb
 C:\Users\user\Desktop\GMR\GMR.BLL\bin\Debug\ExcelDataReader.DataSet.xml
+D:\WORK\GMR\GMR.BLL\bin\Debug\ExcelDataReader.DataSet.dll
+D:\WORK\GMR\GMR.BLL\bin\Debug\ExcelDataReader.dll
+D:\WORK\GMR\GMR.BLL\bin\Debug\ExcelDataReader.pdb
+D:\WORK\GMR\GMR.BLL\bin\Debug\ExcelDataReader.xml
+D:\WORK\GMR\GMR.BLL\bin\Debug\ExcelDataReader.DataSet.pdb
+D:\WORK\GMR\GMR.BLL\bin\Debug\ExcelDataReader.DataSet.xml
+D:\WORK\GMR\GMR.BLL\obj\Debug\GMR.BLL.csproj.CoreCompileInputs.cache
