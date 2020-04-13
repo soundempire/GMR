@@ -28,41 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chooseColumnsPanel = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.importTabPage = new System.Windows.Forms.TabPage();
-            this.choosePanel6 = new System.Windows.Forms.Panel();
-            this.choosePanel5 = new System.Windows.Forms.Panel();
-            this.choosePanel4 = new System.Windows.Forms.Panel();
-            this.choosePanel3 = new System.Windows.Forms.Panel();
-            this.choosePanel2 = new System.Windows.Forms.Panel();
-            this.choosePanel7 = new System.Windows.Forms.Panel();
-            this.choosePanel1 = new System.Windows.Forms.Panel();
+            this.chooseColumnsDGV = new System.Windows.Forms.DataGridView();
             this.importingDataPanel = new System.Windows.Forms.Panel();
             this.importingDataDGV = new System.Windows.Forms.DataGridView();
             this.controlsPanel = new System.Windows.Forms.Panel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.openFileBtn = new GMR.Controls.GMRButton();
             this.cancelBtn = new GMR.Controls.GMRButton();
             this.okBtn = new GMR.Controls.GMRButton();
-            this.priceToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
-            this.transactionToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
-            this.dateToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
-            this.idToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
-            this.contractorToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
-            this.currencyToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.headers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orders = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.contractorImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.openFileBtn = new GMR.Controls.GMRButton();
             this.chooseColumnsPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.importTabPage.SuspendLayout();
-            this.choosePanel6.SuspendLayout();
-            this.choosePanel5.SuspendLayout();
-            this.choosePanel4.SuspendLayout();
-            this.choosePanel3.SuspendLayout();
-            this.choosePanel2.SuspendLayout();
-            this.choosePanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseColumnsDGV)).BeginInit();
             this.importingDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.importingDataDGV)).BeginInit();
             this.controlsPanel.SuspendLayout();
@@ -77,7 +78,7 @@
             this.chooseColumnsPanel.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.chooseColumnsPanel.Location = new System.Drawing.Point(0, 0);
             this.chooseColumnsPanel.Name = "chooseColumnsPanel";
-            this.chooseColumnsPanel.Size = new System.Drawing.Size(1293, 83);
+            this.chooseColumnsPanel.Size = new System.Drawing.Size(1278, 210);
             this.chooseColumnsPanel.TabIndex = 0;
             // 
             // tabControl
@@ -90,100 +91,83 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1293, 83);
+            this.tabControl.Size = new System.Drawing.Size(1278, 210);
             this.tabControl.TabIndex = 0;
-            this.tabControl.Visible = false;
             // 
             // importTabPage
             // 
             this.importTabPage.BackColor = System.Drawing.Color.Transparent;
-            this.importTabPage.Controls.Add(this.choosePanel6);
-            this.importTabPage.Controls.Add(this.choosePanel5);
-            this.importTabPage.Controls.Add(this.choosePanel4);
-            this.importTabPage.Controls.Add(this.choosePanel3);
-            this.importTabPage.Controls.Add(this.choosePanel2);
-            this.importTabPage.Controls.Add(this.choosePanel7);
-            this.importTabPage.Controls.Add(this.choosePanel1);
+            this.importTabPage.Controls.Add(this.chooseColumnsDGV);
             this.importTabPage.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.importTabPage.Location = new System.Drawing.Point(4, 24);
             this.importTabPage.Margin = new System.Windows.Forms.Padding(0);
             this.importTabPage.Name = "importTabPage";
             this.importTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.importTabPage.Size = new System.Drawing.Size(1285, 55);
+            this.importTabPage.Size = new System.Drawing.Size(1270, 182);
             this.importTabPage.TabIndex = 0;
             this.importTabPage.Text = "Импорт данных";
             // 
-            // choosePanel6
+            // chooseColumnsDGV
             // 
-            this.choosePanel6.Controls.Add(this.priceToggleSwitch);
-            this.choosePanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.choosePanel6.Location = new System.Drawing.Point(915, 3);
-            this.choosePanel6.Name = "choosePanel6";
-            this.choosePanel6.Size = new System.Drawing.Size(183, 49);
-            this.choosePanel6.TabIndex = 5;
-            // 
-            // choosePanel5
-            // 
-            this.choosePanel5.Controls.Add(this.transactionToggleSwitch);
-            this.choosePanel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.choosePanel5.Location = new System.Drawing.Point(731, 3);
-            this.choosePanel5.Name = "choosePanel5";
-            this.choosePanel5.Size = new System.Drawing.Size(184, 49);
-            this.choosePanel5.TabIndex = 4;
-            // 
-            // choosePanel4
-            // 
-            this.choosePanel4.Controls.Add(this.dateToggleSwitch);
-            this.choosePanel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.choosePanel4.Location = new System.Drawing.Point(547, 3);
-            this.choosePanel4.Name = "choosePanel4";
-            this.choosePanel4.Size = new System.Drawing.Size(184, 49);
-            this.choosePanel4.TabIndex = 4;
-            // 
-            // choosePanel3
-            // 
-            this.choosePanel3.Controls.Add(this.idToggleSwitch);
-            this.choosePanel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.choosePanel3.Location = new System.Drawing.Point(363, 3);
-            this.choosePanel3.Name = "choosePanel3";
-            this.choosePanel3.Size = new System.Drawing.Size(184, 49);
-            this.choosePanel3.TabIndex = 3;
-            // 
-            // choosePanel2
-            // 
-            this.choosePanel2.Controls.Add(this.contractorToggleSwitch);
-            this.choosePanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.choosePanel2.Location = new System.Drawing.Point(63, 3);
-            this.choosePanel2.Name = "choosePanel2";
-            this.choosePanel2.Size = new System.Drawing.Size(300, 49);
-            this.choosePanel2.TabIndex = 2;
-            // 
-            // choosePanel7
-            // 
-            this.choosePanel7.Controls.Add(this.currencyToggleSwitch);
-            this.choosePanel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.choosePanel7.Location = new System.Drawing.Point(1098, 3);
-            this.choosePanel7.Name = "choosePanel7";
-            this.choosePanel7.Size = new System.Drawing.Size(184, 49);
-            this.choosePanel7.TabIndex = 1;
-            // 
-            // choosePanel1
-            // 
-            this.choosePanel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.choosePanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.choosePanel1.Location = new System.Drawing.Point(3, 3);
-            this.choosePanel1.Name = "choosePanel1";
-            this.choosePanel1.Size = new System.Drawing.Size(60, 49);
-            this.choosePanel1.TabIndex = 0;
+            this.chooseColumnsDGV.AllowUserToAddRows = false;
+            this.chooseColumnsDGV.AllowUserToResizeColumns = false;
+            this.chooseColumnsDGV.AllowUserToResizeRows = false;
+            this.chooseColumnsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.chooseColumnsDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.chooseColumnsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.chooseColumnsDGV.ColumnHeadersVisible = false;
+            this.chooseColumnsDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.headers,
+            this.orders,
+            this.idImageColumn,
+            this.contractorImageColumn,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.chooseColumnsDGV.DefaultCellStyle = dataGridViewCellStyle28;
+            this.chooseColumnsDGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chooseColumnsDGV.Location = new System.Drawing.Point(3, 3);
+            this.chooseColumnsDGV.Name = "chooseColumnsDGV";
+            this.chooseColumnsDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.chooseColumnsDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            this.chooseColumnsDGV.RowHeadersVisible = false;
+            this.chooseColumnsDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Arial", 8F);
+            this.chooseColumnsDGV.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            this.chooseColumnsDGV.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.chooseColumnsDGV.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chooseColumnsDGV.RowTemplate.DefaultCellStyle.Format = " ";
+            this.chooseColumnsDGV.RowTemplate.DefaultCellStyle.NullValue = null;
+            this.chooseColumnsDGV.RowTemplate.Height = 17;
+            this.chooseColumnsDGV.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.chooseColumnsDGV.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.chooseColumnsDGV.Size = new System.Drawing.Size(1264, 176);
+            this.chooseColumnsDGV.TabIndex = 0;
+            this.chooseColumnsDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.chooseColumnsDGV_CellClick);
             // 
             // importingDataPanel
             // 
             this.importingDataPanel.Controls.Add(this.importingDataDGV);
             this.importingDataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.importingDataPanel.Location = new System.Drawing.Point(0, 83);
+            this.importingDataPanel.Location = new System.Drawing.Point(0, 210);
             this.importingDataPanel.Name = "importingDataPanel";
-            this.importingDataPanel.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.importingDataPanel.Size = new System.Drawing.Size(1293, 575);
+            this.importingDataPanel.Size = new System.Drawing.Size(1278, 449);
             this.importingDataPanel.TabIndex = 1;
             // 
             // importingDataDGV
@@ -193,23 +177,15 @@
             this.importingDataDGV.AllowUserToResizeRows = false;
             this.importingDataDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.importingDataDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.importingDataDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.importingDataDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.importingDataDGV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.importingDataDGV.Location = new System.Drawing.Point(4, 0);
+            this.importingDataDGV.Location = new System.Drawing.Point(0, 0);
             this.importingDataDGV.Name = "importingDataDGV";
             this.importingDataDGV.RowHeadersVisible = false;
             this.importingDataDGV.RowHeadersWidth = 62;
             this.importingDataDGV.RowTemplate.Height = 28;
             this.importingDataDGV.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.importingDataDGV.Size = new System.Drawing.Size(1285, 575);
+            this.importingDataDGV.Size = new System.Drawing.Size(1278, 449);
             this.importingDataDGV.TabIndex = 0;
             // 
             // controlsPanel
@@ -221,21 +197,21 @@
             this.controlsPanel.Controls.Add(this.cancelBtn);
             this.controlsPanel.Controls.Add(this.okBtn);
             this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.controlsPanel.Location = new System.Drawing.Point(0, 590);
+            this.controlsPanel.Location = new System.Drawing.Point(0, 592);
             this.controlsPanel.Name = "controlsPanel";
-            this.controlsPanel.Size = new System.Drawing.Size(1293, 68);
+            this.controlsPanel.Size = new System.Drawing.Size(1278, 67);
             this.controlsPanel.TabIndex = 2;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(326, 22);
+            this.numericUpDown2.Location = new System.Drawing.Point(326, 21);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(120, 26);
             this.numericUpDown2.TabIndex = 27;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(188, 22);
+            this.numericUpDown1.Location = new System.Drawing.Point(187, 21);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 26);
             this.numericUpDown1.TabIndex = 26;
@@ -244,11 +220,130 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Location = new System.Drawing.Point(12, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 24);
             this.label1.TabIndex = 25;
             this.label1.Text = "Выбирать строки с:";
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
+            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.cancelBtn.Location = new System.Drawing.Point(1004, 12);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Rounding = 80;
+            this.cancelBtn.RoundingEnabled = true;
+            this.cancelBtn.Size = new System.Drawing.Size(130, 40);
+            this.cancelBtn.TabIndex = 24;
+            this.cancelBtn.Text = "Отмена";
+            this.cancelBtn.UseVisualStyleBackColor = false;
+            // 
+            // okBtn
+            // 
+            this.okBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
+            this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.okBtn.Location = new System.Drawing.Point(843, 12);
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Rounding = 80;
+            this.okBtn.RoundingEnabled = true;
+            this.okBtn.Size = new System.Drawing.Size(120, 40);
+            this.okBtn.TabIndex = 23;
+            this.okBtn.Text = "Ок";
+            this.okBtn.UseVisualStyleBackColor = false;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::GMR.Properties.Resources.greenPlus;
+            this.dataGridViewImageColumn1.MinimumWidth = 8;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // headers
+            // 
+            this.headers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.headers.DefaultCellStyle = dataGridViewCellStyle21;
+            this.headers.Frozen = true;
+            this.headers.HeaderText = "";
+            this.headers.MinimumWidth = 8;
+            this.headers.Name = "headers";
+            this.headers.Width = 138;
+            // 
+            // orders
+            // 
+            this.orders.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.orders.Frozen = true;
+            this.orders.HeaderText = "";
+            this.orders.MinimumWidth = 8;
+            this.orders.Name = "orders";
+            this.orders.Width = 137;
+            // 
+            // idImageColumn
+            // 
+            this.idImageColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.idImageColumn.DefaultCellStyle = dataGridViewCellStyle22;
+            this.idImageColumn.HeaderText = "";
+            this.idImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.idImageColumn.MinimumWidth = 8;
+            this.idImageColumn.Name = "idImageColumn";
+            // 
+            // contractorImageColumn
+            // 
+            this.contractorImageColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.NullValue = " ";
+            this.contractorImageColumn.DefaultCellStyle = dataGridViewCellStyle23;
+            this.contractorImageColumn.HeaderText = "";
+            this.contractorImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.contractorImageColumn.MinimumWidth = 8;
+            this.contractorImageColumn.Name = "contractorImageColumn";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle24;
+            this.Column3.HeaderText = "";
+            this.Column3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Column3.MinimumWidth = 8;
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle25;
+            this.Column4.HeaderText = "";
+            this.Column4.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Column4.MinimumWidth = 8;
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle26;
+            this.Column5.HeaderText = "";
+            this.Column5.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Column5.MinimumWidth = 8;
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle27;
+            this.Column6.HeaderText = "";
+            this.Column6.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Column6.MinimumWidth = 8;
+            this.Column6.Name = "Column6";
             // 
             // openFileBtn
             // 
@@ -266,122 +361,11 @@
             this.openFileBtn.UseVisualStyleBackColor = false;
             this.openFileBtn.Click += new System.EventHandler(this.OpenFileBtn_Click);
             // 
-            // cancelBtn
-            // 
-            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.cancelBtn.Location = new System.Drawing.Point(1004, 12);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Rounding = 80;
-            this.cancelBtn.RoundingEnabled = true;
-            this.cancelBtn.Size = new System.Drawing.Size(130, 40);
-            this.cancelBtn.TabIndex = 24;
-            this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.UseVisualStyleBackColor = false;
-            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
-            // 
-            // okBtn
-            // 
-            this.okBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.okBtn.Location = new System.Drawing.Point(843, 12);
-            this.okBtn.Name = "okBtn";
-            this.okBtn.Rounding = 80;
-            this.okBtn.RoundingEnabled = true;
-            this.okBtn.Size = new System.Drawing.Size(120, 40);
-            this.okBtn.TabIndex = 23;
-            this.okBtn.Text = "Ок";
-            this.okBtn.UseVisualStyleBackColor = false;
-            // 
-            // priceToggleSwitch
-            // 
-            this.priceToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.priceToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.priceToggleSwitch.Name = "priceToggleSwitch";
-            this.priceToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.priceToggleSwitch.OffText = "OFF";
-            this.priceToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
-            this.priceToggleSwitch.OnText = "ON";
-            this.priceToggleSwitch.Size = new System.Drawing.Size(183, 49);
-            this.priceToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
-            this.priceToggleSwitch.TabIndex = 3;
-            // 
-            // transactionToggleSwitch
-            // 
-            this.transactionToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transactionToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.transactionToggleSwitch.Name = "transactionToggleSwitch";
-            this.transactionToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.transactionToggleSwitch.OffText = "OFF";
-            this.transactionToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
-            this.transactionToggleSwitch.OnText = "ON";
-            this.transactionToggleSwitch.Size = new System.Drawing.Size(184, 49);
-            this.transactionToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
-            this.transactionToggleSwitch.TabIndex = 2;
-            // 
-            // dateToggleSwitch
-            // 
-            this.dateToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.dateToggleSwitch.Name = "dateToggleSwitch";
-            this.dateToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.dateToggleSwitch.OffText = "OFF";
-            this.dateToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
-            this.dateToggleSwitch.OnText = "ON";
-            this.dateToggleSwitch.Size = new System.Drawing.Size(184, 49);
-            this.dateToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
-            this.dateToggleSwitch.TabIndex = 1;
-            // 
-            // idToggleSwitch
-            // 
-            this.idToggleSwitch.Checked = true;
-            this.idToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.idToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.idToggleSwitch.Name = "idToggleSwitch";
-            this.idToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.idToggleSwitch.OffText = "OFF";
-            this.idToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
-            this.idToggleSwitch.OnText = "ON";
-            this.idToggleSwitch.Size = new System.Drawing.Size(184, 49);
-            this.idToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
-            this.idToggleSwitch.TabIndex = 1;
-            // 
-            // contractorToggleSwitch
-            // 
-            this.contractorToggleSwitch.Checked = true;
-            this.contractorToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contractorToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.contractorToggleSwitch.Name = "contractorToggleSwitch";
-            this.contractorToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.contractorToggleSwitch.OffText = "OFF";
-            this.contractorToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.contractorToggleSwitch.OnText = "ON";
-            this.contractorToggleSwitch.Size = new System.Drawing.Size(300, 49);
-            this.contractorToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
-            this.contractorToggleSwitch.TabIndex = 0;
-            // 
-            // currencyToggleSwitch
-            // 
-            this.currencyToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currencyToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.currencyToggleSwitch.Name = "currencyToggleSwitch";
-            this.currencyToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.currencyToggleSwitch.OffText = "OFF";
-            this.currencyToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
-            this.currencyToggleSwitch.OnText = "ON";
-            this.currencyToggleSwitch.Size = new System.Drawing.Size(184, 49);
-            this.currencyToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
-            this.currencyToggleSwitch.TabIndex = 3;
-            // 
             // ImportMasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 658);
+            this.ClientSize = new System.Drawing.Size(1278, 659);
             this.Controls.Add(this.controlsPanel);
             this.Controls.Add(this.importingDataPanel);
             this.Controls.Add(this.chooseColumnsPanel);
@@ -392,12 +376,7 @@
             this.chooseColumnsPanel.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.importTabPage.ResumeLayout(false);
-            this.choosePanel6.ResumeLayout(false);
-            this.choosePanel5.ResumeLayout(false);
-            this.choosePanel4.ResumeLayout(false);
-            this.choosePanel3.ResumeLayout(false);
-            this.choosePanel2.ResumeLayout(false);
-            this.choosePanel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chooseColumnsDGV)).EndInit();
             this.importingDataPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.importingDataDGV)).EndInit();
             this.controlsPanel.ResumeLayout(false);
@@ -418,22 +397,19 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage importTabPage;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView chooseColumnsDGV;
         private System.Windows.Forms.DataGridView importingDataDGV;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn headers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orders;
+        private System.Windows.Forms.DataGridViewImageColumn idImageColumn;
+        private System.Windows.Forms.DataGridViewImageColumn contractorImageColumn;
+        private System.Windows.Forms.DataGridViewImageColumn Column3;
+        private System.Windows.Forms.DataGridViewImageColumn Column4;
+        private System.Windows.Forms.DataGridViewImageColumn Column5;
+        private System.Windows.Forms.DataGridViewImageColumn Column6;
         private Controls.GMRButton openFileBtn;
-        private System.Windows.Forms.Panel choosePanel3;
-        private System.Windows.Forms.Panel choosePanel2;
-        private System.Windows.Forms.Panel choosePanel7;
-        private System.Windows.Forms.Panel choosePanel1;
-        private System.Windows.Forms.Panel choosePanel5;
-        private System.Windows.Forms.Panel choosePanel4;
-        private Animation.Controls.ToggleSwitch.GMRToggleSwitch contractorToggleSwitch;
-        private Animation.Controls.ToggleSwitch.GMRToggleSwitch dateToggleSwitch;
-        private Animation.Controls.ToggleSwitch.GMRToggleSwitch idToggleSwitch;
-        private Animation.Controls.ToggleSwitch.GMRToggleSwitch transactionToggleSwitch;
-        private Animation.Controls.ToggleSwitch.GMRToggleSwitch currencyToggleSwitch;
-        private System.Windows.Forms.Panel choosePanel6;
-        private Animation.Controls.ToggleSwitch.GMRToggleSwitch priceToggleSwitch;
     }
 }

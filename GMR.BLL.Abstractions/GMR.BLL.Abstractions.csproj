@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Models\ContractorModel.cs" />
     <Compile Include="Models\ImportDataModel.cs" />
+    <Compile Include="Models\ImportResultRow.cs" />
     <Compile Include="Models\PasswordModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />

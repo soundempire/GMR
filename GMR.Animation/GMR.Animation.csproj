@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -61,17 +60,10 @@
     <Compile Include="Controls\GMRTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\ServiceClass\FlatColors.cs" />
-    <Compile Include="Controls\ToggleSwitch\GMRToggleSwitch.cs">
+    <Compile Include="Controls\GMRToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\ToggleSwitch\GraphicsExtensionMethods.cs" />
-    <Compile Include="Controls\ToggleSwitch\ImageHelper.cs" />
-    <Compile Include="Controls\ToggleSwitch\ToggleSwitchBrushedMetalRenderer.cs" />
-    <Compile Include="Controls\ToggleSwitch\ToggleSwitchCarbonRenderer.cs" />
-    <Compile Include="Controls\ToggleSwitch\ToggleSwitchIphoneRenderer.cs" />
-    <Compile Include="Controls\ToggleSwitch\ToggleSwitchModernRenderer.cs" />
-    <Compile Include="Controls\ToggleSwitch\ToggleSwitchRendererBase.cs" />
+    <Compile Include="Controls\ServiceClass\FlatColors.cs" />
     <Compile Include="Drawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

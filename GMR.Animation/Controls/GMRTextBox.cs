@@ -79,7 +79,10 @@ namespace GMR.Animation.Controls
             tbInput.KeyDown += new KeyEventHandler(TbInput_KeyDown);
         }
 
-        #region EventHandlers
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            TbInput_KeyDown(this, e);
+        }
         private void TbInput_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
@@ -89,25 +92,17 @@ namespace GMR.Animation.Controls
                 if (otherControl != null)
                 {
                     if (otherControl is GMRTextBox)
+                    {
                         otherControl.Focus();
+                    }
                     (otherControl as GMRButton)?.PerformClick();
                 }
             }
             else
+            {
                 return;
+            }
         }
-
-        private void TbInput_LostFocus(object sender, EventArgs e) => TextPreviewAction(false);
-
-        private void TbInput_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
-                e.IsInputKey = true;
-        }
-        #endregion
-
-
-
         private void AdjustTextBoxInput()
         {
             tbInput = new TextBox();
@@ -125,8 +120,10 @@ namespace GMR.Animation.Controls
             tbInput.LostFocus += TbInput_LostFocus;
         }
 
-
-        protected override void OnKeyDown(KeyEventArgs e) => TbInput_KeyDown(this, e);
+        private void TbInput_LostFocus(object sender, EventArgs e)
+        {
+                TextPreviewAction(false);
+        }
 
         protected override void OnCreateControl()
         {
@@ -234,5 +231,10 @@ namespace GMR.Animation.Controls
             Animator.Request(fontSizeTextPreviewAnim, true);
         }
 
+        private void TbInput_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
+                e.IsInputKey = true;
+        }
     }
 }

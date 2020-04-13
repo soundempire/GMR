@@ -38,4 +38,3 @@ C:\Users\user\Desktop\GMR\GMR.DAL\obj\Debug\GMR.DAL.csprojAssemblyReference.cach
 C:\Users\user\Desktop\GMR\GMR.DAL\obj\Debug\GMR.DAL.csproj.CopyComplete
 C:\Users\user\Desktop\GMR\GMR.DAL\obj\Debug\GMR.DAL.dll
 C:\Users\user\Desktop\GMR\GMR.DAL\obj\Debug\GMR.DAL.pdb
-D:\WORK\GMR\GMR.DAL\obj\Debug\GMR.DAL.csproj.CoreCompileInputs.cache
