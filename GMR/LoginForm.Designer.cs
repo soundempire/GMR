@@ -52,7 +52,7 @@ namespace GMR
             this.passwordErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.passwordErrorLabel.Location = new System.Drawing.Point(14, 130);
             this.passwordErrorLabel.Name = "passwordErrorLabel";
-            this.passwordErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.passwordErrorLabel.Size = new System.Drawing.Size(0, 19);
             this.passwordErrorLabel.TabIndex = 10;
             // 
             // closeBtn
@@ -83,7 +83,7 @@ namespace GMR
             this.okBtn.RoundingEnabled = true;
             this.okBtn.Size = new System.Drawing.Size(170, 33);
             this.okBtn.TabIndex = 3;
-            this.okBtn.Text = "Ok";
+            this.okBtn.Text = "Ок";
             this.okBtn.UseVisualStyleBackColor = false;
             this.okBtn.Click += new System.EventHandler(this.OkBtn_Click);
             // 
@@ -162,7 +162,7 @@ namespace GMR
             this.loginErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.loginErrorLabel.Location = new System.Drawing.Point(14, 68);
             this.loginErrorLabel.Name = "loginErrorLabel";
-            this.loginErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.loginErrorLabel.Size = new System.Drawing.Size(0, 19);
             this.loginErrorLabel.TabIndex = 12;
             // 
             // LoginForm
