@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GMR.BLL.Abstractions.Models
+namespace GMR.Models
 {
-    public class ImportDataModel
+    internal class ImportContractorViewModel
     {
         [DisplayName("№ п/п")]
         public long ID { get; set; }

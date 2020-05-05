@@ -14,11 +14,9 @@ namespace GMR.BLL.Services
     public class ContractorService : IContractorService, IDisposable
     {
         private readonly ISpecifyRepository<Contractor> _contractorRepository;
-        private readonly IImportService _importService;
-        private readonly IValidateService _validateService;
 
-        public ContractorService(ISpecifyRepository<Contractor> contractorRepository, IImportService importService, IValidateService validateService)
-            => (_contractorRepository, _importService, _validateService) = (contractorRepository, importService, validateService);
+        public ContractorService(ISpecifyRepository<Contractor> contractorRepository)
+            => _contractorRepository = contractorRepository;
 
         public async Task<ContractorModel> GetContractorAsync(long id)
         {
@@ -30,7 +28,7 @@ namespace GMR.BLL.Services
         {
             var query = _contractorRepository.GetAllFor(personId);
 
-            if (includes.Contains("transactions"))
+            if (includes.Contains(nameof(ContractorModel.Transactions).ToLower()))
             {
                 query = query.Include(c=>c.Transactions);
             }
@@ -45,6 +43,15 @@ namespace GMR.BLL.Services
             return Mapper.Map<IEnumerable<Contractor>, IEnumerable<ContractorModel>>(dataModel);
         }
 
+        public async Task<ContractorModel> AddContractorAsync(ContractorModel contractor)
+        {
+            var newContractor = Mapper.Map<ContractorModel, Contractor>(contractor);
+
+            var contractorEntity = await _contractorRepository.CreateAsync(newContractor);
+
+            return Mapper.Map<Contractor, ContractorModel>(contractorEntity);
+        }
+
         public async Task<ContractorModel> UpdateContractorAsync(ContractorModel contractor)
         {
             var ctr = Mapper.Map<ContractorModel, Contractor>(contractor);
@@ -55,17 +62,5 @@ namespace GMR.BLL.Services
         }
 
         public void Dispose() => _contractorRepository.Dispose();
-
-        //public async Task<IEnumerable<ValidatedContractorModel>> GetImportedContractors(string fileName, long personId)
-        //{
-        //    var importContractorsTask = _importService.ImportContractors(fileName);
-        //    var currentContractorsTask = GetContractorsAsync(personId, includes: new[] { "transactions" });
-
-        //    await Task.WhenAll(importContractorsTask, currentContractorsTask);
-
-        //    var validatedContractors = _validateService.ValidateContractors(/*currentContractorsTask.Result, */importContractorsTask.Result);
-
-        //    return validatedContractors;
-        //}
     }
 }

@@ -40,6 +40,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>0</WarningLevel>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -119,6 +120,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Mapper.cs" />
+    <Compile Include="Models\ImportContractorViewModel.cs" />
     <Compile Include="Models\UpdatePasswordViewModel.cs" />
     <Compile Include="Models\UpdatePersonViewModel.cs" />
     <Compile Include="Program.cs" />

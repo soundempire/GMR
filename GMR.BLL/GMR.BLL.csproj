@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -84,7 +85,7 @@
     <Compile Include="Services\ImportService.cs" />
     <Compile Include="Services\PersonService.cs" />
     <Compile Include="Services\TransactionService.cs" />
-    <Compile Include="Services\ValidateService.cs" />
+    <Compile Include="Services\PotentialContractorsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GMR.BLL.Abstractions\GMR.BLL.Abstractions.csproj">

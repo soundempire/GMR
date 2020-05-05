@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GMR.Models
 {
-    class UpdatePasswordViewModel
+    internal class UpdatePasswordViewModel
     {
         public long ID { get; set; }
 

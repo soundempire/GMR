@@ -16,6 +16,6 @@ namespace GMR.DAL.Abstractions.Entities
 
         public ICollection<Transaction> Transactions { get; set; }
 
-        public Contractor() => Transactions = new List<Transaction>();
+        public Contractor() => Transactions = new HashSet<Transaction>();
     }
 }

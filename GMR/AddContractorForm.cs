@@ -57,7 +57,6 @@ namespace GMR
             {
                 MessageBox.Show($"Контрагент с именем '{contractorCmBox.Text}' не найден.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
         }
 
         private void CancelBtn_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
@@ -73,39 +72,21 @@ namespace GMR
         private void transactionCurrencyTBox_TextChanged(object sender, EventArgs e)
         {
             var isCurrencyValueEntered = !string.IsNullOrWhiteSpace(transactionCurrencyTBox.Text);
-            transactionValueTBox.Enabled = isCurrencyValueEntered;
-            transactionPriceTBox.Enabled = isCurrencyValueEntered;
+            okBtn.Enabled = transactionValueTBox.Enabled = transactionPriceTBox.Enabled = isCurrencyValueEntered;
         }
 
         private async void ImportBtn_Click(object sender, EventArgs e)
         {            
-                var importForm = DIContainer.Resolve<ImportMasterForm>();
-                if (importForm.ShowDialog() == DialogResult.OK)
+            var importForm = DIContainer.Resolve<ImportMasterForm>();
+            if (importForm.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var contractor in importForm.SuccessImportedContractors)
                 {
+                    await _contractorService.AddContractorAsync(contractor);
                 }
 
-            //DisplayImportResult(importResult);
-            //}
-        }
-
-        private void DisplayImportResult(List<ValidatedContractorModel>/*<ImportResultRow<ContractorModel>>*/ importResult)
-        {
-            var errors = new StringBuilder();
-
-            for (var i = 0; i < importResult.Count; i++)
-                if (!importResult[i].IsValid)
-                    errors.AppendLine($"Строка {i + 1}: {importResult[i].Error}");
-
-            var sb = new StringBuilder();
-            sb.AppendLine($"{importResult.Count(x => x.IsValid)} из {importResult.Count} строк было импортировано удачно.");
-
-            if (errors.Length > 0)
-            {
-                sb.AppendLine("Ошибки импорта: ");
-                sb.Append(errors);
-            }
-
-            MessageBox.Show(sb.ToString(), "Импорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+            }  
         }
     }
 }

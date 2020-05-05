@@ -6,91 +6,102 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace GMR.BLL.Services
 {
     public class ImportService : IImportService
     {
-        public async Task<IEnumerable<ImportDataModel>> ImportContractors(string fileName)
+        public async Task<IEnumerable<ContractorModel>> ImportContractors(string fileName)
         {
-            var resultList = new List<ImportDataModel>();
-
-            using (FileStream fStream = File.Open(fileName, FileMode.Open, FileAccess.Read))
+            return await Task.Run(() => 
             {
-                using (var excelReader = ExcelReaderFactory.CreateReader(fStream))
+                var contractors = new List<ContractorModel>();
+
+                using (FileStream fStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    var result = excelReader.AsDataSet(new ExcelDataSetConfiguration() { ConfigureDataTable = _ => new ExcelDataTableConfiguration() { UseHeaderRow = true }, UseColumnDataType = true });
-
-                    int colCount = excelReader.FieldCount;
-
-                    if (colCount > 0)
+                    using (var excelReader = ExcelReaderFactory.CreateReader(fStream))
                     {
-                        if (excelReader.AsDataSet().Tables != null && excelReader.AsDataSet().Tables.Count > 0)
+                        var result = excelReader.AsDataSet(new ExcelDataSetConfiguration()
                         {
-                            var dt = result.Tables[0];
+                            ConfigureDataTable = _ => new ExcelDataTableConfiguration() { UseHeaderRow = true },
+                            UseColumnDataType = true
+                        });
 
-                            var columnNames = new List<string>();
-
-                            foreach (var item in dt.Columns)
-                                columnNames.Add(item.ToString());
-
-                            var error = IsContractorFormat(columnNames);
-
-                            if (string.IsNullOrEmpty(error))
+                        if (excelReader.FieldCount > 0)
+                        {
+                            if (excelReader.AsDataSet().Tables?.Count > 0)
                             {
-                                IEnumerable<DataRow> importDataRows = dt.AsEnumerable().Select(row => row);
-
-                                resultList = await Task.Run(() => CreateImportDataEntries(importDataRows));
+                                var table = result.Tables[0];
+                                if (IsContractorFormat(table.Columns, out var _))
+                                {
+                                    contractors = CreateImportedContractors(table.AsEnumerable());
+                                }
                             }
                         }
+                        return contractors;
                     }
-                    return resultList;
                 }
-            }
+            }); 
         }
        
-        private List<ImportDataModel> CreateImportDataEntries(IEnumerable<DataRow> importDataRows)
+        private List<ContractorModel> CreateImportedContractors(IEnumerable<DataRow> importDataRows)
         {
-            var importDataEntries = new List<ImportDataModel>();
+            var importedContractors = new List<ContractorModel>(importDataRows.Count());
 
-            ImportDataModel importDataEntry;
-
-            for (int i = 0; i < importDataRows.ToList().Count; i++)
+            foreach (var row in importDataRows)
             {
-                DataRow dr = importDataRows.ElementAt(i);
-
-                importDataEntry = new ImportDataModel()
+                ContractorModel contractor = new ContractorModel()
                 {
-                    ID = Convert.ToInt64(dr[0].ToString().Trim()),
-                    ContractorID = dr[1].ToString().Trim(),
-                    Name = dr[2].ToString().Trim(),
-                    Date = Convert.ToDateTime(dr[3].ToString()),
-                    Value = (string.IsNullOrEmpty(dr[4].ToString().Trim()) ? (double?)null : double.Parse(dr[4].ToString().Trim())),
-                    Price = (string.IsNullOrEmpty(dr[5].ToString().Trim()) ? (double?)null : double.Parse(dr[5].ToString().Trim())),
-                    Currency = double.Parse(dr[6].ToString().Trim())
+                    ID = Convert.ToInt64(row[0].ToString().Trim()),
+                    ContractorID = row[1].ToString().Trim(),
+                    Name = row[2].ToString().Trim(),
+                    Transactions = new HashSet<TransactionModel>
+                    {
+                        new TransactionModel
+                        {
+                            Date = Convert.ToDateTime(row[3].ToString()),
+                            Value = string.IsNullOrEmpty(row[4].ToString().Trim()) ? default(double?) : double.Parse(row[4].ToString().Trim()),
+                            Price = string.IsNullOrEmpty(row[5].ToString().Trim()) ? default(double?) : double.Parse(row[5].ToString().Trim()),
+                            Currency = double.Parse(row[6].ToString().Trim())
+                        }
+                    }
                 };
 
-                importDataEntries.Add(importDataEntry);
+                importedContractors.Add(contractor);
             }
-            return importDataEntries;
+
+            return importedContractors;
         }
        
-        private string IsContractorFormat(List<string> headerFormat)
+        private bool IsContractorFormat(DataColumnCollection columns, out string error)
         {
-            string error = string.Empty;
-            List<string> headers = new List<string>()
-            { "№ п/п", "Id", "Контрагент" , "Дата" ,
-            "Транзакция", "Платеж", "Курс"};
+            error = string.Empty;
+            var headers = new List<string>() { "№ п/п", "Id", "Контрагент" , "Дата" , "Транзакция", "Платеж", "Курс"};
 
-            if (headerFormat.Count > 7)
-                return $"В импортируемом файле должно быть 7 колонок.";
+            if (columns.Count != 7)
+            {
+                error = "В импортируемом файле должно быть 7 колонок.";
+                return false;
+            }
 
-            for (int i = 0; i < headerFormat.Count; i++)
-                if (headerFormat[i].Trim() != headers[i].Trim())
-                    return $"Колонка {i + 1} в заголовке должна называться '{headers[i]}'.";
+            var errorBuilder = new StringBuilder();
+            for (int i = 0; i < columns.Count; i++)
+            {
+                if (columns[i].ToString().Trim() != headers[i].Trim())
+                {
+                    errorBuilder.AppendLine($"Колонка {(i + 1).ToString()} в заголовке должна называться '{headers[i]}'."); 
+                }
+            }
 
-            return error;
+            if (errorBuilder.Length > 0)
+            {
+                error = errorBuilder.ToString();
+                return false;
+            }
+
+            return true;
         }
     }
 }

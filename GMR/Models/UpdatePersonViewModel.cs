@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GMR.Models
 {
-    class UpdatePersonViewModel
+    internal class UpdatePersonViewModel
     {
         public long ID { get; set; }
 

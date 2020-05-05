@@ -16,11 +16,13 @@ namespace GMR.BLL
                 cfg.CreateMap<Password, PasswordModel>();
                 cfg.CreateMap<Transaction, TransactionModel>();
                 cfg.CreateMap<Contractor, ContractorModel>();
+                cfg.CreateMap<ContractorModel, PotentialContractorModel>();
 
                 cfg.CreateMap<PasswordModel, Password>();
                 cfg.CreateMap<TransactionModel, Transaction>();
                 cfg.CreateMap<ContractorModel, Contractor>();
                 cfg.CreateMap<PersonModel, Person>();
+                cfg.CreateMap<PotentialContractorModel, ContractorModel>();
             }).CreateMapper();
         }
 

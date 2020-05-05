@@ -6,6 +6,6 @@ namespace GMR.BLL.Abstractions.Services
 {
     public interface IImportService
     {
-        Task<IEnumerable<ImportDataModel>> ImportContractors(string fileName);
+        Task<IEnumerable<ContractorModel>> ImportContractors(string fileName);
     }
 }

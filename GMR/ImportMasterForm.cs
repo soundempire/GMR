@@ -1,5 +1,7 @@
-﻿using GMR.BLL.Abstractions.Models;
+﻿using GMR.Animation.Controls.ToggleSwitch;
+using GMR.BLL.Abstractions.Models;
 using GMR.BLL.Abstractions.Services;
+using GMR.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,62 +16,126 @@ namespace GMR
 {
     public partial class ImportMasterForm : Form
     {
-        private readonly IContractorService _contractorService;
-
-        private readonly ITransactionService _transactionService;
-
         private readonly IImportService _importService;
-        private readonly Image _greenPlus = Properties.Resources.greenPlus;
 
-        public ImportMasterForm(IContractorService contractorService, ITransactionService transactionService, IImportService importService)
+        private readonly IPotentialContractorsService _potentialContractorsService;
+
+        public IEnumerable<ContractorModel> SuccessImportedContractors { get; private set; }
+
+        private readonly GMRToggleSwitch[] _transactionsToggles;
+
+        public ImportMasterForm(IImportService importService, IPotentialContractorsService potentialContractorsService)
         {
             InitializeComponent();
 
-            _contractorService = contractorService;
-            _transactionService = transactionService;
             _importService = importService;
+            _potentialContractorsService = potentialContractorsService;
+            _transactionsToggles = new GMRToggleSwitch[3] { dateToggleSwitch, transactionToggleSwitch, priceToggleSwitch };
         }
 
-
-        #region Control buttons EventHandlers
+        #region Controls EventHandlers
 
         private async void OpenFileBtn_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog()
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Filter = "Книга Excel 97-2003|*.xls|" +
-                         "Книга Excel|*.xlsx|" +
-                         "CSV (разделитель - запятая)|*.csv",
-                CheckFileExists = true,
-                CheckPathExists = true,
-                Multiselect = false,
-                ValidateNames = true
-            })
+                okBtn.Enabled = true;
+                Text = $"{Text} ({openFileDialog.FileName})";
 
-            {
-                string fileName = string.Empty;
+                var importedContractors = await _importService.ImportContractors(openFileDialog.FileName);
+                importingDataDGV.DataSource = Mapper.Map<IEnumerable<ContractorModel>, IEnumerable<ImportContractorViewModel>>(importedContractors);
 
-                if (ofd.ShowDialog() == DialogResult.OK)
-                    fileName = ofd.FileName;
-                else
-                    return;
+                SetImportDataToDataGridViewColumnsSize();
 
-                var importResult = (await _importService.ImportContractors(fileName));
-                await BindImportDataToDataGridViewAsync(importResult.ToList());
-                //DisplayImportResult(importResult);
+                numericUpDownLeft.Enabled = numericUpDownRight.Enabled = true;
+                numericUpDownLeft.Maximum = numericUpDownRight.Maximum = importingDataDGV.Rows.Count;
             }
         }
 
-        private void CancelBtn_Click(object sender, EventArgs e) => Close();
+        private async void OkBtn_Click(object sender, EventArgs e)
+        {
+            var selectedContractors = Mapper.Map<IEnumerable<ImportContractorViewModel>, IEnumerable<ContractorModel>>(importingDataDGV.DataSource as IEnumerable<ImportContractorViewModel>);
+
+            var potentialContractorsGroups = (await _potentialContractorsService.ValidateContractors(selectedContractors, Session.Person.ID))
+                                             .GroupBy(_ => _.IsValid).ToDictionary(g => g.Key, g => g.Select(_ => _));
+
+            if (potentialContractorsGroups.TryGetValue(false, out var invalidPotentialContractors))
+            {
+                //DisplayImportResult(importResult);
+            }
+
+            if (potentialContractorsGroups.TryGetValue(true, out var successPotentialContractors) && successPotentialContractors.Any())
+            {
+                SuccessImportedContractors = Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorModel>>(successPotentialContractors);
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show($"Не удалось загрузить контрагентов.", "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
+
+        private void ImportMasterForm_FormClosing(object sender, FormClosingEventArgs e)
+            => (_potentialContractorsService as IDisposable).Dispose();
+
+        private void ToggleSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            var isChecked = ((GMRToggleSwitch)sender).Checked;
+
+            if (_transactionsToggles.Any(_ => _.Checked) && !isChecked)
+                return;
+
+            currencyToggleSwitch.Checked = isChecked;
+            currencyToggleSwitch.Enabled = !isChecked;
+        }
+
+        private void ToggleSwitch_MouseEnter(object sender, EventArgs e)
+        {
+            var currentToggle = ((GMRToggleSwitch)sender);
+            currentToggle.Cursor = currentToggle.Enabled ? Cursors.Hand : Cursors.Default;
+        }
+
+        private void NumericUpDownLeft_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownLeft.Value > 0 && numericUpDownRight.Value == 0 || 
+                numericUpDownLeft.Value == 0 || 
+                numericUpDownLeft.Value > numericUpDownRight.Value)
+            {
+                numericUpDownRight.Value = numericUpDownLeft.Value;
+            }
+
+            SelectRows((int)numericUpDownLeft.Value, (int)numericUpDownRight.Value);
+        }
+
+        private void NumericUpDownRight_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownRight.Value > 0 && numericUpDownLeft.Value == 0)
+            {
+                numericUpDownLeft.Value = 1;
+            }
+            else if (numericUpDownRight.Value < numericUpDownLeft.Value)
+            {
+                numericUpDownLeft.Value = numericUpDownRight.Value;
+            }
+
+            SelectRows((int)numericUpDownLeft.Value, (int)numericUpDownRight.Value);
+        }
 
         #endregion
 
-        private async Task BindImportDataToDataGridViewAsync(ICollection<ImportDataModel> importResult)
+        private void SelectRows(int left, int right)
         {
+            importingDataDGV.ClearSelection();
 
-            importingDataDGV.DataSource = importResult;
-
-            SetImportDataToDataGridViewColumnsSize();
+            if (left > 0 && right > 0)
+            {
+                importingDataDGV.Rows.OfType<DataGridViewRow>()
+                                     .Where(_ => _.Index >= left - 1 && _.Index <= right - 1)
+                                     .ToList()
+                                     .ForEach(_ => _.Selected = true);
+            }
         }
 
         private void SetImportDataToDataGridViewColumnsSize()
@@ -79,6 +145,26 @@ namespace GMR
             for (int i = 0; i < importingDataDGV.Columns.Count; i++)
                 importingDataDGV.Columns[i].Width = buttons[i].Width;
             tabControl.Visible = true;
+        }
+
+        private void DisplayImportResult(List<PotentialContractorModel> importResult)
+        {
+            var errors = new StringBuilder();
+
+            for (var i = 0; i < importResult.Count; i++)
+                if (!importResult[i].IsValid)
+                    errors.AppendLine($"Строка {i + 1}: {importResult[i].Error}");
+
+            var sb = new StringBuilder();
+            sb.AppendLine($"{importResult.Count(x => x.IsValid)} из {importResult.Count} строк было импортировано удачно.");
+
+            if (errors.Length > 0)
+            {
+                sb.AppendLine("Ошибки импорта: ");
+                sb.Append(errors);
+            }
+
+            MessageBox.Show(sb.ToString(), "Импорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

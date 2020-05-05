@@ -35,10 +35,7 @@ namespace GMR
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            var contractorNames = await BindContractorsToDataGridViewAsync();
-
-            contractorsCBox.Items.Clear();
-            contractorsCBox.Items.AddRange(contractorNames.ToArray());
+            await LoadFormDataAsync();
 
             personNameLabel.Text = Session.Person.FullName;
             SetFormsSizes();
@@ -154,17 +151,24 @@ namespace GMR
             var addForm = DIContainer.Resolve<AddContractorForm>();
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-                if (contractorsDGView.SelectedRows.Count == 0)
+                if (addForm.SelectedContractorId > 0)
                 {
-                    contractorsDGView.ClearSelection();
-                    contractorsDGView.Rows
-                                     .OfType<DataGridViewRow>()
-                                     .Where(x => (x.DataBoundItem as ContractorModel).ID == addForm.SelectedContractorId)
-                                     .ToArray<DataGridViewRow>()[0]
-                                     .Selected = true;
-                }
+                    if (contractorsDGView.SelectedRows.Count == 0)
+                    {
+                        contractorsDGView.ClearSelection();
+                        contractorsDGView.Rows
+                                         .OfType<DataGridViewRow>()
+                                         .Where(x => (x.DataBoundItem as ContractorModel).ID == addForm.SelectedContractorId)
+                                         .ToArray<DataGridViewRow>()[0]
+                                         .Selected = true;
+                    }
 
-                await BindTransactionsToDataGridViewAsync();
+                    await BindTransactionsToDataGridViewAsync();
+                }
+                else
+                {
+                    await LoadFormDataAsync();
+                }
             }
         }
 
@@ -179,7 +183,15 @@ namespace GMR
             (_contractorService as IDisposable).Dispose();
             (_transactionService as IDisposable).Dispose();
 
-            Application.Exit();
+            Application.Exit();// think about it
+        }
+
+        private async Task LoadFormDataAsync() //TODO: change name
+        {
+            var contractorNames = await BindContractorsToDataGridViewAsync();
+
+            contractorsCBox.Items.Clear();
+            contractorsCBox.Items.AddRange(contractorNames.ToArray());
         }
 
         private async Task RemoveSelectedTransactionsAsync()
@@ -250,7 +262,6 @@ namespace GMR
                 totalTransactionTB.SetBounds(totalSumTB.Width, totalTransactionTB.Location.Y, transactionsDGView.Columns[1].Width, totalTransactionTB.Height);
                 totalPriceTB.SetBounds(totalTransactionTB.Location.X + totalTransactionTB.Width, totalPriceTB.Location.Y, transactionsDGView.Columns[2].Width, totalPriceTB.Height);
                 totalCurencyTB.SetBounds(totalPriceTB.Location.X + totalPriceTB.Width, totalCurencyTB.Location.Y, transactionsDGView.Columns[3].Width, totalCurencyTB.Height);
-
             }
 
             controlBtnsPanel.SetBounds(transactionsDGView.Location.X, controlBtnsPanel.Location.Y, transactionsDGView.Width, controlBtnsPanel.Height);
