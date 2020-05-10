@@ -1,4 +1,6 @@
-﻿namespace GMR
+﻿using System.Windows.Forms;
+
+namespace GMR
 {
     partial class MainForm
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.contractorsDGView = new System.Windows.Forms.DataGridView();
             this.transactionsDGView = new System.Windows.Forms.DataGridView();
             this.startsDTP = new System.Windows.Forms.DateTimePicker();
@@ -53,6 +56,9 @@
             this.totalPriceTB = new System.Windows.Forms.TextBox();
             this.totalTransactionTB = new System.Windows.Forms.TextBox();
             this.totalSumTB = new System.Windows.Forms.TextBox();
+            this.contractorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).BeginInit();
             this.topPanel.SuspendLayout();
@@ -67,6 +73,7 @@
             this.CenterSplitContainer.SuspendLayout();
             this.transactionsDGVPanel.SuspendLayout();
             this.totalTransactionsPanel.SuspendLayout();
+            this.contractorContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // contractorsDGView
@@ -79,17 +86,19 @@
             this.contractorsDGView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.contractorsDGView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.contractorsDGView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contractorsDGView.Location = new System.Drawing.Point(4, 0);
-            this.contractorsDGView.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
+            this.contractorsDGView.Location = new System.Drawing.Point(3, 0);
+            this.contractorsDGView.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.contractorsDGView.Name = "contractorsDGView";
             this.contractorsDGView.RowHeadersWidth = 15;
             this.contractorsDGView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.contractorsDGView.RowTemplate.Height = 28;
-            this.contractorsDGView.Size = new System.Drawing.Size(425, 538);
+            this.contractorsDGView.Size = new System.Drawing.Size(283, 349);
             this.contractorsDGView.TabIndex = 0;
             this.contractorsDGView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ContractorsDGView_CellBeginEdit);
             this.contractorsDGView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ContractorsDGView_CellEndEdit);
+            this.contractorsDGView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContractorsDGView_CellMouseDown);
             this.contractorsDGView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContractorsDGView_RowHeaderMouseClick);
+            this.contractorsDGView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContractorsDGView_KeyDown);
             // 
             // transactionsDGView
             // 
@@ -103,11 +112,12 @@
             this.transactionsDGView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transactionsDGView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.transactionsDGView.Location = new System.Drawing.Point(0, 0);
+            this.transactionsDGView.Margin = new System.Windows.Forms.Padding(2);
             this.transactionsDGView.Name = "transactionsDGView";
             this.transactionsDGView.RowHeadersWidth = 15;
             this.transactionsDGView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.transactionsDGView.RowTemplate.Height = 28;
-            this.transactionsDGView.Size = new System.Drawing.Size(856, 486);
+            this.transactionsDGView.Size = new System.Drawing.Size(570, 315);
             this.transactionsDGView.TabIndex = 1;
             this.transactionsDGView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.TransactionsDGView_CellBeginEdit);
             this.transactionsDGView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionsDGView_CellEndEdit);
@@ -120,9 +130,10 @@
             this.startsDTP.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.startsDTP.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.startsDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.startsDTP.Location = new System.Drawing.Point(57, 12);
+            this.startsDTP.Location = new System.Drawing.Point(38, 8);
+            this.startsDTP.Margin = new System.Windows.Forms.Padding(2);
             this.startsDTP.Name = "startsDTP";
-            this.startsDTP.Size = new System.Drawing.Size(132, 32);
+            this.startsDTP.Size = new System.Drawing.Size(89, 24);
             this.startsDTP.TabIndex = 9;
             this.startsDTP.Value = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.startsDTP.ValueChanged += new System.EventHandler(this.DtpStarts_ValueChanged);
@@ -133,9 +144,10 @@
             this.endsDTP.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.endsDTP.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.endsDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.endsDTP.Location = new System.Drawing.Point(249, 12);
+            this.endsDTP.Location = new System.Drawing.Point(166, 8);
+            this.endsDTP.Margin = new System.Windows.Forms.Padding(2);
             this.endsDTP.Name = "endsDTP";
-            this.endsDTP.Size = new System.Drawing.Size(128, 32);
+            this.endsDTP.Size = new System.Drawing.Size(87, 24);
             this.endsDTP.TabIndex = 10;
             this.endsDTP.ValueChanged += new System.EventHandler(this.DtpEnds_ValueChanged);
             // 
@@ -143,9 +155,10 @@
             // 
             this.lblStarts.AutoSize = true;
             this.lblStarts.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.lblStarts.Location = new System.Drawing.Point(24, 15);
+            this.lblStarts.Location = new System.Drawing.Point(16, 10);
+            this.lblStarts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStarts.Name = "lblStarts";
-            this.lblStarts.Size = new System.Drawing.Size(27, 27);
+            this.lblStarts.Size = new System.Drawing.Size(18, 18);
             this.lblStarts.TabIndex = 11;
             this.lblStarts.Text = "C";
             // 
@@ -153,9 +166,10 @@
             // 
             this.lblEnds.AutoSize = true;
             this.lblEnds.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.lblEnds.Location = new System.Drawing.Point(196, 17);
+            this.lblEnds.Location = new System.Drawing.Point(131, 11);
+            this.lblEnds.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEnds.Name = "lblEnds";
-            this.lblEnds.Size = new System.Drawing.Size(46, 27);
+            this.lblEnds.Size = new System.Drawing.Size(31, 18);
             this.lblEnds.TabIndex = 12;
             this.lblEnds.Text = "ПО";
             // 
@@ -166,9 +180,10 @@
             this.contractorsCBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.contractorsCBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contractorsCBox.FormattingEnabled = true;
-            this.contractorsCBox.Location = new System.Drawing.Point(4, 12);
+            this.contractorsCBox.Location = new System.Drawing.Point(3, 8);
+            this.contractorsCBox.Margin = new System.Windows.Forms.Padding(2);
             this.contractorsCBox.Name = "contractorsCBox";
-            this.contractorsCBox.Size = new System.Drawing.Size(427, 32);
+            this.contractorsCBox.Size = new System.Drawing.Size(286, 24);
             this.contractorsCBox.TabIndex = 14;
             this.contractorsCBox.SelectedIndexChanged += new System.EventHandler(this.ContractorsCBox_SelectedValueChanged);
             this.contractorsCBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContractorsCBox_KeyDown);
@@ -178,9 +193,10 @@
             this.personNameLabel.AutoSize = true;
             this.personNameLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.personNameLabel.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.personNameLabel.Location = new System.Drawing.Point(38, 15);
+            this.personNameLabel.Location = new System.Drawing.Point(25, 10);
+            this.personNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.personNameLabel.Name = "personNameLabel";
-            this.personNameLabel.Size = new System.Drawing.Size(126, 24);
+            this.personNameLabel.Size = new System.Drawing.Size(88, 17);
             this.personNameLabel.TabIndex = 15;
             this.personNameLabel.Text = "person name";
             this.personNameLabel.DoubleClick += new System.EventHandler(this.PersonNameLabel_DoubleClick);
@@ -193,8 +209,9 @@
             this.topPanel.Controls.Add(this.datesPanel);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
+            this.topPanel.Margin = new System.Windows.Forms.Padding(2);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1293, 52);
+            this.topPanel.Size = new System.Drawing.Size(862, 34);
             this.topPanel.TabIndex = 16;
             // 
             // contractorsCBoxPanel
@@ -202,8 +219,9 @@
             this.contractorsCBoxPanel.Controls.Add(this.contractorsCBox);
             this.contractorsCBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contractorsCBoxPanel.Location = new System.Drawing.Point(0, 0);
+            this.contractorsCBoxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.contractorsCBoxPanel.Name = "contractorsCBoxPanel";
-            this.contractorsCBoxPanel.Size = new System.Drawing.Size(911, 52);
+            this.contractorsCBoxPanel.Size = new System.Drawing.Size(607, 34);
             this.contractorsCBoxPanel.TabIndex = 16;
             // 
             // datesPanel
@@ -213,10 +231,11 @@
             this.datesPanel.Controls.Add(this.lblStarts);
             this.datesPanel.Controls.Add(this.endsDTP);
             this.datesPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.datesPanel.Location = new System.Drawing.Point(911, 0);
+            this.datesPanel.Location = new System.Drawing.Point(607, 0);
+            this.datesPanel.Margin = new System.Windows.Forms.Padding(2);
             this.datesPanel.Name = "datesPanel";
-            this.datesPanel.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.datesPanel.Size = new System.Drawing.Size(382, 52);
+            this.datesPanel.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.datesPanel.Size = new System.Drawing.Size(255, 34);
             this.datesPanel.TabIndex = 15;
             // 
             // bottomPanel
@@ -224,9 +243,10 @@
             this.bottomPanel.Controls.Add(this.personPanel);
             this.bottomPanel.Controls.Add(this.controlBtnsPanel);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel.Location = new System.Drawing.Point(0, 590);
+            this.bottomPanel.Location = new System.Drawing.Point(0, 383);
+            this.bottomPanel.Margin = new System.Windows.Forms.Padding(2);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(1293, 69);
+            this.bottomPanel.Size = new System.Drawing.Size(862, 45);
             this.bottomPanel.TabIndex = 17;
             // 
             // personPanel
@@ -234,8 +254,9 @@
             this.personPanel.Controls.Add(this.personNameLabel);
             this.personPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.personPanel.Location = new System.Drawing.Point(0, 0);
+            this.personPanel.Margin = new System.Windows.Forms.Padding(2);
             this.personPanel.Name = "personPanel";
-            this.personPanel.Size = new System.Drawing.Size(432, 69);
+            this.personPanel.Size = new System.Drawing.Size(288, 45);
             this.personPanel.TabIndex = 21;
             // 
             // controlBtnsPanel
@@ -245,10 +266,11 @@
             this.controlBtnsPanel.Controls.Add(this.deleteBtn);
             this.controlBtnsPanel.Controls.Add(this.printBtn);
             this.controlBtnsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.controlBtnsPanel.Location = new System.Drawing.Point(433, 0);
+            this.controlBtnsPanel.Location = new System.Drawing.Point(289, 0);
+            this.controlBtnsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlBtnsPanel.Name = "controlBtnsPanel";
-            this.controlBtnsPanel.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.controlBtnsPanel.Size = new System.Drawing.Size(860, 69);
+            this.controlBtnsPanel.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.controlBtnsPanel.Size = new System.Drawing.Size(573, 45);
             this.controlBtnsPanel.TabIndex = 20;
             // 
             // closeBtn
@@ -257,11 +279,12 @@
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.closeBtn.Location = new System.Drawing.Point(710, 15);
+            this.closeBtn.Location = new System.Drawing.Point(473, 10);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Rounding = 80;
             this.closeBtn.RoundingEnabled = true;
-            this.closeBtn.Size = new System.Drawing.Size(140, 40);
+            this.closeBtn.Size = new System.Drawing.Size(93, 26);
             this.closeBtn.TabIndex = 19;
             this.closeBtn.Text = "Закрыть";
             this.closeBtn.UseVisualStyleBackColor = false;
@@ -273,11 +296,12 @@
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.addBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.addBtn.Location = new System.Drawing.Point(10, 15);
+            this.addBtn.Location = new System.Drawing.Point(7, 10);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addBtn.Name = "addBtn";
             this.addBtn.Rounding = 80;
             this.addBtn.RoundingEnabled = true;
-            this.addBtn.Size = new System.Drawing.Size(150, 40);
+            this.addBtn.Size = new System.Drawing.Size(100, 26);
             this.addBtn.TabIndex = 16;
             this.addBtn.Text = "Добавить";
             this.addBtn.UseVisualStyleBackColor = false;
@@ -289,11 +313,12 @@
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.deleteBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.deleteBtn.Location = new System.Drawing.Point(166, 15);
+            this.deleteBtn.Location = new System.Drawing.Point(111, 10);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(2);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Rounding = 80;
             this.deleteBtn.RoundingEnabled = true;
-            this.deleteBtn.Size = new System.Drawing.Size(135, 40);
+            this.deleteBtn.Size = new System.Drawing.Size(90, 26);
             this.deleteBtn.TabIndex = 17;
             this.deleteBtn.Text = "Удалить";
             this.deleteBtn.UseVisualStyleBackColor = false;
@@ -305,11 +330,12 @@
             this.printBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.printBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.printBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.printBtn.Location = new System.Drawing.Point(307, 15);
+            this.printBtn.Location = new System.Drawing.Point(205, 10);
+            this.printBtn.Margin = new System.Windows.Forms.Padding(2);
             this.printBtn.Name = "printBtn";
             this.printBtn.Rounding = 80;
             this.printBtn.RoundingEnabled = true;
-            this.printBtn.Size = new System.Drawing.Size(120, 40);
+            this.printBtn.Size = new System.Drawing.Size(80, 26);
             this.printBtn.TabIndex = 18;
             this.printBtn.Text = "Печать";
             this.printBtn.UseVisualStyleBackColor = false;
@@ -317,23 +343,25 @@
             // CenterSplitContainer
             // 
             this.CenterSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CenterSplitContainer.Location = new System.Drawing.Point(0, 52);
+            this.CenterSplitContainer.Location = new System.Drawing.Point(0, 34);
+            this.CenterSplitContainer.Margin = new System.Windows.Forms.Padding(2);
             this.CenterSplitContainer.Name = "CenterSplitContainer";
             // 
             // CenterSplitContainer.Panel1
             // 
             this.CenterSplitContainer.Panel1.AutoScroll = true;
             this.CenterSplitContainer.Panel1.Controls.Add(this.contractorsDGView);
-            this.CenterSplitContainer.Panel1.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.CenterSplitContainer.Panel1.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             // 
             // CenterSplitContainer.Panel2
             // 
             this.CenterSplitContainer.Panel2.Controls.Add(this.transactionsDGVPanel);
             this.CenterSplitContainer.Panel2.Controls.Add(this.totalTransactionsPanel);
-            this.CenterSplitContainer.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            this.CenterSplitContainer.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.CenterSplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CenterSplitContainer.Size = new System.Drawing.Size(1293, 538);
-            this.CenterSplitContainer.SplitterDistance = 429;
+            this.CenterSplitContainer.Size = new System.Drawing.Size(862, 349);
+            this.CenterSplitContainer.SplitterDistance = 286;
+            this.CenterSplitContainer.SplitterWidth = 3;
             this.CenterSplitContainer.TabIndex = 18;
             this.CenterSplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.CenterSplitContainer_SplitterMoved);
             // 
@@ -342,8 +370,9 @@
             this.transactionsDGVPanel.Controls.Add(this.transactionsDGView);
             this.transactionsDGVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.transactionsDGVPanel.Location = new System.Drawing.Point(0, 0);
+            this.transactionsDGVPanel.Margin = new System.Windows.Forms.Padding(2);
             this.transactionsDGVPanel.Name = "transactionsDGVPanel";
-            this.transactionsDGVPanel.Size = new System.Drawing.Size(856, 486);
+            this.transactionsDGVPanel.Size = new System.Drawing.Size(570, 315);
             this.transactionsDGVPanel.TabIndex = 4;
             // 
             // totalTransactionsPanel
@@ -354,9 +383,10 @@
             this.totalTransactionsPanel.Controls.Add(this.totalTransactionTB);
             this.totalTransactionsPanel.Controls.Add(this.totalSumTB);
             this.totalTransactionsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 486);
+            this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 315);
+            this.totalTransactionsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.totalTransactionsPanel.Name = "totalTransactionsPanel";
-            this.totalTransactionsPanel.Size = new System.Drawing.Size(856, 52);
+            this.totalTransactionsPanel.Size = new System.Drawing.Size(570, 34);
             this.totalTransactionsPanel.TabIndex = 3;
             // 
             // totalCurencyTB
@@ -365,10 +395,11 @@
             this.totalCurencyTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.totalCurencyTB.Enabled = false;
             this.totalCurencyTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalCurencyTB.Location = new System.Drawing.Point(634, 0);
+            this.totalCurencyTB.Location = new System.Drawing.Point(423, 0);
+            this.totalCurencyTB.Margin = new System.Windows.Forms.Padding(2);
             this.totalCurencyTB.Multiline = true;
             this.totalCurencyTB.Name = "totalCurencyTB";
-            this.totalCurencyTB.Size = new System.Drawing.Size(220, 52);
+            this.totalCurencyTB.Size = new System.Drawing.Size(147, 34);
             this.totalCurencyTB.TabIndex = 2;
             this.totalCurencyTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.totalCurencyTB.Visible = false;
@@ -379,10 +410,11 @@
             this.totalPriceTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.totalPriceTB.Enabled = false;
             this.totalPriceTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalPriceTB.Location = new System.Drawing.Point(422, 0);
+            this.totalPriceTB.Location = new System.Drawing.Point(281, 0);
+            this.totalPriceTB.Margin = new System.Windows.Forms.Padding(2);
             this.totalPriceTB.Multiline = true;
             this.totalPriceTB.Name = "totalPriceTB";
-            this.totalPriceTB.Size = new System.Drawing.Size(215, 52);
+            this.totalPriceTB.Size = new System.Drawing.Size(143, 34);
             this.totalPriceTB.TabIndex = 2;
             this.totalPriceTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.totalPriceTB.Visible = false;
@@ -393,10 +425,11 @@
             this.totalTransactionTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.totalTransactionTB.Enabled = false;
             this.totalTransactionTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalTransactionTB.Location = new System.Drawing.Point(213, 0);
+            this.totalTransactionTB.Location = new System.Drawing.Point(142, 0);
+            this.totalTransactionTB.Margin = new System.Windows.Forms.Padding(2);
             this.totalTransactionTB.Multiline = true;
             this.totalTransactionTB.Name = "totalTransactionTB";
-            this.totalTransactionTB.Size = new System.Drawing.Size(213, 54);
+            this.totalTransactionTB.Size = new System.Drawing.Size(142, 35);
             this.totalTransactionTB.TabIndex = 1;
             this.totalTransactionTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.totalTransactionTB.Visible = false;
@@ -408,21 +441,47 @@
             this.totalSumTB.Enabled = false;
             this.totalSumTB.Font = new System.Drawing.Font("Tahoma", 17F, System.Drawing.FontStyle.Bold);
             this.totalSumTB.Location = new System.Drawing.Point(0, 0);
+            this.totalSumTB.Margin = new System.Windows.Forms.Padding(2);
             this.totalSumTB.Multiline = true;
             this.totalSumTB.Name = "totalSumTB";
-            this.totalSumTB.Size = new System.Drawing.Size(213, 54);
+            this.totalSumTB.Size = new System.Drawing.Size(142, 35);
             this.totalSumTB.TabIndex = 0;
             this.totalSumTB.Text = " Итого:";
             this.totalSumTB.Visible = false;
             // 
+            // contractorContextMenu
+            // 
+            this.contractorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTransactionsToolStripMenuItem,
+            this.renameContractorToolStripMenuItem});
+            this.contractorContextMenu.Name = "contractorContextMenu";
+            this.contractorContextMenu.Size = new System.Drawing.Size(236, 48);
+            // 
+            // addTransactionsToolStripMenuItem
+            // 
+            this.addTransactionsToolStripMenuItem.Name = "addTransactionsToolStripMenuItem";
+            this.addTransactionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.addTransactionsToolStripMenuItem.Text = "Добавить транзакцию";
+            this.addTransactionsToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionsToolStripMenuItem_Click);
+            // 
+            // renameContractorToolStripMenuItem
+            // 
+            this.renameContractorToolStripMenuItem.Name = "renameContractorToolStripMenuItem";
+            this.renameContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.renameContractorToolStripMenuItem.Text = "Переименовать";
+            this.renameContractorToolStripMenuItem.Click += new System.EventHandler(this.RenameContractorToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 659);
+            this.ClientSize = new System.Drawing.Size(862, 428);
             this.Controls.Add(this.CenterSplitContainer);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.topPanel);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Просмотр";
@@ -446,6 +505,7 @@
             this.transactionsDGVPanel.ResumeLayout(false);
             this.totalTransactionsPanel.ResumeLayout(false);
             this.totalTransactionsPanel.PerformLayout();
+            this.contractorContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -477,5 +537,8 @@
         private System.Windows.Forms.TextBox totalPriceTB;
         private System.Windows.Forms.TextBox totalTransactionTB;
         private System.Windows.Forms.TextBox totalSumTB;
+        private System.Windows.Forms.ContextMenuStrip contractorContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem addTransactionsToolStripMenuItem;
+        private ToolStripMenuItem renameContractorToolStripMenuItem;
     }
 }

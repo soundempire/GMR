@@ -20,8 +20,6 @@ namespace GMR
 
         private readonly IPotentialContractorsService _potentialContractorsService;
 
-        public IEnumerable<ContractorModel> SuccessImportedContractors { get; private set; }
-
         private readonly GMRToggleSwitch[] _transactionsToggles;
 
         public ImportMasterForm(IImportService importService, IPotentialContractorsService potentialContractorsService)
@@ -66,12 +64,12 @@ namespace GMR
 
             if (potentialContractorsGroups.TryGetValue(true, out var successPotentialContractors) && successPotentialContractors.Any())
             {
-                SuccessImportedContractors = Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorModel>>(successPotentialContractors);
+                Tag = Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorModel>>(successPotentialContractors);
                 DialogResult = DialogResult.OK;
             }
             else
             {
-                MessageBox.Show($"Не удалось загрузить контрагентов.", "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Не удалось загрузить контрагентов.", "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

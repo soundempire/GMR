@@ -15,34 +15,36 @@ namespace GMR
 
         private readonly ITransactionService _transactionService;
 
-        private readonly IImportService _importService;
+        private readonly string _defaultContractorName;
 
-        public long SelectedContractorId { get; set; }
-
-        public AddContractorForm(IContractorService contractorService, ITransactionService transactionService, IImportService importService)
+        public AddContractorForm(IContractorService contractorService, ITransactionService transactionService, string defaultContractorName = default)
         {
             InitializeComponent();
 
+            _defaultContractorName = defaultContractorName;
             _contractorService = contractorService;
             _transactionService = transactionService;
-            _importService = importService;
         }
 
         private async void AddContractorForm_Load(object sender, EventArgs e)
         {
             contractorCmBox.DataSource = await _contractorService.GetContractorsAsync(Session.Person.ID);
-            contractorCmBox.DisplayMember = "Name";
+            contractorCmBox.DisplayMember = nameof(ContractorModel.Name);
+            if (!string.IsNullOrEmpty(_defaultContractorName))
+            {
+                contractorCmBox.Text = _defaultContractorName;
+            }
         }
 
         private async void OkBtn_Click(object sender, EventArgs e)
         {
             if (contractorCmBox.SelectedItem is ContractorModel contractor)
             {
-                SelectedContractorId = contractor.ID;
+                Tag = contractor.ID;
 
                 TransactionModel transaction = new TransactionModel
                 {
-                    ContractorID = SelectedContractorId,
+                    ContractorID = contractor.ID,
                     Date = transactionDateDTPicker.Value,
                     Currency = double.Parse(transactionCurrencyTBox.Text),
                     Price = double.Parse(transactionPriceTBox.Text),
@@ -80,7 +82,8 @@ namespace GMR
             var importForm = DIContainer.Resolve<ImportMasterForm>();
             if (importForm.ShowDialog() == DialogResult.OK)
             {
-                foreach (var contractor in importForm.SuccessImportedContractors)
+                var successImportedContractors = (IEnumerable<ContractorModel>)importForm.Tag;
+                foreach (var contractor in successImportedContractors)
                 {
                     await _contractorService.AddContractorAsync(contractor);
                 }
