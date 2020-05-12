@@ -61,9 +61,9 @@ namespace GMR.BLL.Services
                     {
                         new TransactionModel
                         {
-                            Date = Convert.ToDateTime(row[3].ToString()),
-                            Value = string.IsNullOrEmpty(row[4].ToString().Trim()) ? default(double?) : double.Parse(row[4].ToString().Trim()),
-                            Price = string.IsNullOrEmpty(row[5].ToString().Trim()) ? default(double?) : double.Parse(row[5].ToString().Trim()),
+                            Date = row[3].ToString().Trim() == string.Empty ? default(DateTime?) : Convert.ToDateTime(row[3].ToString()),
+                            Value = row[4].ToString().Trim() == string.Empty ? default(double?) : double.Parse(row[4].ToString().Trim()),
+                            Price = row[5].ToString().Trim() == string.Empty ? default(double?) : double.Parse(row[5].ToString().Trim()),
                             Currency = double.Parse(row[6].ToString().Trim())
                         }
                     }

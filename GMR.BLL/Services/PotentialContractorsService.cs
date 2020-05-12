@@ -64,7 +64,8 @@ namespace GMR.BLL.Services
 
                 if (validPotentialContractors.Any())
                 {
-                    await CompareWithCurrentContractors(validPotentialContractors, personId);
+                    var validContractors = await CompareWithCurrentContractors(validPotentialContractors, personId);
+                    potentialContractors = potentialContractors.Where(_ => !_.IsValid).Union(validContractors).ToList();
                 }
             }
 
@@ -73,10 +74,54 @@ namespace GMR.BLL.Services
 
         public void Dispose() => (_contractorService as IDisposable).Dispose();
 
-        private async Task CompareWithCurrentContractors(IEnumerable<PotentialContractorModel> validPotentialContractors, long personId)
+        private async Task<IEnumerable<PotentialContractorModel>> CompareWithCurrentContractors(IEnumerable<PotentialContractorModel> validPotentialContractors, long personId)
         {
             var personContractors = (await _contractorService.GetContractorsAsync(personId, includes: new[] { nameof(ContractorModel.Transactions).ToLower() }))
-                                    .ToDictionary(_ => new { _.ContractorID, _.Name });
+                                    .ToDictionary(_ => ( _.ContractorID, _.Name ));
+
+            var contractors = new Dictionary<(string ContractorID, string Name), PotentialContractorModel>();
+
+            foreach (var potentialContractor in validPotentialContractors)
+            {
+                var potentialTransaction = potentialContractor.Transactions?.FirstOrDefault();
+
+                if (personContractors.TryGetValue((potentialContractor.ContractorID, potentialContractor.Name), out var personContractor))
+                {
+                    if (potentialTransaction != null)
+                    {
+                        if (personContractor.Transactions.Contains(potentialTransaction))
+                        {
+                            continue; //TODO: think about error message and valid state
+                        }
+                        else
+                        {
+                            potentialContractor.ID = personContractor.ID;
+                        }
+                    }
+                    else
+                    {
+                        continue; //TODO: think about error message and valid state
+                    }
+                }
+
+                if (contractors.TryGetValue((potentialContractor.ContractorID, potentialContractor.Name), out var contractor))
+                {
+                    if (contractor.Transactions != null && potentialTransaction != null)
+                    {
+                        contractor.Transactions.Add(potentialTransaction);
+                    }
+                    else if(potentialTransaction != null)
+                    {
+                        contractor.Transactions = new HashSet<TransactionModel>() { potentialTransaction };
+                    }
+                }
+                else
+                {
+                    contractors[(potentialContractor.ContractorID, potentialContractor.Name)] = potentialContractor;
+                }
+            }
+
+            return contractors.Values.ToList();
         }
     }
 }

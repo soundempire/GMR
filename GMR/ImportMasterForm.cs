@@ -31,7 +31,14 @@ namespace GMR
             _transactionsToggles = new GMRToggleSwitch[3] { dateToggleSwitch, transactionToggleSwitch, priceToggleSwitch };
         }
 
-        #region Controls EventHandlers
+        #region ImportMasterForm EventHandlers
+
+        private void ImportMasterForm_FormClosing(object sender, FormClosingEventArgs e)
+            => (_potentialContractorsService as IDisposable).Dispose();
+
+        #endregion
+
+        #region Control buttons EventHandlers
 
         private async void OpenFileBtn_Click(object sender, EventArgs e)
         {
@@ -54,6 +61,8 @@ namespace GMR
         {
             var selectedContractors = Mapper.Map<IEnumerable<ImportContractorViewModel>, IEnumerable<ContractorModel>>(importingDataDGV.DataSource as IEnumerable<ImportContractorViewModel>);
 
+            //TODO: switch off properties by columns here
+
             var potentialContractorsGroups = (await _potentialContractorsService.ValidateContractors(selectedContractors, Session.Person.ID))
                                              .GroupBy(_ => _.IsValid).ToDictionary(g => g.Key, g => g.Select(_ => _));
 
@@ -64,7 +73,8 @@ namespace GMR
 
             if (potentialContractorsGroups.TryGetValue(true, out var successPotentialContractors) && successPotentialContractors.Any())
             {
-                Tag = Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorModel>>(successPotentialContractors);
+                //TODO: do not use bll.mapper
+                Tag = GMR.BLL.Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorModel>>(successPotentialContractors);
                 DialogResult = DialogResult.OK;
             }
             else
@@ -75,8 +85,9 @@ namespace GMR
 
         private void CancelBtn_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
-        private void ImportMasterForm_FormClosing(object sender, FormClosingEventArgs e)
-            => (_potentialContractorsService as IDisposable).Dispose();
+        #endregion
+
+        #region Toggle EventHandlers
 
         private void ToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
@@ -95,10 +106,14 @@ namespace GMR
             currentToggle.Cursor = currentToggle.Enabled ? Cursors.Hand : Cursors.Default;
         }
 
+        #endregion
+
+        #region Numerics EventHandlers
+
         private void NumericUpDownLeft_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDownLeft.Value > 0 && numericUpDownRight.Value == 0 || 
-                numericUpDownLeft.Value == 0 || 
+            if (numericUpDownLeft.Value > 0 && numericUpDownRight.Value == 0 ||
+                numericUpDownLeft.Value == 0 ||
                 numericUpDownLeft.Value > numericUpDownRight.Value)
             {
                 numericUpDownRight.Value = numericUpDownLeft.Value;

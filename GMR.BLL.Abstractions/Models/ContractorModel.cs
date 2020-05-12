@@ -36,7 +36,7 @@ namespace GMR.BLL.Abstractions.Models
                 if (ReferenceEquals(this, constractorModel))
                     return true;
 
-                return Name == constractorModel.Name;
+                return ContractorID == constractorModel.ContractorID && Name == constractorModel.Name;
             }
 
             return false;

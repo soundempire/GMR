@@ -17,6 +17,8 @@ namespace GMR
 
         private readonly string _defaultContractorName;
 
+        private IEnumerable<ContractorModel> _contractors;
+
         public AddContractorForm(IContractorService contractorService, ITransactionService transactionService, string defaultContractorName = default)
         {
             InitializeComponent();
@@ -28,12 +30,16 @@ namespace GMR
 
         private async void AddContractorForm_Load(object sender, EventArgs e)
         {
-            contractorCmBox.DataSource = await _contractorService.GetContractorsAsync(Session.Person.ID);
+            _contractors = await _contractorService.GetContractorsAsync(Session.Person.ID, includes: new[] { nameof(ContractorModel.Transactions).ToLower() });
+
+            contractorCmBox.DataSource = _contractors;
             contractorCmBox.DisplayMember = nameof(ContractorModel.Name);
             if (!string.IsNullOrEmpty(_defaultContractorName))
             {
                 contractorCmBox.Text = _defaultContractorName;
             }
+
+            SetCurrencyByDate();
         }
 
         private async void OkBtn_Click(object sender, EventArgs e)
@@ -90,6 +96,27 @@ namespace GMR
 
                 DialogResult = DialogResult.OK;
             }  
+        }
+
+        private void TransactionDateDTPicker_ValueChanged(object sender, EventArgs e) => SetCurrencyByDate();
+
+        private void SetCurrencyByDate()
+        {
+            var transaction = _contractors.SelectMany(contractor => contractor.Transactions, (c, t) => new { Transaction = t })
+                                          .Where(_ => _.Transaction.Date.HasValue && _.Transaction.Date.Value.Date.Equals(transactionDateDTPicker.Value.Date))
+                                          .Select(_ => _.Transaction)
+                                          .FirstOrDefault();
+
+            if (transaction != null)
+            {
+                transactionCurrencyTBox.Text = transaction.Currency.ToString();
+                transactionCurrencyTBox.Enabled = false;
+            }
+            else
+            {
+                transactionCurrencyTBox.Clear();
+                transactionCurrencyTBox.Enabled = true;
+            }
         }
     }
 }

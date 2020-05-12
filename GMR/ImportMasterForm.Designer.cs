@@ -291,7 +291,7 @@
             this.importingDataPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importingDataPanel.Name = "importingDataPanel";
             this.importingDataPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.importingDataPanel.Size = new System.Drawing.Size(862, 374);
+            this.importingDataPanel.Size = new System.Drawing.Size(862, 404);
             this.importingDataPanel.TabIndex = 1;
             // 
             // importingDataDGV
@@ -318,8 +318,8 @@
             this.importingDataDGV.RowHeadersVisible = false;
             this.importingDataDGV.RowHeadersWidth = 62;
             this.importingDataDGV.RowTemplate.Height = 28;
-            this.importingDataDGV.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.importingDataDGV.Size = new System.Drawing.Size(856, 374);
+            this.importingDataDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.importingDataDGV.Size = new System.Drawing.Size(856, 404);
             this.importingDataDGV.TabIndex = 0;
             // 
             // controlsPanel
@@ -331,7 +331,7 @@
             this.controlsPanel.Controls.Add(this.cancelBtn);
             this.controlsPanel.Controls.Add(this.okBtn);
             this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.controlsPanel.Location = new System.Drawing.Point(0, 384);
+            this.controlsPanel.Location = new System.Drawing.Point(0, 414);
             this.controlsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlsPanel.Name = "controlsPanel";
             this.controlsPanel.Size = new System.Drawing.Size(862, 44);
@@ -343,7 +343,7 @@
             this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.openFileBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.openFileBtn.Location = new System.Drawing.Point(343, 7);
+            this.openFileBtn.Location = new System.Drawing.Point(408, 9);
             this.openFileBtn.Margin = new System.Windows.Forms.Padding(2);
             this.openFileBtn.Name = "openFileBtn";
             this.openFileBtn.Rounding = 80;
@@ -391,7 +391,7 @@
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.cancelBtn.Location = new System.Drawing.Point(669, 8);
+            this.cancelBtn.Location = new System.Drawing.Point(753, 9);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Rounding = 80;
@@ -409,7 +409,7 @@
             this.okBtn.Enabled = false;
             this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.okBtn.Location = new System.Drawing.Point(562, 8);
+            this.okBtn.Location = new System.Drawing.Point(653, 9);
             this.okBtn.Margin = new System.Windows.Forms.Padding(2);
             this.okBtn.Name = "okBtn";
             this.okBtn.Rounding = 80;
@@ -429,7 +429,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 428);
+            this.ClientSize = new System.Drawing.Size(862, 458);
             this.Controls.Add(this.controlsPanel);
             this.Controls.Add(this.importingDataPanel);
             this.Controls.Add(this.chooseColumnsPanel);

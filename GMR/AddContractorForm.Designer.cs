@@ -75,7 +75,7 @@
             this.importBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.importBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.importBtn.Location = new System.Drawing.Point(29, 220);
-            this.importBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.importBtn.Margin = new System.Windows.Forms.Padding(2);
             this.importBtn.Name = "importBtn";
             this.importBtn.Rounding = 80;
             this.importBtn.RoundingEnabled = true;
@@ -136,6 +136,7 @@
             this.transactionDateDTPicker.Name = "transactionDateDTPicker";
             this.transactionDateDTPicker.Size = new System.Drawing.Size(152, 24);
             this.transactionDateDTPicker.TabIndex = 4;
+            this.transactionDateDTPicker.ValueChanged += new System.EventHandler(this.TransactionDateDTPicker_ValueChanged);
             // 
             // contractorCmBox
             // 
@@ -193,7 +194,7 @@
             this.controlBtnsPanel.Controls.Add(this.closeBtn);
             this.controlBtnsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.controlBtnsPanel.Location = new System.Drawing.Point(290, 0);
-            this.controlBtnsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.controlBtnsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlBtnsPanel.Name = "controlBtnsPanel";
             this.controlBtnsPanel.Size = new System.Drawing.Size(313, 51);
             this.controlBtnsPanel.TabIndex = 0;
@@ -206,7 +207,7 @@
             this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.okBtn.Location = new System.Drawing.Point(20, 12);
-            this.okBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.okBtn.Margin = new System.Windows.Forms.Padding(2);
             this.okBtn.Name = "okBtn";
             this.okBtn.Rounding = 80;
             this.okBtn.RoundingEnabled = true;
@@ -223,7 +224,7 @@
             this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.cancelBtn.Location = new System.Drawing.Point(107, 12);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Rounding = 80;
             this.cancelBtn.RoundingEnabled = true;
@@ -240,7 +241,7 @@
             this.closeBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.closeBtn.Location = new System.Drawing.Point(210, 12);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Rounding = 80;
             this.closeBtn.RoundingEnabled = true;
