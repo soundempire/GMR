@@ -25,6 +25,8 @@ namespace GMR
 
         private bool _contractorsCBoxValueSelected = false;
 
+        private const double minMultiplierOfLeftSidePanels = 0.3;
+        private const double minMultiplierOfRightSidePanels = 0.3;
         public MainForm(IContractorService contractorService, ITransactionService transactionService)
         {
             InitializeComponent();
@@ -313,23 +315,29 @@ namespace GMR
                 totalCurencyTB.SetBounds(totalPriceTB.Location.X + totalPriceTB.Width, totalCurencyTB.Location.Y, transactionsDGView.Columns[3].Width, totalCurencyTB.Height);
             }
 
-            controlBtnsPanel.SetBounds(transactionsDGView.Location.X, controlBtnsPanel.Location.Y, transactionsDGView.Width, controlBtnsPanel.Height);
-            addBtn.SetBounds(addBtn.Location.X, 10, (int)(controlBtnsPanel.Width * 0.175), (int)(controlBtnsPanel.Height * 0.58));
-            deleteBtn.SetBounds(addBtn.Location.X + addBtn.Width + 5, 10, (int)(controlBtnsPanel.Width * 0.157), (int)(controlBtnsPanel.Height * 0.58));
-            printBtn.SetBounds(deleteBtn.Location.X + deleteBtn.Width + 5, 10, (int)(controlBtnsPanel.Width * 0.139), (int)(controlBtnsPanel.Height * 0.58));
-            closeBtn.SetBounds(printBtn.Location.X + printBtn.Width + (int)(controlBtnsPanel.Width * 0.32), 10, (int)(controlBtnsPanel.Width * 0.163), (int)(controlBtnsPanel.Height * 0.58));
-            
-            addBtn.Font = deleteBtn.Font = printBtn.Font = closeBtn.Font = new System.Drawing.Font("Tahoma", (float)(addBtn.Width * 0.09), FontStyle.Bold);
+            controlBtnsPanel.SetBounds(personPanel.Width, controlBtnsPanel.Location.Y, bottomPanel.Width - personPanel.Width, controlBtnsPanel.Height);
+            addBtn.SetBounds(addBtn.Location.X, 10, 110, 30);
+            deleteBtn.SetBounds(addBtn.Location.X + addBtn.Width + 5, 10, 100, 30);
+            printBtn.SetBounds(deleteBtn.Location.X + deleteBtn.Width + 5, 10, 95, 30);
+            closeBtn.SetBounds(controlBtnsPanel.Width - 120, 10, 105, 30);
+
+            //addBtn.Font = deleteBtn.Font = printBtn.Font = closeBtn.Font = new System.Drawing.Font("Tahoma", (float)(addBtn.Width * 0.09), FontStyle.Bold);
 
             if (contractorsDGView.DataSource != null)
             {
                 contractorsDGView.Columns[nameof(ContractorModel.ContractorID)].Width = (int)(contractorsDGView.Size.Width * 0.15);
                 contractorsDGView.Columns[nameof(ContractorModel.Name)].Width = (int)(contractorsDGView.Size.Width * 0.85);
             }
-
-            //controlBtnsPanel.SetBounds(transactionsDGView.Location.X, controlBtnsPanel.Location.Y, controlBtnsPanel.Size.Width, controlBtnsPanel.Size.Height);
         }
 
-        private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e) => SetFormsSizes();
+        private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            if (e.SplitX < 300)
+                CenterSplitContainer.Panel1MinSize = (int)(CenterSplitContainer.Width * 0.3);
+            else if (e.SplitX>CenterSplitContainer.Width-450)
+                CenterSplitContainer.Panel2MinSize = (int)(CenterSplitContainer.Width * 0.3);
+
+            SetFormsSizes();
+        }
     }
 }
