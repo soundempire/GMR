@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chooseColumnsPanel = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.importTabPage = new System.Windows.Forms.TabPage();
@@ -179,6 +179,7 @@
             // 
             // importingDataPanel
             // 
+            this.importingDataPanel.Controls.Add(this.controlsPanel);
             this.importingDataPanel.Controls.Add(this.importingDataDGV);
             this.importingDataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.importingDataPanel.Location = new System.Drawing.Point(0, 83);
@@ -194,16 +195,16 @@
             this.importingDataDGV.AllowUserToResizeRows = false;
             this.importingDataDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.importingDataDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.importingDataDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.importingDataDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.importingDataDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.importingDataDGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.importingDataDGV.Dock = System.Windows.Forms.DockStyle.Top;
             this.importingDataDGV.Location = new System.Drawing.Point(4, 0);
             this.importingDataDGV.Name = "importingDataDGV";
             this.importingDataDGV.ReadOnly = true;
@@ -211,7 +212,7 @@
             this.importingDataDGV.RowHeadersWidth = 62;
             this.importingDataDGV.RowTemplate.Height = 28;
             this.importingDataDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.importingDataDGV.Size = new System.Drawing.Size(1285, 622);
+            this.importingDataDGV.Size = new System.Drawing.Size(1285, 548);
             this.importingDataDGV.TabIndex = 0;
             // 
             // controlsPanel
@@ -223,9 +224,9 @@
             this.controlsPanel.Controls.Add(this.cancelBtn);
             this.controlsPanel.Controls.Add(this.okBtn);
             this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.controlsPanel.Location = new System.Drawing.Point(0, 637);
+            this.controlsPanel.Location = new System.Drawing.Point(4, 554);
             this.controlsPanel.Name = "controlsPanel";
-            this.controlsPanel.Size = new System.Drawing.Size(1293, 68);
+            this.controlsPanel.Size = new System.Drawing.Size(1285, 68);
             this.controlsPanel.TabIndex = 2;
             // 
             // numericUpDownRight
@@ -412,7 +413,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1293, 705);
-            this.Controls.Add(this.controlsPanel);
             this.Controls.Add(this.importingDataPanel);
             this.Controls.Add(this.chooseColumnsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
