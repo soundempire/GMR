@@ -20,7 +20,8 @@ namespace GMR
 
         private readonly IPotentialContractorsService _potentialContractorsService;
 
-        private readonly GMRToggleSwitch[] _transactionsToggles;
+        private readonly GMRToggleSwitch[] _requiredToggles;
+        private readonly GMRToggleSwitch[] _unRequiredToggles;
 
         public ImportMasterForm(IImportService importService, IPotentialContractorsService potentialContractorsService)
         {
@@ -28,7 +29,8 @@ namespace GMR
 
             _importService = importService;
             _potentialContractorsService = potentialContractorsService;
-            _transactionsToggles = new GMRToggleSwitch[3] { dateToggleSwitch, transactionToggleSwitch, priceToggleSwitch };
+            _requiredToggles = new GMRToggleSwitch[2] { dateToggleSwitch, currencyToggleSwitch };
+            _unRequiredToggles = new GMRToggleSwitch[2] { transactionToggleSwitch, priceToggleSwitch };
         }
 
         #region ImportMasterForm EventHandlers
@@ -59,9 +61,15 @@ namespace GMR
 
         private async void OkBtn_Click(object sender, EventArgs e)
         {
-            var selectedContractors = Mapper.Map<IEnumerable<ImportContractorViewModel>, IEnumerable<ContractorModel>>(importingDataDGV.DataSource as IEnumerable<ImportContractorViewModel>);
+            IEnumerable<ImportContractorViewModel> tableEntities;
+            if (importingDataDGV.SelectedRows.Count > 0)
+                tableEntities = importingDataDGV.SelectedRows.OfType<DataGridViewRow>().Select(_ => _.DataBoundItem as ImportContractorViewModel);
+            else
+                tableEntities = (IEnumerable<ImportContractorViewModel>)importingDataDGV.DataSource;
 
-            //TODO: switch off properties by columns here
+            var selectedContractors = Mapper.Map<IEnumerable<ImportContractorViewModel>, IEnumerable<ContractorModel>>(tableEntities).ToList();
+
+            FilterContractorsAccordingToggles(ref selectedContractors);
 
             var potentialContractorsGroups = (await _potentialContractorsService.ValidateContractors(selectedContractors, Session.Person.ID))
                                              .GroupBy(_ => _.IsValid).ToDictionary(g => g.Key, g => g.Select(_ => _));
@@ -91,13 +99,40 @@ namespace GMR
 
         private void ToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
-            var isChecked = ((GMRToggleSwitch)sender).Checked;
+            var toggle = (GMRToggleSwitch)sender;
 
-            if (_transactionsToggles.Any(_ => _.Checked) && !isChecked)
-                return;
+            if (_requiredToggles.Contains(toggle))
+            {
+                foreach (var tog in _requiredToggles)
+                    checkToggle(tog, toggle.Checked);
 
-            currencyToggleSwitch.Checked = isChecked;
-            currencyToggleSwitch.Enabled = !isChecked;
+                foreach (var tog in _unRequiredToggles)
+                    checkToggle(tog, toggle.Checked);
+            }
+            else
+            {
+                if (toggle.Checked)
+                {
+                    foreach (var tog in _requiredToggles)
+                        checkToggle(tog, toggle.Checked);
+                }
+                else if (_unRequiredToggles.All(_ => !_.Checked))
+                {
+                    foreach (var tog in _requiredToggles)
+                        checkToggle(tog, toggle.Checked);
+                }
+            }
+
+            void checkToggle(GMRToggleSwitch tog, bool isChecked)
+            {
+                if (!tog.Equals(toggle))
+                {
+                    tog.CheckedChanged -= ToggleSwitch_CheckedChanged;
+                    tog.Checked = isChecked;
+                    tog.CheckedChanged += ToggleSwitch_CheckedChanged;
+                }
+                
+            }
         }
 
         private void ToggleSwitch_MouseEnter(object sender, EventArgs e)
@@ -137,6 +172,19 @@ namespace GMR
         }
 
         #endregion
+
+        private void FilterContractorsAccordingToggles(ref List<ContractorModel> selectedContractors)
+        {
+            if (_unRequiredToggles.Any(_ => !_.Checked))
+            {
+                if (transactionToggleSwitch.Checked)
+                    selectedContractors = selectedContractors.Where(_ => _.Transactions.Single().Value.HasValue).ToList();
+                else if (priceToggleSwitch.Checked)
+                    selectedContractors = selectedContractors.Where(_ => _.Transactions.Single().Price.HasValue).ToList();
+                else
+                    selectedContractors.ForEach(_ => _.Transactions.Clear());
+            }
+        }
 
         private void SelectRows(int left, int right)
         {

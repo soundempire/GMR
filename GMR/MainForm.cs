@@ -325,7 +325,9 @@ namespace GMR
 
             if (contractorsDGView.DataSource != null)
             {
-                contractorsDGView.Columns[nameof(ContractorModel.ContractorID)].Width = (int)(contractorsDGView.Size.Width * 0.15);
+                var contractorIdColumn = contractorsDGView.Columns[nameof(ContractorModel.ContractorID)];
+                contractorIdColumn.MinimumWidth = 40;
+                contractorIdColumn.Width = (int)(contractorsDGView.Size.Width * 0.15);
                 contractorsDGView.Columns[nameof(ContractorModel.Name)].Width = (int)(contractorsDGView.Size.Width * 0.85);
             }
         }

@@ -15,6 +15,7 @@ namespace GMR.BLL.Abstractions.Models
         public ContractorModel Contractor { get; set; }
 
         [DisplayName("Дата")]
+        [ReadOnly(true)]
         public DateTime? Date { get; set; }
 
         [DisplayName("Транзакция")]
@@ -24,6 +25,7 @@ namespace GMR.BLL.Abstractions.Models
         public double? Price { get; set; }
 
         [DisplayName("Курс")]
+        [ReadOnly(true)]
         public double Currency { get; set; }
 
         public object Clone() => MemberwiseClone();
