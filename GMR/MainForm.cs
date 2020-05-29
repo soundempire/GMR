@@ -16,7 +16,7 @@ namespace GMR
     public partial class MainForm : Form
     {
         private readonly IContractorService _contractorService;
-        public int MyProperty { get; set; }
+
         private readonly ITransactionService _transactionService;
 
         private List<TransactionModel> _loadedTransactions;
