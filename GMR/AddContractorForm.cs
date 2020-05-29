@@ -91,7 +91,19 @@ namespace GMR
                 var successImportedContractors = (IEnumerable<ContractorModel>)importForm.Tag;
                 foreach (var contractor in successImportedContractors)
                 {
-                    await _contractorService.AddContractorAsync(contractor);
+                    if (contractor.ID > 0)
+                    {
+                        foreach (var transaction in contractor.Transactions)
+                        {
+                            transaction.ContractorID = contractor.ID;
+                            await _transactionService.AddTransactionAsync(transaction);
+                        }
+                    }
+                    else
+                    {
+                        await _contractorService.AddContractorAsync(contractor);
+                    }
+                    
                 }
 
                 DialogResult = DialogResult.OK;
