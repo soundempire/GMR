@@ -19,14 +19,19 @@ namespace GMR
 
         private readonly ITransactionService _transactionService;
 
-        private List<TransactionModel> _selectedContractorTransactions;
+        private List<TransactionModel> _loadedTransactions;
 
         private (ContractorModel Contractor, TransactionModel Transaction) _previousEditableModel;
 
         private bool _contractorsCBoxValueSelected = false;
 
+        private const string allContractorsValue = "Все";
+
+        //TODO: Vadim if not use - delete
         private const double minMultiplierOfLeftSidePanels = 0.3;
+        //TODO: Vadim if not use - delete
         private const double minMultiplierOfRightSidePanels = 0.3;
+
         public MainForm(IContractorService contractorService, ITransactionService transactionService)
         {
             InitializeComponent();
@@ -53,16 +58,12 @@ namespace GMR
 
         #region DateTimePickers EventHandlers
 
-        private async void DtpStarts_ValueChanged(object sender, EventArgs e)
+        private async void DatePicker_ValueChanged(object sender, EventArgs e)
         {
-            if (contractorsDGView.SelectedRows.Count > 0)
+            if (contractorsDGView.SelectedRows.Count == 1)
                 await BindTransactionsToDataGridViewAsync();
-        }
-
-        private async void DtpEnds_ValueChanged(object sender, System.EventArgs e)
-        {
-            if (contractorsDGView.SelectedRows.Count > 0)
-                await BindTransactionsToDataGridViewAsync();
+            else
+                MessageBox.Show("Должен быть активен один контрагент.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
@@ -101,6 +102,19 @@ namespace GMR
                     item.Tag = currentContractor;
                 }
             }
+        }
+
+        private async void ContractorsDGView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex < 0 && e.RowIndex < 0)
+            {
+                await LoadFormDataAsync();
+            }
+            else
+            {
+                if (e.Button == MouseButtons.Left && e.RowIndex >= 0)
+                    UpdateContractorsCBoxText((contractorsDGView.Rows[e.RowIndex].DataBoundItem as ContractorModel).Name);
+            } 
         }
 
         private async void ContractorsDGView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -210,17 +224,9 @@ namespace GMR
             {
                 if (addForm.Tag is long selectedContractorId)
                 {
-                    if (contractorsDGView.SelectedRows.Count == 0)
-                    {
-                        contractorsDGView.ClearSelection();
-                        contractorsDGView.Rows
-                                         .OfType<DataGridViewRow>()
-                                         .Where(x => (x.DataBoundItem as ContractorModel).ID == selectedContractorId)
-                                         .First()
-                                         .Selected = true;
-                    }
-
+                    SelectContractorById(selectedContractorId, out var contractor);
                     await BindTransactionsToDataGridViewAsync();
+                    UpdateContractorsCBoxText(contractor?.Name ?? string.Empty);
                 }
                 else
                 {
@@ -239,9 +245,10 @@ namespace GMR
 
         private async Task LoadFormDataAsync() //TODO: change name
         {
-            var contractorNames = await BindContractorsToDataGridViewAsync();
+            var contractorNames = await BindContractorsToDataGridViewAsync(allContractorsValue);
 
             contractorsCBox.Items.Clear();
+            contractorsCBox.Items.Add(allContractorsValue);
             contractorsCBox.Items.AddRange(contractorNames.ToArray());
         }
 
@@ -259,10 +266,36 @@ namespace GMR
 
         private async Task<IEnumerable<string>> BindContractorsToDataGridViewAsync(string nameFilter = null)
         {
-            var contractors = await _contractorService.GetContractorsAsync(Session.Person.ID, nameFilter);
-            contractorsDGView.DataSource = contractors;
+            List<ContractorModel> contractors;
+            if (nameFilter == allContractorsValue || string.IsNullOrWhiteSpace(nameFilter))
+            {
+                if (contractorsCBox.Text != allContractorsValue)
+                    UpdateContractorsCBoxText(allContractorsValue);
 
-            transactionsDGView.DataSource = null;
+                contractors = (await _contractorService.GetContractorsAsync(Session.Person.ID, includes: new[] { nameof(ContractorModel.Transactions).ToLower() }))
+                              .ToList();
+                _loadedTransactions = contractors.SelectMany(_ => _.Transactions).ToList();
+                transactionsDGView.DataSource = Enumerable.Empty<TransactionModel>();
+                CalculateTotalTransactions(true);
+
+                contractorsDGView.DataSource = contractors;
+                contractorsDGView.ClearSelection();
+            }
+            else
+            {
+                contractors = (await _contractorService.GetContractorsAsync(Session.Person.ID, nameFilter)).ToList();
+                contractorsDGView.DataSource = contractors;
+
+                if (contractors.Count == 1)
+                {
+                    var contractorId = contractors.Single().ID;
+                    SelectContractorById(contractorId, out _);
+
+                    await BindTransactionsToDataGridViewAsync();
+                } 
+                else
+                    transactionsDGView.DataSource = null;
+            }
 
             return contractors.Select(c => c.Name);
         }
@@ -271,23 +304,54 @@ namespace GMR
         {
             var selectedContractorID = (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorModel).ID;
             var contractor = await _contractorService.GetContractorAsync(selectedContractorID);
-            _selectedContractorTransactions = contractor.Transactions
+            _loadedTransactions = contractor.Transactions
                                                 .Where(tr => tr.Date.Value.Date >= startsDTP.Value.Date && tr.Date.Value.Date <= endsDTP.Value.Date).ToList();
 
-            transactionsDGView.DataSource = _selectedContractorTransactions;
+            transactionsDGView.DataSource = _loadedTransactions;
 
             CalculateTotalTransactions();
         }
 
-        private void CalculateTotalTransactions()
+        private void SelectContractorById(long id, out ContractorModel contractor)
         {
-            if (_selectedContractorTransactions.Count > 0)
+            contractor = default;
+            contractorsDGView.ClearSelection();
+            var row = contractorsDGView.Rows
+                                       .OfType<DataGridViewRow>()
+                                       .Where(x => (x.DataBoundItem as ContractorModel).ID == id)
+                                       .FirstOrDefault();
+            if (row != null)
+            {
+                contractor = row.DataBoundItem as ContractorModel;
+                row.Selected = true;
+            }
+        }
+
+        private void UpdateContractorsCBoxText(string value)
+        {
+            contractorsCBox.SelectedIndexChanged -= ContractorsCBox_SelectedValueChanged;
+            contractorsCBox.Text = value;
+            contractorsCBox.SelectedIndexChanged += ContractorsCBox_SelectedValueChanged;
+        }
+
+        private void CalculateTotalTransactions(bool allTransactions = default)
+        {
+            if (_loadedTransactions.Count > 0)
             {
                 SetTotalTransactionsLineVisibility(true);
-
-                totalTransactionTB.Text = _selectedContractorTransactions.Sum(t => t.Value).ToString();
-                totalPriceTB.Text = _selectedContractorTransactions.Sum(t => t.Price).ToString();
-                totalCurencyTB.Text = $"{((_selectedContractorTransactions.Sum(t => t.Currency) / _selectedContractorTransactions.Count)):#.##}";
+                if (allTransactions)
+                {
+                    totalSumTB.Font = new Font(totalSumTB.Font.FontFamily.Name, 9, totalSumTB.Font.Style);
+                    totalSumTB.Text = $"Итого: {_loadedTransactions.Min(_ => _.Date).Value.ToShortDateString()} - {_loadedTransactions.Max(_ => _.Date).Value.ToShortDateString()}";
+                }
+                else
+                {
+                    totalSumTB.Font = new Font(totalSumTB.Font.FontFamily.Name, 16, totalSumTB.Font.Style);
+                    totalSumTB.Text = "Итого:";
+                }
+                totalTransactionTB.Text = _loadedTransactions.Sum(t => t.Value).ToString();
+                totalPriceTB.Text = _loadedTransactions.Sum(t => t.Price).ToString();
+                totalCurencyTB.Text = _loadedTransactions.Average(t => t.Currency).ToString("0.00##");
             }
             else
                 SetTotalTransactionsLineVisibility(false);
@@ -306,7 +370,7 @@ namespace GMR
             personPanel.SetBounds(personPanel.Location.X, personPanel.Location.Y, contractorsDGView.Size.Width, personPanel.Size.Height);
             contractorsCBox.SetBounds(contractorsCBox.Location.X, contractorsCBox.Location.Y, contractorsDGView.Size.Width, contractorsCBox.Size.Height);
 
-            if (_selectedContractorTransactions != null)
+            if (_loadedTransactions != null)
             {
                 //total line form bounding
                 totalSumTB.SetBounds(totalSumTB.Location.X, totalSumTB.Location.Y, transactionsDGView.Columns[0].Width, totalSumTB.Height);
