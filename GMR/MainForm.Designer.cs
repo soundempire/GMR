@@ -78,6 +78,7 @@ namespace GMR
             // 
             // contractorsDGView
             // 
+            this.contractorsDGView.AllowUserToAddRows = false;
             this.contractorsDGView.AllowUserToResizeColumns = false;
             this.contractorsDGView.AllowUserToResizeRows = false;
             this.contractorsDGView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;

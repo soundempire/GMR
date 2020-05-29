@@ -278,13 +278,13 @@ namespace GMR
                 transactionsDGView.DataSource = Enumerable.Empty<TransactionModel>();
                 CalculateTotalTransactions(true);
 
-                contractorsDGView.DataSource = contractors;
+                contractorsDGView.DataSource = new SortableBindingList<ContractorModel>(contractors);
                 contractorsDGView.ClearSelection();
             }
             else
             {
                 contractors = (await _contractorService.GetContractorsAsync(Session.Person.ID, nameFilter)).ToList();
-                contractorsDGView.DataSource = contractors;
+                contractorsDGView.DataSource = new SortableBindingList<ContractorModel>(contractors);
 
                 if (contractors.Count == 1)
                 {

@@ -100,6 +100,7 @@
     <Compile Include="AddContractorForm.Designer.cs">
       <DependentUpon>AddContractorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppCode\SortableBindingList.cs" />
     <Compile Include="ImportMasterForm.cs">
       <SubType>Form</SubType>
     </Compile>
