@@ -1,9 +1,0 @@
-D:\WORK\GMR\GMRData\bin\Debug\GMRData.dll
-D:\WORK\GMR\GMRData\bin\Debug\GMRData.pdb
-D:\WORK\GMR\GMRData\obj\Debug\GMRData.csprojAssemblyReference.cache
-D:\WORK\GMR\GMRData\obj\Debug\GMRData.dll
-D:\WORK\GMR\GMRData\obj\Debug\GMRData.pdb
-D:\WORK\GMR\GMRData\bin\Debug\AutoMapper.dll
-D:\WORK\GMR\GMRData\bin\Debug\AutoMapper.pdb
-D:\WORK\GMR\GMRData\bin\Debug\AutoMapper.xml
-D:\WORK\GMR\GMRData\obj\Debug\GMRData.csproj.CopyComplete
