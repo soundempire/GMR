@@ -12,6 +12,5 @@ namespace GMR.BLL.Abstractions.Services
         Task<TransactionModel> UpdateTransactionAsync(TransactionModel transaction);
 
         Task RemoveTransactionAsync(long id);
-
     }
 }

@@ -61,6 +61,9 @@ namespace GMR.BLL.Services
             return Mapper.Map<Contractor, ContractorModel>(ctr);
         }
 
-        public void Dispose() => _contractorRepository.Dispose();
+        public async Task RemoveContractorAsync(long id)
+           => await _contractorRepository.DeleteAsync(id);
+
+        public void Dispose() => _contractorRepository.Dispose(); 
     }
 }

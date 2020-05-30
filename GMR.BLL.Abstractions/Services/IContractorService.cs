@@ -13,5 +13,7 @@ namespace GMR.BLL.Abstractions.Services
         Task<ContractorModel> AddContractorAsync(ContractorModel contractor);
 
         Task<ContractorModel> UpdateContractorAsync(ContractorModel contractor);
+
+        Task RemoveContractorAsync(long id);
     }
 }

@@ -59,6 +59,7 @@ namespace GMR
             this.contractorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).BeginInit();
             this.topPanel.SuspendLayout();
@@ -104,7 +105,7 @@ namespace GMR
             // 
             // transactionsDGView
             // 
-            this.transactionsDGView.AllowUserToOrderColumns = true;
+            this.transactionsDGView.AllowUserToAddRows = false;
             this.transactionsDGView.AllowUserToResizeColumns = false;
             this.transactionsDGView.AllowUserToResizeRows = false;
             this.transactionsDGView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -458,9 +459,10 @@ namespace GMR
             this.contractorContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contractorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addTransactionsToolStripMenuItem,
-            this.renameContractorToolStripMenuItem});
+            this.renameContractorToolStripMenuItem,
+            this.removeContractorToolStripMenuItem});
             this.contractorContextMenu.Name = "contractorContextMenu";
-            this.contractorContextMenu.Size = new System.Drawing.Size(236, 48);
+            this.contractorContextMenu.Size = new System.Drawing.Size(236, 92);
             // 
             // addTransactionsToolStripMenuItem
             // 
@@ -477,6 +479,14 @@ namespace GMR
             this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.renameContractorToolStripMenuItem.Text = "Переименовать";
             this.renameContractorToolStripMenuItem.Click += new System.EventHandler(this.RenameContractorToolStripMenuItem_Click);
+            // 
+            // removeContractorToolStripMenuItem
+            // 
+            this.removeContractorToolStripMenuItem.Name = "removeContractorToolStripMenuItem";
+            this.removeContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.removeContractorToolStripMenuItem.Text = "Удалить";
+            this.removeContractorToolStripMenuItem.Click += new System.EventHandler(this.RemoveContractorToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -545,5 +555,6 @@ namespace GMR
         private System.Windows.Forms.ContextMenuStrip contractorContextMenu;
         private System.Windows.Forms.ToolStripMenuItem addTransactionsToolStripMenuItem;
         private ToolStripMenuItem renameContractorToolStripMenuItem;
+        private ToolStripMenuItem removeContractorToolStripMenuItem;
     }
 }

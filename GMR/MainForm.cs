@@ -127,6 +127,11 @@ namespace GMR
         {
             if (e.KeyData == (Keys.Control | Keys.T) && contractorsDGView.CurrentRow != null)
                 await AddTransactionsAsync((contractorsDGView.CurrentRow.DataBoundItem as ContractorModel).Name);
+            else if (e.KeyCode == Keys.Delete)
+            {
+                if (!(await RemoveSelectedContractorsAsync()))
+                    e.Handled = true;
+            }   
         }
 
         #endregion
@@ -151,7 +156,10 @@ namespace GMR
         private async void TransactionsDGView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
-                await RemoveSelectedTransactionsAsync();
+            {
+                if (!(await RemoveSelectedTransactionsAsync()))
+                    e.Handled = true;
+            }    
         }
 
         #endregion
@@ -204,6 +212,13 @@ namespace GMR
             contractorsDGView.BeginEdit(true);
         }
 
+        private async void RemoveContractorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var clickedContractorId = (((ToolStripMenuItem)sender).Tag as ContractorModel).ID;
+            SelectContractorById(clickedContractorId, out _);
+            await RemoveSelectedContractorsAsync();
+        }
+
         #endregion
 
         #region Control buttons EventHandlers
@@ -252,16 +267,42 @@ namespace GMR
             contractorsCBox.Items.AddRange(contractorNames.ToArray());
         }
 
-        private async Task RemoveSelectedTransactionsAsync()
+        private async Task<bool> RemoveSelectedContractorsAsync()
         {
+            if (contractorsDGView.SelectedRows.Count > 0 &&
+                MessageBox.Show("Вы действительно хотите удалить выбранных контрагентов и их транзакции?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var ids = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as ContractorModel).ID).ToArray();
+                foreach (var id in ids)
+                    await _contractorService.RemoveContractorAsync(id);
+
+                await LoadFormDataAsync();
+                return true;
+            }
+
+            return false;
+        }
+
+        private async Task<bool> RemoveSelectedTransactionsAsync()
+        {
+            if (contractorsDGView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Не выбран контрагент, для которого будут удаляться транзакции.", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             if (transactionsDGView.SelectedRows.Count > 0 &&
                 MessageBox.Show("Вы действительно хотите удалить выбранные транзакции?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                foreach (DataGridViewRow row in transactionsDGView.SelectedRows)
-                    await _transactionService.RemoveTransactionAsync((row.DataBoundItem as TransactionModel).ID);
+                var ids = transactionsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as TransactionModel).ID).ToArray();
+                foreach (var id in ids)
+                    await _transactionService.RemoveTransactionAsync(id);
 
                 await BindTransactionsToDataGridViewAsync();
+                return true;
             }
+
+            return false;
         }
 
         private async Task<IEnumerable<string>> BindContractorsToDataGridViewAsync(string nameFilter = null)
@@ -307,7 +348,7 @@ namespace GMR
             _loadedTransactions = contractor.Transactions
                                                 .Where(tr => tr.Date.Value.Date >= startsDTP.Value.Date && tr.Date.Value.Date <= endsDTP.Value.Date).ToList();
 
-            transactionsDGView.DataSource = _loadedTransactions;
+            transactionsDGView.DataSource = new SortableBindingList<TransactionModel>(_loadedTransactions);
 
             CalculateTotalTransactions();
         }
