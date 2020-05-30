@@ -132,9 +132,9 @@
             this.transactionDateDTPicker.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.transactionDateDTPicker.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.transactionDateDTPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.transactionDateDTPicker.Location = new System.Drawing.Point(386, 27);
+            this.transactionDateDTPicker.Location = new System.Drawing.Point(385, 33);
             this.transactionDateDTPicker.Name = "transactionDateDTPicker";
-            this.transactionDateDTPicker.Size = new System.Drawing.Size(152, 24);
+            this.transactionDateDTPicker.Size = new System.Drawing.Size(175, 24);
             this.transactionDateDTPicker.TabIndex = 4;
             this.transactionDateDTPicker.ValueChanged += new System.EventHandler(this.TransactionDateDTPicker_ValueChanged);
             // 
@@ -145,37 +145,37 @@
             this.contractorCmBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.contractorCmBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contractorCmBox.FormattingEnabled = true;
-            this.contractorCmBox.Location = new System.Drawing.Point(135, 68);
+            this.contractorCmBox.Location = new System.Drawing.Point(134, 74);
             this.contractorCmBox.Name = "contractorCmBox";
-            this.contractorCmBox.Size = new System.Drawing.Size(121, 24);
+            this.contractorCmBox.Size = new System.Drawing.Size(204, 24);
             this.contractorCmBox.TabIndex = 3;
             // 
             // transactionPriceTBox
             // 
             this.transactionPriceTBox.Enabled = false;
             this.transactionPriceTBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.transactionPriceTBox.Location = new System.Drawing.Point(135, 155);
+            this.transactionPriceTBox.Location = new System.Drawing.Point(134, 161);
             this.transactionPriceTBox.Name = "transactionPriceTBox";
-            this.transactionPriceTBox.Size = new System.Drawing.Size(121, 24);
+            this.transactionPriceTBox.Size = new System.Drawing.Size(204, 24);
             this.transactionPriceTBox.TabIndex = 2;
             // 
             // transactionValueTBox
             // 
             this.transactionValueTBox.Enabled = false;
             this.transactionValueTBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.transactionValueTBox.Location = new System.Drawing.Point(135, 111);
+            this.transactionValueTBox.Location = new System.Drawing.Point(134, 117);
             this.transactionValueTBox.Name = "transactionValueTBox";
-            this.transactionValueTBox.Size = new System.Drawing.Size(121, 24);
+            this.transactionValueTBox.Size = new System.Drawing.Size(204, 24);
             this.transactionValueTBox.TabIndex = 1;
             // 
             // transactionCurrencyTBox
             // 
             this.transactionCurrencyTBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.transactionCurrencyTBox.Location = new System.Drawing.Point(135, 27);
+            this.transactionCurrencyTBox.Location = new System.Drawing.Point(134, 33);
             this.transactionCurrencyTBox.Name = "transactionCurrencyTBox";
-            this.transactionCurrencyTBox.Size = new System.Drawing.Size(121, 24);
+            this.transactionCurrencyTBox.Size = new System.Drawing.Size(204, 24);
             this.transactionCurrencyTBox.TabIndex = 0;
-            this.transactionCurrencyTBox.TextChanged += new System.EventHandler(this.transactionCurrencyTBox_TextChanged);
+            this.transactionCurrencyTBox.TextChanged += new System.EventHandler(this.TransactionCurrencyTBox_TextChanged);
             // 
             // currentUserPanel
             // 
@@ -203,7 +203,6 @@
             // 
             this.okBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.okBtn.Enabled = false;
             this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.okBtn.Location = new System.Drawing.Point(20, 12);

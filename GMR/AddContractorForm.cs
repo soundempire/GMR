@@ -44,6 +44,17 @@ namespace GMR
 
         private async void OkBtn_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(transactionCurrencyTBox.Text))
+            {
+                MessageBox.Show($"Поле Курс должно быть заполнено.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(transactionValueTBox.Text) && string.IsNullOrWhiteSpace(transactionPriceTBox.Text))
+            {
+                MessageBox.Show($"Поля Транзакция или Платёж должны быть заполнены.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (contractorCmBox.SelectedItem is ContractorModel contractor)
             {
                 Tag = contractor.ID;
@@ -53,8 +64,8 @@ namespace GMR
                     ContractorID = contractor.ID,
                     Date = transactionDateDTPicker.Value,
                     Currency = double.Parse(transactionCurrencyTBox.Text),
-                    Price = double.Parse(transactionPriceTBox.Text),
-                    Value = double.Parse(transactionValueTBox.Text)
+                    Price = string.IsNullOrWhiteSpace(transactionPriceTBox.Text) ? default(double?) : double.Parse(transactionPriceTBox.Text.Trim()),
+                    Value = string.IsNullOrWhiteSpace(transactionValueTBox.Text) ? default(double?) : double.Parse(transactionValueTBox.Text.Trim())
                 };
 
                 await _transactionService.AddTransactionAsync(transaction);
@@ -77,10 +88,10 @@ namespace GMR
             (_transactionService as IDisposable).Dispose();
         }
 
-        private void transactionCurrencyTBox_TextChanged(object sender, EventArgs e)
+        private void TransactionCurrencyTBox_TextChanged(object sender, EventArgs e)
         {
             var isCurrencyValueEntered = !string.IsNullOrWhiteSpace(transactionCurrencyTBox.Text);
-            okBtn.Enabled = transactionValueTBox.Enabled = transactionPriceTBox.Enabled = isCurrencyValueEntered;
+            transactionValueTBox.Enabled = transactionPriceTBox.Enabled = isCurrencyValueEntered;
         }
 
         private async void ImportBtn_Click(object sender, EventArgs e)
