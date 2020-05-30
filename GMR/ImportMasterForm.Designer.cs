@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chooseColumnsPanel = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.importTabPage = new System.Windows.Forms.TabPage();
@@ -47,6 +47,7 @@
             this.choosePanel1 = new System.Windows.Forms.Panel();
             this.importingDataPanel = new System.Windows.Forms.Panel();
             this.controlsPanel = new System.Windows.Forms.Panel();
+            this.overwriteNamesCheckBox = new System.Windows.Forms.CheckBox();
             this.openFileBtn = new GMR.Controls.GMRButton();
             this.numericUpDownRight = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownLeft = new System.Windows.Forms.NumericUpDown();
@@ -77,9 +78,9 @@
             this.chooseColumnsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.chooseColumnsPanel.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.chooseColumnsPanel.Location = new System.Drawing.Point(0, 0);
-            this.chooseColumnsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chooseColumnsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.chooseColumnsPanel.Name = "chooseColumnsPanel";
-            this.chooseColumnsPanel.Size = new System.Drawing.Size(862, 54);
+            this.chooseColumnsPanel.Size = new System.Drawing.Size(880, 54);
             this.chooseColumnsPanel.TabIndex = 0;
             // 
             // tabControl
@@ -90,10 +91,10 @@
             this.tabControl.HotTrack = true;
             this.tabControl.ItemSize = new System.Drawing.Size(140, 20);
             this.tabControl.Location = new System.Drawing.Point(0, 0);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(862, 54);
+            this.tabControl.Size = new System.Drawing.Size(880, 54);
             this.tabControl.TabIndex = 0;
             this.tabControl.Visible = false;
             // 
@@ -111,8 +112,8 @@
             this.importTabPage.Location = new System.Drawing.Point(4, 24);
             this.importTabPage.Margin = new System.Windows.Forms.Padding(0);
             this.importTabPage.Name = "importTabPage";
-            this.importTabPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.importTabPage.Size = new System.Drawing.Size(854, 26);
+            this.importTabPage.Padding = new System.Windows.Forms.Padding(2);
+            this.importTabPage.Size = new System.Drawing.Size(872, 26);
             this.importTabPage.TabIndex = 0;
             this.importTabPage.Text = "Импорт данных";
             // 
@@ -121,9 +122,9 @@
             this.choosePanel6.Controls.Add(this.priceToggleSwitch);
             this.choosePanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choosePanel6.Location = new System.Drawing.Point(611, 2);
-            this.choosePanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.choosePanel6.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel6.Name = "choosePanel6";
-            this.choosePanel6.Size = new System.Drawing.Size(118, 22);
+            this.choosePanel6.Size = new System.Drawing.Size(136, 22);
             this.choosePanel6.TabIndex = 5;
             // 
             // priceToggleSwitch
@@ -131,13 +132,13 @@
             this.priceToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.priceToggleSwitch.GrayWhenDisabled = false;
             this.priceToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.priceToggleSwitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.priceToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
             this.priceToggleSwitch.Name = "priceToggleSwitch";
             this.priceToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.priceToggleSwitch.OffText = "OFF";
             this.priceToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
             this.priceToggleSwitch.OnText = "ON";
-            this.priceToggleSwitch.Size = new System.Drawing.Size(118, 22);
+            this.priceToggleSwitch.Size = new System.Drawing.Size(136, 22);
             this.priceToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
             this.priceToggleSwitch.TabIndex = 3;
             this.priceToggleSwitch.CheckedChanged += new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.CheckedChangedDelegate(this.ToggleSwitch_CheckedChanged);
@@ -148,7 +149,7 @@
             this.choosePanel5.Controls.Add(this.transactionToggleSwitch);
             this.choosePanel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.choosePanel5.Location = new System.Drawing.Point(488, 2);
-            this.choosePanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.choosePanel5.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel5.Name = "choosePanel5";
             this.choosePanel5.Size = new System.Drawing.Size(123, 22);
             this.choosePanel5.TabIndex = 4;
@@ -158,7 +159,7 @@
             this.transactionToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.transactionToggleSwitch.GrayWhenDisabled = false;
             this.transactionToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.transactionToggleSwitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.transactionToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
             this.transactionToggleSwitch.Name = "transactionToggleSwitch";
             this.transactionToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.transactionToggleSwitch.OffText = "OFF";
@@ -175,7 +176,7 @@
             this.choosePanel4.Controls.Add(this.dateToggleSwitch);
             this.choosePanel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.choosePanel4.Location = new System.Drawing.Point(365, 2);
-            this.choosePanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.choosePanel4.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel4.Name = "choosePanel4";
             this.choosePanel4.Size = new System.Drawing.Size(123, 22);
             this.choosePanel4.TabIndex = 4;
@@ -185,7 +186,7 @@
             this.dateToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateToggleSwitch.GrayWhenDisabled = false;
             this.dateToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.dateToggleSwitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
             this.dateToggleSwitch.Name = "dateToggleSwitch";
             this.dateToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.dateToggleSwitch.OffText = "OFF";
@@ -202,7 +203,7 @@
             this.choosePanel3.Controls.Add(this.idToggleSwitch);
             this.choosePanel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.choosePanel3.Location = new System.Drawing.Point(242, 2);
-            this.choosePanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.choosePanel3.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel3.Name = "choosePanel3";
             this.choosePanel3.Size = new System.Drawing.Size(123, 22);
             this.choosePanel3.TabIndex = 3;
@@ -214,7 +215,7 @@
             this.idToggleSwitch.Enabled = false;
             this.idToggleSwitch.GrayWhenDisabled = false;
             this.idToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.idToggleSwitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.idToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
             this.idToggleSwitch.Name = "idToggleSwitch";
             this.idToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.idToggleSwitch.OffText = "OFF";
@@ -230,7 +231,7 @@
             this.choosePanel2.Controls.Add(this.contractorToggleSwitch);
             this.choosePanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.choosePanel2.Location = new System.Drawing.Point(42, 2);
-            this.choosePanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.choosePanel2.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel2.Name = "choosePanel2";
             this.choosePanel2.Size = new System.Drawing.Size(200, 22);
             this.choosePanel2.TabIndex = 2;
@@ -242,7 +243,7 @@
             this.contractorToggleSwitch.Enabled = false;
             this.contractorToggleSwitch.GrayWhenDisabled = false;
             this.contractorToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.contractorToggleSwitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contractorToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
             this.contractorToggleSwitch.Name = "contractorToggleSwitch";
             this.contractorToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contractorToggleSwitch.OffText = "OFF";
@@ -257,8 +258,8 @@
             // 
             this.choosePanel7.Controls.Add(this.currencyToggleSwitch);
             this.choosePanel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.choosePanel7.Location = new System.Drawing.Point(729, 2);
-            this.choosePanel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.choosePanel7.Location = new System.Drawing.Point(747, 2);
+            this.choosePanel7.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel7.Name = "choosePanel7";
             this.choosePanel7.Size = new System.Drawing.Size(123, 22);
             this.choosePanel7.TabIndex = 1;
@@ -268,7 +269,7 @@
             this.currencyToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.currencyToggleSwitch.GrayWhenDisabled = false;
             this.currencyToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.currencyToggleSwitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.currencyToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
             this.currencyToggleSwitch.Name = "currencyToggleSwitch";
             this.currencyToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.currencyToggleSwitch.OffText = "OFF";
@@ -285,7 +286,7 @@
             this.choosePanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.choosePanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.choosePanel1.Location = new System.Drawing.Point(2, 2);
-            this.choosePanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.choosePanel1.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel1.Name = "choosePanel1";
             this.choosePanel1.Size = new System.Drawing.Size(40, 22);
             this.choosePanel1.TabIndex = 0;
@@ -296,14 +297,15 @@
             this.importingDataPanel.Controls.Add(this.importingDataDGV);
             this.importingDataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.importingDataPanel.Location = new System.Drawing.Point(0, 54);
-            this.importingDataPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.importingDataPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importingDataPanel.Name = "importingDataPanel";
             this.importingDataPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.importingDataPanel.Size = new System.Drawing.Size(862, 404);
+            this.importingDataPanel.Size = new System.Drawing.Size(880, 404);
             this.importingDataPanel.TabIndex = 1;
             // 
             // controlsPanel
             // 
+            this.controlsPanel.Controls.Add(this.overwriteNamesCheckBox);
             this.controlsPanel.Controls.Add(this.openFileBtn);
             this.controlsPanel.Controls.Add(this.numericUpDownRight);
             this.controlsPanel.Controls.Add(this.numericUpDownLeft);
@@ -312,10 +314,22 @@
             this.controlsPanel.Controls.Add(this.okBtn);
             this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.controlsPanel.Location = new System.Drawing.Point(3, 360);
-            this.controlsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.controlsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlsPanel.Name = "controlsPanel";
-            this.controlsPanel.Size = new System.Drawing.Size(856, 44);
+            this.controlsPanel.Size = new System.Drawing.Size(874, 44);
             this.controlsPanel.TabIndex = 2;
+            // 
+            // overwriteNamesCheckBox
+            // 
+            this.overwriteNamesCheckBox.AutoSize = true;
+            this.overwriteNamesCheckBox.Checked = true;
+            this.overwriteNamesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.overwriteNamesCheckBox.Location = new System.Drawing.Point(321, 16);
+            this.overwriteNamesCheckBox.Name = "overwriteNamesCheckBox";
+            this.overwriteNamesCheckBox.Size = new System.Drawing.Size(134, 17);
+            this.overwriteNamesCheckBox.TabIndex = 29;
+            this.overwriteNamesCheckBox.Text = "Перезаписать имена";
+            this.overwriteNamesCheckBox.UseVisualStyleBackColor = true;
             // 
             // openFileBtn
             // 
@@ -323,8 +337,8 @@
             this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.openFileBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.openFileBtn.Location = new System.Drawing.Point(408, 9);
-            this.openFileBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.openFileBtn.Location = new System.Drawing.Point(476, 9);
+            this.openFileBtn.Margin = new System.Windows.Forms.Padding(2);
             this.openFileBtn.Name = "openFileBtn";
             this.openFileBtn.Rounding = 80;
             this.openFileBtn.RoundingEnabled = true;
@@ -338,7 +352,7 @@
             // 
             this.numericUpDownRight.Enabled = false;
             this.numericUpDownRight.Location = new System.Drawing.Point(217, 14);
-            this.numericUpDownRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownRight.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownRight.Name = "numericUpDownRight";
             this.numericUpDownRight.Size = new System.Drawing.Size(80, 20);
             this.numericUpDownRight.TabIndex = 27;
@@ -348,7 +362,7 @@
             // 
             this.numericUpDownLeft.Enabled = false;
             this.numericUpDownLeft.Location = new System.Drawing.Point(125, 14);
-            this.numericUpDownLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownLeft.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownLeft.Name = "numericUpDownLeft";
             this.numericUpDownLeft.Size = new System.Drawing.Size(80, 20);
             this.numericUpDownLeft.TabIndex = 26;
@@ -372,7 +386,7 @@
             this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.cancelBtn.Location = new System.Drawing.Point(753, 9);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Rounding = 80;
             this.cancelBtn.RoundingEnabled = true;
@@ -390,7 +404,7 @@
             this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.okBtn.Location = new System.Drawing.Point(653, 9);
-            this.okBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.okBtn.Margin = new System.Windows.Forms.Padding(2);
             this.okBtn.Name = "okBtn";
             this.okBtn.Rounding = 80;
             this.okBtn.RoundingEnabled = true;
@@ -407,25 +421,25 @@
             this.importingDataDGV.AllowUserToResizeRows = false;
             this.importingDataDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.importingDataDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.importingDataDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.importingDataDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.importingDataDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.importingDataDGV.Dock = System.Windows.Forms.DockStyle.Top;
             this.importingDataDGV.Location = new System.Drawing.Point(3, 0);
-            this.importingDataDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.importingDataDGV.Margin = new System.Windows.Forms.Padding(2);
             this.importingDataDGV.Name = "importingDataDGV";
             this.importingDataDGV.ReadOnly = true;
             this.importingDataDGV.RowHeadersVisible = false;
             this.importingDataDGV.RowHeadersWidth = 62;
             this.importingDataDGV.RowTemplate.Height = 28;
             this.importingDataDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.importingDataDGV.Size = new System.Drawing.Size(856, 356);
+            this.importingDataDGV.Size = new System.Drawing.Size(874, 356);
             this.importingDataDGV.TabIndex = 0;
             // 
             // openFileDialog
@@ -437,11 +451,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 458);
+            this.ClientSize = new System.Drawing.Size(880, 458);
             this.Controls.Add(this.importingDataPanel);
             this.Controls.Add(this.chooseColumnsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ImportMasterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Мастер импорта из Excel ";
@@ -493,5 +507,6 @@
         private System.Windows.Forms.Panel choosePanel6;
         private Animation.Controls.ToggleSwitch.GMRToggleSwitch priceToggleSwitch;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.CheckBox overwriteNamesCheckBox;
     }
 }

@@ -17,7 +17,7 @@ namespace GMR
 
         private readonly string _defaultContractorName;
 
-        private IEnumerable<ContractorModel> _contractors;
+        private Dictionary<string, ContractorModel> _contractors;
 
         public AddContractorForm(IContractorService contractorService, ITransactionService transactionService, string defaultContractorName = default)
         {
@@ -30,9 +30,10 @@ namespace GMR
 
         private async void AddContractorForm_Load(object sender, EventArgs e)
         {
-            _contractors = await _contractorService.GetContractorsAsync(Session.Person.ID, includes: new[] { nameof(ContractorModel.Transactions).ToLower() });
+            _contractors = (await _contractorService.GetContractorsAsync(Session.Person.ID, includes: new[] { nameof(ContractorModel.Transactions).ToLower() }))
+                           .ToDictionary(_ => _.ContractorID);
 
-            contractorCmBox.DataSource = _contractors;
+            contractorCmBox.DataSource = _contractors.Values.ToList();
             contractorCmBox.DisplayMember = nameof(ContractorModel.Name);
             if (!string.IsNullOrEmpty(_defaultContractorName))
             {
@@ -99,8 +100,8 @@ namespace GMR
             var importForm = DIContainer.Resolve<ImportMasterForm>();
             if (importForm.ShowDialog() == DialogResult.OK)
             {
-                var successImportedContractors = (IEnumerable<ContractorModel>)importForm.Tag;
-                foreach (var contractor in successImportedContractors)
+                var importResult = (ImportResult)importForm.Tag;
+                foreach (var contractor in importResult.SuccessContractors)
                 {
                     if (contractor.ID > 0)
                     {
@@ -112,7 +113,18 @@ namespace GMR
                     }
                     else
                     {
-                        await _contractorService.AddContractorAsync(contractor);
+                        if (importResult.OverwriteExistingNames && _contractors.TryGetValue(contractor.ContractorID, out var currentContractor))
+                        {
+                            currentContractor.Name = contractor.Name;
+                            await _contractorService.UpdateContractorAsync(currentContractor);
+                            foreach (var transaction in contractor.Transactions)
+                            {
+                                transaction.ContractorID = currentContractor.ID;
+                                await _transactionService.AddTransactionAsync(transaction);
+                            }
+                        }
+                        else
+                            await _contractorService.AddContractorAsync(contractor);
                     }
                     
                 }
@@ -125,10 +137,10 @@ namespace GMR
 
         private void SetCurrencyByDate()
         {
-            var transaction = _contractors.SelectMany(contractor => contractor.Transactions, (c, t) => new { Transaction = t })
-                                          .Where(_ => _.Transaction.Date.HasValue && _.Transaction.Date.Value.Date.Equals(transactionDateDTPicker.Value.Date))
-                                          .Select(_ => _.Transaction)
-                                          .FirstOrDefault();
+            var transaction = _contractors.Values.SelectMany(contractor => contractor.Transactions, (c, t) => new { Transaction = t })
+                                                 .Where(_ => _.Transaction.Date.HasValue && _.Transaction.Date.Value.Date.Equals(transactionDateDTPicker.Value.Date))
+                                                 .Select(_ => _.Transaction)
+                                                 .FirstOrDefault();
 
             if (transaction != null)
             {

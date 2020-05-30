@@ -270,7 +270,8 @@ namespace GMR
         private async Task<bool> RemoveSelectedContractorsAsync()
         {
             if (contractorsDGView.SelectedRows.Count > 0 &&
-                MessageBox.Show("Вы действительно хотите удалить выбранных контрагентов и их транзакции?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                MessageBox.Show($"Вы действительно хотите удалить {(contractorsDGView.SelectedRows.Count == 1 ? (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorModel).Name + " и"  : "выбранных контрагентов и их" )} транзакции?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                == DialogResult.Yes)
             {
                 var ids = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as ContractorModel).ID).ToArray();
                 foreach (var id in ids)

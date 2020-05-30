@@ -82,7 +82,10 @@ namespace GMR
             if (potentialContractorsGroups.TryGetValue(true, out var successPotentialContractors) && successPotentialContractors.Any())
             {
                 //TODO: do not use bll.mapper
-                Tag = GMR.BLL.Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorModel>>(successPotentialContractors);
+                Tag = new ImportResult {
+                            SuccessContractors = GMR.BLL.Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorModel>>(successPotentialContractors),
+                            OverwriteExistingNames = overwriteNamesCheckBox.Checked
+                                       };
                 DialogResult = DialogResult.OK;
             }
             else
