@@ -14,6 +14,8 @@ using System.Windows.Forms;
 
 namespace GMR
 {
+    //TODO: Vadim full screen opportunity
+    //TODO: Vadim think about tab panel (not main order)
     public partial class ImportMasterForm : Form
     {
         private readonly IImportService _importService;
@@ -99,7 +101,7 @@ namespace GMR
         #endregion
 
         #region Toggle EventHandlers
-
+        //TODO: Vadim fix toggle switching behavior (second order)
         private void ToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
             var toggle = (GMRToggleSwitch)sender;
@@ -133,8 +135,7 @@ namespace GMR
                     tog.CheckedChanged -= ToggleSwitch_CheckedChanged;
                     tog.Checked = isChecked;
                     tog.CheckedChanged += ToggleSwitch_CheckedChanged;
-                }
-                
+                }              
             }
         }
 

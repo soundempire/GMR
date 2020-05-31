@@ -13,6 +13,8 @@ using System.Windows.Forms;
 
 namespace GMR
 {
+    //TODO: Vadim add user account menu (UI only) first order
+    //TODO: Vadim add GMR icon to app header 
     public partial class MainForm : Form
     {
         private readonly IContractorService _contractorService;
@@ -119,6 +121,7 @@ namespace GMR
 
         private async void ContractorsDGView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //TODO: Vadim think about userfriendly header width
             if (e.Button == MouseButtons.Left)
                 await BindTransactionsToDataGridViewAsync();
         }
@@ -401,12 +404,14 @@ namespace GMR
 
         private void SetTotalTransactionsLineVisibility(bool visible)
         {
+            //TODO: Vadim enable/disable panel visibility
             totalSumTB.Visible = visible;
             totalTransactionTB.Visible = visible;
             totalPriceTB.Visible = visible;
             totalCurencyTB.Visible = visible;
         }
 
+        //TODO: Vadim investigate potential exceptions by resizing
         private void SetFormsSizes()
         {
             personPanel.SetBounds(personPanel.Location.X, personPanel.Location.Y, contractorsDGView.Size.Width, personPanel.Size.Height);
@@ -440,6 +445,7 @@ namespace GMR
 
         private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
         {
+            //TODO: Vadim use constants
             if (e.SplitX < 300)
                 CenterSplitContainer.Panel1MinSize = (int)(CenterSplitContainer.Width * 0.3);
             else if (e.SplitX>CenterSplitContainer.Width-450)
