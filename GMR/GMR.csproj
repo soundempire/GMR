@@ -203,7 +203,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\account3.png" />
     <None Include="Resources\hidePassword.png" />
   </ItemGroup>
   <ItemGroup>
@@ -223,19 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\load.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\greenPlus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\account1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\account2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\account21.png" />
-  </ItemGroup>
+  </ItemGroup> 
   <ItemGroup>
     <None Include="Resources\Account4.png" />
   </ItemGroup>
