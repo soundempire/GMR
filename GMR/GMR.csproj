@@ -127,6 +127,11 @@
     <Compile Include="Models\UpdatePersonViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="UserAccountForm.cs">
       <SubType>Form</SubType>
@@ -145,17 +150,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UserAccountForm.resx">
       <DependentUpon>UserAccountForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +203,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\account3.png" />
     <None Include="Resources\hidePassword.png" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +226,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\greenPlus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Account4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

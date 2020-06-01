@@ -40,8 +40,9 @@ namespace GMR
             this.contractorsCBox = new System.Windows.Forms.ComboBox();
             this.personNameLabel = new System.Windows.Forms.Label();
             this.topPanel = new System.Windows.Forms.Panel();
-            this.contractorsCBoxPanel = new System.Windows.Forms.Panel();
             this.datesPanel = new System.Windows.Forms.Panel();
+            this.userAccountMenuPanel = new System.Windows.Forms.Panel();
+            this.contractorsCBoxPanel = new System.Windows.Forms.Panel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.personPanel = new System.Windows.Forms.Panel();
             this.controlBtnsPanel = new System.Windows.Forms.Panel();
@@ -60,11 +61,15 @@ namespace GMR
             this.addTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userAccountToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.userAccountToolStripOne = new System.Windows.Forms.ToolStripMenuItem();
+            this.userAccountMenuStrip = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).BeginInit();
             this.topPanel.SuspendLayout();
-            this.contractorsCBoxPanel.SuspendLayout();
             this.datesPanel.SuspendLayout();
+            this.userAccountMenuPanel.SuspendLayout();
+            this.contractorsCBoxPanel.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.personPanel.SuspendLayout();
             this.controlBtnsPanel.SuspendLayout();
@@ -75,6 +80,7 @@ namespace GMR
             this.transactionsDGVPanel.SuspendLayout();
             this.totalTransactionsPanel.SuspendLayout();
             this.contractorContextMenu.SuspendLayout();
+            this.userAccountMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // contractorsDGView
@@ -115,7 +121,7 @@ namespace GMR
             this.transactionsDGView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.transactionsDGView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.transactionsDGView.Location = new System.Drawing.Point(0, 0);
-            this.transactionsDGView.Margin = new System.Windows.Forms.Padding(2);
+            this.transactionsDGView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.transactionsDGView.Name = "transactionsDGView";
             this.transactionsDGView.RowHeadersWidth = 15;
             this.transactionsDGView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -133,8 +139,8 @@ namespace GMR
             this.startsDTP.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.startsDTP.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.startsDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.startsDTP.Location = new System.Drawing.Point(38, 8);
-            this.startsDTP.Margin = new System.Windows.Forms.Padding(2);
+            this.startsDTP.Location = new System.Drawing.Point(33, 6);
+            this.startsDTP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startsDTP.Name = "startsDTP";
             this.startsDTP.Size = new System.Drawing.Size(89, 24);
             this.startsDTP.TabIndex = 9;
@@ -147,8 +153,8 @@ namespace GMR
             this.endsDTP.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.endsDTP.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.endsDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.endsDTP.Location = new System.Drawing.Point(166, 8);
-            this.endsDTP.Margin = new System.Windows.Forms.Padding(2);
+            this.endsDTP.Location = new System.Drawing.Point(161, 6);
+            this.endsDTP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.endsDTP.Name = "endsDTP";
             this.endsDTP.Size = new System.Drawing.Size(87, 24);
             this.endsDTP.TabIndex = 10;
@@ -158,7 +164,7 @@ namespace GMR
             // 
             this.lblStarts.AutoSize = true;
             this.lblStarts.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.lblStarts.Location = new System.Drawing.Point(16, 10);
+            this.lblStarts.Location = new System.Drawing.Point(11, 8);
             this.lblStarts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStarts.Name = "lblStarts";
             this.lblStarts.Size = new System.Drawing.Size(18, 18);
@@ -169,7 +175,7 @@ namespace GMR
             // 
             this.lblEnds.AutoSize = true;
             this.lblEnds.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.lblEnds.Location = new System.Drawing.Point(131, 11);
+            this.lblEnds.Location = new System.Drawing.Point(126, 9);
             this.lblEnds.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEnds.Name = "lblEnds";
             this.lblEnds.Size = new System.Drawing.Size(31, 18);
@@ -184,7 +190,7 @@ namespace GMR
             this.contractorsCBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contractorsCBox.FormattingEnabled = true;
             this.contractorsCBox.Location = new System.Drawing.Point(3, 8);
-            this.contractorsCBox.Margin = new System.Windows.Forms.Padding(2);
+            this.contractorsCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.contractorsCBox.Name = "contractorsCBox";
             this.contractorsCBox.Size = new System.Drawing.Size(286, 24);
             this.contractorsCBox.TabIndex = 14;
@@ -209,38 +215,46 @@ namespace GMR
             // 
             // topPanel
             // 
-            this.topPanel.Controls.Add(this.contractorsCBoxPanel);
             this.topPanel.Controls.Add(this.datesPanel);
+            this.topPanel.Controls.Add(this.userAccountMenuPanel);
+            this.topPanel.Controls.Add(this.contractorsCBoxPanel);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.topPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(862, 34);
             this.topPanel.TabIndex = 16;
+            // 
+            // datesPanel
+            // 
+            this.datesPanel.Controls.Add(this.lblEnds);
+            this.datesPanel.Controls.Add(this.lblStarts);
+            this.datesPanel.Controls.Add(this.startsDTP);
+            this.datesPanel.Controls.Add(this.endsDTP);
+            this.datesPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.datesPanel.Location = new System.Drawing.Point(495, 0);
+            this.datesPanel.Name = "datesPanel";
+            this.datesPanel.Size = new System.Drawing.Size(255, 34);
+            this.datesPanel.TabIndex = 18;
+            // 
+            // userAccountMenuPanel
+            // 
+            this.userAccountMenuPanel.Controls.Add(this.userAccountMenuStrip);
+            this.userAccountMenuPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.userAccountMenuPanel.Location = new System.Drawing.Point(750, 0);
+            this.userAccountMenuPanel.Name = "userAccountMenuPanel";
+            this.userAccountMenuPanel.Size = new System.Drawing.Size(112, 34);
+            this.userAccountMenuPanel.TabIndex = 17;
             // 
             // contractorsCBoxPanel
             // 
             this.contractorsCBoxPanel.Controls.Add(this.contractorsCBox);
             this.contractorsCBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contractorsCBoxPanel.Location = new System.Drawing.Point(0, 0);
-            this.contractorsCBoxPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.contractorsCBoxPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.contractorsCBoxPanel.Name = "contractorsCBoxPanel";
-            this.contractorsCBoxPanel.Size = new System.Drawing.Size(607, 34);
+            this.contractorsCBoxPanel.Size = new System.Drawing.Size(862, 34);
             this.contractorsCBoxPanel.TabIndex = 16;
-            // 
-            // datesPanel
-            // 
-            this.datesPanel.Controls.Add(this.lblEnds);
-            this.datesPanel.Controls.Add(this.startsDTP);
-            this.datesPanel.Controls.Add(this.lblStarts);
-            this.datesPanel.Controls.Add(this.endsDTP);
-            this.datesPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.datesPanel.Location = new System.Drawing.Point(607, 0);
-            this.datesPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.datesPanel.Name = "datesPanel";
-            this.datesPanel.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.datesPanel.Size = new System.Drawing.Size(255, 34);
-            this.datesPanel.TabIndex = 15;
             // 
             // bottomPanel
             // 
@@ -248,7 +262,7 @@ namespace GMR
             this.bottomPanel.Controls.Add(this.controlBtnsPanel);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel.Location = new System.Drawing.Point(0, 383);
-            this.bottomPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.bottomPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(862, 45);
             this.bottomPanel.TabIndex = 17;
@@ -258,7 +272,7 @@ namespace GMR
             this.personPanel.Controls.Add(this.personNameLabel);
             this.personPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.personPanel.Location = new System.Drawing.Point(0, 0);
-            this.personPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.personPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.personPanel.Name = "personPanel";
             this.personPanel.Size = new System.Drawing.Size(288, 45);
             this.personPanel.TabIndex = 21;
@@ -271,7 +285,7 @@ namespace GMR
             this.controlBtnsPanel.Controls.Add(this.printBtn);
             this.controlBtnsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.controlBtnsPanel.Location = new System.Drawing.Point(289, 0);
-            this.controlBtnsPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.controlBtnsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.controlBtnsPanel.Name = "controlBtnsPanel";
             this.controlBtnsPanel.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.controlBtnsPanel.Size = new System.Drawing.Size(573, 45);
@@ -284,7 +298,7 @@ namespace GMR
             this.closeBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.closeBtn.Location = new System.Drawing.Point(473, 10);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Rounding = 80;
             this.closeBtn.RoundingEnabled = true;
@@ -301,7 +315,7 @@ namespace GMR
             this.addBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.addBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.addBtn.Location = new System.Drawing.Point(7, 10);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addBtn.Name = "addBtn";
             this.addBtn.Rounding = 80;
             this.addBtn.RoundingEnabled = true;
@@ -318,7 +332,7 @@ namespace GMR
             this.deleteBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.deleteBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.deleteBtn.Location = new System.Drawing.Point(111, 10);
-            this.deleteBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Rounding = 80;
             this.deleteBtn.RoundingEnabled = true;
@@ -335,7 +349,7 @@ namespace GMR
             this.printBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.printBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.printBtn.Location = new System.Drawing.Point(205, 10);
-            this.printBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.printBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.printBtn.Name = "printBtn";
             this.printBtn.Rounding = 80;
             this.printBtn.RoundingEnabled = true;
@@ -348,7 +362,7 @@ namespace GMR
             // 
             this.CenterSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CenterSplitContainer.Location = new System.Drawing.Point(0, 34);
-            this.CenterSplitContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.CenterSplitContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CenterSplitContainer.Name = "CenterSplitContainer";
             // 
             // CenterSplitContainer.Panel1
@@ -376,7 +390,7 @@ namespace GMR
             this.transactionsDGVPanel.Controls.Add(this.transactionsDGView);
             this.transactionsDGVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.transactionsDGVPanel.Location = new System.Drawing.Point(0, 0);
-            this.transactionsDGVPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.transactionsDGVPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.transactionsDGVPanel.Name = "transactionsDGVPanel";
             this.transactionsDGVPanel.Size = new System.Drawing.Size(570, 315);
             this.transactionsDGVPanel.TabIndex = 4;
@@ -390,7 +404,7 @@ namespace GMR
             this.totalTransactionsPanel.Controls.Add(this.totalSumTB);
             this.totalTransactionsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 315);
-            this.totalTransactionsPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.totalTransactionsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.totalTransactionsPanel.Name = "totalTransactionsPanel";
             this.totalTransactionsPanel.Size = new System.Drawing.Size(570, 34);
             this.totalTransactionsPanel.TabIndex = 3;
@@ -402,7 +416,7 @@ namespace GMR
             this.totalCurencyTB.Enabled = false;
             this.totalCurencyTB.Font = new System.Drawing.Font("Tahoma", 17F);
             this.totalCurencyTB.Location = new System.Drawing.Point(423, 0);
-            this.totalCurencyTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalCurencyTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.totalCurencyTB.Multiline = true;
             this.totalCurencyTB.Name = "totalCurencyTB";
             this.totalCurencyTB.Size = new System.Drawing.Size(147, 34);
@@ -417,7 +431,7 @@ namespace GMR
             this.totalPriceTB.Enabled = false;
             this.totalPriceTB.Font = new System.Drawing.Font("Tahoma", 17F);
             this.totalPriceTB.Location = new System.Drawing.Point(281, 0);
-            this.totalPriceTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalPriceTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.totalPriceTB.Multiline = true;
             this.totalPriceTB.Name = "totalPriceTB";
             this.totalPriceTB.Size = new System.Drawing.Size(143, 34);
@@ -432,7 +446,7 @@ namespace GMR
             this.totalTransactionTB.Enabled = false;
             this.totalTransactionTB.Font = new System.Drawing.Font("Tahoma", 17F);
             this.totalTransactionTB.Location = new System.Drawing.Point(142, 0);
-            this.totalTransactionTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalTransactionTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.totalTransactionTB.Multiline = true;
             this.totalTransactionTB.Name = "totalTransactionTB";
             this.totalTransactionTB.Size = new System.Drawing.Size(142, 35);
@@ -447,7 +461,7 @@ namespace GMR
             this.totalSumTB.Enabled = false;
             this.totalSumTB.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.totalSumTB.Location = new System.Drawing.Point(0, 0);
-            this.totalSumTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalSumTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.totalSumTB.Multiline = true;
             this.totalSumTB.Name = "totalSumTB";
             this.totalSumTB.Size = new System.Drawing.Size(142, 35);
@@ -462,13 +476,13 @@ namespace GMR
             this.renameContractorToolStripMenuItem,
             this.removeContractorToolStripMenuItem});
             this.contractorContextMenu.Name = "contractorContextMenu";
-            this.contractorContextMenu.Size = new System.Drawing.Size(236, 92);
+            this.contractorContextMenu.Size = new System.Drawing.Size(237, 70);
             // 
             // addTransactionsToolStripMenuItem
             // 
             this.addTransactionsToolStripMenuItem.Name = "addTransactionsToolStripMenuItem";
             this.addTransactionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.addTransactionsToolStripMenuItem.Text = "Добавить транзакцию";
             this.addTransactionsToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionsToolStripMenuItem_Click);
             // 
@@ -476,7 +490,7 @@ namespace GMR
             // 
             this.renameContractorToolStripMenuItem.Name = "renameContractorToolStripMenuItem";
             this.renameContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.renameContractorToolStripMenuItem.Text = "Переименовать";
             this.renameContractorToolStripMenuItem.Click += new System.EventHandler(this.RenameContractorToolStripMenuItem_Click);
             // 
@@ -484,9 +498,42 @@ namespace GMR
             // 
             this.removeContractorToolStripMenuItem.Name = "removeContractorToolStripMenuItem";
             this.removeContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.removeContractorToolStripMenuItem.Text = "Удалить";
             this.removeContractorToolStripMenuItem.Click += new System.EventHandler(this.RemoveContractorToolStripMenuItem_Click);
+            // 
+            // userAccountToolStrip
+            // 
+            this.userAccountToolStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userAccountToolStripOne});
+            this.userAccountToolStrip.Image = global::GMR.Properties.Resources.Account4;
+            this.userAccountToolStrip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.userAccountToolStrip.Name = "userAccountToolStrip";
+            this.userAccountToolStrip.Size = new System.Drawing.Size(106, 32);
+            this.userAccountToolStrip.Text = "Hello World";
+            this.userAccountToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            // 
+            // userAccountToolStripOne
+            // 
+            this.userAccountToolStripOne.Name = "userAccountToolStripOne";
+            this.userAccountToolStripOne.Size = new System.Drawing.Size(180, 22);
+            this.userAccountToolStripOne.Text = "w";
+            // 
+            // userAccountMenuStrip
+            // 
+            this.userAccountMenuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.userAccountMenuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.userAccountMenuStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userAccountMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.userAccountMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userAccountToolStrip});
+            this.userAccountMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.userAccountMenuStrip.Name = "userAccountMenuStrip";
+            this.userAccountMenuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.userAccountMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.userAccountMenuStrip.Size = new System.Drawing.Size(112, 34);
+            this.userAccountMenuStrip.TabIndex = 0;
+            this.userAccountMenuStrip.Text = "Hello World";
             // 
             // MainForm
             // 
@@ -496,7 +543,8 @@ namespace GMR
             this.Controls.Add(this.CenterSplitContainer);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.topPanel);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MainMenuStrip = this.userAccountMenuStrip;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Просмотр";
@@ -506,9 +554,11 @@ namespace GMR
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).EndInit();
             this.topPanel.ResumeLayout(false);
-            this.contractorsCBoxPanel.ResumeLayout(false);
             this.datesPanel.ResumeLayout(false);
             this.datesPanel.PerformLayout();
+            this.userAccountMenuPanel.ResumeLayout(false);
+            this.userAccountMenuPanel.PerformLayout();
+            this.contractorsCBoxPanel.ResumeLayout(false);
             this.bottomPanel.ResumeLayout(false);
             this.personPanel.ResumeLayout(false);
             this.personPanel.PerformLayout();
@@ -521,6 +571,8 @@ namespace GMR
             this.totalTransactionsPanel.ResumeLayout(false);
             this.totalTransactionsPanel.PerformLayout();
             this.contractorContextMenu.ResumeLayout(false);
+            this.userAccountMenuStrip.ResumeLayout(false);
+            this.userAccountMenuStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -538,7 +590,6 @@ namespace GMR
         private System.Windows.Forms.Panel topPanel;
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.SplitContainer CenterSplitContainer;
-        private System.Windows.Forms.Panel datesPanel;
         private System.Windows.Forms.Panel contractorsCBoxPanel;
         private Controls.GMRButton addBtn;
         private Controls.GMRButton closeBtn;
@@ -556,5 +607,10 @@ namespace GMR
         private System.Windows.Forms.ToolStripMenuItem addTransactionsToolStripMenuItem;
         private ToolStripMenuItem renameContractorToolStripMenuItem;
         private ToolStripMenuItem removeContractorToolStripMenuItem;
+        private Panel datesPanel;
+        private Panel userAccountMenuPanel;
+        private MenuStrip userAccountMenuStrip;
+        private ToolStripMenuItem userAccountToolStrip;
+        private ToolStripMenuItem userAccountToolStripOne;
     }
 }
