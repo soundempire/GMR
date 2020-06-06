@@ -108,7 +108,7 @@ namespace GMR
                     this.Hide();// TODO: change it in future
                     if (mainForm.ShowDialog() == DialogResult.OK)
                     {
-                        loginTB.Text = passwordTB.Text = string.Empty; //TODO: not working
+                        loginTB.TextInput = passwordTB.TextInput = string.Empty; //TODO: not working correctly
                         Show();// TODO: change it in future
                     }
                 }
