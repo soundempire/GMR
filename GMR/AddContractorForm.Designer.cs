@@ -158,6 +158,7 @@
             this.transactionPriceTBox.Name = "transactionPriceTBox";
             this.transactionPriceTBox.Size = new System.Drawing.Size(204, 24);
             this.transactionPriceTBox.TabIndex = 2;
+            this.transactionPriceTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // transactionValueTBox
             // 
@@ -167,6 +168,7 @@
             this.transactionValueTBox.Name = "transactionValueTBox";
             this.transactionValueTBox.Size = new System.Drawing.Size(204, 24);
             this.transactionValueTBox.TabIndex = 1;
+            this.transactionValueTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // transactionCurrencyTBox
             // 
@@ -176,6 +178,7 @@
             this.transactionCurrencyTBox.Size = new System.Drawing.Size(204, 24);
             this.transactionCurrencyTBox.TabIndex = 0;
             this.transactionCurrencyTBox.TextChanged += new System.EventHandler(this.TransactionCurrencyTBox_TextChanged);
+            this.transactionCurrencyTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // currentUserPanel
             // 

@@ -13,7 +13,6 @@ using System.Windows.Forms;
 
 namespace GMR
 {
-    //TODO: Vadim add user account menu (UI only) first order
     //TODO: Vadim add GMR icon to app header 
     public partial class MainForm : Form
     {
@@ -27,12 +26,9 @@ namespace GMR
 
         private bool _contractorsCBoxValueSelected = false;
 
-        private const string allContractorsValue = "Все";
+        private bool _isSignOut;
 
-        //TODO: Vadim if not use - delete
-        private const double minMultiplierOfLeftSidePanels = 0.3;
-        //TODO: Vadim if not use - delete
-        private const double minMultiplierOfRightSidePanels = 0.3;
+        private const string allContractorsValue = "Все";
 
         public MainForm(IContractorService contractorService, ITransactionService transactionService)
         {
@@ -48,11 +44,12 @@ namespace GMR
         {
             await LoadFormDataAsync();
 
-            personNameLabel.Text = Session.Person.FullName;
+            userAccountToolStrip.Text = Session.Person.FullName;
+
             SetFormsSizes();
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) => CloseForm();
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) => CloseForm(e);
 
         private void MainForm_Resize(object sender, EventArgs e) => SetFormsSizes();
 
@@ -186,13 +183,17 @@ namespace GMR
 
         #endregion
 
-        #region PersonNameLabel EventHandlers
+        #region AccountMenu EventHandlers
 
-        private void PersonNameLabel_DoubleClick(object sender, EventArgs e) => DIContainer.Resolve<UserAccountForm>().ShowDialog();
+        private void AccountSettingsMenuItem_Click(object sender, EventArgs e) => DIContainer.Resolve<UserAccountForm>().ShowDialog();
 
-        private void PersonNameLabel_MouseEnter(object sender, EventArgs e) => personNameLabel.ForeColor = Color.ForestGreen;
+        private void CloseMenuItem_Click(object sender, EventArgs e) => CloseForm();
 
-        private void PersonNameLabel_MouseLeave(object sender, EventArgs e) => personNameLabel.ForeColor = SystemColors.ControlText;
+        private void SignOutMenuItem_Click(object sender, EventArgs e)
+        {
+            _isSignOut = true;
+            DialogResult = DialogResult.OK;
+        }
 
         #endregion
 
@@ -226,10 +227,10 @@ namespace GMR
 
         #region Control buttons EventHandlers
 
-        private async void AddBtn_Click(object sender, System.EventArgs e)
+        private async void AddBtn_Click(object sender, EventArgs e)
             => await AddTransactionsAsync();
 
-        private void CloseBtn_Click(object sender, System.EventArgs e) => CloseForm();
+        private void CloseBtn_Click(object sender, EventArgs e) => CloseForm();
 
         private async void DeleteBtn_Click(object sender, EventArgs e) => await RemoveSelectedTransactionsAsync();
 
@@ -253,12 +254,28 @@ namespace GMR
             }
         }
 
-        private void CloseForm()
+        private void CloseForm(CancelEventArgs eventArgs = null)
         {
-            (_contractorService as IDisposable).Dispose();
-            (_transactionService as IDisposable).Dispose();
+            if (_isSignOut)
+            {
+                (_contractorService as IDisposable).Dispose();
+                (_transactionService as IDisposable).Dispose();
 
-            Application.Exit();// think about it
+                return;
+            }
+
+            //TODO: double call issue
+            if (MessageBox.Show("Вы действительно хотите закрыть приложение?", "Закрытие", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                (_contractorService as IDisposable).Dispose();
+                (_transactionService as IDisposable).Dispose();
+
+                Application.Exit();// think about it
+            }
+            else if (eventArgs != null)
+            {
+                eventArgs.Cancel = true;
+            }
         }
 
         private async Task LoadFormDataAsync() //TODO: change name

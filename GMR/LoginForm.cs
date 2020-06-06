@@ -105,9 +105,12 @@ namespace GMR
                 {
                     Session.Person = person;
                     MainForm mainForm = DIContainer.Resolve<MainForm>();
-                    mainForm.Show();
-
                     this.Hide();// TODO: change it in future
+                    if (mainForm.ShowDialog() == DialogResult.OK)
+                    {
+                        loginTB.Text = passwordTB.Text = string.Empty; //TODO: not working
+                        Show();// TODO: change it in future
+                    }
                 }
                 else
                 {
