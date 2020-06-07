@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using System.Linq;
 
-namespace GMR.AppCode.LayoutRoot
+namespace GMR
 {
     internal static class DIContainer
     {

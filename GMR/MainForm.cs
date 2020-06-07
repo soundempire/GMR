@@ -1,8 +1,4 @@
-﻿using GMR.AppCode.LayoutRoot;
-using GMR.BLL.Abstractions.Models;
-using GMR.BLL.Abstractions.Services;
-using GMR.Controls.ServiceClass;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -10,6 +6,11 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GMR;
+using GMR.BLL.Abstractions.Models;
+using GMR.BLL.Abstractions.Services;
+using GMR.Controls.ServiceClass;
+using Context = GMR.ApplicationContext;
 
 namespace GMR
 {
@@ -42,7 +43,7 @@ namespace GMR
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            await LoadFormDataAsync();
+            await LoadContractorsAsync();
 
             userAccountToolStrip.Text = Session.Person.FullName;
 
@@ -129,7 +130,7 @@ namespace GMR
         {
             if (e.ColumnIndex < 0 && e.RowIndex < 0)
             {
-                await LoadFormDataAsync();
+                await LoadContractorsAsync();
             }
             else
             {
@@ -271,12 +272,12 @@ namespace GMR
                 }
                 else
                 {
-                    await LoadFormDataAsync();
+                    await LoadContractorsAsync();
                 }
             }
         }
 
-        private async Task LoadFormDataAsync() //TODO: change name
+        private async Task LoadContractorsAsync()
         {
             var contractorNames = await BindContractorsToDataGridViewAsync(allContractorsValue);
 
@@ -295,7 +296,7 @@ namespace GMR
                 foreach (var id in ids)
                     await _contractorService.RemoveContractorAsync(id);
 
-                await LoadFormDataAsync();
+                await LoadContractorsAsync();
                 return true;
             }
 

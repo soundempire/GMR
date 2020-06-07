@@ -105,7 +105,7 @@
     <Compile Include="AppCode\LayoutRoot\DIContainer.cs" />
     <Compile Include="AppCode\LayoutRoot\Parameter.cs" />
     <Compile Include="AppCode\SortableBindingList.cs" />
-    <Compile Include="AppCode\Context.cs" />
+    <Compile Include="AppCode\ApplicationContext.cs" />
     <Compile Include="ImportMasterForm.cs">
       <SubType>Form</SubType>
     </Compile>

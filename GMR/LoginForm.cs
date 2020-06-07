@@ -3,9 +3,10 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GMR.Animation.Animation;
-using GMR.AppCode.LayoutRoot;
+using GMR;
 using GMR.BLL.Abstractions.Models;
 using GMR.BLL.Abstractions.Services;
+using Context = GMR.ApplicationContext;
 
 namespace GMR
 {

@@ -2,9 +2,9 @@
 
 namespace GMR
 {
-    internal static class Context
+    internal static class ApplicationContext
     {
-        public static ApplicationContext MainContext { get; } = new ApplicationContext();
+        public static System.Windows.Forms.ApplicationContext MainContext { get; } = new System.Windows.Forms.ApplicationContext();
 
         public static void SetExecutableForm(Form form) => MainContext.MainForm = form;
 

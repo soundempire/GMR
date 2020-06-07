@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using GMR.AppCode.LayoutRoot;
+using GMR;
+using Context = GMR.ApplicationContext;
 
 namespace GMR
 {

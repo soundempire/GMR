@@ -3,7 +3,6 @@ using GMR.BLL.Abstractions.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GMR.BLL.Services
@@ -49,15 +48,10 @@ namespace GMR.BLL.Services
                             continue;
                         }
                     }
-                    
-                    if (potentialContractors.Any(x => x.IsValid && x.ContractorID == contractor.ContractorID && x.Transactions.Contains(transaction)))
-                        potentialContractors.Add(new PotentialContractorModel { Error = "Контрагент с такой транзакцией уже присутствует в файле импорта." });
-                    else
-                    {
-                        var potentialContractorModel = Mapper.Map<ContractorModel, PotentialContractorModel>(contractor);
-                        potentialContractorModel.PersonID = personId;
-                        potentialContractors.Add(potentialContractorModel);
-                    }
+
+                    var potentialContractorModel = Mapper.Map<ContractorModel, PotentialContractorModel>(contractor);
+                    potentialContractorModel.PersonID = personId;
+                    potentialContractors.Add(potentialContractorModel);
                 }
 
                 var validPotentialContractors = potentialContractors.Where(_ => _.IsValid);

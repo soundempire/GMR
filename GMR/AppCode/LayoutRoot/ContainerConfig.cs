@@ -6,7 +6,7 @@ using GMR.DAL.Abstractions.Entities;
 using GMR.DAL.Context;
 using GMR.DAL.Repositories;
 
-namespace GMR.AppCode.LayoutRoot
+namespace GMR
 {
     internal static class ContainerConfig
     {

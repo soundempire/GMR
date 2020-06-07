@@ -1,4 +1,4 @@
-﻿namespace GMR.AppCode.LayoutRoot
+﻿namespace GMR
 {
     internal class Parameter
     {
