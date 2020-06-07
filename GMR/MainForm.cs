@@ -1,7 +1,7 @@
-﻿using GMR.BLL.Abstractions.Models;
+﻿using GMR.AppCode.LayoutRoot;
+using GMR.BLL.Abstractions.Models;
 using GMR.BLL.Abstractions.Services;
 using GMR.Controls.ServiceClass;
-using GMR.LayoutRoot;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,7 +49,29 @@ namespace GMR
             SetFormsSizes();
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) => CloseForm(e);
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_isSignOut)
+            {
+                (_contractorService as IDisposable).Dispose();
+                (_transactionService as IDisposable).Dispose();
+
+                Context.SetExecutableForm(DIContainer.Resolve<LoginForm>());
+                Context.ShowExecutableForm();
+
+                return;
+            }
+
+            if (MessageBox.Show("Вы действительно хотите закрыть приложение?", "Закрытие", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+                == DialogResult.OK)
+            {
+                (_contractorService as IDisposable).Dispose();
+                (_transactionService as IDisposable).Dispose();
+            }
+            else
+                e.Cancel = true;
+
+        }
 
         private void MainForm_Resize(object sender, EventArgs e) => SetFormsSizes();
 
@@ -187,12 +209,12 @@ namespace GMR
 
         private void AccountSettingsMenuItem_Click(object sender, EventArgs e) => DIContainer.Resolve<UserAccountForm>().ShowDialog();
 
-        private void CloseMenuItem_Click(object sender, EventArgs e) => CloseForm();
+        private void CloseMenuItem_Click(object sender, EventArgs e) => Close();
 
         private void SignOutMenuItem_Click(object sender, EventArgs e)
         {
             _isSignOut = true;
-            DialogResult = DialogResult.OK;
+            Close();
         }
 
         #endregion
@@ -230,7 +252,7 @@ namespace GMR
         private async void AddBtn_Click(object sender, EventArgs e)
             => await AddTransactionsAsync();
 
-        private void CloseBtn_Click(object sender, EventArgs e) => CloseForm();
+        private void CloseBtn_Click(object sender, EventArgs e) => Close();
 
         private async void DeleteBtn_Click(object sender, EventArgs e) => await RemoveSelectedTransactionsAsync();
 
@@ -252,30 +274,6 @@ namespace GMR
                     await LoadFormDataAsync();
                 }
             }
-        }
-
-        private void CloseForm(FormClosingEventArgs eventArgs = null)
-        {
-            if (_isSignOut)
-            {
-                (_contractorService as IDisposable).Dispose();
-                (_transactionService as IDisposable).Dispose();
-
-                return;
-            }
-
-            if (eventArgs?.CloseReason == CloseReason.ApplicationExitCall)
-                return;
-
-            if (MessageBox.Show("Вы действительно хотите закрыть приложение?", "Закрытие", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                (_contractorService as IDisposable).Dispose();
-                (_transactionService as IDisposable).Dispose();
-
-                Application.Exit();// think about it
-            }
-            else if (eventArgs != null)
-                eventArgs.Cancel = true;
         }
 
         private async Task LoadFormDataAsync() //TODO: change name

@@ -1,17 +1,11 @@
-﻿using GMR.DAL.Context;
-using GMR.DAL.Repositories;
-using System;
+﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
-using GMR.BLL.Services;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using GMR.Animation.Animation;
-using GMR.BLL;
-using AutoMapper;
-using GMR.BLL.Abstractions.Services;
-using GMR.LayoutRoot;
-using System.Threading;
+using GMR.AppCode.LayoutRoot;
 using GMR.BLL.Abstractions.Models;
+using GMR.BLL.Abstractions.Services;
 
 namespace GMR
 {
@@ -104,13 +98,11 @@ namespace GMR
                 if (person != null)
                 {
                     Session.Person = person;
-                    MainForm mainForm = DIContainer.Resolve<MainForm>();
-                    this.Hide();// TODO: change it in future
-                    if (mainForm.ShowDialog() == DialogResult.OK)
-                    {
-                        loginTB.TextInput = passwordTB.TextInput = string.Empty; //TODO: not working correctly
-                        Show();// TODO: change it in future
-                    }
+
+                    Context.SetExecutableForm(DIContainer.Resolve<MainForm>());
+                    Context.ShowExecutableForm();
+
+                    Close();
                 }
                 else
                 {
@@ -124,7 +116,7 @@ namespace GMR
             }
         }
 
-        private void CloseBtn_Click(object sender, EventArgs e) => Application.Exit();
+        private void CloseBtn_Click(object sender, EventArgs e) => Close();
 
         #endregion
 

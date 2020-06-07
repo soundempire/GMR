@@ -5,24 +5,9 @@ using GMR.DAL.Abstractions;
 using GMR.DAL.Abstractions.Entities;
 using GMR.DAL.Context;
 using GMR.DAL.Repositories;
-using System.Linq;
 
-namespace GMR.LayoutRoot
+namespace GMR.AppCode.LayoutRoot
 {
-    internal class Parameter
-    {
-        public string Name { get; set; }
-
-        public object Value { get; set; }
-    }
-
-    internal static class DIContainer
-    {
-        public static ILifetimeScope Scope { get; set; }
-
-        public static T Resolve<T>(params Parameter[] args) => Scope.Resolve<T>(args.Select(_ => new NamedParameter(_.Name, _.Value)));
-    }
-
     internal static class ContainerConfig
     {
         public static IContainer Configure()
@@ -53,4 +38,3 @@ namespace GMR.LayoutRoot
         }
     }
 }
-

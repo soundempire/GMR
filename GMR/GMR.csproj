@@ -101,14 +101,17 @@
       <DependentUpon>AddContractorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppCode\ImportResult.cs" />
+    <Compile Include="AppCode\LayoutRoot\ContainerConfig.cs" />
+    <Compile Include="AppCode\LayoutRoot\DIContainer.cs" />
+    <Compile Include="AppCode\LayoutRoot\Parameter.cs" />
     <Compile Include="AppCode\SortableBindingList.cs" />
+    <Compile Include="AppCode\Context.cs" />
     <Compile Include="ImportMasterForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ImportMasterForm.Designer.cs">
       <DependentUpon>ImportMasterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LayoutRoot.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,7 +124,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mapper.cs" />
+    <Compile Include="AppCode\Mapper.cs" />
     <Compile Include="Models\ImportContractorViewModel.cs" />
     <Compile Include="Models\UpdatePasswordViewModel.cs" />
     <Compile Include="Models\UpdatePersonViewModel.cs" />
@@ -132,7 +135,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Session.cs" />
+    <Compile Include="AppCode\Session.cs" />
     <Compile Include="UserAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,7 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\load.gif" />
-  </ItemGroup> 
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Account4.png" />
   </ItemGroup>
