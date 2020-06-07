@@ -119,7 +119,7 @@ namespace GMR
         private async void ContractorsDGView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //TODO: Vadim think about userfriendly header width
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left && contractorsDGView.SelectedRows.Count == 1)
                 await BindTransactionsToDataGridViewAsync();
         }
 
@@ -254,7 +254,7 @@ namespace GMR
             }
         }
 
-        private void CloseForm(CancelEventArgs eventArgs = null)
+        private void CloseForm(FormClosingEventArgs eventArgs = null)
         {
             if (_isSignOut)
             {
@@ -264,7 +264,9 @@ namespace GMR
                 return;
             }
 
-            //TODO: double call issue
+            if (eventArgs?.CloseReason == CloseReason.ApplicationExitCall)
+                return;
+
             if (MessageBox.Show("Вы действительно хотите закрыть приложение?", "Закрытие", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 (_contractorService as IDisposable).Dispose();
@@ -273,9 +275,7 @@ namespace GMR
                 Application.Exit();// think about it
             }
             else if (eventArgs != null)
-            {
                 eventArgs.Cancel = true;
-            }
         }
 
         private async Task LoadFormDataAsync() //TODO: change name
