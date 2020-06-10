@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="AppCode\Mapper.cs" />
     <Compile Include="Models\ImportContractorViewModel.cs" />
+    <Compile Include="Models\LanguageViewModel.cs" />
     <Compile Include="Models\UpdatePasswordViewModel.cs" />
     <Compile Include="Models\UpdatePersonViewModel.cs" />
     <Compile Include="Program.cs" />

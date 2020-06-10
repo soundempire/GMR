@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GMR.BLL.Abstractions.Models
+namespace GMR.BLL
 {
     public class PasswordModel : ICloneable
     {

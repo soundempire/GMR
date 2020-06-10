@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GMR.Animation.Animation;
 using GMR;
-using GMR.BLL.Abstractions.Models;
-using GMR.BLL.Abstractions.Services;
+using GMR.BLL;
 using Context = GMR.ApplicationContext;
 
 namespace GMR

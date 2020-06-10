@@ -1,6 +1,5 @@
 ﻿using GMR;
-using GMR.BLL.Abstractions.Models;
-using GMR.BLL.Abstractions.Services;
+using GMR.BLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;

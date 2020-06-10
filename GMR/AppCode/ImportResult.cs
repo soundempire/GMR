@@ -1,4 +1,4 @@
-﻿using GMR.BLL.Abstractions.Models;
+﻿using GMR.BLL;
 using System.Collections.Generic;
 
 namespace GMR

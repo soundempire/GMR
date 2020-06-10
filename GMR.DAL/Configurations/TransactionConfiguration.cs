@@ -1,5 +1,4 @@
-﻿using GMR.DAL.Abstractions.Entities;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 
 namespace GMR.DAL.Configurations
 {

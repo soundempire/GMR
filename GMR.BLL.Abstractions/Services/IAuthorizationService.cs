@@ -1,7 +1,6 @@
-﻿using GMR.BLL.Abstractions.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace GMR.BLL.Abstractions.Services
+namespace GMR.BLL
 {
     public interface IAuthorizationService
     {

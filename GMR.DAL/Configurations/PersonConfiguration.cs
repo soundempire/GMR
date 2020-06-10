@@ -1,5 +1,4 @@
-﻿using GMR.DAL.Abstractions.Entities;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 
 namespace GMR.DAL.Configurations
 {
@@ -9,6 +8,7 @@ namespace GMR.DAL.Configurations
         {        
             Property(p => p.FirstName).IsRequired().HasMaxLength(50);
             Property(p => p.LastName).IsRequired().HasMaxLength(50);
+            Property(p => p.Language).IsRequired().HasMaxLength(10).HasColumnType("varchar");
             Property(p => p.Phone).IsRequired().HasMaxLength(12).IsFixedLength().HasColumnType("varchar");
         }
     }

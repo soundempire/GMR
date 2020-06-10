@@ -1,5 +1,4 @@
-﻿using GMR.DAL.Abstractions.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
@@ -9,9 +8,9 @@ namespace GMR.DAL.Context
     {
         protected override void Seed(GMRContext context)
         {
-            var admin = new Person() { FirstName = "admin", LastName = "admin", Company = "admin", Country = "Беларусь", ID = 1, Phone = "123123123123" };
-            var abrazumovaPerson = new Person() { FirstName = "Л.Б.", LastName = "Абразумова", Company = "ИП", Country = "Беларусь", ID = 2, Phone = "123123123123" };
-            var avdejPerson = new Person() { FirstName = "М.Г.", LastName = "Авдей", Company = "ИП", Country = "Беларусь", ID = 3, Phone = "123123123123" };
+            var admin = new Person() { FirstName = "admin", LastName = "admin", Company = "admin", Country = "Беларусь", ID = 1, Phone = "123123123123", Language = "ru" };
+            var abrazumovaPerson = new Person() { FirstName = "Л.Б.", LastName = "Абразумова", Company = "ИП", Country = "Беларусь", ID = 2, Phone = "123123123123", Language = "ru" };
+            var avdejPerson = new Person() { FirstName = "М.Г.", LastName = "Авдей", Company = "ИП", Country = "Беларусь", ID = 3, Phone = "123123123123", Language = "ru" };
 
             context.Persons.AddRange(new List<Person>() { abrazumovaPerson, admin, avdejPerson });
 

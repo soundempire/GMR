@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GMR.BLL.Abstractions.Models;
+using GMR.BLL;
 using GMR.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +17,7 @@ namespace GMR
         {
             _mapper = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<LanguageModel, LanguageViewModel>();
                 cfg.CreateMap<PersonModel, UpdatePersonViewModel>();
                 cfg.CreateMap<PasswordModel, UpdatePasswordViewModel>();
                 cfg.CreateMap<ContractorModel, ImportContractorViewModel>()
@@ -25,6 +26,7 @@ namespace GMR
                    .ForMember(x => x.Price, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Price))
                    .ForMember(x => x.Currency, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Currency));
 
+                cfg.CreateMap<LanguageViewModel, LanguageModel>();
                 cfg.CreateMap<UpdatePersonViewModel, PersonModel>();
                 cfg.CreateMap<UpdatePasswordViewModel, PasswordModel>()
                    .ForMember(x => x.Value, op => op.MapFrom(y => y.NewValue))

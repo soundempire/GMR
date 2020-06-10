@@ -12,11 +12,14 @@ namespace GMR.Models
         public long ID { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string FirstName { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string LastName { get; set; }
 
+        [Required]
         public UpdatePasswordViewModel Password { get; set; }
 
         public string Country { get; set; }
@@ -24,6 +27,10 @@ namespace GMR.Models
         public string Company { get; set; }
 
         [Required]
+        public LanguageViewModel Language { get; set; }
+
+        [Required]
+        [MaxLength(12)]
         public string Phone { get; set; }
     }
 }

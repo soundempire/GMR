@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using GMR.BLL.Abstractions.Models;
-using GMR.DAL.Abstractions.Entities;
+using GMR.DAL;
 
 namespace GMR.BLL
 {
@@ -12,7 +11,8 @@ namespace GMR.BLL
         {
             _mapper = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Person, PersonModel>();
+                cfg.CreateMap<Person, PersonModel>()
+                    .ForMember(x => x.Language, op => op.MapFrom(y => new LanguageModel() { Id = y.Language }));
                 cfg.CreateMap<Password, PasswordModel>();
                 cfg.CreateMap<Transaction, TransactionModel>();
                 cfg.CreateMap<Contractor, ContractorModel>();
@@ -21,7 +21,8 @@ namespace GMR.BLL
                 cfg.CreateMap<PasswordModel, Password>();
                 cfg.CreateMap<TransactionModel, Transaction>();
                 cfg.CreateMap<ContractorModel, Contractor>();
-                cfg.CreateMap<PersonModel, Person>();
+                cfg.CreateMap<PersonModel, Person>()
+                    .ForMember(x => x.Language, op => op.MapFrom(y => y.Language.Id));
                 cfg.CreateMap<PotentialContractorModel, ContractorModel>();
             }).CreateMapper();
         }

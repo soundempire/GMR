@@ -1,5 +1,4 @@
-﻿using GMR.BLL.Abstractions.Models;
-using GMR.BLL.Abstractions.Services;
+﻿using GMR.BLL;
 using GMR.Models;
 using System;
 using System.Collections.Generic;
@@ -21,8 +20,6 @@ namespace GMR
         private List<TextBox> _userInputTextBoxes;
 
         private List<TextBox> _passwordInputTextBoxes;
-
-        private UpdatePersonViewModel _viewModel;
 
         public UserAccountForm(IPersonService personService)
         {
@@ -49,24 +46,29 @@ namespace GMR
 
         private async void saveBtn_Click(object sender, EventArgs e)
         {
-            _viewModel.FirstName = firstNameTBox.Text;
-            _viewModel.LastName = lastNameTBox.Text;
-            _viewModel.Country = countryTBox.Text;
-            _viewModel.Company = companyTBox.Text;
-            _viewModel.Phone = phoneTBox.Text;
+            var viewModel = new UpdatePersonViewModel()
+            {
+                FirstName = firstNameTBox.Text,
+                LastName = lastNameTBox.Text,
+                Country = countryTBox.Text,
+                Company = companyTBox.Text,
+                Phone = phoneTBox.Text,
+                Password = new UpdatePasswordViewModel()
+                {
+                    Login = loginTBox.Text,
+                    OldValue = oldPasswordTBox.Text,
+                    NewValue = newPasswordTBox.Text,
+                    ConfirmValue = confirmPasswordTBox.Text
+                }
+            };           
 
-            _viewModel.Password.Login = loginTBox.Text;
-            _viewModel.Password.OldValue = oldPasswordTBox.Text;
-            _viewModel.Password.NewValue = newPasswordTBox.Text;
-            _viewModel.Password.ConfirmValue = confirmPasswordTBox.Text;
-
-            if (ValidateModel())
+            if (ValidateModel(viewModel))
             {
                 
             }
             else
             {
-                _viewModel = Mapper.Map<PersonModel, UpdatePersonViewModel>(Session.Person);
+                viewModel = Mapper.Map<PersonModel, UpdatePersonViewModel>(Session.Person);
             }
             //var userClone = (PersonModel)Session.Person.Clone();
 
@@ -84,29 +86,27 @@ namespace GMR
 
         private void SetCurrentUserValues()
         {
-            _viewModel = Mapper.Map<PersonModel, UpdatePersonViewModel>(Session.Person);
+            var viewModel = Mapper.Map<PersonModel, UpdatePersonViewModel>(Session.Person);
 
-            firstNameTBox.Text = _viewModel.FirstName;
-            lastNameTBox.Text = _viewModel.LastName;
-            countryTBox.Text = _viewModel.Country;
-            companyTBox.Text = _viewModel.Company;
-            phoneTBox.Text = _viewModel.Phone;
-            loginTBox.Text = _viewModel.Password.Login;
+            firstNameTBox.Text = viewModel.FirstName;
+            lastNameTBox.Text = viewModel.LastName;
+            countryTBox.Text = viewModel.Country;
+            companyTBox.Text = viewModel.Company;
+            phoneTBox.Text = viewModel.Phone;
+            loginTBox.Text = viewModel.Password.Login;
         }
 
         private void UserAccountForm_FormClosing(object sender, FormClosingEventArgs e)
             => (_personService as IDisposable).Dispose();
 
-        private bool ValidateModel()
+        private bool ValidateModel(UpdatePersonViewModel viewModel)
         {
             var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(_viewModel, new ValidationContext(_viewModel), results, true) &
-            Validator.TryValidateObject(_viewModel.Password, new ValidationContext(_viewModel.Password), results, true);
+            var isValid = Validator.TryValidateObject(viewModel, new ValidationContext(viewModel), results, true) &
+            Validator.TryValidateObject(viewModel.Password, new ValidationContext(viewModel.Password), results, true);
 
             if (isValid)
                 return true;
-
-
 
             return false;
         }
@@ -129,5 +129,17 @@ namespace GMR
                 });
             } 
         }
+
+        private void FirstNameTBox_TextChanged(object sender, EventArgs e)
+            => errorFirstNameLabel.Visible = string.IsNullOrEmpty((sender as TextBox).Text);
+
+        private void LastNameTBox_TextChanged(object sender, EventArgs e)
+            => errorLastNameLabel.Visible = string.IsNullOrEmpty((sender as TextBox).Text);
+
+        private void PhoneTBox_TextChanged(object sender, EventArgs e)
+            => errorPhoneLabel.Visible = string.IsNullOrEmpty((sender as TextBox).Text);
+
+        private void LoginTBox_TextChanged(object sender, EventArgs e)
+            => errorLoginLabel.Visible = string.IsNullOrEmpty((sender as TextBox).Text);
     }
 }

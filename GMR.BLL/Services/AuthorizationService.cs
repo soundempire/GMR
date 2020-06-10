@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using GMR.BLL.Abstractions.Services;
-using GMR.BLL.Abstractions.Models;
 
 namespace GMR.BLL.Services
 {

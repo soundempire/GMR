@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GMR.BLL.Abstractions.Models
+namespace GMR.BLL
 {
     public class PersonModel : ICloneable
     {
@@ -20,10 +20,13 @@ namespace GMR.BLL.Abstractions.Models
 
         public string Phone { get; set; }
 
+        public LanguageModel Language { get; set; }
+
         public object Clone()
         {
             var clone = (PersonModel)MemberwiseClone();
             clone.Password = (PasswordModel)clone.Password.Clone();
+            clone.Language = (LanguageModel)clone.Language.Clone();
 
             return clone;
         }

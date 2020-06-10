@@ -59,6 +59,8 @@
             this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
             this.passwordPanel = new System.Windows.Forms.Panel();
             this.updatePasswordChBox = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.userProfilePanel.SuspendLayout();
             this.changeProfilePanel.SuspendLayout();
             this.passwordPanel.SuspendLayout();
@@ -122,6 +124,7 @@
             this.firstNameTBox.Name = "firstNameTBox";
             this.firstNameTBox.Size = new System.Drawing.Size(196, 23);
             this.firstNameTBox.TabIndex = 5;
+            this.firstNameTBox.TextChanged += new System.EventHandler(this.FirstNameTBox_TextChanged);
             // 
             // lastNameTBox
             // 
@@ -131,6 +134,7 @@
             this.lastNameTBox.Name = "lastNameTBox";
             this.lastNameTBox.Size = new System.Drawing.Size(196, 23);
             this.lastNameTBox.TabIndex = 6;
+            this.lastNameTBox.TextChanged += new System.EventHandler(this.LastNameTBox_TextChanged);
             // 
             // countryTBox
             // 
@@ -158,10 +162,13 @@
             this.phoneTBox.Name = "phoneTBox";
             this.phoneTBox.Size = new System.Drawing.Size(196, 23);
             this.phoneTBox.TabIndex = 9;
+            this.phoneTBox.TextChanged += new System.EventHandler(this.PhoneTBox_TextChanged);
             // 
             // userProfilePanel
             // 
             this.userProfilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.userProfilePanel.Controls.Add(this.comboBox1);
+            this.userProfilePanel.Controls.Add(this.label10);
             this.userProfilePanel.Controls.Add(this.errorLoginLabel);
             this.userProfilePanel.Controls.Add(this.errorPhoneLabel);
             this.userProfilePanel.Controls.Add(this.errorLastNameLabel);
@@ -180,7 +187,7 @@
             this.userProfilePanel.Controls.Add(this.label5);
             this.userProfilePanel.Location = new System.Drawing.Point(12, 12);
             this.userProfilePanel.Name = "userProfilePanel";
-            this.userProfilePanel.Size = new System.Drawing.Size(345, 310);
+            this.userProfilePanel.Size = new System.Drawing.Size(345, 342);
             this.userProfilePanel.TabIndex = 10;
             // 
             // errorLoginLabel
@@ -192,6 +199,7 @@
             this.errorLoginLabel.Size = new System.Drawing.Size(81, 13);
             this.errorLoginLabel.TabIndex = 16;
             this.errorLoginLabel.Text = "Введите логин";
+            this.errorLoginLabel.Visible = false;
             // 
             // errorPhoneLabel
             // 
@@ -202,6 +210,7 @@
             this.errorPhoneLabel.Size = new System.Drawing.Size(95, 13);
             this.errorPhoneLabel.TabIndex = 16;
             this.errorPhoneLabel.Text = "Введите телефон";
+            this.errorPhoneLabel.Visible = false;
             // 
             // errorLastNameLabel
             // 
@@ -212,6 +221,7 @@
             this.errorLastNameLabel.Size = new System.Drawing.Size(100, 13);
             this.errorLastNameLabel.TabIndex = 16;
             this.errorLastNameLabel.Text = "Введите фамилию";
+            this.errorLastNameLabel.Visible = false;
             // 
             // errorFirstNameLabel
             // 
@@ -222,6 +232,7 @@
             this.errorFirstNameLabel.Size = new System.Drawing.Size(72, 13);
             this.errorFirstNameLabel.TabIndex = 16;
             this.errorFirstNameLabel.Text = "Введите имя";
+            this.errorFirstNameLabel.Visible = false;
             // 
             // loginTBox
             // 
@@ -231,6 +242,7 @@
             this.loginTBox.Name = "loginTBox";
             this.loginTBox.Size = new System.Drawing.Size(196, 23);
             this.loginTBox.TabIndex = 13;
+            this.loginTBox.TextChanged += new System.EventHandler(this.LoginTBox_TextChanged);
             // 
             // label9
             // 
@@ -301,7 +313,7 @@
             // 
             // changeProfileBtn
             // 
-            this.changeProfileBtn.Location = new System.Drawing.Point(11, 517);
+            this.changeProfileBtn.Location = new System.Drawing.Point(11, 558);
             this.changeProfileBtn.Name = "changeProfileBtn";
             this.changeProfileBtn.Size = new System.Drawing.Size(115, 39);
             this.changeProfileBtn.TabIndex = 11;
@@ -313,7 +325,7 @@
             // 
             this.changeProfilePanel.Controls.Add(this.cancelBtn);
             this.changeProfilePanel.Controls.Add(this.saveBtn);
-            this.changeProfilePanel.Location = new System.Drawing.Point(163, 517);
+            this.changeProfilePanel.Location = new System.Drawing.Point(163, 558);
             this.changeProfilePanel.Name = "changeProfilePanel";
             this.changeProfilePanel.Size = new System.Drawing.Size(193, 39);
             this.changeProfilePanel.TabIndex = 12;
@@ -348,6 +360,7 @@
             this.errorOldPasswordLabel.Size = new System.Drawing.Size(144, 13);
             this.errorOldPasswordLabel.TabIndex = 16;
             this.errorOldPasswordLabel.Text = "Неверный текущий пароль";
+            this.errorOldPasswordLabel.Visible = false;
             // 
             // errorConfirmPasswordLabel
             // 
@@ -358,6 +371,7 @@
             this.errorConfirmPasswordLabel.Size = new System.Drawing.Size(205, 13);
             this.errorConfirmPasswordLabel.TabIndex = 16;
             this.errorConfirmPasswordLabel.Text = "Неверно продублирован новый пароль";
+            this.errorConfirmPasswordLabel.Visible = false;
             // 
             // passwordPanel
             // 
@@ -370,7 +384,7 @@
             this.passwordPanel.Controls.Add(this.label8);
             this.passwordPanel.Controls.Add(this.oldPasswordTBox);
             this.passwordPanel.Controls.Add(this.confirmPasswordTBox);
-            this.passwordPanel.Location = new System.Drawing.Point(11, 351);
+            this.passwordPanel.Location = new System.Drawing.Point(11, 392);
             this.passwordPanel.Name = "passwordPanel";
             this.passwordPanel.Size = new System.Drawing.Size(345, 148);
             this.passwordPanel.TabIndex = 17;
@@ -380,7 +394,7 @@
             this.updatePasswordChBox.AutoSize = true;
             this.updatePasswordChBox.Enabled = false;
             this.updatePasswordChBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.updatePasswordChBox.Location = new System.Drawing.Point(12, 328);
+            this.updatePasswordChBox.Location = new System.Drawing.Point(12, 369);
             this.updatePasswordChBox.Name = "updatePasswordChBox";
             this.updatePasswordChBox.Size = new System.Drawing.Size(130, 20);
             this.updatePasswordChBox.TabIndex = 18;
@@ -388,11 +402,28 @@
             this.updatePasswordChBox.UseVisualStyleBackColor = true;
             this.updatePasswordChBox.CheckedChanged += new System.EventHandler(this.updatePasswordChBox_CheckedChanged);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 313);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Язык";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(126, 310);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(196, 21);
+            this.comboBox1.TabIndex = 18;
+            // 
             // UserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 570);
+            this.ClientSize = new System.Drawing.Size(373, 608);
             this.Controls.Add(this.updatePasswordChBox);
             this.Controls.Add(this.passwordPanel);
             this.Controls.Add(this.userProfilePanel);
@@ -447,5 +478,7 @@
         private System.Windows.Forms.Label errorFirstNameLabel;
         private System.Windows.Forms.Panel passwordPanel;
         private System.Windows.Forms.CheckBox updatePasswordChBox;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label10;
     }
 }

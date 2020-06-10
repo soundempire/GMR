@@ -1,6 +1,4 @@
 ﻿using ExcelDataReader;
-using GMR.BLL.Abstractions.Models;
-using GMR.BLL.Abstractions.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;

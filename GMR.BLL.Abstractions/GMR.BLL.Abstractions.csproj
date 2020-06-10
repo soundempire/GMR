@@ -34,6 +34,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\GMR\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ContractorModel.cs" />
+    <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\PasswordModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
@@ -51,9 +55,13 @@
     <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\IContractorService.cs" />
     <Compile Include="Services\IImportService.cs" />
+    <Compile Include="Services\ILanguagesService.cs" />
     <Compile Include="Services\IPersonService.cs" />
     <Compile Include="Services\ITransactionService.cs" />
     <Compile Include="Services\IPotentialContractorsService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

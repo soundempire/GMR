@@ -1,7 +1,4 @@
-﻿using GMR.BLL.Abstractions.Models;
-using GMR.BLL.Abstractions.Services;
-using GMR.DAL.Abstractions;
-using GMR.DAL.Abstractions.Entities;
+﻿using GMR.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;

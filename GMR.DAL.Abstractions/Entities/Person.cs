@@ -1,4 +1,4 @@
-﻿namespace GMR.DAL.Abstractions.Entities
+﻿namespace GMR.DAL
 {
     public class Person
     {
@@ -15,5 +15,7 @@
         public string Company { get; set; }
 
         public string Phone { get; set; }
+
+        public string Language { get; set; }
     }
 }

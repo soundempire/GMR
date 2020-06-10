@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GMR.DAL.Abstractions.Entities
+namespace GMR.DAL
 {
     public class Transaction
     {

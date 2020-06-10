@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace GMR.BLL.Abstractions.Models
+namespace GMR.BLL
 {
     public class TransactionModel : ICloneable
     {

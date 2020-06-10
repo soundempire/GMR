@@ -1,6 +1,5 @@
 ﻿using GMR.Animation.Controls.ToggleSwitch;
-using GMR.BLL.Abstractions.Models;
-using GMR.BLL.Abstractions.Services;
+using GMR.BLL;
 using GMR.Models;
 using System;
 using System.Collections.Generic;

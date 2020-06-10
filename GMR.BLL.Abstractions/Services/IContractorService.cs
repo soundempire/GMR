@@ -1,8 +1,7 @@
-﻿using GMR.BLL.Abstractions.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GMR.BLL.Abstractions.Services
+namespace GMR.BLL
 {
     public interface IContractorService
     {

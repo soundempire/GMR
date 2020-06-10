@@ -1,25 +1,27 @@
-﻿using GMR.DAL.Abstractions;
+﻿using GMR.DAL;
 using System;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Collections.Generic;
-using GMR.BLL.Abstractions.Services;
-using GMR.BLL.Abstractions.Models;
-using GMR.DAL.Abstractions.Entities;
 using System.Linq;
 
 namespace GMR.BLL.Services
 {
     public class PersonService : IPersonService, IDisposable
     {
+        private readonly ILanguagesService _languagesService;
+
         private readonly IRepository<Person> _personRepository;
 
-        public PersonService(IRepository<Person> personRepository) => _personRepository = personRepository;
+        public PersonService(ILanguagesService languagesService, IRepository<Person> personRepository) 
+            => (_languagesService, _personRepository) = (languagesService, personRepository);
 
         public async Task<PersonModel> GetPersonAsync(long id)
         {
-            var dataModel = await _personRepository.GetAsync(id);
-            return Mapper.Map<Person, PersonModel>(dataModel);
+            var person = await _personRepository.GetAsync(id);
+            var personModel = Mapper.Map<Person, PersonModel>(person);
+            personModel.Language = (await _languagesService.GetLanguages(personModel.Language.Id)).First();
+            return personModel;
         }
 
         public async Task<IEnumerable<PersonModel>> GetPersonsAsync(bool includePasswords)
@@ -29,9 +31,20 @@ namespace GMR.BLL.Services
             {
                 query = query.Include(p => p.Password);
             }
-            var dataModel = await query.ToListAsync();
+            var persons = await query.ToListAsync();
+            var personModels = Mapper.Map<IEnumerable<Person>, IEnumerable<PersonModel>>(persons)
+                                    .GroupBy(_ => _.Language.Id)
+                                    .ToDictionary(group => group.Key, group => group.Select(_ => _));
 
-            return Mapper.Map<IEnumerable<Person>, IEnumerable<PersonModel>>(dataModel);
+            var languages = await _languagesService.GetLanguages(personModels.Keys.ToArray());
+
+            foreach (var language in languages)
+            {
+                if (personModels.TryGetValue(language.Id, out var models))
+                    models.ToList().ForEach(_ => _.Language = language);
+            }
+
+            return personModels.SelectMany(_ => _.Value);
         }
 
         public async Task<PersonModel> UpdatePersonAsync(PersonModel person)

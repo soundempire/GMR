@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace GMR.BLL.Abstractions.Models
+namespace GMR.BLL
 {
     public class ContractorModel : ICloneable
     {

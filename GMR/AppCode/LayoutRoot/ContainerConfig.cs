@@ -1,8 +1,7 @@
 ﻿using Autofac;
-using GMR.BLL.Abstractions.Services;
+using GMR.BLL;
 using GMR.BLL.Services;
-using GMR.DAL.Abstractions;
-using GMR.DAL.Abstractions.Entities;
+using GMR.DAL;
 using GMR.DAL.Context;
 using GMR.DAL.Repositories;
 
@@ -33,6 +32,7 @@ namespace GMR
             builder.RegisterType<TransactionService>().As<ITransactionService>();
             builder.RegisterType<ImportService>().As<IImportService>();
             builder.RegisterType<PotentialContractorsService>().As<IPotentialContractorsService>();
+            builder.RegisterType<LanguagesService>().As<ILanguagesService>();
 
             return builder.Build();
         }

@@ -1,7 +1,4 @@
-﻿using GMR.DAL.Abstractions;
-using GMR.DAL.Abstractions.Entities;
-using GMR.DAL.Context;
-using System.Data.Entity;
+﻿using GMR.DAL.Context;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;

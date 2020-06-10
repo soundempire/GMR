@@ -1,5 +1,4 @@
-﻿using GMR.DAL.Abstractions.Entities;
-using GMR.DAL.Configurations;
+﻿using GMR.DAL.Configurations;
 using System.Data.Entity;
 
 namespace GMR.DAL.Context
