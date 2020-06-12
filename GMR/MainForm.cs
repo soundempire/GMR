@@ -13,11 +13,10 @@ using Context = GMR.ApplicationContext;
 
 namespace GMR
 {
-    //TODO: Vadim add GMR icon to app header 
     public partial class MainForm : Form
     {
         private readonly IContractorService _contractorService;
-        
+
         private readonly ITransactionService _transactionService;
 
         private List<TransactionModel> _loadedTransactions;
@@ -135,7 +134,7 @@ namespace GMR
             {
                 if (e.Button == MouseButtons.Left && e.RowIndex >= 0)
                     UpdateContractorsCBoxText((contractorsDGView.Rows[e.RowIndex].DataBoundItem as ContractorModel).Name);
-            } 
+            }
         }
 
         private async void ContractorsDGView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -153,7 +152,7 @@ namespace GMR
             {
                 if (!(await RemoveSelectedContractorsAsync()))
                     e.Handled = true;
-            }   
+            }
         }
 
         #endregion
@@ -181,7 +180,7 @@ namespace GMR
             {
                 if (!(await RemoveSelectedTransactionsAsync()))
                     e.Handled = true;
-            }    
+            }
         }
 
         #endregion
@@ -288,7 +287,7 @@ namespace GMR
         private async Task<bool> RemoveSelectedContractorsAsync()
         {
             if (contractorsDGView.SelectedRows.Count > 0 &&
-                MessageBox.Show($"Вы действительно хотите удалить {(contractorsDGView.SelectedRows.Count == 1 ? (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorModel).Name + " и"  : "выбранных контрагентов и их" )} транзакции?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                MessageBox.Show($"Вы действительно хотите удалить {(contractorsDGView.SelectedRows.Count == 1 ? (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorModel).Name + " и" : "выбранных контрагентов и их")} транзакции?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 == DialogResult.Yes)
             {
                 var ids = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as ContractorModel).ID).ToArray();
@@ -352,7 +351,7 @@ namespace GMR
                     SelectContractorById(contractorId, out _);
 
                     await BindTransactionsToDataGridViewAsync();
-                } 
+                }
                 else
                     transactionsDGView.DataSource = null;
             }
@@ -398,7 +397,7 @@ namespace GMR
         {
             if (_loadedTransactions.Count > 0)
             {
-                SetTotalTransactionsLineVisibility(true);
+                totalTransactionsPanel.Visible = true;
                 if (allTransactions)
                 {
                     totalSumTB.Font = new Font(totalSumTB.Font.FontFamily.Name, 9, totalSumTB.Font.Style);
@@ -414,16 +413,7 @@ namespace GMR
                 totalCurencyTB.Text = _loadedTransactions.Average(t => t.Currency).ToString("0.00##");
             }
             else
-                SetTotalTransactionsLineVisibility(false);
-        }
-
-        private void SetTotalTransactionsLineVisibility(bool visible)
-        {
-            //TODO: Vadim enable/disable panel visibility
-            totalSumTB.Visible = visible;
-            totalTransactionTB.Visible = visible;
-            totalPriceTB.Visible = visible;
-            totalCurencyTB.Visible = visible;
+                totalTransactionsPanel.Visible = false;
         }
 
         //TODO: Vadim investigate potential exceptions by resizing
@@ -460,11 +450,14 @@ namespace GMR
 
         private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            //TODO: Vadim use constants
-            if (e.SplitX < 300)
-                CenterSplitContainer.Panel1MinSize = (int)(CenterSplitContainer.Width * 0.3);
-            else if (e.SplitX>CenterSplitContainer.Width-450)
-                CenterSplitContainer.Panel2MinSize = (int)(CenterSplitContainer.Width * 0.3);
+            const short centerSlitContainerLeftSideMinSize = 300;
+            const short centerSlitContainerRightSideMinSize = 450;
+            const float centerSplitContainerMultiplier = 0.3f;
+
+            if (e.SplitX < centerSlitContainerLeftSideMinSize)
+                CenterSplitContainer.Panel1MinSize = (int)(CenterSplitContainer.Width * centerSplitContainerMultiplier);
+            else if (e.SplitX > CenterSplitContainer.Width - centerSlitContainerRightSideMinSize)
+                CenterSplitContainer.Panel2MinSize = (int)(CenterSplitContainer.Width * centerSplitContainerMultiplier);
 
             SetFormsSizes();
         }

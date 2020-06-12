@@ -31,6 +31,7 @@ namespace GMR
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.contractorsDGView = new System.Windows.Forms.DataGridView();
             this.transactionsDGView = new System.Windows.Forms.DataGridView();
             this.startsDTP = new System.Windows.Forms.DateTimePicker();
@@ -467,6 +468,7 @@ namespace GMR
             this.totalTransactionsPanel.Name = "totalTransactionsPanel";
             this.totalTransactionsPanel.Size = new System.Drawing.Size(570, 34);
             this.totalTransactionsPanel.TabIndex = 3;
+            this.totalTransactionsPanel.Visible = false;
             // 
             // totalCurencyTB
             // 
@@ -481,7 +483,6 @@ namespace GMR
             this.totalCurencyTB.Size = new System.Drawing.Size(147, 34);
             this.totalCurencyTB.TabIndex = 2;
             this.totalCurencyTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.totalCurencyTB.Visible = false;
             // 
             // totalPriceTB
             // 
@@ -496,7 +497,6 @@ namespace GMR
             this.totalPriceTB.Size = new System.Drawing.Size(143, 34);
             this.totalPriceTB.TabIndex = 2;
             this.totalPriceTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.totalPriceTB.Visible = false;
             // 
             // totalTransactionTB
             // 
@@ -511,7 +511,6 @@ namespace GMR
             this.totalTransactionTB.Size = new System.Drawing.Size(142, 35);
             this.totalTransactionTB.TabIndex = 1;
             this.totalTransactionTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.totalTransactionTB.Visible = false;
             // 
             // totalSumTB
             // 
@@ -525,7 +524,6 @@ namespace GMR
             this.totalSumTB.Name = "totalSumTB";
             this.totalSumTB.Size = new System.Drawing.Size(142, 35);
             this.totalSumTB.TabIndex = 0;
-            this.totalSumTB.Visible = false;
             // 
             // contractorContextMenu
             // 
@@ -535,13 +533,13 @@ namespace GMR
             this.renameContractorToolStripMenuItem,
             this.removeContractorToolStripMenuItem});
             this.contractorContextMenu.Name = "contractorContextMenu";
-            this.contractorContextMenu.Size = new System.Drawing.Size(236, 70);
+            this.contractorContextMenu.Size = new System.Drawing.Size(237, 70);
             // 
             // addTransactionsToolStripMenuItem
             // 
             this.addTransactionsToolStripMenuItem.Name = "addTransactionsToolStripMenuItem";
             this.addTransactionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.addTransactionsToolStripMenuItem.Text = "Добавить транзакцию";
             this.addTransactionsToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionsToolStripMenuItem_Click);
             // 
@@ -549,7 +547,7 @@ namespace GMR
             // 
             this.renameContractorToolStripMenuItem.Name = "renameContractorToolStripMenuItem";
             this.renameContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.renameContractorToolStripMenuItem.Text = "Переименовать";
             this.renameContractorToolStripMenuItem.Click += new System.EventHandler(this.RenameContractorToolStripMenuItem_Click);
             // 
@@ -557,7 +555,7 @@ namespace GMR
             // 
             this.removeContractorToolStripMenuItem.Name = "removeContractorToolStripMenuItem";
             this.removeContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.removeContractorToolStripMenuItem.Text = "Удалить";
             this.removeContractorToolStripMenuItem.Click += new System.EventHandler(this.RemoveContractorToolStripMenuItem_Click);
             // 
@@ -569,6 +567,7 @@ namespace GMR
             this.Controls.Add(this.CenterSplitContainer);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.topPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.userAccountMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
