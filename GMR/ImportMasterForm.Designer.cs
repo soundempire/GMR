@@ -130,6 +130,7 @@
             // priceToggleSwitch
             // 
             this.priceToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.priceToggleSwitch.ForceCheckedChanged = true;
             this.priceToggleSwitch.GrayWhenDisabled = false;
             this.priceToggleSwitch.Location = new System.Drawing.Point(0, 0);
             this.priceToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
@@ -157,6 +158,7 @@
             // transactionToggleSwitch
             // 
             this.transactionToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transactionToggleSwitch.ForceCheckedChanged = true;
             this.transactionToggleSwitch.GrayWhenDisabled = false;
             this.transactionToggleSwitch.Location = new System.Drawing.Point(0, 0);
             this.transactionToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
@@ -184,6 +186,7 @@
             // dateToggleSwitch
             // 
             this.dateToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateToggleSwitch.ForceCheckedChanged = true;
             this.dateToggleSwitch.GrayWhenDisabled = false;
             this.dateToggleSwitch.Location = new System.Drawing.Point(0, 0);
             this.dateToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
@@ -213,6 +216,7 @@
             this.idToggleSwitch.Checked = true;
             this.idToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.idToggleSwitch.Enabled = false;
+            this.idToggleSwitch.ForceCheckedChanged = true;
             this.idToggleSwitch.GrayWhenDisabled = false;
             this.idToggleSwitch.Location = new System.Drawing.Point(0, 0);
             this.idToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
@@ -241,6 +245,7 @@
             this.contractorToggleSwitch.Checked = true;
             this.contractorToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contractorToggleSwitch.Enabled = false;
+            this.contractorToggleSwitch.ForceCheckedChanged = true;
             this.contractorToggleSwitch.GrayWhenDisabled = false;
             this.contractorToggleSwitch.Location = new System.Drawing.Point(0, 0);
             this.contractorToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
@@ -267,6 +272,7 @@
             // currencyToggleSwitch
             // 
             this.currencyToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currencyToggleSwitch.ForceCheckedChanged = true;
             this.currencyToggleSwitch.GrayWhenDisabled = false;
             this.currencyToggleSwitch.Location = new System.Drawing.Point(0, 0);
             this.currencyToggleSwitch.Margin = new System.Windows.Forms.Padding(2);

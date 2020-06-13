@@ -32,6 +32,7 @@ namespace GMR
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.passwordErrorLabel = new System.Windows.Forms.Label();
             this.closeBtn = new GMR.Controls.GMRButton();
             this.okBtn = new GMR.Controls.GMRButton();
@@ -48,11 +49,11 @@ namespace GMR
             // passwordErrorLabel
             // 
             this.passwordErrorLabel.AutoSize = true;
-            this.passwordErrorLabel.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.passwordErrorLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.passwordErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.passwordErrorLabel.Location = new System.Drawing.Point(14, 130);
+            this.passwordErrorLabel.Location = new System.Drawing.Point(17, 161);
             this.passwordErrorLabel.Name = "passwordErrorLabel";
-            this.passwordErrorLabel.Size = new System.Drawing.Size(0, 19);
+            this.passwordErrorLabel.Size = new System.Drawing.Size(0, 14);
             this.passwordErrorLabel.TabIndex = 10;
             // 
             // closeBtn
@@ -61,7 +62,7 @@ namespace GMR
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.closeBtn.Location = new System.Drawing.Point(295, 1);
+            this.closeBtn.Location = new System.Drawing.Point(359, 3);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Rounding = 100;
             this.closeBtn.RoundingEnabled = true;
@@ -75,13 +76,13 @@ namespace GMR
             // 
             this.okBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.okBtn.Font = new System.Drawing.Font("Tahoma", 12F);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.okBtn.Location = new System.Drawing.Point(147, 151);
+            this.okBtn.Location = new System.Drawing.Point(218, 185);
             this.okBtn.Name = "okBtn";
             this.okBtn.Rounding = 100;
             this.okBtn.RoundingEnabled = true;
-            this.okBtn.Size = new System.Drawing.Size(170, 33);
+            this.okBtn.Size = new System.Drawing.Size(175, 38);
             this.okBtn.TabIndex = 3;
             this.okBtn.Text = "Ок";
             this.okBtn.UseVisualStyleBackColor = false;
@@ -93,14 +94,14 @@ namespace GMR
             this.passwordTB.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.passwordTB.BorderColorNotActive = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
             this.passwordTB.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.passwordTB.Font = new System.Drawing.Font("Arial", 12.25F);
+            this.passwordTB.Font = new System.Drawing.Font("Arial", 13.25F);
             this.passwordTB.FontTextPreview = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordTB.ForeColor = System.Drawing.Color.Black;
-            this.passwordTB.Location = new System.Drawing.Point(16, 84);
+            this.passwordTB.Location = new System.Drawing.Point(20, 108);
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.Rounding = 100;
             this.passwordTB.RoundingEnabled = false;
-            this.passwordTB.Size = new System.Drawing.Size(256, 46);
+            this.passwordTB.Size = new System.Drawing.Size(307, 50);
             this.passwordTB.TabIndex = 2;
             this.passwordTB.TextInput = "";
             this.passwordTB.TextPreview = "Пароль";
@@ -112,14 +113,14 @@ namespace GMR
             this.loginTB.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.loginTB.BorderColorNotActive = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
             this.loginTB.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.loginTB.Font = new System.Drawing.Font("Arial", 12.25F);
-            this.loginTB.FontTextPreview = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginTB.Font = new System.Drawing.Font("Arial", 13.25F);
+            this.loginTB.FontTextPreview = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.loginTB.ForeColor = System.Drawing.Color.Black;
-            this.loginTB.Location = new System.Drawing.Point(16, 22);
+            this.loginTB.Location = new System.Drawing.Point(20, 31);
             this.loginTB.Name = "loginTB";
             this.loginTB.Rounding = 100;
             this.loginTB.RoundingEnabled = true;
-            this.loginTB.Size = new System.Drawing.Size(256, 46);
+            this.loginTB.Size = new System.Drawing.Size(307, 50);
             this.loginTB.TabIndex = 1;
             this.loginTB.TextInput = "";
             this.loginTB.TextPreview = "Имя пользователя";
@@ -134,10 +135,10 @@ namespace GMR
             // 
             this.showPasswordPB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.showPasswordPB.Image = global::GMR.Properties.Resources.showPassword;
-            this.showPasswordPB.Location = new System.Drawing.Point(284, 96);
-            this.showPasswordPB.MinimumSize = new System.Drawing.Size(30, 30);
+            this.showPasswordPB.Location = new System.Drawing.Point(344, 119);
+            this.showPasswordPB.MinimumSize = new System.Drawing.Size(35, 35);
             this.showPasswordPB.Name = "showPasswordPB";
-            this.showPasswordPB.Size = new System.Drawing.Size(30, 30);
+            this.showPasswordPB.Size = new System.Drawing.Size(35, 35);
             this.showPasswordPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.showPasswordPB.TabIndex = 9;
             this.showPasswordPB.TabStop = false;
@@ -147,7 +148,7 @@ namespace GMR
             // loadingPictureBox
             // 
             this.loadingPictureBox.Image = global::GMR.Properties.Resources.load;
-            this.loadingPictureBox.Location = new System.Drawing.Point(36, 137);
+            this.loadingPictureBox.Location = new System.Drawing.Point(122, 166);
             this.loadingPictureBox.Name = "loadingPictureBox";
             this.loadingPictureBox.Size = new System.Drawing.Size(90, 57);
             this.loadingPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -158,17 +159,17 @@ namespace GMR
             // loginErrorLabel
             // 
             this.loginErrorLabel.AutoSize = true;
-            this.loginErrorLabel.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.loginErrorLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.loginErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.loginErrorLabel.Location = new System.Drawing.Point(14, 68);
+            this.loginErrorLabel.Location = new System.Drawing.Point(17, 84);
             this.loginErrorLabel.Name = "loginErrorLabel";
-            this.loginErrorLabel.Size = new System.Drawing.Size(0, 19);
+            this.loginErrorLabel.Size = new System.Drawing.Size(0, 14);
             this.loginErrorLabel.TabIndex = 12;
             // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(330, 195);
+            this.ClientSize = new System.Drawing.Size(395, 230);
             this.Controls.Add(this.loginErrorLabel);
             this.Controls.Add(this.loadingPictureBox);
             this.Controls.Add(this.closeBtn);
@@ -179,6 +180,7 @@ namespace GMR
             this.Controls.Add(this.showPasswordPB);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

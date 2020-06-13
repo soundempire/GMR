@@ -104,6 +104,8 @@ namespace GMR.Animation.Controls.ToggleSwitch
         private bool _onButtonScaleImage;
         private ToggleSwitchButtonAlignment _onButtonAlignment = ToggleSwitchButtonAlignment.Center;
 
+        public bool ForceCheckedChanged { get; set; } = true;
+
         #endregion Private Members
 
         #region Constructor Etc.
@@ -188,7 +190,7 @@ namespace GMR.Animation.Controls.ToggleSwitch
                     while (_animating)
                         Application.DoEvents();
 
-                    if (value == true)
+                    if (value)
                     {
                         int buttonWidth = _renderer.GetButtonWidth();
                         _animationTarget = Width - buttonWidth;
@@ -1058,8 +1060,10 @@ namespace GMR.Animation.Controls.ToggleSwitch
 
             Refresh();
 
-            if (CheckedChanged != null)
-                CheckedChanged(this, new EventArgs());
+            if (ForceCheckedChanged)
+                CheckedChanged?.Invoke(this, new EventArgs());
+            else
+                ForceCheckedChanged = true;
 
             if (_lastMouseEventArgs != null)
                 OnMouseMove(_lastMouseEventArgs);
