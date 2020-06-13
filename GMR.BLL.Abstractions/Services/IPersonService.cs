@@ -11,6 +11,8 @@ namespace GMR.BLL
 
         Task<PersonModel> UpdatePersonAsync(PersonModel person);
 
-        Task<IEnumerable<PersonModel>> GetPersonByFullName(string fullName);
+        Task<PersonModel> AddPersonAsync(PersonModel person);
+
+        Task RemovePersonAsync(long id);
     }
 }

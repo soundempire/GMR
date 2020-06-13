@@ -39,6 +39,8 @@
             this.companyTBox = new System.Windows.Forms.TextBox();
             this.phoneTBox = new System.Windows.Forms.TextBox();
             this.userProfilePanel = new System.Windows.Forms.Panel();
+            this.languagesCBox = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.errorLoginLabel = new System.Windows.Forms.Label();
             this.errorPhoneLabel = new System.Windows.Forms.Label();
             this.errorLastNameLabel = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@
             this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
             this.passwordPanel = new System.Windows.Forms.Panel();
             this.updatePasswordChBox = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.userProfilePanel.SuspendLayout();
             this.changeProfilePanel.SuspendLayout();
             this.passwordPanel.SuspendLayout();
@@ -167,7 +167,7 @@
             // userProfilePanel
             // 
             this.userProfilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.userProfilePanel.Controls.Add(this.comboBox1);
+            this.userProfilePanel.Controls.Add(this.languagesCBox);
             this.userProfilePanel.Controls.Add(this.label10);
             this.userProfilePanel.Controls.Add(this.errorLoginLabel);
             this.userProfilePanel.Controls.Add(this.errorPhoneLabel);
@@ -189,6 +189,23 @@
             this.userProfilePanel.Name = "userProfilePanel";
             this.userProfilePanel.Size = new System.Drawing.Size(345, 342);
             this.userProfilePanel.TabIndex = 10;
+            // 
+            // languagesCBox
+            // 
+            this.languagesCBox.FormattingEnabled = true;
+            this.languagesCBox.Location = new System.Drawing.Point(126, 310);
+            this.languagesCBox.Name = "languagesCBox";
+            this.languagesCBox.Size = new System.Drawing.Size(196, 21);
+            this.languagesCBox.TabIndex = 18;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 313);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Язык";
             // 
             // errorLoginLabel
             // 
@@ -402,23 +419,6 @@
             this.updatePasswordChBox.UseVisualStyleBackColor = true;
             this.updatePasswordChBox.CheckedChanged += new System.EventHandler(this.updatePasswordChBox_CheckedChanged);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 313);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Язык";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(126, 310);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(196, 21);
-            this.comboBox1.TabIndex = 18;
-            // 
             // UserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,7 +478,7 @@
         private System.Windows.Forms.Label errorFirstNameLabel;
         private System.Windows.Forms.Panel passwordPanel;
         private System.Windows.Forms.CheckBox updatePasswordChBox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox languagesCBox;
         private System.Windows.Forms.Label label10;
     }
 }

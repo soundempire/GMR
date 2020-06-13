@@ -17,21 +17,26 @@ namespace GMR
     {
         private IPersonService _personService;
 
+        private readonly ILanguagesService _languagesService;
+
         private List<TextBox> _userInputTextBoxes;
 
         private List<TextBox> _passwordInputTextBoxes;
 
-        public UserAccountForm(IPersonService personService)
+        public UserAccountForm(IPersonService personService, ILanguagesService languagesService)
         {
             InitializeComponent();
 
             _personService = personService;
+            _languagesService = languagesService;
         }
 
         private void UserAccountForm_Load(object sender, EventArgs e)
         {
             _userInputTextBoxes = userProfilePanel.Controls.OfType<TextBox>().ToList();
             _passwordInputTextBoxes = passwordPanel.Controls.OfType<TextBox>().ToList();
+
+            languagesCBox.Items.Clear();
 
             SetCurrentUserValues();
         }

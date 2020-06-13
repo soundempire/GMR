@@ -56,13 +56,17 @@ namespace GMR.BLL.Services
             return Mapper.Map<Person, PersonModel>(pers);
         }
 
-        public async Task<IEnumerable<PersonModel>> GetPersonByFullName(string fullName)
+        public async Task<PersonModel> AddPersonAsync(PersonModel person)
         {
-            var dataModels = _personRepository.GetAll();
-            var query = await dataModels.Where(p => $"{p.LastName} {p.FirstName}" == fullName).ToListAsync();
+            var newPerson = Mapper.Map<PersonModel, Person>(person);
 
-            return Mapper.Map<IEnumerable<Person>, IEnumerable<PersonModel>>(query);
+            var personEntity = await _personRepository.CreateAsync(newPerson);
+
+            return Mapper.Map<Person, PersonModel>(personEntity);
         }
+
+        public async Task RemovePersonAsync(long id)
+           => await _personRepository.DeleteAsync(id);
 
         public void Dispose() => _personRepository?.Dispose();
     }
