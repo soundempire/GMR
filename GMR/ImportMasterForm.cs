@@ -100,7 +100,7 @@ namespace GMR
         #endregion
 
         #region Toggle EventHandlers
-        //TODO: Vadim fix toggle switching behavior (second order)
+        //TODO: Vadim fix toggle switching behavior (first order)
         private void ToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
             var toggle = (GMRToggleSwitch)sender;
@@ -131,10 +131,9 @@ namespace GMR
             {
                 if (!tog.Equals(toggle))
                 {
-                    tog.CheckedChanged -= ToggleSwitch_CheckedChanged;
+                    tog.ForceCheckedChanged = false;
                     tog.Checked = isChecked;
-                    tog.CheckedChanged += ToggleSwitch_CheckedChanged;
-                }              
+                }
             }
         }
 
