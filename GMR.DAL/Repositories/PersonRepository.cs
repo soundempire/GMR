@@ -32,8 +32,9 @@ namespace GMR.DAL.Repositories
 
         public async Task<Person> UpdateAsync(Person person)
         {
+            _context.Entry(person).State = EntityState.Modified;
             _context.Entry(person.Password).State = EntityState.Modified;
-            _context.Set<Person>().AddOrUpdate(person);
+
             await SaveAsync();
 
             return person;

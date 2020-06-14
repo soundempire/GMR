@@ -221,7 +221,7 @@ namespace GMR
             this.datesPanel.Controls.Add(this.startsDTP);
             this.datesPanel.Controls.Add(this.endsDTP);
             this.datesPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.datesPanel.Location = new System.Drawing.Point(495, 0);
+            this.datesPanel.Location = new System.Drawing.Point(457, 0);
             this.datesPanel.Name = "datesPanel";
             this.datesPanel.Size = new System.Drawing.Size(255, 34);
             this.datesPanel.TabIndex = 18;
@@ -230,9 +230,9 @@ namespace GMR
             // 
             this.userAccountMenuPanel.Controls.Add(this.userAccountMenuStrip);
             this.userAccountMenuPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.userAccountMenuPanel.Location = new System.Drawing.Point(750, 0);
+            this.userAccountMenuPanel.Location = new System.Drawing.Point(712, 0);
             this.userAccountMenuPanel.Name = "userAccountMenuPanel";
-            this.userAccountMenuPanel.Size = new System.Drawing.Size(112, 34);
+            this.userAccountMenuPanel.Size = new System.Drawing.Size(150, 34);
             this.userAccountMenuPanel.TabIndex = 17;
             // 
             // userAccountMenuStrip
@@ -247,7 +247,7 @@ namespace GMR
             this.userAccountMenuStrip.Name = "userAccountMenuStrip";
             this.userAccountMenuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
             this.userAccountMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.userAccountMenuStrip.Size = new System.Drawing.Size(112, 34);
+            this.userAccountMenuStrip.Size = new System.Drawing.Size(150, 34);
             this.userAccountMenuStrip.TabIndex = 0;
             this.userAccountMenuStrip.Text = "Hello World";
             // 
@@ -533,13 +533,13 @@ namespace GMR
             this.renameContractorToolStripMenuItem,
             this.removeContractorToolStripMenuItem});
             this.contractorContextMenu.Name = "contractorContextMenu";
-            this.contractorContextMenu.Size = new System.Drawing.Size(237, 70);
+            this.contractorContextMenu.Size = new System.Drawing.Size(236, 70);
             // 
             // addTransactionsToolStripMenuItem
             // 
             this.addTransactionsToolStripMenuItem.Name = "addTransactionsToolStripMenuItem";
             this.addTransactionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.addTransactionsToolStripMenuItem.Text = "Добавить транзакцию";
             this.addTransactionsToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionsToolStripMenuItem_Click);
             // 
@@ -547,7 +547,7 @@ namespace GMR
             // 
             this.renameContractorToolStripMenuItem.Name = "renameContractorToolStripMenuItem";
             this.renameContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.renameContractorToolStripMenuItem.Text = "Переименовать";
             this.renameContractorToolStripMenuItem.Click += new System.EventHandler(this.RenameContractorToolStripMenuItem_Click);
             // 
@@ -555,7 +555,7 @@ namespace GMR
             // 
             this.removeContractorToolStripMenuItem.Name = "removeContractorToolStripMenuItem";
             this.removeContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.removeContractorToolStripMenuItem.Text = "Удалить";
             this.removeContractorToolStripMenuItem.Click += new System.EventHandler(this.RemoveContractorToolStripMenuItem_Click);
             // 

@@ -54,11 +54,11 @@ namespace GMR
             viewModel.Country = countryTBox.Text;
             viewModel.Company = companyTBox.Text;
             viewModel.Phone = phoneTBox.Text;
+            viewModel.Password.Login = loginTBox.Text;
             viewModel.Language = (LanguageViewModel)languagesCBox.SelectedItem;
 
             if (updatePasswordChBox.Checked)
             {
-                viewModel.Password.Login = loginTBox.Text;
                 viewModel.Password.OldValue = oldPasswordTBox.Text;
                 viewModel.Password.NewValue = newPasswordTBox.Text;
                 viewModel.Password.ConfirmValue = confirmPasswordTBox.Text;
@@ -72,7 +72,7 @@ namespace GMR
 
             if (ValidateModel(viewModel, out var validationErrors))
             {
-                if (await _potentialLoginService.IsLoginExists(viewModel.Password.Login))
+                if (!Session.Person.Password.Login.Equals(viewModel.Password.Login) && await _potentialLoginService.IsLoginExists(viewModel.Password.Login))
                 {
                     MessageBox.Show("Вводимый логин уже существует в системе.", "Ошибочный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     loginTBox.Focus();
