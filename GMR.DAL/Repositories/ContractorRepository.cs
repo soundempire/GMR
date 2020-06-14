@@ -7,17 +7,20 @@ using System.Threading.Tasks;
 
 namespace GMR.DAL.Repositories
 {
-    public class ContractorRepository : ISpecifyRepository<Contractor>
+    public class ContractorRepository : IRepository<Contractor>
     {
         private readonly GMRContext _context;
 
         public ContractorRepository(GMRContext context) => _context = context;
 
-        public IQueryable<Contractor> GetAllFor(long id)
-            => _context.Contractors.Where(c => c.PersonID == id).AsNoTracking();
+        public IQueryable<Contractor> GetAll(long? parentIdFilter = null)
+        {
+            var query = _context.Contractors.AsQueryable();
+            if (parentIdFilter.HasValue)
+                query = query.Where(c => c.PersonID == parentIdFilter.Value);
 
-        public IQueryable<Contractor> GetAll()
-            => _context.Contractors.AsNoTracking();
+            return query.AsNoTracking();
+        }
 
         public async Task<Contractor> GetAsync(long id)
             => await _context.Contractors

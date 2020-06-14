@@ -11,7 +11,7 @@ namespace GMR.DAL.Repositories
 
         public PasswordRepository(GMRContext context) => _context = context;
 
-        public IQueryable<Password> GetAll()
+        public IQueryable<Password> GetAll(long? parentIdFilter = null)
             => _context.Passwords.AsNoTracking();
 
         public async Task<Password> GetAsync(long id)

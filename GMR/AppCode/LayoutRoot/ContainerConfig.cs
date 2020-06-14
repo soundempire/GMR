@@ -22,7 +22,7 @@ namespace GMR
             builder.RegisterType<ImportMasterForm>();
 
             builder.RegisterType<PasswordRepository>().As<IRepository<Password>>();
-            builder.RegisterType<ContractorRepository>().As<ISpecifyRepository<Contractor>>();
+            builder.RegisterType<ContractorRepository>().As<IRepository<Contractor>>();
             builder.RegisterType<PersonRepository>().As<IRepository<Person>>();
             builder.RegisterType<TransactionRepository>().As<IRepository<Transaction>>();
 

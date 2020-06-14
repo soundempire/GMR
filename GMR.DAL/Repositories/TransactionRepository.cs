@@ -11,7 +11,7 @@ namespace GMR.DAL.Repositories
 
         public TransactionRepository(GMRContext context) => _context = context;
 
-        public IQueryable<Transaction> GetAll()
+        public IQueryable<Transaction> GetAll(long? parentIdFilter = null)
             => _context.Transactions.AsNoTracking();
 
         public async Task<Transaction> GetAsync(long id)

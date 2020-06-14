@@ -12,7 +12,7 @@ namespace GMR.DAL.Repositories
 
         public PersonRepository(GMRContext context) => _context = context;
 
-        public IQueryable<Person> GetAll()
+        public IQueryable<Person> GetAll(long? parentIdFilter = null)
             => _context.Persons.AsNoTracking();
 
         public async Task<Person> GetAsync(long id)

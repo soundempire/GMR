@@ -10,9 +10,9 @@ namespace GMR.BLL.Services
 {
     public class ContractorService : IContractorService, IDisposable
     {
-        private readonly ISpecifyRepository<Contractor> _contractorRepository;
+        private readonly IRepository<Contractor> _contractorRepository;
 
-        public ContractorService(ISpecifyRepository<Contractor> contractorRepository)
+        public ContractorService(IRepository<Contractor> contractorRepository)
             => _contractorRepository = contractorRepository;
 
         public async Task<ContractorModel> GetContractorAsync(long id)
@@ -23,7 +23,7 @@ namespace GMR.BLL.Services
 
         public async Task<IEnumerable<ContractorModel>> GetContractorsAsync(long personId, string filter = null, params string[] includes)
         {
-            var query = _contractorRepository.GetAllFor(personId);
+            var query = _contractorRepository.GetAll(personId);
 
             if (includes.Contains(nameof(ContractorModel.Transactions).ToLower()))
             {
