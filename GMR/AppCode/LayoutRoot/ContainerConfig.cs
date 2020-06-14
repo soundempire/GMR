@@ -32,6 +32,7 @@ namespace GMR
             builder.RegisterType<TransactionService>().As<ITransactionService>();
             builder.RegisterType<ImportService>().As<IImportService>();
             builder.RegisterType<PotentialContractorsService>().As<IPotentialContractorsService>();
+            builder.RegisterType<PotentialLoginService>().As<IPotentialLoginService>();
             builder.RegisterType<LanguagesService>().As<ILanguagesService>();
 
             return builder.Build();

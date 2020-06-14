@@ -85,6 +85,7 @@
     <Compile Include="Services\ImportService.cs" />
     <Compile Include="Services\LanguagesService.cs" />
     <Compile Include="Services\PersonService.cs" />
+    <Compile Include="Services\PotentialLoginService.cs" />
     <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Services\PotentialContractorsService.cs" />
   </ItemGroup>

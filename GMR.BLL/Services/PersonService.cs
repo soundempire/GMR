@@ -20,7 +20,7 @@ namespace GMR.BLL.Services
         {
             var person = await _personRepository.GetAsync(id);
             var personModel = Mapper.Map<Person, PersonModel>(person);
-            personModel.Language = (await _languagesService.GetLanguages(personModel.Language.Id)).First();
+            personModel.Language = (await _languagesService.GetLanguages(personModel.Language.Id)).FirstOrDefault();
             return personModel;
         }
 
@@ -49,11 +49,14 @@ namespace GMR.BLL.Services
 
         public async Task<PersonModel> UpdatePersonAsync(PersonModel person)
         {
-            var pers = Mapper.Map<PersonModel, Person>(person);
+            var personEntity = Mapper.Map<PersonModel, Person>(person);
 
-            await _personRepository.UpdateAsync(pers);
+            await _personRepository.UpdateAsync(personEntity);
 
-            return Mapper.Map<Person, PersonModel>(pers);
+            var personModel = Mapper.Map<Person, PersonModel>(personEntity);
+            personModel.Language = (await _languagesService.GetLanguages(personModel.Language.Id)).FirstOrDefault();
+
+            return personModel;
         }
 
         public async Task<PersonModel> AddPersonAsync(PersonModel person)

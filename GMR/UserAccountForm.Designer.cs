@@ -118,7 +118,6 @@
             // 
             // firstNameTBox
             // 
-            this.firstNameTBox.Enabled = false;
             this.firstNameTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.firstNameTBox.Location = new System.Drawing.Point(126, 17);
             this.firstNameTBox.Name = "firstNameTBox";
@@ -128,7 +127,6 @@
             // 
             // lastNameTBox
             // 
-            this.lastNameTBox.Enabled = false;
             this.lastNameTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lastNameTBox.Location = new System.Drawing.Point(126, 64);
             this.lastNameTBox.Name = "lastNameTBox";
@@ -138,7 +136,6 @@
             // 
             // countryTBox
             // 
-            this.countryTBox.Enabled = false;
             this.countryTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.countryTBox.Location = new System.Drawing.Point(126, 113);
             this.countryTBox.Name = "countryTBox";
@@ -147,7 +144,6 @@
             // 
             // companyTBox
             // 
-            this.companyTBox.Enabled = false;
             this.companyTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.companyTBox.Location = new System.Drawing.Point(126, 159);
             this.companyTBox.Name = "companyTBox";
@@ -156,7 +152,6 @@
             // 
             // phoneTBox
             // 
-            this.phoneTBox.Enabled = false;
             this.phoneTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneTBox.Location = new System.Drawing.Point(126, 205);
             this.phoneTBox.Name = "phoneTBox";
@@ -185,6 +180,7 @@
             this.userProfilePanel.Controls.Add(this.label4);
             this.userProfilePanel.Controls.Add(this.firstNameTBox);
             this.userProfilePanel.Controls.Add(this.label5);
+            this.userProfilePanel.Enabled = false;
             this.userProfilePanel.Location = new System.Drawing.Point(12, 12);
             this.userProfilePanel.Name = "userProfilePanel";
             this.userProfilePanel.Size = new System.Drawing.Size(345, 342);
@@ -192,6 +188,7 @@
             // 
             // languagesCBox
             // 
+            this.languagesCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.languagesCBox.FormattingEnabled = true;
             this.languagesCBox.Location = new System.Drawing.Point(126, 310);
             this.languagesCBox.Name = "languagesCBox";
@@ -253,7 +250,6 @@
             // 
             // loginTBox
             // 
-            this.loginTBox.Enabled = false;
             this.loginTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginTBox.Location = new System.Drawing.Point(126, 257);
             this.loginTBox.Name = "loginTBox";
@@ -273,30 +269,30 @@
             // 
             // confirmPasswordTBox
             // 
-            this.confirmPasswordTBox.Enabled = false;
             this.confirmPasswordTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.confirmPasswordTBox.Location = new System.Drawing.Point(129, 102);
             this.confirmPasswordTBox.Name = "confirmPasswordTBox";
             this.confirmPasswordTBox.Size = new System.Drawing.Size(196, 23);
             this.confirmPasswordTBox.TabIndex = 15;
+            this.confirmPasswordTBox.UseSystemPasswordChar = true;
             // 
             // newPasswordTBox
             // 
-            this.newPasswordTBox.Enabled = false;
             this.newPasswordTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.newPasswordTBox.Location = new System.Drawing.Point(129, 56);
             this.newPasswordTBox.Name = "newPasswordTBox";
             this.newPasswordTBox.Size = new System.Drawing.Size(196, 23);
             this.newPasswordTBox.TabIndex = 14;
+            this.newPasswordTBox.UseSystemPasswordChar = true;
             // 
             // oldPasswordTBox
             // 
-            this.oldPasswordTBox.Enabled = false;
             this.oldPasswordTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.oldPasswordTBox.Location = new System.Drawing.Point(129, 8);
             this.oldPasswordTBox.Name = "oldPasswordTBox";
             this.oldPasswordTBox.Size = new System.Drawing.Size(196, 23);
             this.oldPasswordTBox.TabIndex = 13;
+            this.oldPasswordTBox.UseSystemPasswordChar = true;
             // 
             // label8
             // 
@@ -350,7 +346,7 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(105, 8);
+            this.cancelBtn.Location = new System.Drawing.Point(12, 9);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 1;
@@ -360,13 +356,13 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(13, 8);
+            this.saveBtn.Location = new System.Drawing.Point(106, 9);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(75, 23);
             this.saveBtn.TabIndex = 0;
             this.saveBtn.Text = "Сохранить";
             this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.saveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // errorOldPasswordLabel
             // 
@@ -401,6 +397,7 @@
             this.passwordPanel.Controls.Add(this.label8);
             this.passwordPanel.Controls.Add(this.oldPasswordTBox);
             this.passwordPanel.Controls.Add(this.confirmPasswordTBox);
+            this.passwordPanel.Enabled = false;
             this.passwordPanel.Location = new System.Drawing.Point(11, 392);
             this.passwordPanel.Name = "passwordPanel";
             this.passwordPanel.Size = new System.Drawing.Size(345, 148);
@@ -417,7 +414,7 @@
             this.updatePasswordChBox.TabIndex = 18;
             this.updatePasswordChBox.Text = "Обновить пароль";
             this.updatePasswordChBox.UseVisualStyleBackColor = true;
-            this.updatePasswordChBox.CheckedChanged += new System.EventHandler(this.updatePasswordChBox_CheckedChanged);
+            this.updatePasswordChBox.CheckedChanged += new System.EventHandler(this.UpdatePasswordChBox_CheckedChanged);
             // 
             // UserAccountForm
             // 

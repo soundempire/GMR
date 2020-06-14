@@ -46,12 +46,12 @@ namespace GMR
         {
             if (string.IsNullOrWhiteSpace(transactionCurrencyTBox.Text))
             {
-                MessageBox.Show($"Поле Курс должно быть заполнено.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Поле Курс должно быть заполнено.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else if (string.IsNullOrWhiteSpace(transactionValueTBox.Text) && string.IsNullOrWhiteSpace(transactionPriceTBox.Text))
             {
-                MessageBox.Show($"Поля Транзакция или Платёж должны быть заполнены.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Поля Транзакция или Платёж должны быть заполнены.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

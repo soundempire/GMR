@@ -42,6 +42,8 @@ namespace GMR
             this.showPasswordPB = new System.Windows.Forms.PictureBox();
             this.loadingPictureBox = new System.Windows.Forms.PictureBox();
             this.loginErrorLabel = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.showPasswordPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +53,7 @@ namespace GMR
             this.passwordErrorLabel.AutoSize = true;
             this.passwordErrorLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.passwordErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.passwordErrorLabel.Location = new System.Drawing.Point(17, 161);
+            this.passwordErrorLabel.Location = new System.Drawing.Point(16, 140);
             this.passwordErrorLabel.Name = "passwordErrorLabel";
             this.passwordErrorLabel.Size = new System.Drawing.Size(0, 14);
             this.passwordErrorLabel.TabIndex = 10;
@@ -62,7 +64,7 @@ namespace GMR
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.closeBtn.Location = new System.Drawing.Point(359, 3);
+            this.closeBtn.Location = new System.Drawing.Point(372, 7);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Rounding = 100;
             this.closeBtn.RoundingEnabled = true;
@@ -78,7 +80,7 @@ namespace GMR
             this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.okBtn.Font = new System.Drawing.Font("Tahoma", 12F);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.okBtn.Location = new System.Drawing.Point(218, 185);
+            this.okBtn.Location = new System.Drawing.Point(208, 216);
             this.okBtn.Name = "okBtn";
             this.okBtn.Rounding = 100;
             this.okBtn.RoundingEnabled = true;
@@ -97,11 +99,11 @@ namespace GMR
             this.passwordTB.Font = new System.Drawing.Font("Arial", 13.25F);
             this.passwordTB.FontTextPreview = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordTB.ForeColor = System.Drawing.Color.Black;
-            this.passwordTB.Location = new System.Drawing.Point(20, 108);
+            this.passwordTB.Location = new System.Drawing.Point(19, 87);
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.Rounding = 100;
             this.passwordTB.RoundingEnabled = false;
-            this.passwordTB.Size = new System.Drawing.Size(307, 50);
+            this.passwordTB.Size = new System.Drawing.Size(326, 50);
             this.passwordTB.TabIndex = 2;
             this.passwordTB.TextInput = "";
             this.passwordTB.TextPreview = "Пароль";
@@ -116,11 +118,11 @@ namespace GMR
             this.loginTB.Font = new System.Drawing.Font("Arial", 13.25F);
             this.loginTB.FontTextPreview = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.loginTB.ForeColor = System.Drawing.Color.Black;
-            this.loginTB.Location = new System.Drawing.Point(20, 31);
+            this.loginTB.Location = new System.Drawing.Point(19, 10);
             this.loginTB.Name = "loginTB";
             this.loginTB.Rounding = 100;
             this.loginTB.RoundingEnabled = true;
-            this.loginTB.Size = new System.Drawing.Size(307, 50);
+            this.loginTB.Size = new System.Drawing.Size(326, 50);
             this.loginTB.TabIndex = 1;
             this.loginTB.TextInput = "";
             this.loginTB.TextPreview = "Имя пользователя";
@@ -135,7 +137,7 @@ namespace GMR
             // 
             this.showPasswordPB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.showPasswordPB.Image = global::GMR.Properties.Resources.showPassword;
-            this.showPasswordPB.Location = new System.Drawing.Point(344, 119);
+            this.showPasswordPB.Location = new System.Drawing.Point(354, 98);
             this.showPasswordPB.MinimumSize = new System.Drawing.Size(35, 35);
             this.showPasswordPB.Name = "showPasswordPB";
             this.showPasswordPB.Size = new System.Drawing.Size(35, 35);
@@ -148,7 +150,7 @@ namespace GMR
             // loadingPictureBox
             // 
             this.loadingPictureBox.Image = global::GMR.Properties.Resources.load;
-            this.loadingPictureBox.Location = new System.Drawing.Point(122, 166);
+            this.loadingPictureBox.Location = new System.Drawing.Point(255, 153);
             this.loadingPictureBox.Name = "loadingPictureBox";
             this.loadingPictureBox.Size = new System.Drawing.Size(90, 57);
             this.loadingPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -161,15 +163,42 @@ namespace GMR
             this.loginErrorLabel.AutoSize = true;
             this.loginErrorLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.loginErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.loginErrorLabel.Location = new System.Drawing.Point(17, 84);
+            this.loginErrorLabel.Location = new System.Drawing.Point(16, 63);
             this.loginErrorLabel.Name = "loginErrorLabel";
             this.loginErrorLabel.Size = new System.Drawing.Size(0, 14);
             this.loginErrorLabel.TabIndex = 12;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkLabel1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.linkLabel1.Location = new System.Drawing.Point(17, 164);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(173, 16);
+            this.linkLabel1.TabIndex = 13;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Создать учётную запись";
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.linkLabel2.Location = new System.Drawing.Point(18, 205);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(118, 16);
+            this.linkLabel2.TabIndex = 14;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Забыли пароль?";
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(395, 230);
+            this.ClientSize = new System.Drawing.Size(412, 266);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.loginErrorLabel);
             this.Controls.Add(this.loadingPictureBox);
             this.Controls.Add(this.closeBtn);
@@ -206,5 +235,7 @@ namespace GMR
         private Controls.GMRButton closeBtn;
         private System.Windows.Forms.PictureBox loadingPictureBox;
         private System.Windows.Forms.Label loginErrorLabel;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

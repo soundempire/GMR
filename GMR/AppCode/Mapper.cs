@@ -29,13 +29,12 @@ namespace GMR
                 cfg.CreateMap<LanguageViewModel, LanguageModel>();
                 cfg.CreateMap<UpdatePersonViewModel, PersonModel>();
                 cfg.CreateMap<UpdatePasswordViewModel, PasswordModel>()
-                   .ForMember(x => x.Value, op => op.MapFrom(y => y.NewValue))
-                   .ForMember(x => x.LastUpdated, op => op.MapFrom(y => DateTime.Now));
+                   .ForMember(x => x.Value, op => op.MapFrom(y => y.NewValue));
                 cfg.CreateMap<ImportContractorViewModel, ContractorModel>()
                    .ForMember(x => x.ID, op => op.Ignore())
                    .ForMember(x => x.Transactions, op => op.MapFrom(y => new HashSet<TransactionModel>()
                    {
-                       new TransactionModel { Date = y.Date, Value = y.Value, Price = y.Price, Currency = y.Currency}
+                       new TransactionModel { Date = y.Date, Value = y.Value, Price = y.Price, Currency = y.Currency }
                    }));
             }).CreateMapper();
         }

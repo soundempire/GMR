@@ -206,7 +206,11 @@ namespace GMR
 
         #region AccountMenu EventHandlers
 
-        private void AccountSettingsMenuItem_Click(object sender, EventArgs e) => DIContainer.Resolve<UserAccountForm>().ShowDialog();
+        private void AccountSettingsMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DIContainer.Resolve<UserAccountForm>().ShowDialog() == DialogResult.OK)
+                userAccountToolStrip.Text = Session.Person.FullName;
+        } 
 
         private void CloseMenuItem_Click(object sender, EventArgs e) => Close();
 

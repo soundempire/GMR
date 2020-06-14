@@ -57,6 +57,7 @@
     <Compile Include="Services\IImportService.cs" />
     <Compile Include="Services\ILanguagesService.cs" />
     <Compile Include="Services\IPersonService.cs" />
+    <Compile Include="Services\IPotentialLoginService.cs" />
     <Compile Include="Services\ITransactionService.cs" />
     <Compile Include="Services\IPotentialContractorsService.cs" />
   </ItemGroup>
