@@ -259,9 +259,10 @@ namespace GMR
             this.signOutMenuItem,
             this.closeMenuItem});
             this.userAccountToolStrip.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userAccountToolStrip.Image = global::GMR.Properties.Resources.Account4;
             this.userAccountToolStrip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.userAccountToolStrip.Name = "userAccountToolStrip";
-            this.userAccountToolStrip.Size = new System.Drawing.Size(81, 32);
+            this.userAccountToolStrip.Size = new System.Drawing.Size(105, 32);
             this.userAccountToolStrip.Text = "user name";
             this.userAccountToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
