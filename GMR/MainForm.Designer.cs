@@ -221,7 +221,7 @@ namespace GMR
             this.datesPanel.Controls.Add(this.startsDTP);
             this.datesPanel.Controls.Add(this.endsDTP);
             this.datesPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.datesPanel.Location = new System.Drawing.Point(457, 0);
+            this.datesPanel.Location = new System.Drawing.Point(293, 0);
             this.datesPanel.Name = "datesPanel";
             this.datesPanel.Size = new System.Drawing.Size(255, 34);
             this.datesPanel.TabIndex = 18;
@@ -230,9 +230,9 @@ namespace GMR
             // 
             this.userAccountMenuPanel.Controls.Add(this.userAccountMenuStrip);
             this.userAccountMenuPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.userAccountMenuPanel.Location = new System.Drawing.Point(712, 0);
+            this.userAccountMenuPanel.Location = new System.Drawing.Point(548, 0);
             this.userAccountMenuPanel.Name = "userAccountMenuPanel";
-            this.userAccountMenuPanel.Size = new System.Drawing.Size(150, 34);
+            this.userAccountMenuPanel.Size = new System.Drawing.Size(314, 34);
             this.userAccountMenuPanel.TabIndex = 17;
             // 
             // userAccountMenuStrip
@@ -247,7 +247,7 @@ namespace GMR
             this.userAccountMenuStrip.Name = "userAccountMenuStrip";
             this.userAccountMenuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
             this.userAccountMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.userAccountMenuStrip.Size = new System.Drawing.Size(150, 34);
+            this.userAccountMenuStrip.Size = new System.Drawing.Size(314, 34);
             this.userAccountMenuStrip.TabIndex = 0;
             this.userAccountMenuStrip.Text = "Hello World";
             // 
