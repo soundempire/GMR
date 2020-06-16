@@ -50,6 +50,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=5.1.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -204,6 +205,10 @@
     <ProjectReference Include="..\GMR.DAL\GMR.DAL.csproj">
       <Project>{9B7DA819-9638-4911-9B50-D3393CFC1467}</Project>
       <Name>GMR.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMR.Logging\GMR.Logging.csproj">
+      <Project>{35d94c91-f521-4130-b03a-5143dd56b977}</Project>
+      <Name>GMR.Logging</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

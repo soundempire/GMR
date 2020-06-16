@@ -4,6 +4,7 @@ using GMR.BLL.Services;
 using GMR.DAL;
 using GMR.DAL.Context;
 using GMR.DAL.Repositories;
+using GMR.Logging;
 
 namespace GMR
 {
@@ -12,6 +13,8 @@ namespace GMR
         public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
+
+            builder.RegisterType<Logger>().As<ILogger>().SingleInstance();
 
             builder.RegisterType<GMRContext>();
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29806.167
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMR", "GMR.csproj", "{42BBACF0-3482-47D9-9EC7-34D7F154DB61}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMR.BLL", "..\GMR.BLL\GMR.BLL.csproj", "{B2D78520-37A7-4FE2-9C29-31DAC234D979}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMR.Animation", "..\GMR.Animation\GMR.Animation.csproj", "{F57E0DBE-B8C5-4DC7-9351-EDF1BCEA596E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMR.Logging", "..\GMR.Logging\GMR.Logging.csproj", "{35D94C91-F521-4130-B03A-5143DD56B977}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F57E0DBE-B8C5-4DC7-9351-EDF1BCEA596E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F57E0DBE-B8C5-4DC7-9351-EDF1BCEA596E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F57E0DBE-B8C5-4DC7-9351-EDF1BCEA596E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D94C91-F521-4130-B03A-5143DD56B977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D94C91-F521-4130-B03A-5143DD56B977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D94C91-F521-4130-B03A-5143DD56B977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D94C91-F521-4130-B03A-5143DD56B977}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

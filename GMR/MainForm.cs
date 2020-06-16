@@ -55,9 +55,6 @@ namespace GMR
                 (_contractorService as IDisposable).Dispose();
                 (_transactionService as IDisposable).Dispose();
 
-                Context.SetExecutableForm(DIContainer.Resolve<LoginForm>());
-                Context.ShowExecutableForm();
-
                 return;
             }
 
@@ -70,6 +67,15 @@ namespace GMR
             else
                 e.Cancel = true;
 
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (_isSignOut)
+            {
+                Context.SetExecutableForm(DIContainer.Resolve<LoginForm>());
+                Context.ShowExecutableForm();
+            }
         }
 
         private void MainForm_Resize(object sender, EventArgs e) => SetFormsSizes();
