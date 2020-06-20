@@ -53,7 +53,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.changeProfileBtn = new System.Windows.Forms.Button();
+            this.changeAccountBtn = new System.Windows.Forms.Button();
             this.changeProfilePanel = new System.Windows.Forms.Panel();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -326,15 +326,15 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Старый пароль*";
             // 
-            // changeProfileBtn
+            // changeAccountBtn
             // 
-            this.changeProfileBtn.Location = new System.Drawing.Point(11, 558);
-            this.changeProfileBtn.Name = "changeProfileBtn";
-            this.changeProfileBtn.Size = new System.Drawing.Size(115, 39);
-            this.changeProfileBtn.TabIndex = 11;
-            this.changeProfileBtn.Text = "Изменить профиль";
-            this.changeProfileBtn.UseVisualStyleBackColor = true;
-            this.changeProfileBtn.Click += new System.EventHandler(this.changeProfileBtn_Click);
+            this.changeAccountBtn.Location = new System.Drawing.Point(11, 558);
+            this.changeAccountBtn.Name = "changeAccountBtn";
+            this.changeAccountBtn.Size = new System.Drawing.Size(115, 39);
+            this.changeAccountBtn.TabIndex = 11;
+            this.changeAccountBtn.Text = "Изменить аккаунт";
+            this.changeAccountBtn.UseVisualStyleBackColor = true;
+            this.changeAccountBtn.Click += new System.EventHandler(this.changeProfileBtn_Click);
             // 
             // changeProfilePanel
             // 
@@ -437,7 +437,7 @@
             this.Controls.Add(this.passwordPanel);
             this.Controls.Add(this.userProfilePanel);
             this.Controls.Add(this.changeProfilePanel);
-            this.Controls.Add(this.changeProfileBtn);
+            this.Controls.Add(this.changeAccountBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UpdateUserAccountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -473,7 +473,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button changeProfileBtn;
+        private System.Windows.Forms.Button changeAccountBtn;
         private System.Windows.Forms.Panel changeProfilePanel;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;

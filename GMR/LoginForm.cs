@@ -154,5 +154,13 @@ namespace GMR
             loginTB.Enabled = enabled;
             passwordTB.Enabled = enabled;
         }
+
+        private void CreateAccountLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+            => DIContainer.Resolve<CreateUserAccountForm>().ShowDialog();
+
+        private void ForgotPasswordLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //TODO: think about it
+        }
     }
 }

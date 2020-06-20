@@ -13,17 +13,13 @@ namespace GMR.BLL
             {
                 cfg.CreateMap<Person, PersonModel>()
                     .ForMember(x => x.Language, op => op.MapFrom(y => new LanguageModel() { Id = y.Language }));
-                cfg.CreateMap<Password, PasswordModel>();
-                cfg.CreateMap<Transaction, TransactionModel>();
-                cfg.CreateMap<Contractor, ContractorModel>();
-                cfg.CreateMap<ContractorModel, PotentialContractorModel>();
+                cfg.CreateMap<Password, PasswordModel>().ReverseMap();
+                cfg.CreateMap<Transaction, TransactionModel>().ReverseMap();
+                cfg.CreateMap<Contractor, ContractorModel>().ReverseMap();
+                cfg.CreateMap<ContractorModel, PotentialContractorModel>().ReverseMap();
 
-                cfg.CreateMap<PasswordModel, Password>();
-                cfg.CreateMap<TransactionModel, Transaction>();
-                cfg.CreateMap<ContractorModel, Contractor>();
                 cfg.CreateMap<PersonModel, Person>()
                     .ForMember(x => x.Language, op => op.MapFrom(y => y.Language.Id));
-                cfg.CreateMap<PotentialContractorModel, ContractorModel>();
             }).CreateMapper();
         }
 

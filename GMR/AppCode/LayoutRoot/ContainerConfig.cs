@@ -22,6 +22,7 @@ namespace GMR
             builder.RegisterType<MainForm>();
             builder.RegisterType<AddContractorForm>();
             builder.RegisterType<UpdateUserAccountForm>();
+            builder.RegisterType<CreateUserAccountForm>();
             builder.RegisterType<ImportMasterForm>();
 
             builder.RegisterType<PasswordRepository>().As<IRepository<Password>>();

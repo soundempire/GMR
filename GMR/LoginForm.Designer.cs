@@ -42,8 +42,8 @@ namespace GMR
             this.showPasswordPB = new System.Windows.Forms.PictureBox();
             this.loadingPictureBox = new System.Windows.Forms.PictureBox();
             this.loginErrorLabel = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.createAccountLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.forgotPasswordLinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.showPasswordPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -168,38 +168,40 @@ namespace GMR
             this.loginErrorLabel.Size = new System.Drawing.Size(0, 14);
             this.loginErrorLabel.TabIndex = 12;
             // 
-            // linkLabel1
+            // createAccountLinkLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linkLabel1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.linkLabel1.Location = new System.Drawing.Point(17, 164);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(173, 16);
-            this.linkLabel1.TabIndex = 13;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Создать учётную запись";
+            this.createAccountLinkLabel.AutoSize = true;
+            this.createAccountLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createAccountLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createAccountLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.createAccountLinkLabel.Location = new System.Drawing.Point(17, 164);
+            this.createAccountLinkLabel.Name = "createAccountLinkLabel";
+            this.createAccountLinkLabel.Size = new System.Drawing.Size(121, 16);
+            this.createAccountLinkLabel.TabIndex = 13;
+            this.createAccountLinkLabel.TabStop = true;
+            this.createAccountLinkLabel.Text = "Создать аккаунт";
+            this.createAccountLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CreateAccountLinkLabel_LinkClicked);
             // 
-            // linkLabel2
+            // forgotPasswordLinkLabel
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linkLabel2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.linkLabel2.Location = new System.Drawing.Point(18, 205);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(118, 16);
-            this.linkLabel2.TabIndex = 14;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Забыли пароль?";
+            this.forgotPasswordLinkLabel.AutoSize = true;
+            this.forgotPasswordLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.forgotPasswordLinkLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.forgotPasswordLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.forgotPasswordLinkLabel.Location = new System.Drawing.Point(18, 205);
+            this.forgotPasswordLinkLabel.Name = "forgotPasswordLinkLabel";
+            this.forgotPasswordLinkLabel.Size = new System.Drawing.Size(118, 16);
+            this.forgotPasswordLinkLabel.TabIndex = 14;
+            this.forgotPasswordLinkLabel.TabStop = true;
+            this.forgotPasswordLinkLabel.Text = "Забыли пароль?";
+            this.forgotPasswordLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ForgotPasswordLinkLabel_LinkClicked);
             // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(412, 266);
-            this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.forgotPasswordLinkLabel);
+            this.Controls.Add(this.createAccountLinkLabel);
             this.Controls.Add(this.loginErrorLabel);
             this.Controls.Add(this.loadingPictureBox);
             this.Controls.Add(this.closeBtn);
@@ -236,7 +238,7 @@ namespace GMR
         private Controls.GMRButton closeBtn;
         private System.Windows.Forms.PictureBox loadingPictureBox;
         private System.Windows.Forms.Label loginErrorLabel;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel createAccountLinkLabel;
+        private System.Windows.Forms.LinkLabel forgotPasswordLinkLabel;
     }
 }

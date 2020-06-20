@@ -11,7 +11,7 @@ using GMR.BLL;
 using GMR.Controls.ServiceClass;
 using Context = GMR.ApplicationContext;
 
-namespace GMR //russianLanguageMenuItem   englishLanguageMenuItem
+namespace GMR
 {
     public partial class MainForm : Form
     {

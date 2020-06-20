@@ -17,8 +17,8 @@ namespace GMR
         {
             _mapper = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<LanguageModel, LanguageViewModel>();
-                cfg.CreateMap<PersonModel, UpdatePersonViewModel>();
+                cfg.CreateMap<LanguageModel, LanguageViewModel>().ReverseMap();
+                cfg.CreateMap<PersonModel, UpdatePersonViewModel>().ReverseMap();
                 cfg.CreateMap<PasswordModel, UpdatePasswordViewModel>();
                 cfg.CreateMap<ContractorModel, ImportContractorViewModel>()
                    .ForMember(x => x.Date, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Date))
@@ -26,8 +26,6 @@ namespace GMR
                    .ForMember(x => x.Price, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Price))
                    .ForMember(x => x.Currency, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Currency));
 
-                cfg.CreateMap<LanguageViewModel, LanguageModel>();
-                cfg.CreateMap<UpdatePersonViewModel, PersonModel>();
                 cfg.CreateMap<UpdatePasswordViewModel, PasswordModel>()
                    .ForMember(x => x.Value, op => op.MapFrom(y => y.NewValue));
                 cfg.CreateMap<ImportContractorViewModel, ContractorModel>()
