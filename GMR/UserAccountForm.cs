@@ -82,9 +82,9 @@ namespace GMR
                 if (viewModel.Password.Value != viewModel.Password.NewValue)
                     viewModel.Password.LastUpdated = DateTime.Now;
 
-
-                var updatedPerson = await _personService.UpdatePersonAsync(Mapper.Map<UpdatePersonViewModel, PersonModel>(viewModel));
-                Session.Person = updatedPerson;
+                var person = Mapper.Map<UpdatePersonViewModel, PersonModel>(viewModel);
+                await _personService.UpdatePersonAsync(person);
+                Session.Person = person;
                 DialogResult = DialogResult.OK;
             }
             else

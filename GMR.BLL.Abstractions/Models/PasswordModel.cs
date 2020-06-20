@@ -2,7 +2,7 @@
 
 namespace GMR.BLL
 {
-    public class PasswordModel : ICloneable
+    public class PasswordModel
     {
         public long ID { get; set; }
 
@@ -15,7 +15,5 @@ namespace GMR.BLL
         public string Value { get; set; }
 
         public DateTime? LastUpdated { get; set; }
-
-        public object Clone() => MemberwiseClone();
     }
 }
