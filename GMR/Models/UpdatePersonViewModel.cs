@@ -13,12 +13,10 @@ namespace GMR.Models
 
         [Required]
         [MaxLength(50)]
-        //[MaxLength(5)]
         public string FirstName { get; set; }
 
         [Required]
         [MaxLength(50)]
-        //[MaxLength(5)]
         public string LastName { get; set; }
 
         [Required]
@@ -33,7 +31,6 @@ namespace GMR.Models
 
         [Required]
         [MaxLength(12)]
-        //[MaxLength(5)]
         public string Phone { get; set; }
     }
 }
