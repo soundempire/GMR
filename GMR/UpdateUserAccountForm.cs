@@ -186,6 +186,41 @@ namespace GMR
             UpdateSaveButtonEnabledState();
         }
 
+        private void NewPasswordTBox_TextChanged(object sender, EventArgs e)
+        {
+            if (updatePasswordChBox.Checked)
+            {
+                errorPasswordLabel.Visible = string.IsNullOrWhiteSpace((sender as TextBox).Text);
+                if (!errorPasswordLabel.Visible && !string.IsNullOrEmpty(confirmPasswordTBox.Text))
+                {
+                    errorConfirmPasswordLabel.Visible = !string.Equals(newPasswordTBox.Text, confirmPasswordTBox.Text);
+                }
+                UpdateSaveButtonEnabledState();
+            }
+        }
+
+        private void OldPasswordTBox_TextChanged(object sender, EventArgs e)
+        {
+            if (updatePasswordChBox.Checked)
+            {
+                var oldPasswordText = (sender as TextBox).Text;
+                var isValueValid = string.Equals(Session.Person.Password.Value, oldPasswordText);
+                RequaredAndIncorrectValuePasswordValidation(oldPasswordText, "Введите текущий пароль", isValueValid, "Неверный текущий пароль", errorOldPasswordLabel);
+                UpdateSaveButtonEnabledState();
+            }
+        }
+
+        private void ConfirmPasswordTBox_TextChanged(object sender, EventArgs e)
+        {
+            if (updatePasswordChBox.Checked)
+            {
+                var confirmPasswordText = (sender as TextBox).Text;
+                var isValueValid = string.Equals(newPasswordTBox.Text, confirmPasswordText);
+                RequaredAndIncorrectValuePasswordValidation(confirmPasswordText, "Продублируйте новый пароль", isValueValid, "Неверно продублирован новый пароль", errorConfirmPasswordLabel);
+                UpdateSaveButtonEnabledState();
+            }
+        }
+
         private void RequaredAndTextLengthValidation(string text, string requaredErrorText, int lengthLimit, Label errorLabel)
         {
             if (string.IsNullOrWhiteSpace(text))
@@ -205,66 +240,22 @@ namespace GMR
             }
         }
 
-        private void OldPasswordTBox_TextChanged(object sender, EventArgs e)
+        private void RequaredAndIncorrectValuePasswordValidation(string password, string requaredErrorText, bool isValueValid, string invalidErrorText, Label errorLabel)
         {
-            if (updatePasswordChBox.Checked)
+            if (string.IsNullOrWhiteSpace(password))
             {
-                var oldPasswordText = (sender as TextBox).Text;
-                if (string.IsNullOrWhiteSpace(oldPasswordText))
-                {
-                    errorOldPasswordLabel.Visible = true;
-                    errorOldPasswordLabel.Text = "Введите текущий пароль";
-                }
-                else if (!string.Equals(Session.Person.Password.Value, oldPasswordText))
-                {
-                    errorOldPasswordLabel.Visible = true;
-                    errorOldPasswordLabel.Text = "Неверный текущий пароль";
-                }
-                else
-                {
-                    errorOldPasswordLabel.Visible = false;
-                    errorOldPasswordLabel.Text = string.Empty;
-                }
-                
-                UpdateSaveButtonEnabledState();
+                errorLabel.Visible = true;
+                errorLabel.Text = requaredErrorText;
             }
-        }
-
-        private void NewPasswordTBox_TextChanged(object sender, EventArgs e)
-        {
-            if (updatePasswordChBox.Checked)
+            else if (!isValueValid)
             {
-                errorPasswordLabel.Visible = string.IsNullOrWhiteSpace((sender as TextBox).Text);
-                if (!errorPasswordLabel.Visible && !string.IsNullOrEmpty(confirmPasswordTBox.Text))
-                {
-                    errorConfirmPasswordLabel.Visible = !string.Equals(newPasswordTBox.Text, confirmPasswordTBox.Text);
-                }
-                UpdateSaveButtonEnabledState();
+                errorLabel.Visible = true;
+                errorLabel.Text = invalidErrorText;
             }
-        }
-
-        private void ConfirmPasswordTBox_TextChanged(object sender, EventArgs e)
-        {
-            if (updatePasswordChBox.Checked)
+            else
             {
-                var confirmPasswordText = (sender as TextBox).Text;
-                if (string.IsNullOrWhiteSpace(confirmPasswordText))
-                {
-                    errorConfirmPasswordLabel.Visible = true;
-                    errorConfirmPasswordLabel.Text = "Продублируйте новый пароль";
-                }
-                else if (!string.Equals(newPasswordTBox.Text, confirmPasswordText))
-                {
-                    errorConfirmPasswordLabel.Visible = true;
-                    errorConfirmPasswordLabel.Text = "Неверно продублирован новый пароль";
-                }
-                else
-                {
-                    errorConfirmPasswordLabel.Visible = false;
-                    errorConfirmPasswordLabel.Text = string.Empty;
-                }
-
-                UpdateSaveButtonEnabledState();
+                errorLabel.Visible = false;
+                errorLabel.Text = string.Empty;
             }
         }
 
