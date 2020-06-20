@@ -11,13 +11,15 @@ using GMR.BLL;
 using GMR.Controls.ServiceClass;
 using Context = GMR.ApplicationContext;
 
-namespace GMR
+namespace GMR //russianLanguageMenuItem   englishLanguageMenuItem
 {
     public partial class MainForm : Form
     {
         private readonly IContractorService _contractorService;
 
         private readonly ITransactionService _transactionService;
+
+        private readonly ILanguagesService _languagesService;
 
         private List<TransactionModel> _loadedTransactions;
 
@@ -29,12 +31,13 @@ namespace GMR
 
         private const string allContractorsValue = "Все";
 
-        public MainForm(IContractorService contractorService, ITransactionService transactionService)
+        public MainForm(IContractorService contractorService, ITransactionService transactionService, ILanguagesService languagesService)
         {
             InitializeComponent();
 
             _contractorService = contractorService;
             _transactionService = transactionService;
+            _languagesService = languagesService;
         }
 
         #region Main Form EventHandlers
@@ -44,6 +47,12 @@ namespace GMR
             await LoadContractorsAsync();
 
             userAccountToolStrip.Text = Session.Person.FullName;
+
+            foreach (var languageModel in (await _languagesService.GetLanguages()).OrderBy(_ => _.Name))
+            {
+                var languageToolstripMenuItem = new ToolStripMenuItem(languageModel.Name);
+                languageMenuItem.DropDownItems.Add(languageToolstripMenuItem);
+            }
 
             SetFormsSizes();
         }
@@ -214,7 +223,7 @@ namespace GMR
 
         private void AccountSettingsMenuItem_Click(object sender, EventArgs e)
         {
-            if (DIContainer.Resolve<UserAccountForm>().ShowDialog() == DialogResult.OK)
+            if (DIContainer.Resolve<UpdateUserAccountForm>().ShowDialog() == DialogResult.OK)
                 userAccountToolStrip.Text = Session.Person.FullName;
         } 
 

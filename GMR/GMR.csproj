@@ -138,11 +138,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="AppCode\Session.cs" />
-    <Compile Include="UserAccountForm.cs">
+    <Compile Include="UpdateUserAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserAccountForm.Designer.cs">
-      <DependentUpon>UserAccountForm.cs</DependentUpon>
+    <Compile Include="UpdateUserAccountForm.Designer.cs">
+      <DependentUpon>UpdateUserAccountForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddContractorForm.resx">
       <DependentUpon>AddContractorForm.cs</DependentUpon>
@@ -162,8 +162,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserAccountForm.resx">
-      <DependentUpon>UserAccountForm.cs</DependentUpon>
+    <EmbeddedResource Include="UpdateUserAccountForm.resx">
+      <DependentUpon>UpdateUserAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

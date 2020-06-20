@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace GMR
 {
-    public partial class UserAccountForm : Form
+    public partial class UpdateUserAccountForm : Form
     {
         private readonly IPersonService _personService;
 
@@ -27,7 +27,7 @@ namespace GMR
 
         private List<Label> _errorPasswordLabels;
 
-        public UserAccountForm(IPersonService personService, IPotentialLoginService potentialLoginService, ILanguagesService languagesService)
+        public UpdateUserAccountForm(IPersonService personService, IPotentialLoginService potentialLoginService, ILanguagesService languagesService)
         {
             InitializeComponent();
 

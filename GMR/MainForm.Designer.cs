@@ -46,8 +46,6 @@ namespace GMR
             this.userAccountToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.russianLanguageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.englishLanguageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.signOutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contractorsCBoxPanel = new System.Windows.Forms.Panel();
@@ -270,42 +268,27 @@ namespace GMR
             // 
             this.accountSettingsMenuItem.Name = "accountSettingsMenuItem";
             this.accountSettingsMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.accountSettingsMenuItem.Text = "&Настройка аккаунта";
+            this.accountSettingsMenuItem.Text = "Настройка аккаунта";
             this.accountSettingsMenuItem.Click += new System.EventHandler(this.AccountSettingsMenuItem_Click);
             // 
             // languageMenuItem
             // 
-            this.languageMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.russianLanguageMenuItem,
-            this.englishLanguageMenuItem});
             this.languageMenuItem.Name = "languageMenuItem";
             this.languageMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.languageMenuItem.Text = "&Язык";
-            // 
-            // russianLanguageMenuItem
-            // 
-            this.russianLanguageMenuItem.Name = "russianLanguageMenuItem";
-            this.russianLanguageMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.russianLanguageMenuItem.Text = "&Русский";
-            // 
-            // englishLanguageMenuItem
-            // 
-            this.englishLanguageMenuItem.Name = "englishLanguageMenuItem";
-            this.englishLanguageMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.englishLanguageMenuItem.Text = "&Английский";
+            this.languageMenuItem.Text = "Язык";
             // 
             // signOutMenuItem
             // 
             this.signOutMenuItem.Name = "signOutMenuItem";
             this.signOutMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.signOutMenuItem.Text = "&Выйти";
+            this.signOutMenuItem.Text = "Выйти";
             this.signOutMenuItem.Click += new System.EventHandler(this.SignOutMenuItem_Click);
             // 
             // closeMenuItem
             // 
             this.closeMenuItem.Name = "closeMenuItem";
             this.closeMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.closeMenuItem.Text = "&Закрыть";
+            this.closeMenuItem.Text = "Закрыть";
             this.closeMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
             // contractorsCBoxPanel
@@ -637,8 +620,6 @@ namespace GMR
         private ToolStripMenuItem userAccountToolStrip;
         private ToolStripMenuItem accountSettingsMenuItem;
         private ToolStripMenuItem languageMenuItem;
-        private ToolStripMenuItem russianLanguageMenuItem;
-        private ToolStripMenuItem englishLanguageMenuItem;
         private ToolStripMenuItem signOutMenuItem;
         private ToolStripMenuItem closeMenuItem;
     }

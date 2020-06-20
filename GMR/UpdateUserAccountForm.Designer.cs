@@ -1,6 +1,6 @@
 ﻿namespace GMR
 {
-    partial class UserAccountForm
+    partial class UpdateUserAccountForm
     {
         /// <summary>
         /// Required designer variable.
@@ -199,11 +199,12 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label10.Location = new System.Drawing.Point(18, 313);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.Size = new System.Drawing.Size(45, 16);
             this.label10.TabIndex = 17;
-            this.label10.Text = "Язык";
+            this.label10.Text = "Язык*";
             // 
             // errorLoginLabel
             // 
@@ -319,7 +320,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(16, 12);
+            this.label6.Location = new System.Drawing.Point(16, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 16);
             this.label6.TabIndex = 10;
@@ -427,7 +428,7 @@
             this.updatePasswordChBox.UseVisualStyleBackColor = true;
             this.updatePasswordChBox.CheckedChanged += new System.EventHandler(this.UpdatePasswordChBox_CheckedChanged);
             // 
-            // UserAccountForm
+            // UpdateUserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -438,7 +439,7 @@
             this.Controls.Add(this.changeProfilePanel);
             this.Controls.Add(this.changeProfileBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "UserAccountForm";
+            this.Name = "UpdateUserAccountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Информация пользователя";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserAccountForm_FormClosing);
