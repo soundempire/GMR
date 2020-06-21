@@ -25,7 +25,7 @@ namespace GMR.BLL
         [Browsable(false)]
         public ICollection<TransactionModel> Transactions { get; set; }
 
-        public object Clone() => MemberwiseClone();
+        object ICloneable.Clone() => MemberwiseClone();
 
         public override int GetHashCode() => Name.GetHashCode();
 

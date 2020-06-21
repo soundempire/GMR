@@ -72,6 +72,7 @@ namespace GMR
                 viewModel.Password.OldValue = oldPasswordTBox.Text;
                 viewModel.Password.NewValue = newPasswordTBox.Text;
                 viewModel.Password.ConfirmValue = confirmPasswordTBox.Text;
+                viewModel.Password.LastUpdated = DateTime.Now;
             }
             else
             {
@@ -88,9 +89,6 @@ namespace GMR
                     loginTBox.Focus();
                     return;
                 }
-
-                if (viewModel.Password.Value != viewModel.Password.NewValue)
-                    viewModel.Password.LastUpdated = DateTime.Now;
 
                 var person = Mapper.Map<UpdatePersonViewModel, PersonModel>(viewModel);
                 await _personService.UpdatePersonAsync(person);
@@ -190,10 +188,12 @@ namespace GMR
         {
             if (updatePasswordChBox.Checked)
             {
-                errorPasswordLabel.Visible = string.IsNullOrWhiteSpace((sender as TextBox).Text);
+                var newPasswordText = (sender as TextBox).Text;
+                errorPasswordLabel.Visible = string.IsNullOrWhiteSpace(newPasswordText);
                 if (!errorPasswordLabel.Visible && !string.IsNullOrEmpty(confirmPasswordTBox.Text))
                 {
-                    errorConfirmPasswordLabel.Visible = !string.Equals(newPasswordTBox.Text, confirmPasswordTBox.Text);
+                    errorConfirmPasswordLabel.Text = "Неверно продублирован новый пароль";
+                    errorConfirmPasswordLabel.Visible = !string.Equals(newPasswordText, confirmPasswordTBox.Text);
                 }
                 UpdateSaveButtonEnabledState();
             }

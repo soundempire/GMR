@@ -114,6 +114,12 @@ namespace GMR
         {
             var currentContractor = contractorsDGView.Rows[e.RowIndex].DataBoundItem as ContractorModel;
 
+            if (string.IsNullOrWhiteSpace(currentContractor.Name))
+            {
+                MessageBox.Show("У контрагента не может быть пустого имени.", "Переименование контрагента", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                currentContractor.Name = _previousEditableModel.Contractor.Name;
+            }
+
             if (!currentContractor.Equals(_previousEditableModel.Contractor))
             {
                 await _contractorService.UpdateContractorAsync(currentContractor);

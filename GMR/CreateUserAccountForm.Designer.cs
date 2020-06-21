@@ -108,6 +108,7 @@
             this.passwordTBox.Size = new System.Drawing.Size(196, 23);
             this.passwordTBox.TabIndex = 21;
             this.passwordTBox.UseSystemPasswordChar = true;
+            this.passwordTBox.TextChanged += new System.EventHandler(this.PasswordTBox_TextChanged);
             // 
             // errorConfirmPasswordLabel
             // 
@@ -147,6 +148,7 @@
             this.confirmPasswordTBox.Size = new System.Drawing.Size(196, 23);
             this.confirmPasswordTBox.TabIndex = 22;
             this.confirmPasswordTBox.UseSystemPasswordChar = true;
+            this.confirmPasswordTBox.TextChanged += new System.EventHandler(this.ConfirmPasswordTBox_TextChanged);
             // 
             // languagesCBox
             // 
@@ -215,6 +217,7 @@
             this.loginTBox.Name = "loginTBox";
             this.loginTBox.Size = new System.Drawing.Size(196, 23);
             this.loginTBox.TabIndex = 13;
+            this.loginTBox.TextChanged += new System.EventHandler(this.LoginTBox_TextChanged);
             // 
             // label9
             // 
@@ -241,6 +244,7 @@
             this.phoneTBox.Name = "phoneTBox";
             this.phoneTBox.Size = new System.Drawing.Size(196, 23);
             this.phoneTBox.TabIndex = 9;
+            this.phoneTBox.TextChanged += new System.EventHandler(this.PhoneTBox_TextChanged);
             // 
             // label1
             // 
@@ -287,6 +291,7 @@
             this.lastNameTBox.Name = "lastNameTBox";
             this.lastNameTBox.Size = new System.Drawing.Size(196, 23);
             this.lastNameTBox.TabIndex = 6;
+            this.lastNameTBox.TextChanged += new System.EventHandler(this.LastNameTBox_TextChanged);
             // 
             // label4
             // 
@@ -305,6 +310,7 @@
             this.firstNameTBox.Name = "firstNameTBox";
             this.firstNameTBox.Size = new System.Drawing.Size(196, 23);
             this.firstNameTBox.TabIndex = 5;
+            this.firstNameTBox.TextChanged += new System.EventHandler(this.FirstNameTBox_TextChanged);
             // 
             // label5
             // 
@@ -318,6 +324,7 @@
             // 
             // createAccountBtn
             // 
+            this.createAccountBtn.Enabled = false;
             this.createAccountBtn.Location = new System.Drawing.Point(227, 476);
             this.createAccountBtn.Name = "createAccountBtn";
             this.createAccountBtn.Size = new System.Drawing.Size(148, 33);

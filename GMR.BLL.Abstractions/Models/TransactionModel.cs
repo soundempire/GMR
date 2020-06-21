@@ -28,7 +28,7 @@ namespace GMR.BLL
         [ReadOnly(true)]
         public double Currency { get; set; }
 
-        public object Clone() => MemberwiseClone();
+        object ICloneable.Clone() => MemberwiseClone();
 
         public override int GetHashCode() => (Date, Value, Price, Currency).GetHashCode();
 
