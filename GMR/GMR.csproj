@@ -132,6 +132,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppCode\Mapper.cs" />
+    <Compile Include="Models\CreatePasswordViewModel.cs" />
+    <Compile Include="Models\CreatePersonViewModel.cs" />
     <Compile Include="Models\ImportContractorViewModel.cs" />
     <Compile Include="Models\LanguageViewModel.cs" />
     <Compile Include="Models\UpdatePasswordViewModel.cs" />

@@ -1,4 +1,5 @@
 ﻿using GMR.BLL;
+using GMR.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,9 +29,10 @@ namespace GMR
             _languagesService = languagesService;
         }
 
-        private void CreateUserAccountForm_Load(object sender, EventArgs e)
+        private async void CreateUserAccountForm_Load(object sender, EventArgs e)
         {
-
+            languagesCBox.DisplayMember = nameof(LanguageViewModel.Name);
+            languagesCBox.DataSource = Mapper.Map<IEnumerable<LanguageModel>, IEnumerable<LanguageViewModel>>(await _languagesService.GetLanguages()).ToArray();
         }
 
         private void CreateUserAccountForm_FormClosing(object sender, FormClosingEventArgs e)

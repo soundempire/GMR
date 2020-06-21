@@ -3,12 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GMR.Models
 {
-    internal class UpdatePasswordViewModel
+    internal class CreatePasswordViewModel
     {
-        public long ID { get; set; }
-
-        public long PersonID { get; set; }
-
         [Required]
         public string Login { get; set; }
 
@@ -17,15 +13,9 @@ namespace GMR.Models
 
         [Required]
         [Compare(nameof(Value))]
-        public string OldValue { get; set; }
-
-        [Required]
-        public string NewValue { get; set; }
-
-        [Required]
-        [Compare(nameof(NewValue))]
         public string ConfirmValue { get; set; }
 
+        [Required]
         public DateTime? LastUpdated { get; set; }
     }
 }

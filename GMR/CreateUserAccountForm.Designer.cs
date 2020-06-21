@@ -84,7 +84,6 @@
             this.userProfilePanel.Controls.Add(this.label4);
             this.userProfilePanel.Controls.Add(this.firstNameTBox);
             this.userProfilePanel.Controls.Add(this.label5);
-            this.userProfilePanel.Enabled = false;
             this.userProfilePanel.Location = new System.Drawing.Point(12, 12);
             this.userProfilePanel.Name = "userProfilePanel";
             this.userProfilePanel.Size = new System.Drawing.Size(363, 448);

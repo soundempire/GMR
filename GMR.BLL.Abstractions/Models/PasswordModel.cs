@@ -6,7 +6,7 @@ namespace GMR.BLL
     {
         public long ID { get; set; }
 
-        public string PersonID { get; set; }
+        public long PersonID { get; set; }
 
         public PersonModel Person { get; set; }
 

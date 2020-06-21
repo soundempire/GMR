@@ -19,6 +19,8 @@ namespace GMR
             {
                 cfg.CreateMap<LanguageModel, LanguageViewModel>().ReverseMap();
                 cfg.CreateMap<PersonModel, UpdatePersonViewModel>().ReverseMap();
+                cfg.CreateMap<CreatePersonViewModel, PersonModel>();
+                cfg.CreateMap<CreatePasswordViewModel, PasswordModel>();
                 cfg.CreateMap<PasswordModel, UpdatePasswordViewModel>();
                 cfg.CreateMap<ContractorModel, ImportContractorViewModel>()
                    .ForMember(x => x.Date, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Date))

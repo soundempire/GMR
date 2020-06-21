@@ -2,10 +2,8 @@
 
 namespace GMR.Models
 {
-    internal class UpdatePersonViewModel
+    internal class CreatePersonViewModel
     {
-        public long ID { get; set; }
-
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }
@@ -15,7 +13,7 @@ namespace GMR.Models
         public string LastName { get; set; }
 
         [Required]
-        public UpdatePasswordViewModel Password { get; set; }
+        public CreatePasswordViewModel Password { get; set; }
 
         public string Country { get; set; }
 
