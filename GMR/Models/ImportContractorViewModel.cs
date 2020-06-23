@@ -19,7 +19,7 @@ namespace GMR.Models
         public string ContractorID { get; set; }
 
         [DisplayName("Дата")]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         [DisplayName("Транзакция")]
         public double? Value { get; set; } = null;

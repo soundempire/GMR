@@ -55,11 +55,11 @@ namespace GMR.BLL.Services
                     ID = Convert.ToInt64(row[0].ToString().Trim()),
                     ContractorID = row[1].ToString().Trim(),
                     Name = row[2].ToString().Trim(),
-                    Transactions = new HashSet<TransactionModel>
+                    Transactions = new HashSet<TransactionModel> //TODO: think about HashSet
                     {
                         new TransactionModel
                         {
-                            Date = row[3].ToString().Trim() == string.Empty ? default(DateTime?) : Convert.ToDateTime(row[3].ToString()),
+                            Date = row[3].ToString().Trim() == string.Empty ? default : Convert.ToDateTime(row[3].ToString()),
                             Value = row[4].ToString().Trim() == string.Empty ? default(double?) : double.Parse(row[4].ToString().Trim()),
                             Price = row[5].ToString().Trim() == string.Empty ? default(double?) : double.Parse(row[5].ToString().Trim()),
                             Currency = double.Parse(row[6].ToString().Trim())

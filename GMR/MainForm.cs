@@ -189,6 +189,13 @@ namespace GMR
         {
             var currentTransaction = transactionsDGView.Rows[e.RowIndex].DataBoundItem as TransactionModel;
 
+            if (!currentTransaction.Value.HasValue && !currentTransaction.Price.HasValue)
+            {
+                MessageBox.Show("Значение транзакции и платежа не могут быть пустыми одновременно.", "Редактирование транзакции", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                currentTransaction.Value = _previousEditableModel.Transaction.Value;
+                currentTransaction.Price = _previousEditableModel.Transaction.Price;
+            }
+
             if (!currentTransaction.Equals(_previousEditableModel.Transaction))
                 await _transactionService.UpdateTransactionAsync(currentTransaction);
 
@@ -389,7 +396,7 @@ namespace GMR
             var selectedContractorID = (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorModel).ID;
             var contractor = await _contractorService.GetContractorAsync(selectedContractorID);
             _loadedTransactions = contractor.Transactions
-                                                .Where(tr => tr.Date.Value.Date >= startsDTP.Value.Date && tr.Date.Value.Date <= endsDTP.Value.Date).ToList();
+                                                .Where(tr => tr.Date.Date >= startsDTP.Value.Date && tr.Date.Date <= endsDTP.Value.Date).ToList();
 
             transactionsDGView.DataSource = new SortableBindingList<TransactionModel>(_loadedTransactions);
 
@@ -426,7 +433,7 @@ namespace GMR
                 if (allTransactions)
                 {
                     totalSumTB.Font = new Font(totalSumTB.Font.FontFamily.Name, 9, totalSumTB.Font.Style);
-                    totalSumTB.Text = $"Итого: {_loadedTransactions.Min(_ => _.Date).Value.ToShortDateString()} - {_loadedTransactions.Max(_ => _.Date).Value.ToShortDateString()}";
+                    totalSumTB.Text = $"Итого: {_loadedTransactions.Min(_ => _.Date).ToShortDateString()} - {_loadedTransactions.Max(_ => _.Date).ToShortDateString()}";
                 }
                 else
                 {

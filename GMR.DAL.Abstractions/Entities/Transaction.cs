@@ -10,8 +10,7 @@ namespace GMR.DAL
 
         public Contractor Contractor { get; set; }
 
-        //TODO: Vadim not nullable (through all app)
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         public double? Value { get; set; } = null;
 

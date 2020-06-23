@@ -16,7 +16,7 @@ namespace GMR.BLL
 
         [DisplayName("Дата")]
         [ReadOnly(true)]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         [DisplayName("Транзакция")]
         public double? Value { get; set; } = null;

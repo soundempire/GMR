@@ -145,9 +145,8 @@ namespace GMR
 
         private void SetCurrencyByDate()
         {
-            var transaction = _contractors.Values.SelectMany(contractor => contractor.Transactions, (c, t) => new { Transaction = t })
-                                                 .Where(_ => _.Transaction.Date.HasValue && _.Transaction.Date.Value.Date.Equals(transactionDateDTPicker.Value.Date))
-                                                 .Select(_ => _.Transaction)
+            var transaction = _contractors.Values.SelectMany(contractor => contractor.Transactions, (c, t) => t )
+                                                 .Where(_ => _.Date.Date.Equals(transactionDateDTPicker.Value.Date))
                                                  .FirstOrDefault();
 
             if (transaction != null)

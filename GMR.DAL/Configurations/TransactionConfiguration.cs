@@ -7,6 +7,7 @@ namespace GMR.DAL.Configurations
         public TransactionConfiguration()
         {
             HasKey(t => t.ID);
+            Property(t => t.Date).IsRequired();
             Property(t => t.Currency).IsRequired();
         }
     }
