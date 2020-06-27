@@ -21,7 +21,7 @@ namespace GMR.BLL.Services
                 {
                     if (string.IsNullOrEmpty(contractor.Name) || contractor.Name.Length > 50)
                     {
-                        potentialContractors.Add(new PotentialContractorModel { Error = "Имя контрагента не может быть пустым или его длина превышать 50 символов." });
+                        AddInvalidPotentialContractor(contractor, "Имя контрагента не может быть пустым или его длина превышать 50 символов.");
                         continue;
                     }
 
@@ -30,19 +30,19 @@ namespace GMR.BLL.Services
                     {
                         if (transaction.Value.HasValue && transaction.Value < 0)
                         {
-                            potentialContractors.Add(new PotentialContractorModel { Error = "Значение транзакции не может быть отрицательным." });
+                            AddInvalidPotentialContractor(contractor, "Значение транзакции не может быть отрицательным.");
                             continue;
                         }
 
                         if (transaction.Price.HasValue && transaction.Price < 0)
                         {
-                            potentialContractors.Add(new PotentialContractorModel { Error = "Значение платежа не может быть отрицательным." });
+                            AddInvalidPotentialContractor(contractor, "Значение платежа не может быть отрицательным.");
                             continue;
                         }
 
                         if (transaction.Currency < 0)
                         {
-                            potentialContractors.Add(new PotentialContractorModel { Error = "Курс не может быть отрицательным." });
+                            AddInvalidPotentialContractor(contractor, "Курс не может быть отрицательным.");
                             continue;
                         }
                     }
@@ -62,6 +62,13 @@ namespace GMR.BLL.Services
             }
 
             return potentialContractors;
+
+            void AddInvalidPotentialContractor(ContractorModel contractor, string error)
+            {
+                var potentialContractor = Mapper.Map<ContractorModel, PotentialContractorModel>(contractor);
+                potentialContractor.Error = error;
+                potentialContractors.Add(potentialContractor);
+            }
         }
 
         public void Dispose() => (_contractorService as IDisposable).Dispose();
