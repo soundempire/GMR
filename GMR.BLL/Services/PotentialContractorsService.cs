@@ -56,9 +56,10 @@ namespace GMR.BLL.Services
 
                 if (validPotentialContractors.Any())
                 {
-                    var validContractors = await CompareWithCurrentContractors(validPotentialContractors, personId);
-                    potentialContractors = potentialContractors.Where(_ => !_.IsValid).Union(validContractors).ToList();
-                }
+                    potentialContractors = potentialContractors.Where(_ => !_.IsValid)
+                                           .Union(await CompareWithCurrentContractors(validPotentialContractors, personId))
+                                           .ToList();
+            }
             }
 
             return potentialContractors;
@@ -88,18 +89,12 @@ namespace GMR.BLL.Services
                 {
                     if (potentialTransaction != null)
                     {
-                        if (personContractor.Transactions.Contains(potentialTransaction))
-                        {
-                            continue; //TODO: think about error message and valid state
-                        }
-                        else
-                        {
-                            potentialContractor.ID = personContractor.ID;
-                        }
+                        potentialContractor.ID = personContractor.ID;
                     }
                     else
                     {
-                        continue; //TODO: think about error message and valid state
+                        potentialContractor.Error = "Попытка загрузить существующего контрагента без выбранных транзакций";
+                        continue;
                     }
                 }
 
@@ -111,7 +106,7 @@ namespace GMR.BLL.Services
                     }
                     else if(potentialTransaction != null)
                     {
-                        contractor.Transactions = new HashSet<TransactionModel>() { potentialTransaction };
+                        contractor.Transactions = new List<TransactionModel>() { potentialTransaction };
                     }
                 }
                 else

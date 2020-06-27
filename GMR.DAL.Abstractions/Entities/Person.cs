@@ -1,4 +1,6 @@
-﻿namespace GMR.DAL
+﻿using System.Collections.Generic;
+
+namespace GMR.DAL
 {
     public class Person
     {
@@ -17,5 +19,9 @@
         public string Phone { get; set; }
 
         public string Language { get; set; }
+
+        public ICollection<Contractor> Transactions { get; set; }
+
+        public Person() => Transactions = new HashSet<Contractor>();
     }
 }

@@ -55,7 +55,7 @@ namespace GMR.BLL.Services
                     ID = Convert.ToInt64(row[0].ToString().Trim()),
                     ContractorID = row[1].ToString().Trim(),
                     Name = row[2].ToString().Trim(),
-                    Transactions = new HashSet<TransactionModel> //TODO: think about HashSet
+                    Transactions = new List<TransactionModel>
                     {
                         new TransactionModel
                         {

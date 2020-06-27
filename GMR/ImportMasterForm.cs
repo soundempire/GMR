@@ -77,7 +77,10 @@ namespace GMR
 
             if (potentialContractorsGroups.TryGetValue(false, out var invalidPotentialContractors))
             {
-                //DisplayImportResult(importResult);
+                var isConfirm = DisplayPotentialContractorsErrors(invalidPotentialContractors.ToArray());
+
+                if (!isConfirm)
+                    return;
             }
 
             if (potentialContractorsGroups.TryGetValue(true, out var successPotentialContractors) && successPotentialContractors.Any())
@@ -93,6 +96,7 @@ namespace GMR
             {
                 MessageBox.Show("Не удалось загрузить контрагентов.", "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
         }
 
         private void CancelBtn_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
@@ -210,24 +214,21 @@ namespace GMR
             tabControl.Visible = true;
         }
 
-        private void DisplayImportResult(List<PotentialContractorModel> importResult)
+        private bool DisplayPotentialContractorsErrors(PotentialContractorModel[] contractors)
         {
             var errors = new StringBuilder();
 
-            for (var i = 0; i < importResult.Count; i++)
-                if (!importResult[i].IsValid)
-                    errors.AppendLine($"Строка {i + 1}: {importResult[i].Error}");
-
-            var sb = new StringBuilder();
-            sb.AppendLine($"{importResult.Count(x => x.IsValid)} из {importResult.Count} строк было импортировано удачно.");
+            for (var i = 0; i < contractors.Length; i++)
+                if (!contractors[i].IsValid)
+                    errors.AppendLine($"{contractors[i].ContractorID} {contractors[i].Name}: {contractors[i].Error}");
 
             if (errors.Length > 0)
             {
-                sb.AppendLine("Ошибки импорта: ");
-                sb.Append(errors);
+                errors.AppendLine("\nПродолжить?");
+                return MessageBox.Show(errors.ToString(), "Ошибка импорта", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;
             }
 
-            MessageBox.Show(sb.ToString(), "Импорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
         }
     }
 }

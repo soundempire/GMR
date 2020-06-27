@@ -32,7 +32,7 @@ namespace GMR
                    .ForMember(x => x.Value, op => op.MapFrom(y => y.NewValue));
                 cfg.CreateMap<ImportContractorViewModel, ContractorModel>()
                    .ForMember(x => x.ID, op => op.Ignore())
-                   .ForMember(x => x.Transactions, op => op.MapFrom(y => new HashSet<TransactionModel>()
+                   .ForMember(x => x.Transactions, op => op.MapFrom(y => new List<TransactionModel>()
                    {
                        new TransactionModel { Date = y.Date, Value = y.Value, Price = y.Price, Currency = y.Currency }
                    }));
