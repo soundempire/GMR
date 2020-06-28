@@ -73,7 +73,7 @@ namespace GMR
             FilterContractorsAccordingToggles(ref selectedContractors);
 
             var potentialContractorsGroups = (await _potentialContractorsService.ValidateContractors(selectedContractors, Session.Person.ID))
-                                             .GroupBy(_ => _.IsValid).ToDictionary(g => g.Key, g => g.Select(_ => _));
+                                             .GroupBy(_ => _.IsValid).ToDictionary(g => g.Key, g => g.ToList());
 
             if (potentialContractorsGroups.TryGetValue(false, out var invalidPotentialContractors))
             {

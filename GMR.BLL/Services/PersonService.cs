@@ -34,7 +34,7 @@ namespace GMR.BLL.Services
             var persons = await query.ToListAsync();
             var personModels = Mapper.Map<IEnumerable<Person>, IEnumerable<PersonModel>>(persons)
                                     .GroupBy(_ => _.Language.Id)
-                                    .ToDictionary(group => group.Key, group => group.Select(_ => _));
+                                    .ToDictionary(group => group.Key, group => group.ToList());
 
             var languages = await _languagesService.GetLanguages(personModels.Keys.ToArray());
 

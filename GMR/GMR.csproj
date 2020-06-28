@@ -132,10 +132,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppCode\Mapper.cs" />
+    <Compile Include="Models\ContractorViewModel.cs" />
     <Compile Include="Models\CreatePasswordViewModel.cs" />
     <Compile Include="Models\CreatePersonViewModel.cs" />
     <Compile Include="Models\ImportContractorViewModel.cs" />
     <Compile Include="Models\LanguageViewModel.cs" />
+    <Compile Include="Models\TransactionViewModel.cs" />
     <Compile Include="Models\UpdatePasswordViewModel.cs" />
     <Compile Include="Models\UpdatePersonViewModel.cs" />
     <Compile Include="Program.cs" />
@@ -188,7 +190,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />

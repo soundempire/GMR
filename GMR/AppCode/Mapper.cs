@@ -4,8 +4,6 @@ using GMR.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GMR
 {
@@ -17,6 +15,8 @@ namespace GMR
         {
             _mapper = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<TransactionModel, TransactionViewModel>().ReverseMap();
+                cfg.CreateMap<ContractorModel, ContractorViewModel>().ReverseMap();
                 cfg.CreateMap<LanguageModel, LanguageViewModel>().ReverseMap();
                 cfg.CreateMap<PersonModel, UpdatePersonViewModel>().ReverseMap();
                 cfg.CreateMap<CreatePersonViewModel, PersonModel>();
