@@ -5,7 +5,8 @@ namespace GMR
 {
     internal class ImportResult
     {
-        public IEnumerable<ContractorModel> SuccessContractors { get; set; }
+        //TODO: IEnumerable?
+        public IEnumerable<ContractorModel> SuccessContractors { get; set; }//TODO: should be view model
 
         public bool OverwriteExistingNames { get; set; }
     }
