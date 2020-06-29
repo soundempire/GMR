@@ -160,7 +160,7 @@ namespace GMR
 
         private void ForgotPasswordLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //TODO: think about it
+            
         }
     }
 }
