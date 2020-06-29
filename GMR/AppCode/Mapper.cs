@@ -19,6 +19,7 @@ namespace GMR
                 cfg.CreateMap<ContractorModel, ContractorViewModel>().ReverseMap();
                 cfg.CreateMap<LanguageModel, LanguageViewModel>().ReverseMap();
                 cfg.CreateMap<PersonModel, UpdatePersonViewModel>().ReverseMap();
+                cfg.CreateMap<PotentialContractorModel, ContractorViewModel>();
                 cfg.CreateMap<CreatePersonViewModel, PersonModel>();
                 cfg.CreateMap<CreatePasswordViewModel, PasswordModel>();
                 cfg.CreateMap<PasswordModel, UpdatePasswordViewModel>();

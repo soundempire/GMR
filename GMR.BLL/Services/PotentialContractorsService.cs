@@ -76,6 +76,7 @@ namespace GMR.BLL.Services
 
         private async Task<IEnumerable<PotentialContractorModel>> CompareWithCurrentContractors(IEnumerable<PotentialContractorModel> validPotentialContractors, long personId)
         {
+            //TODO: HashSets
             var personContractors = (await _contractorService.GetContractorsAsync(personId, includes: new[] { nameof(ContractorModel.Transactions).ToLower() }))
                                     .ToDictionary(_ => ( _.ContractorID, _.Name ));
 

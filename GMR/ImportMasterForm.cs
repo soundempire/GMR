@@ -35,14 +35,14 @@ namespace GMR
         }
 
         #region ImportMasterForm EventHandlers
-
+        
         private void ImportMasterForm_FormClosing(object sender, FormClosingEventArgs e)
             => (_potentialContractorsService as IDisposable).Dispose();
 
         #endregion
 
         #region Control buttons EventHandlers
-
+        
         private async void OpenFileBtn_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -68,7 +68,7 @@ namespace GMR
             else
                 tableEntities = (IEnumerable<ImportContractorViewModel>)importingDataDGV.DataSource;
 
-            var selectedContractors = Mapper.Map<IEnumerable<ImportContractorViewModel>, IEnumerable<ContractorModel>>(tableEntities).ToList();
+            var selectedContractors = Mapper.Map<IEnumerable<ImportContractorViewModel>, List<ContractorModel>>(tableEntities);
 
             FilterContractorsAccordingToggles(ref selectedContractors);
 
@@ -85,9 +85,8 @@ namespace GMR
 
             if (potentialContractorsGroups.TryGetValue(true, out var successPotentialContractors) && successPotentialContractors.Any())
             {
-                //TODO: do not use bll.mapper
                 Tag = new ImportResult {
-                            SuccessContractors = GMR.BLL.Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorModel>>(successPotentialContractors),
+                            SuccessContractors = Mapper.Map<IEnumerable<PotentialContractorModel>, IEnumerable<ContractorViewModel>>(successPotentialContractors).ToArray(),
                             OverwriteExistingNames = overwriteNamesCheckBox.Checked
                                        };
                 DialogResult = DialogResult.OK;
@@ -178,7 +177,7 @@ namespace GMR
         }
 
         #endregion
-
+        
         private void FilterContractorsAccordingToggles(ref List<ContractorModel> selectedContractors)
         {
             if (_unRequiredToggles.Any(_ => !_.Checked))
@@ -191,7 +190,7 @@ namespace GMR
                     selectedContractors.ForEach(_ => _.Transactions.Clear());
             }
         }
-
+        
         private void SelectRows(int left, int right)
         {
             importingDataDGV.ClearSelection();
@@ -204,7 +203,7 @@ namespace GMR
                                      .ForEach(_ => _.Selected = true);
             }
         }
-
+        
         private void SetImportDataToDataGridViewColumnsSize()
         {
             var buttons = importTabPage.Controls.OfType<Control>().OrderBy(c => c.Name).ToList();
@@ -213,11 +212,10 @@ namespace GMR
                 importingDataDGV.Columns[i].Width = buttons[i].Width;
             tabControl.Visible = true;
         }
-
+        
         private bool DisplayPotentialContractorsErrors(PotentialContractorModel[] contractors)
         {
             var errors = new StringBuilder();
-
             for (var i = 0; i < contractors.Length; i++)
                 if (!contractors[i].IsValid)
                     errors.AppendLine($"{contractors[i].ContractorID} {contractors[i].Name}: {contractors[i].Error}");

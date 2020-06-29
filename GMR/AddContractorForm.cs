@@ -102,14 +102,14 @@ namespace GMR
             var isCurrencyValueEntered = !string.IsNullOrWhiteSpace(transactionCurrencyTBox.Text);
             transactionValueTBox.Enabled = transactionPriceTBox.Enabled = isCurrencyValueEntered;
         }
-        //BAD
+
         private async void ImportBtn_Click(object sender, EventArgs e)
         {            
             var importForm = DIContainer.Resolve<ImportMasterForm>();
             if (importForm.ShowDialog() == DialogResult.OK)
             {
                 var importResult = (ImportResult)importForm.Tag;
-                foreach (var contractor in importResult.SuccessContractors)//TODO: should be view model
+                foreach (var contractor in Mapper.Map<ContractorViewModel[], ContractorModel[]>(importResult.SuccessContractors))
                 {
                     if (contractor.ID > 0)
                     {

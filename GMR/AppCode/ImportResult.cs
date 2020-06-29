@@ -1,12 +1,11 @@
-﻿using GMR.BLL;
+﻿using GMR.Models;
 using System.Collections.Generic;
 
 namespace GMR
 {
     internal class ImportResult
     {
-        //TODO: IEnumerable?
-        public IEnumerable<ContractorModel> SuccessContractors { get; set; }//TODO: should be view model
+        public ContractorViewModel[] SuccessContractors { get; set; }
 
         public bool OverwriteExistingNames { get; set; }
     }
