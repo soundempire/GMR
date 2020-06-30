@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace GMR.Models
 {
-    public class ContractorViewModel : ICloneable
+    internal class ContractorViewModel : ICloneable
     {
         [Browsable(false)]
         public long ID { get; set; }

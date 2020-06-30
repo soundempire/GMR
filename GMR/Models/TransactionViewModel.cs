@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace GMR.Models
 {
-    public class TransactionViewModel : ICloneable
+    internal class TransactionViewModel : ICloneable
     {
         [Browsable(false)]
         public long ID { get; set; }

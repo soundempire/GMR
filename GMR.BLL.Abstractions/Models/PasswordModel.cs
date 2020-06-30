@@ -7,8 +7,6 @@ namespace GMR.BLL
         public long ID { get; set; }
 
         public long PersonID { get; set; }
-        //TODO: remove this field
-        public PersonModel Person { get; set; }
 
         public string Login { get; set; }
 
