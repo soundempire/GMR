@@ -26,6 +26,7 @@ namespace GMR.Models
         [Compare(nameof(NewValue))]
         public string ConfirmValue { get; set; }
 
-        public DateTime? LastUpdated { get; set; }
+        [Required]
+        public DateTime LastUpdated { get; set; }
     }
 }

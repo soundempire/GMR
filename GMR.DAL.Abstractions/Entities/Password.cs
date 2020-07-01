@@ -14,6 +14,6 @@ namespace GMR.DAL
 
         public string Value { get; set; }
 
-        public DateTime? LastUpdated { get; set; }
+        public DateTime LastUpdated { get; set; }
     }
 }

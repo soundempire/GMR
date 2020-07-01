@@ -20,8 +20,8 @@ namespace GMR.DAL
 
         public string Language { get; set; }
 
-        public ICollection<Contractor> Transactions { get; set; }
+        public ICollection<Contractor> Contractors { get; set; }
 
-        public Person() => Transactions = new HashSet<Contractor>();
+        public Person() => Contractors = new HashSet<Contractor>();
     }
 }
