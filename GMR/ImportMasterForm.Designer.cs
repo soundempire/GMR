@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportMasterForm));
             this.chooseColumnsPanel = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.importTabPage = new System.Windows.Forms.TabPage();
@@ -447,6 +448,7 @@
             this.importingDataDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.importingDataDGV.Size = new System.Drawing.Size(874, 356);
             this.importingDataDGV.TabIndex = 0;
+            this.importingDataDGV.Resize += new System.EventHandler(this.ImportingDataDGV_Resize);
             // 
             // openFileDialog
             // 
@@ -460,7 +462,7 @@
             this.ClientSize = new System.Drawing.Size(880, 458);
             this.Controls.Add(this.importingDataPanel);
             this.Controls.Add(this.chooseColumnsPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ImportMasterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

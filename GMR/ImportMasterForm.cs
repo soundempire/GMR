@@ -13,7 +13,6 @@ using System.Windows.Forms;
 
 namespace GMR
 {
-    //TODO: Vadim full screen opportunity
     //TODO: Vadim think about tab panel (not main order)
     public partial class ImportMasterForm : Form
     {
@@ -39,10 +38,12 @@ namespace GMR
         private void ImportMasterForm_FormClosing(object sender, FormClosingEventArgs e)
             => (_potentialContractorsService as IDisposable).Dispose();
 
+        private void ImportingDataDGV_Resize(object sender, EventArgs e) => FitFormSize();
+
         #endregion
 
         #region Control buttons EventHandlers
-        
+
         private async void OpenFileBtn_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -58,6 +59,7 @@ namespace GMR
                 numericUpDownLeft.Enabled = numericUpDownRight.Enabled = true;
                 numericUpDownLeft.Maximum = numericUpDownRight.Maximum = importingDataDGV.Rows.Count;
             }
+            FitFormSize();
         }
 
         private async void OkBtn_Click(object sender, EventArgs e)
@@ -228,5 +230,21 @@ namespace GMR
 
             return true;
         }
+
+        private void FitFormSize()
+        {
+            if (importingDataDGV.DataSource != null)
+            {
+                choosePanel1.SetBounds(choosePanel1.Location.X, choosePanel1.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.ID)].Width, choosePanel1.Size.Height);
+                choosePanel2.SetBounds(choosePanel1.Location.X + choosePanel1.Size.Width, choosePanel2.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Name)].Width, choosePanel2.Size.Height);
+                choosePanel3.SetBounds(choosePanel2.Location.X + choosePanel2.Size.Width, choosePanel3.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.ContractorID)].Width, choosePanel3.Size.Height);
+                choosePanel4.SetBounds(choosePanel3.Location.X + choosePanel3.Size.Width, choosePanel4.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Date)].Width, choosePanel4.Size.Height);
+                choosePanel5.SetBounds(choosePanel4.Location.X + choosePanel4.Size.Width, choosePanel5.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Value)].Width, choosePanel5.Size.Height);
+                choosePanel7.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width, choosePanel7.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel7.Size.Height);
+                choosePanel6.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Size.Height);
+            }
+        }
+
+
     }
 }

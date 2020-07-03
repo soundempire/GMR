@@ -159,7 +159,6 @@ namespace GMR
         
         private async void ContractorsDGView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //TODO: Vadim think about userfriendly header width
             if (e.Button == MouseButtons.Left && contractorsDGView.SelectedRows.Count == 1)
                 await BindTransactionsToDataGridViewAsync();
         }
@@ -448,8 +447,13 @@ namespace GMR
             else
                 totalTransactionsPanel.Visible = false;
         }
-        
+
         //TODO: Vadim investigate potential exceptions by resizing
+        //TODO: Vadim затираются даты на ресайзе.
+        //TODO: Vadim в сплиттер опустить топ панели
+        //TODO: Vadim минимальная ширина окна в панели импорта (всей формы)
+
+
         private void SetFormsSizes()
         {
             personPanel.SetBounds(personPanel.Location.X, personPanel.Location.Y, contractorsDGView.Size.Width, personPanel.Size.Height);
@@ -470,14 +474,17 @@ namespace GMR
             printBtn.SetBounds(deleteBtn.Location.X + deleteBtn.Width + 5, 10, 95, 30);
             closeBtn.SetBounds(controlBtnsPanel.Width - 120, 10, 105, 30);
 
-            //addBtn.Font = deleteBtn.Font = printBtn.Font = closeBtn.Font = new System.Drawing.Font("Tahoma", (float)(addBtn.Width * 0.09), FontStyle.Bold);
-
             if (contractorsDGView.DataSource != null)
             {
                 var contractorIdColumn = contractorsDGView.Columns[nameof(ContractorViewModel.ContractorID)];
                 contractorIdColumn.MinimumWidth = 40;
                 contractorIdColumn.Width = (int)(contractorsDGView.Size.Width * 0.15);
                 contractorsDGView.Columns[nameof(ContractorViewModel.Name)].Width = (int)(contractorsDGView.Size.Width * 0.85);
+
+                //contractorsCBox resizing
+                contractorsCBoxPanel.SetBounds(contractorsDGView.Location.X, contractorsCBoxPanel.Location.Y, contractorsDGView.Width+5, contractorsCBoxPanel.Height);
+                contractorsCBox.Width = contractorsDGView.Size.Width;
+                datesPanel.SetBounds(transactionsDGView.Location.X, datesPanel.Location.Y, datesPanel.Width, datesPanel.Height);
             }
         }
         

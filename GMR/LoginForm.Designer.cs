@@ -55,7 +55,7 @@ namespace GMR
             this.passwordErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.passwordErrorLabel.Location = new System.Drawing.Point(16, 140);
             this.passwordErrorLabel.Name = "passwordErrorLabel";
-            this.passwordErrorLabel.Size = new System.Drawing.Size(0, 14);
+            this.passwordErrorLabel.Size = new System.Drawing.Size(0, 22);
             this.passwordErrorLabel.TabIndex = 10;
             // 
             // closeBtn
@@ -149,10 +149,10 @@ namespace GMR
             // 
             // loadingPictureBox
             // 
-            this.loadingPictureBox.Image = global::GMR.Properties.Resources.load;
-            this.loadingPictureBox.Location = new System.Drawing.Point(255, 153);
+            this.loadingPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("loadingPictureBox.Image")));
+            this.loadingPictureBox.Location = new System.Drawing.Point(234, 139);
             this.loadingPictureBox.Name = "loadingPictureBox";
-            this.loadingPictureBox.Size = new System.Drawing.Size(90, 57);
+            this.loadingPictureBox.Size = new System.Drawing.Size(128, 71);
             this.loadingPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loadingPictureBox.TabIndex = 11;
             this.loadingPictureBox.TabStop = false;
@@ -165,7 +165,7 @@ namespace GMR
             this.loginErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.loginErrorLabel.Location = new System.Drawing.Point(16, 63);
             this.loginErrorLabel.Name = "loginErrorLabel";
-            this.loginErrorLabel.Size = new System.Drawing.Size(0, 14);
+            this.loginErrorLabel.Size = new System.Drawing.Size(0, 22);
             this.loginErrorLabel.TabIndex = 12;
             // 
             // createAccountLinkLabel
@@ -176,7 +176,7 @@ namespace GMR
             this.createAccountLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.createAccountLinkLabel.Location = new System.Drawing.Point(17, 164);
             this.createAccountLinkLabel.Name = "createAccountLinkLabel";
-            this.createAccountLinkLabel.Size = new System.Drawing.Size(121, 16);
+            this.createAccountLinkLabel.Size = new System.Drawing.Size(181, 24);
             this.createAccountLinkLabel.TabIndex = 13;
             this.createAccountLinkLabel.TabStop = true;
             this.createAccountLinkLabel.Text = "Создать аккаунт";
@@ -190,7 +190,7 @@ namespace GMR
             this.forgotPasswordLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.forgotPasswordLinkLabel.Location = new System.Drawing.Point(18, 205);
             this.forgotPasswordLinkLabel.Name = "forgotPasswordLinkLabel";
-            this.forgotPasswordLinkLabel.Size = new System.Drawing.Size(118, 16);
+            this.forgotPasswordLinkLabel.Size = new System.Drawing.Size(183, 24);
             this.forgotPasswordLinkLabel.TabIndex = 14;
             this.forgotPasswordLinkLabel.TabStop = true;
             this.forgotPasswordLinkLabel.Text = "Забыли пароль?";
