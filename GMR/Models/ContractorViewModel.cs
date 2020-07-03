@@ -20,7 +20,7 @@ namespace GMR.Models
         public string Name { get; set; }
 
         [Browsable(false)]
-        public ICollection<TransactionViewModel> Transactions { get; set; }
+        public List<TransactionViewModel> Transactions { get; set; }
 
         object ICloneable.Clone() => MemberwiseClone();
 

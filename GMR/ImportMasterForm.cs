@@ -185,9 +185,9 @@ namespace GMR
             if (_unRequiredToggles.Any(_ => !_.Checked))
             {
                 if (transactionToggleSwitch.Checked)
-                    selectedContractors = selectedContractors.Where(_ => _.Transactions.Single().Value.HasValue).ToList();
+                    selectedContractors = selectedContractors.Where(_ => _.Transactions[0].Value.HasValue).ToList();
                 else if (priceToggleSwitch.Checked)
-                    selectedContractors = selectedContractors.Where(_ => _.Transactions.Single().Price.HasValue).ToList();
+                    selectedContractors = selectedContractors.Where(_ => _.Transactions[0].Price.HasValue).ToList();
                 else
                     selectedContractors.ForEach(_ => _.Transactions.Clear());
             }

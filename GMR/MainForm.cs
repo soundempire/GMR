@@ -289,8 +289,7 @@ namespace GMR
         
         private async Task AddTransactionsAsync(string contractorName = default)
         {
-            //TODO: rename form or method
-            var addForm = DIContainer.Resolve<AddContractorForm>(new Parameter { Name = "defaultContractorName", Value = contractorName });
+            var addForm = DIContainer.Resolve<AddTransactionForm>(new Parameter { Name = "defaultContractorName", Value = contractorName });
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 if (addForm.Tag is long selectedContractorId)

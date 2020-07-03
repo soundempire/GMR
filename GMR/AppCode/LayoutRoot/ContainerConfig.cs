@@ -20,7 +20,7 @@ namespace GMR
 
             builder.RegisterType<LoginForm>();
             builder.RegisterType<MainForm>();
-            builder.RegisterType<AddContractorForm>();
+            builder.RegisterType<AddTransactionForm>();
             builder.RegisterType<UpdateUserAccountForm>();
             builder.RegisterType<CreateUserAccountForm>();
             builder.RegisterType<ImportMasterForm>();

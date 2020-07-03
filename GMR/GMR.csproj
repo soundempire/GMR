@@ -95,11 +95,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddContractorForm.cs">
+    <Compile Include="AddTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddContractorForm.Designer.cs">
-      <DependentUpon>AddContractorForm.cs</DependentUpon>
+    <Compile Include="AddTransactionForm.Designer.cs">
+      <DependentUpon>AddTransactionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppCode\ImportResult.cs" />
     <Compile Include="AppCode\LayoutRoot\ContainerConfig.cs" />
@@ -160,8 +160,8 @@
     <Compile Include="UpdateUserAccountForm.Designer.cs">
       <DependentUpon>UpdateUserAccountForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddContractorForm.resx">
-      <DependentUpon>AddContractorForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddTransactionForm.resx">
+      <DependentUpon>AddTransactionForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateUserAccountForm.resx">

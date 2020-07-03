@@ -24,10 +24,10 @@ namespace GMR
                 cfg.CreateMap<CreatePasswordViewModel, PasswordModel>();
                 cfg.CreateMap<PasswordModel, UpdatePasswordViewModel>();
                 cfg.CreateMap<ContractorModel, ImportContractorViewModel>()
-                   .ForMember(x => x.Date, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Date))
-                   .ForMember(x => x.Value, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Value))
-                   .ForMember(x => x.Price, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Price))
-                   .ForMember(x => x.Currency, op => op.MapFrom(y => y.Transactions == null || y.Transactions.FirstOrDefault() == null ? default : y.Transactions.First().Currency));
+                   .ForMember(x => x.Date, op => op.MapFrom(y => y.Transactions == null || y.Transactions.Count == 0 ? default : y.Transactions[0].Date))
+                   .ForMember(x => x.Value, op => op.MapFrom(y => y.Transactions == null || y.Transactions.Count == 0 ? default : y.Transactions[0].Value))
+                   .ForMember(x => x.Price, op => op.MapFrom(y => y.Transactions == null || y.Transactions.Count == 0 ? default : y.Transactions[0].Price))
+                   .ForMember(x => x.Currency, op => op.MapFrom(y => y.Transactions == null || y.Transactions.Count == 0 ? default : y.Transactions[0].Currency));
 
                 cfg.CreateMap<UpdatePasswordViewModel, PasswordModel>()
                    .ForMember(x => x.Value, op => op.MapFrom(y => y.NewValue));

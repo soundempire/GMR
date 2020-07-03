@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GMR
 {
-    public partial class AddContractorForm : Form
+    public partial class AddTransactionForm : Form
     {
         private readonly IContractorService _contractorService;
 
@@ -19,7 +19,7 @@ namespace GMR
 
         private Dictionary<string, ContractorViewModel> _contractors;
 
-        public AddContractorForm(IContractorService contractorService, ITransactionService transactionService, string defaultContractorName = default)
+        public AddTransactionForm(IContractorService contractorService, ITransactionService transactionService, string defaultContractorName = default)
         {
             InitializeComponent();
 

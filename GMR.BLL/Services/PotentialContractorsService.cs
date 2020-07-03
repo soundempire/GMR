@@ -59,7 +59,7 @@ namespace GMR.BLL.Services
                     potentialContractors = potentialContractors.Where(_ => !_.IsValid)
                                            .Union(await CompareWithCurrentContractors(validPotentialContractors, personId))
                                            .ToList();
-            }
+                }
             }
 
             return potentialContractors;
@@ -76,11 +76,10 @@ namespace GMR.BLL.Services
 
         private async Task<IEnumerable<PotentialContractorModel>> CompareWithCurrentContractors(IEnumerable<PotentialContractorModel> validPotentialContractors, long personId)
         {
-            //TODO: HashSets
             var personContractors = (await _contractorService.GetContractorsAsync(personId, includes: new[] { nameof(ContractorModel.Transactions).ToLower() }))
                                     .ToDictionary(_ => ( _.ContractorID, _.Name ));
-
-            var contractors = new Dictionary<(string ContractorID, string Name), PotentialContractorModel>();
+            
+            HashSet<PotentialContractorModel> contractors = new HashSet<PotentialContractorModel>();
 
             foreach (var potentialContractor in validPotentialContractors)
             {
@@ -99,24 +98,24 @@ namespace GMR.BLL.Services
                     }
                 }
 
-                if (contractors.TryGetValue((potentialContractor.ContractorID, potentialContractor.Name), out var contractor))
+                if (contractors.TryGetValue(potentialContractor, out var contractor))
                 {
                     if (contractor.Transactions != null && potentialTransaction != null)
                     {
                         contractor.Transactions.Add(potentialTransaction);
                     }
-                    else if(potentialTransaction != null)
+                    else if (potentialTransaction != null)
                     {
                         contractor.Transactions = new List<TransactionModel>() { potentialTransaction };
                     }
                 }
                 else
                 {
-                    contractors[(potentialContractor.ContractorID, potentialContractor.Name)] = potentialContractor;
+                    contractors.Add(potentialContractor);
                 }
             }
 
-            return contractors.Values.ToList();
+            return contractors.ToList();
         }
     }
 }
