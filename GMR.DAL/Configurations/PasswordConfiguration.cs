@@ -6,8 +6,11 @@ namespace GMR.DAL.Configurations
     {
         public PasswordConfiguration()
         {
-            HasOptional(pass => pass.Person).WithRequired(pers => pers.Password);
+            HasRequired(pass => pass.Person).WithRequiredPrincipal(pers => pers.Password);
             HasKey(pasword => pasword.ID);
+            Property(p => p.Login).IsRequired();
+            Property(p => p.Value).IsRequired();
+            Property(p => p.LastUpdated).IsRequired();
         }
     }
 }

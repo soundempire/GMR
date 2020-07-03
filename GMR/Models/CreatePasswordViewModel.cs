@@ -16,6 +16,6 @@ namespace GMR.Models
         public string ConfirmValue { get; set; }
 
         [Required]
-        public DateTime? LastUpdated { get; set; }
+        public DateTime LastUpdated { get; set; }
     }
 }
