@@ -6,9 +6,12 @@ namespace GMR.DAL.Configurations
     {
         public TransactionConfiguration()
         {
-            HasKey(t => t.ID);
-            Property(t => t.Date).IsRequired();
-            Property(t => t.Currency).IsRequired();
+            ToTable("Transactions");
+            HasKey(_ => _.ID);
+            Property(_ => _.Date).IsRequired();
+            Property(_ => _.Currency).IsRequired();
+            Property(_ => _.Value).IsOptional();
+            Property(_ => _.Price).IsOptional();
         }
     }
 }

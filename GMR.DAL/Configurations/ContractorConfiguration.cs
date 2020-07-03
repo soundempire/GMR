@@ -6,8 +6,14 @@ namespace GMR.DAL.Configurations
     {
         public ContractorConfiguration()
         {
-            HasKey(c => c.ID);
-            Property(c => c.Name).IsRequired().HasMaxLength(50);
+            ToTable("Contractors");
+            HasKey(_ => _.ID);
+            Property(_ => _.ContractorID).IsRequired();
+            Property(_ => _.Name).IsRequired()
+                                 .HasMaxLength(50);
+            HasMany(_ => _.Transactions).WithRequired(_ => _.Contractor)
+                                        .HasForeignKey(_ => _.ContractorID)
+                                        .WillCascadeOnDelete();
         }
     }
 }

@@ -3,13 +3,12 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using GMR;
-using GMR.Logging;
+using GMR.Infrastructure;
 using Context = GMR.ApplicationContext;
 
 namespace GMR
 {
     //TODO: refactor BL services
-    //TODO: refactor DL configurators
     static class Program
     {
         [STAThread]

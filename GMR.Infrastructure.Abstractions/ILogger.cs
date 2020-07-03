@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GMR.Logging
+namespace GMR.Infrastructure
 {
     public interface ILogger
     {

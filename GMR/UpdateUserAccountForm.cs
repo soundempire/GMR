@@ -174,7 +174,7 @@ namespace GMR
 
         private void PhoneTBox_TextChanged(object sender, EventArgs e)
         {
-            RequaredAndTextLengthValidation((sender as TextBox).Text, "Введите номер телефона", lengthLimit: 12, errorPhoneLabel);
+            RequaredAndTextLengthValidation((sender as TextBox).Text, "Введите номер телефона", lengthLimit: 18, errorPhoneLabel);
             UpdateSaveButtonEnabledState();
         }
 

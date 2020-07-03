@@ -1,8 +1,8 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using log4net.Config;
-using System;
 
-namespace GMR.Logging
+namespace GMR.Infrastructure
 {
     public class Logger : ILogger
     {

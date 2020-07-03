@@ -159,8 +159,6 @@ namespace GMR
             => DIContainer.Resolve<CreateUserAccountForm>().ShowDialog();
 
         private void ForgotPasswordLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            
-        }
+            => DIContainer.Resolve<ResetPasswordForm>().ShowDialog();
     }
 }

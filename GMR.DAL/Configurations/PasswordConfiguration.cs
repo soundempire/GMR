@@ -6,11 +6,12 @@ namespace GMR.DAL.Configurations
     {
         public PasswordConfiguration()
         {
-            HasRequired(pass => pass.Person).WithRequiredPrincipal(pers => pers.Password);
-            HasKey(pasword => pasword.ID);
-            Property(p => p.Login).IsRequired();
-            Property(p => p.Value).IsRequired();
-            Property(p => p.LastUpdated).IsRequired();
+            ToTable("Passwords");
+            HasKey(_ => _.ID);
+            HasRequired(_ => _.Person).WithRequiredPrincipal(_ => _.Password);
+            Property(_ => _.Login).IsRequired();
+            Property(_ => _.Value).IsRequired();
+            Property(_ => _.LastUpdated).IsRequired();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace GMR.Models
         public LanguageViewModel Language { get; set; }
 
         [Required]
-        [MaxLength(12)]
+        [MaxLength(18)]
         public string Phone { get; set; }
     }
 }
