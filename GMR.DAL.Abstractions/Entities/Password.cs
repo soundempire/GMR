@@ -6,8 +6,6 @@ namespace GMR.DAL
     {
         public long ID { get; set; }
 
-        public long PersonID { get; set; }
-
         public Person Person { get; set; }
 
         public string Login { get; set; }
