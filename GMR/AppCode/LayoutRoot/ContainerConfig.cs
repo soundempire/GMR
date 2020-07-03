@@ -13,8 +13,9 @@ namespace GMR
         public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
-
+            
             builder.RegisterType<Logger>().As<ILogger>().SingleInstance();
+            builder.RegisterType<Сryptographer>().As<IСryptographer>().SingleInstance();
 
             builder.RegisterType<GMRContext>();
 
