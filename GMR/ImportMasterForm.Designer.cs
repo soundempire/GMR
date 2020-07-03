@@ -81,7 +81,7 @@
             this.chooseColumnsPanel.Location = new System.Drawing.Point(0, 0);
             this.chooseColumnsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.chooseColumnsPanel.Name = "chooseColumnsPanel";
-            this.chooseColumnsPanel.Size = new System.Drawing.Size(880, 54);
+            this.chooseColumnsPanel.Size = new System.Drawing.Size(884, 54);
             this.chooseColumnsPanel.TabIndex = 0;
             // 
             // tabControl
@@ -95,7 +95,7 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(880, 54);
+            this.tabControl.Size = new System.Drawing.Size(884, 54);
             this.tabControl.TabIndex = 0;
             this.tabControl.Visible = false;
             // 
@@ -114,7 +114,7 @@
             this.importTabPage.Margin = new System.Windows.Forms.Padding(0);
             this.importTabPage.Name = "importTabPage";
             this.importTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.importTabPage.Size = new System.Drawing.Size(872, 26);
+            this.importTabPage.Size = new System.Drawing.Size(876, 26);
             this.importTabPage.TabIndex = 0;
             this.importTabPage.Text = "Импорт данных";
             // 
@@ -125,7 +125,7 @@
             this.choosePanel6.Location = new System.Drawing.Point(611, 2);
             this.choosePanel6.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel6.Name = "choosePanel6";
-            this.choosePanel6.Size = new System.Drawing.Size(136, 22);
+            this.choosePanel6.Size = new System.Drawing.Size(140, 22);
             this.choosePanel6.TabIndex = 5;
             // 
             // priceToggleSwitch
@@ -140,7 +140,7 @@
             this.priceToggleSwitch.OffText = "OFF";
             this.priceToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
             this.priceToggleSwitch.OnText = "ON";
-            this.priceToggleSwitch.Size = new System.Drawing.Size(136, 22);
+            this.priceToggleSwitch.Size = new System.Drawing.Size(140, 22);
             this.priceToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
             this.priceToggleSwitch.TabIndex = 3;
             this.priceToggleSwitch.CheckedChanged += new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.CheckedChangedDelegate(this.ToggleSwitch_CheckedChanged);
@@ -264,7 +264,7 @@
             // 
             this.choosePanel7.Controls.Add(this.currencyToggleSwitch);
             this.choosePanel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.choosePanel7.Location = new System.Drawing.Point(747, 2);
+            this.choosePanel7.Location = new System.Drawing.Point(751, 2);
             this.choosePanel7.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel7.Name = "choosePanel7";
             this.choosePanel7.Size = new System.Drawing.Size(123, 22);
@@ -307,7 +307,7 @@
             this.importingDataPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importingDataPanel.Name = "importingDataPanel";
             this.importingDataPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.importingDataPanel.Size = new System.Drawing.Size(880, 404);
+            this.importingDataPanel.Size = new System.Drawing.Size(884, 407);
             this.importingDataPanel.TabIndex = 1;
             // 
             // controlsPanel
@@ -320,10 +320,10 @@
             this.controlsPanel.Controls.Add(this.cancelBtn);
             this.controlsPanel.Controls.Add(this.okBtn);
             this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.controlsPanel.Location = new System.Drawing.Point(3, 360);
+            this.controlsPanel.Location = new System.Drawing.Point(3, 363);
             this.controlsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlsPanel.Name = "controlsPanel";
-            this.controlsPanel.Size = new System.Drawing.Size(874, 44);
+            this.controlsPanel.Size = new System.Drawing.Size(878, 44);
             this.controlsPanel.TabIndex = 2;
             // 
             // overwriteNamesCheckBox
@@ -446,7 +446,7 @@
             this.importingDataDGV.RowHeadersWidth = 62;
             this.importingDataDGV.RowTemplate.Height = 28;
             this.importingDataDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.importingDataDGV.Size = new System.Drawing.Size(874, 356);
+            this.importingDataDGV.Size = new System.Drawing.Size(878, 356);
             this.importingDataDGV.TabIndex = 0;
             this.importingDataDGV.Resize += new System.EventHandler(this.ImportingDataDGV_Resize);
             // 
@@ -459,11 +459,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 458);
+            this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.importingDataPanel);
             this.Controls.Add(this.chooseColumnsPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(900, 500);
             this.Name = "ImportMasterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Мастер импорта из Excel ";

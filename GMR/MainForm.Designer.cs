@@ -39,15 +39,7 @@ namespace GMR
             this.lblStarts = new System.Windows.Forms.Label();
             this.lblEnds = new System.Windows.Forms.Label();
             this.contractorsCBox = new System.Windows.Forms.ComboBox();
-            this.topPanel = new System.Windows.Forms.Panel();
             this.datesPanel = new System.Windows.Forms.Panel();
-            this.userAccountMenuPanel = new System.Windows.Forms.Panel();
-            this.userAccountMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.userAccountToolStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.accountSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.languageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.signOutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contractorsCBoxPanel = new System.Windows.Forms.Panel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.personPanel = new System.Windows.Forms.Panel();
@@ -57,22 +49,30 @@ namespace GMR
             this.deleteBtn = new GMR.Controls.GMRButton();
             this.printBtn = new GMR.Controls.GMRButton();
             this.CenterSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.transactionsDGVPanel = new System.Windows.Forms.Panel();
-            this.totalTransactionsPanel = new System.Windows.Forms.Panel();
-            this.totalCurencyTB = new System.Windows.Forms.TextBox();
-            this.totalPriceTB = new System.Windows.Forms.TextBox();
-            this.totalTransactionTB = new System.Windows.Forms.TextBox();
-            this.totalSumTB = new System.Windows.Forms.TextBox();
+            this.contractorDGVPanel = new System.Windows.Forms.Panel();
+            this.topLeftPanel = new System.Windows.Forms.Panel();
             this.contractorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miniToolStrip = new System.Windows.Forms.MenuStrip();
+            this.transactionsDGVPanel = new System.Windows.Forms.Panel();
+            this.totalTransactionsPanel = new System.Windows.Forms.Panel();
+            this.totalSumTB = new System.Windows.Forms.TextBox();
+            this.totalTransactionTB = new System.Windows.Forms.TextBox();
+            this.totalPriceTB = new System.Windows.Forms.TextBox();
+            this.totalCurencyTB = new System.Windows.Forms.TextBox();
+            this.topRightPanel = new System.Windows.Forms.Panel();
+            this.userAccountMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.userAccountToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.signOutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userAccountMenuPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).BeginInit();
-            this.topPanel.SuspendLayout();
             this.datesPanel.SuspendLayout();
-            this.userAccountMenuPanel.SuspendLayout();
-            this.userAccountMenuStrip.SuspendLayout();
             this.contractorsCBoxPanel.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.controlBtnsPanel.SuspendLayout();
@@ -80,9 +80,14 @@ namespace GMR
             this.CenterSplitContainer.Panel1.SuspendLayout();
             this.CenterSplitContainer.Panel2.SuspendLayout();
             this.CenterSplitContainer.SuspendLayout();
+            this.contractorDGVPanel.SuspendLayout();
+            this.topLeftPanel.SuspendLayout();
+            this.contractorContextMenu.SuspendLayout();
             this.transactionsDGVPanel.SuspendLayout();
             this.totalTransactionsPanel.SuspendLayout();
-            this.contractorContextMenu.SuspendLayout();
+            this.topRightPanel.SuspendLayout();
+            this.userAccountMenuStrip.SuspendLayout();
+            this.userAccountMenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // contractorsDGView
@@ -96,13 +101,13 @@ namespace GMR
             this.contractorsDGView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.contractorsDGView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.contractorsDGView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contractorsDGView.Location = new System.Drawing.Point(3, 0);
+            this.contractorsDGView.Location = new System.Drawing.Point(0, 0);
             this.contractorsDGView.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.contractorsDGView.Name = "contractorsDGView";
             this.contractorsDGView.RowHeadersWidth = 25;
             this.contractorsDGView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.contractorsDGView.RowTemplate.Height = 28;
-            this.contractorsDGView.Size = new System.Drawing.Size(283, 349);
+            this.contractorsDGView.Size = new System.Drawing.Size(283, 351);
             this.contractorsDGView.TabIndex = 0;
             this.contractorsDGView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ContractorsDGView_CellBeginEdit);
             this.contractorsDGView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ContractorsDGView_CellEndEdit);
@@ -128,7 +133,7 @@ namespace GMR
             this.transactionsDGView.RowHeadersWidth = 25;
             this.transactionsDGView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.transactionsDGView.RowTemplate.Height = 28;
-            this.transactionsDGView.Size = new System.Drawing.Size(570, 315);
+            this.transactionsDGView.Size = new System.Drawing.Size(570, 317);
             this.transactionsDGView.TabIndex = 1;
             this.transactionsDGView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.TransactionsDGView_CellBeginEdit);
             this.transactionsDGView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionsDGView_CellEndEdit);
@@ -191,26 +196,14 @@ namespace GMR
             this.contractorsCBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.contractorsCBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contractorsCBox.FormattingEnabled = true;
-            this.contractorsCBox.Location = new System.Drawing.Point(3, 8);
+            this.contractorsCBox.Location = new System.Drawing.Point(0, 6);
             this.contractorsCBox.Margin = new System.Windows.Forms.Padding(2);
             this.contractorsCBox.Name = "contractorsCBox";
-            this.contractorsCBox.Size = new System.Drawing.Size(286, 24);
+            this.contractorsCBox.Size = new System.Drawing.Size(278, 24);
             this.contractorsCBox.TabIndex = 14;
             this.contractorsCBox.Text = "Все";
             this.contractorsCBox.SelectedIndexChanged += new System.EventHandler(this.ContractorsCBox_SelectedValueChanged);
             this.contractorsCBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContractorsCBox_KeyDown);
-            // 
-            // topPanel
-            // 
-            this.topPanel.Controls.Add(this.datesPanel);
-            this.topPanel.Controls.Add(this.userAccountMenuPanel);
-            this.topPanel.Controls.Add(this.contractorsCBoxPanel);
-            this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(862, 34);
-            this.topPanel.TabIndex = 16;
             // 
             // datesPanel
             // 
@@ -218,87 +211,20 @@ namespace GMR
             this.datesPanel.Controls.Add(this.lblStarts);
             this.datesPanel.Controls.Add(this.startsDTP);
             this.datesPanel.Controls.Add(this.endsDTP);
-            this.datesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datesPanel.Location = new System.Drawing.Point(295, 0);
+            this.datesPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.datesPanel.Location = new System.Drawing.Point(0, 0);
             this.datesPanel.Name = "datesPanel";
-            this.datesPanel.Size = new System.Drawing.Size(378, 34);
+            this.datesPanel.Size = new System.Drawing.Size(256, 32);
             this.datesPanel.TabIndex = 18;
-            // 
-            // userAccountMenuPanel
-            // 
-            this.userAccountMenuPanel.Controls.Add(this.userAccountMenuStrip);
-            this.userAccountMenuPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.userAccountMenuPanel.Location = new System.Drawing.Point(673, 0);
-            this.userAccountMenuPanel.Name = "userAccountMenuPanel";
-            this.userAccountMenuPanel.Size = new System.Drawing.Size(189, 34);
-            this.userAccountMenuPanel.TabIndex = 17;
-            // 
-            // userAccountMenuStrip
-            // 
-            this.userAccountMenuStrip.BackColor = System.Drawing.SystemColors.Control;
-            this.userAccountMenuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.userAccountMenuStrip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userAccountMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.userAccountMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userAccountToolStrip});
-            this.userAccountMenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.userAccountMenuStrip.Name = "userAccountMenuStrip";
-            this.userAccountMenuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.userAccountMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.userAccountMenuStrip.Size = new System.Drawing.Size(189, 34);
-            this.userAccountMenuStrip.TabIndex = 0;
-            this.userAccountMenuStrip.Text = "Hello World";
-            // 
-            // userAccountToolStrip
-            // 
-            this.userAccountToolStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.accountSettingsMenuItem,
-            this.languageMenuItem,
-            this.signOutMenuItem,
-            this.closeMenuItem});
-            this.userAccountToolStrip.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userAccountToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("userAccountToolStrip.Image")));
-            this.userAccountToolStrip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.userAccountToolStrip.Name = "userAccountToolStrip";
-            this.userAccountToolStrip.Size = new System.Drawing.Size(105, 32);
-            this.userAccountToolStrip.Text = "user name";
-            this.userAccountToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // accountSettingsMenuItem
-            // 
-            this.accountSettingsMenuItem.Name = "accountSettingsMenuItem";
-            this.accountSettingsMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.accountSettingsMenuItem.Text = "Настройка аккаунта";
-            this.accountSettingsMenuItem.Click += new System.EventHandler(this.AccountSettingsMenuItem_Click);
-            // 
-            // languageMenuItem
-            // 
-            this.languageMenuItem.Name = "languageMenuItem";
-            this.languageMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.languageMenuItem.Text = "Язык";
-            // 
-            // signOutMenuItem
-            // 
-            this.signOutMenuItem.Name = "signOutMenuItem";
-            this.signOutMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.signOutMenuItem.Text = "Выйти";
-            this.signOutMenuItem.Click += new System.EventHandler(this.SignOutMenuItem_Click);
-            // 
-            // closeMenuItem
-            // 
-            this.closeMenuItem.Name = "closeMenuItem";
-            this.closeMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.closeMenuItem.Text = "Закрыть";
-            this.closeMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
             // contractorsCBoxPanel
             // 
             this.contractorsCBoxPanel.Controls.Add(this.contractorsCBox);
-            this.contractorsCBoxPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.contractorsCBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contractorsCBoxPanel.Location = new System.Drawing.Point(0, 0);
             this.contractorsCBoxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.contractorsCBoxPanel.Name = "contractorsCBoxPanel";
-            this.contractorsCBoxPanel.Size = new System.Drawing.Size(295, 34);
+            this.contractorsCBoxPanel.Size = new System.Drawing.Size(283, 32);
             this.contractorsCBoxPanel.TabIndex = 16;
             // 
             // bottomPanel
@@ -405,109 +331,50 @@ namespace GMR
             // CenterSplitContainer
             // 
             this.CenterSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CenterSplitContainer.Location = new System.Drawing.Point(0, 34);
+            this.CenterSplitContainer.Location = new System.Drawing.Point(0, 0);
             this.CenterSplitContainer.Margin = new System.Windows.Forms.Padding(2);
             this.CenterSplitContainer.Name = "CenterSplitContainer";
             // 
             // CenterSplitContainer.Panel1
             // 
             this.CenterSplitContainer.Panel1.AutoScroll = true;
-            this.CenterSplitContainer.Panel1.Controls.Add(this.contractorsDGView);
+            this.CenterSplitContainer.Panel1.Controls.Add(this.contractorDGVPanel);
+            this.CenterSplitContainer.Panel1.Controls.Add(this.topLeftPanel);
             this.CenterSplitContainer.Panel1.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.CenterSplitContainer.Panel1MinSize = 200;
             // 
             // CenterSplitContainer.Panel2
             // 
             this.CenterSplitContainer.Panel2.Controls.Add(this.transactionsDGVPanel);
+            this.CenterSplitContainer.Panel2.Controls.Add(this.topRightPanel);
             this.CenterSplitContainer.Panel2.Controls.Add(this.totalTransactionsPanel);
             this.CenterSplitContainer.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.CenterSplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.CenterSplitContainer.Panel2MinSize = 450;
-            this.CenterSplitContainer.Size = new System.Drawing.Size(862, 349);
+            this.CenterSplitContainer.Size = new System.Drawing.Size(862, 383);
             this.CenterSplitContainer.SplitterDistance = 286;
             this.CenterSplitContainer.SplitterWidth = 3;
             this.CenterSplitContainer.TabIndex = 18;
             this.CenterSplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.CenterSplitContainer_SplitterMoved);
             // 
-            // transactionsDGVPanel
+            // contractorDGVPanel
             // 
-            this.transactionsDGVPanel.Controls.Add(this.transactionsDGView);
-            this.transactionsDGVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transactionsDGVPanel.Location = new System.Drawing.Point(0, 0);
-            this.transactionsDGVPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.transactionsDGVPanel.Name = "transactionsDGVPanel";
-            this.transactionsDGVPanel.Size = new System.Drawing.Size(570, 315);
-            this.transactionsDGVPanel.TabIndex = 4;
+            this.contractorDGVPanel.Controls.Add(this.contractorsDGView);
+            this.contractorDGVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contractorDGVPanel.Location = new System.Drawing.Point(3, 32);
+            this.contractorDGVPanel.Name = "contractorDGVPanel";
+            this.contractorDGVPanel.Size = new System.Drawing.Size(283, 351);
+            this.contractorDGVPanel.TabIndex = 18;
             // 
-            // totalTransactionsPanel
+            // topLeftPanel
             // 
-            this.totalTransactionsPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalTransactionsPanel.Controls.Add(this.totalCurencyTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalPriceTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalTransactionTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalSumTB);
-            this.totalTransactionsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 315);
-            this.totalTransactionsPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.totalTransactionsPanel.Name = "totalTransactionsPanel";
-            this.totalTransactionsPanel.Size = new System.Drawing.Size(570, 34);
-            this.totalTransactionsPanel.TabIndex = 3;
-            this.totalTransactionsPanel.Visible = false;
-            // 
-            // totalCurencyTB
-            // 
-            this.totalCurencyTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalCurencyTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalCurencyTB.Enabled = false;
-            this.totalCurencyTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalCurencyTB.Location = new System.Drawing.Point(423, 0);
-            this.totalCurencyTB.Margin = new System.Windows.Forms.Padding(2);
-            this.totalCurencyTB.Multiline = true;
-            this.totalCurencyTB.Name = "totalCurencyTB";
-            this.totalCurencyTB.Size = new System.Drawing.Size(147, 34);
-            this.totalCurencyTB.TabIndex = 2;
-            this.totalCurencyTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // totalPriceTB
-            // 
-            this.totalPriceTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalPriceTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalPriceTB.Enabled = false;
-            this.totalPriceTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalPriceTB.Location = new System.Drawing.Point(281, 0);
-            this.totalPriceTB.Margin = new System.Windows.Forms.Padding(2);
-            this.totalPriceTB.Multiline = true;
-            this.totalPriceTB.Name = "totalPriceTB";
-            this.totalPriceTB.Size = new System.Drawing.Size(143, 34);
-            this.totalPriceTB.TabIndex = 2;
-            this.totalPriceTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // totalTransactionTB
-            // 
-            this.totalTransactionTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalTransactionTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalTransactionTB.Enabled = false;
-            this.totalTransactionTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalTransactionTB.Location = new System.Drawing.Point(142, 0);
-            this.totalTransactionTB.Margin = new System.Windows.Forms.Padding(2);
-            this.totalTransactionTB.Multiline = true;
-            this.totalTransactionTB.Name = "totalTransactionTB";
-            this.totalTransactionTB.Size = new System.Drawing.Size(142, 35);
-            this.totalTransactionTB.TabIndex = 1;
-            this.totalTransactionTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // totalSumTB
-            // 
-            this.totalSumTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalSumTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalSumTB.Enabled = false;
-            this.totalSumTB.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalSumTB.Location = new System.Drawing.Point(0, 0);
-            this.totalSumTB.Margin = new System.Windows.Forms.Padding(2);
-            this.totalSumTB.Multiline = true;
-            this.totalSumTB.Name = "totalSumTB";
-            this.totalSumTB.Size = new System.Drawing.Size(142, 35);
-            this.totalSumTB.TabIndex = 0;
+            this.topLeftPanel.Controls.Add(this.contractorsCBoxPanel);
+            this.topLeftPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topLeftPanel.Location = new System.Drawing.Point(3, 0);
+            this.topLeftPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.topLeftPanel.Name = "topLeftPanel";
+            this.topLeftPanel.Size = new System.Drawing.Size(283, 32);
+            this.topLeftPanel.TabIndex = 17;
             // 
             // contractorContextMenu
             // 
@@ -543,6 +410,180 @@ namespace GMR
             this.removeContractorToolStripMenuItem.Text = "Удалить";
             this.removeContractorToolStripMenuItem.Click += new System.EventHandler(this.RemoveContractorToolStripMenuItem_Click);
             // 
+            // miniToolStrip
+            // 
+            this.miniToolStrip.AccessibleName = "New item selection";
+            this.miniToolStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
+            this.miniToolStrip.AutoSize = false;
+            this.miniToolStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.miniToolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.miniToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.miniToolStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.miniToolStrip.Location = new System.Drawing.Point(127, 34);
+            this.miniToolStrip.Name = "miniToolStrip";
+            this.miniToolStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.miniToolStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.miniToolStrip.Size = new System.Drawing.Size(109, 32);
+            this.miniToolStrip.TabIndex = 0;
+            // 
+            // transactionsDGVPanel
+            // 
+            this.transactionsDGVPanel.Controls.Add(this.transactionsDGView);
+            this.transactionsDGVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transactionsDGVPanel.Location = new System.Drawing.Point(0, 32);
+            this.transactionsDGVPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.transactionsDGVPanel.Name = "transactionsDGVPanel";
+            this.transactionsDGVPanel.Size = new System.Drawing.Size(570, 317);
+            this.transactionsDGVPanel.TabIndex = 4;
+            // 
+            // totalTransactionsPanel
+            // 
+            this.totalTransactionsPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalTransactionsPanel.Controls.Add(this.totalCurencyTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalPriceTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalTransactionTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalSumTB);
+            this.totalTransactionsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 349);
+            this.totalTransactionsPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.totalTransactionsPanel.Name = "totalTransactionsPanel";
+            this.totalTransactionsPanel.Size = new System.Drawing.Size(570, 34);
+            this.totalTransactionsPanel.TabIndex = 3;
+            this.totalTransactionsPanel.Visible = false;
+            // 
+            // totalSumTB
+            // 
+            this.totalSumTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalSumTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalSumTB.Enabled = false;
+            this.totalSumTB.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalSumTB.Location = new System.Drawing.Point(0, 0);
+            this.totalSumTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalSumTB.Multiline = true;
+            this.totalSumTB.Name = "totalSumTB";
+            this.totalSumTB.Size = new System.Drawing.Size(142, 35);
+            this.totalSumTB.TabIndex = 0;
+            // 
+            // totalTransactionTB
+            // 
+            this.totalTransactionTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalTransactionTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalTransactionTB.Enabled = false;
+            this.totalTransactionTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalTransactionTB.Location = new System.Drawing.Point(142, 0);
+            this.totalTransactionTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalTransactionTB.Multiline = true;
+            this.totalTransactionTB.Name = "totalTransactionTB";
+            this.totalTransactionTB.Size = new System.Drawing.Size(142, 35);
+            this.totalTransactionTB.TabIndex = 1;
+            this.totalTransactionTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // totalPriceTB
+            // 
+            this.totalPriceTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalPriceTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalPriceTB.Enabled = false;
+            this.totalPriceTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalPriceTB.Location = new System.Drawing.Point(281, 0);
+            this.totalPriceTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalPriceTB.Multiline = true;
+            this.totalPriceTB.Name = "totalPriceTB";
+            this.totalPriceTB.Size = new System.Drawing.Size(143, 34);
+            this.totalPriceTB.TabIndex = 2;
+            this.totalPriceTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // totalCurencyTB
+            // 
+            this.totalCurencyTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalCurencyTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalCurencyTB.Enabled = false;
+            this.totalCurencyTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalCurencyTB.Location = new System.Drawing.Point(423, 0);
+            this.totalCurencyTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalCurencyTB.Multiline = true;
+            this.totalCurencyTB.Name = "totalCurencyTB";
+            this.totalCurencyTB.Size = new System.Drawing.Size(147, 34);
+            this.totalCurencyTB.TabIndex = 2;
+            this.totalCurencyTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // topRightPanel
+            // 
+            this.topRightPanel.Controls.Add(this.userAccountMenuPanel);
+            this.topRightPanel.Controls.Add(this.datesPanel);
+            this.topRightPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topRightPanel.Location = new System.Drawing.Point(0, 0);
+            this.topRightPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.topRightPanel.Name = "topRightPanel";
+            this.topRightPanel.Size = new System.Drawing.Size(570, 32);
+            this.topRightPanel.TabIndex = 16;
+            // 
+            // userAccountMenuStrip
+            // 
+            this.userAccountMenuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.userAccountMenuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.userAccountMenuStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userAccountMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.userAccountMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userAccountToolStrip});
+            this.userAccountMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.userAccountMenuStrip.Name = "userAccountMenuStrip";
+            this.userAccountMenuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.userAccountMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.userAccountMenuStrip.Size = new System.Drawing.Size(314, 32);
+            this.userAccountMenuStrip.TabIndex = 0;
+            this.userAccountMenuStrip.Text = "Hello World";
+            // 
+            // userAccountToolStrip
+            // 
+            this.userAccountToolStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.accountSettingsMenuItem,
+            this.languageMenuItem,
+            this.signOutMenuItem,
+            this.closeMenuItem});
+            this.userAccountToolStrip.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userAccountToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("userAccountToolStrip.Image")));
+            this.userAccountToolStrip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.userAccountToolStrip.Name = "userAccountToolStrip";
+            this.userAccountToolStrip.Size = new System.Drawing.Size(105, 30);
+            this.userAccountToolStrip.Text = "user name";
+            this.userAccountToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            // 
+            // accountSettingsMenuItem
+            // 
+            this.accountSettingsMenuItem.Name = "accountSettingsMenuItem";
+            this.accountSettingsMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.accountSettingsMenuItem.Text = "Настройка аккаунта";
+            this.accountSettingsMenuItem.Click += new System.EventHandler(this.AccountSettingsMenuItem_Click);
+            // 
+            // languageMenuItem
+            // 
+            this.languageMenuItem.Name = "languageMenuItem";
+            this.languageMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.languageMenuItem.Text = "Язык";
+            // 
+            // signOutMenuItem
+            // 
+            this.signOutMenuItem.Name = "signOutMenuItem";
+            this.signOutMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.signOutMenuItem.Text = "Выйти";
+            this.signOutMenuItem.Click += new System.EventHandler(this.SignOutMenuItem_Click);
+            // 
+            // closeMenuItem
+            // 
+            this.closeMenuItem.Name = "closeMenuItem";
+            this.closeMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.closeMenuItem.Text = "Закрыть";
+            this.closeMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
+            // 
+            // userAccountMenuPanel
+            // 
+            this.userAccountMenuPanel.Controls.Add(this.userAccountMenuStrip);
+            this.userAccountMenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userAccountMenuPanel.Location = new System.Drawing.Point(256, 0);
+            this.userAccountMenuPanel.Name = "userAccountMenuPanel";
+            this.userAccountMenuPanel.Size = new System.Drawing.Size(314, 32);
+            this.userAccountMenuPanel.TabIndex = 17;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,9 +591,8 @@ namespace GMR
             this.ClientSize = new System.Drawing.Size(862, 428);
             this.Controls.Add(this.CenterSplitContainer);
             this.Controls.Add(this.bottomPanel);
-            this.Controls.Add(this.topPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.userAccountMenuStrip;
+            this.MainMenuStrip = this.miniToolStrip;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -563,13 +603,8 @@ namespace GMR
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).EndInit();
-            this.topPanel.ResumeLayout(false);
             this.datesPanel.ResumeLayout(false);
             this.datesPanel.PerformLayout();
-            this.userAccountMenuPanel.ResumeLayout(false);
-            this.userAccountMenuPanel.PerformLayout();
-            this.userAccountMenuStrip.ResumeLayout(false);
-            this.userAccountMenuStrip.PerformLayout();
             this.contractorsCBoxPanel.ResumeLayout(false);
             this.bottomPanel.ResumeLayout(false);
             this.controlBtnsPanel.ResumeLayout(false);
@@ -577,10 +612,17 @@ namespace GMR
             this.CenterSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CenterSplitContainer)).EndInit();
             this.CenterSplitContainer.ResumeLayout(false);
+            this.contractorDGVPanel.ResumeLayout(false);
+            this.topLeftPanel.ResumeLayout(false);
+            this.contractorContextMenu.ResumeLayout(false);
             this.transactionsDGVPanel.ResumeLayout(false);
             this.totalTransactionsPanel.ResumeLayout(false);
             this.totalTransactionsPanel.PerformLayout();
-            this.contractorContextMenu.ResumeLayout(false);
+            this.topRightPanel.ResumeLayout(false);
+            this.userAccountMenuStrip.ResumeLayout(false);
+            this.userAccountMenuStrip.PerformLayout();
+            this.userAccountMenuPanel.ResumeLayout(false);
+            this.userAccountMenuPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -594,7 +636,6 @@ namespace GMR
         private System.Windows.Forms.Label lblStarts;
         private System.Windows.Forms.Label lblEnds;
         private System.Windows.Forms.ComboBox contractorsCBox;
-        private System.Windows.Forms.Panel topPanel;
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.SplitContainer CenterSplitContainer;
         private System.Windows.Forms.Panel contractorsCBoxPanel;
@@ -604,17 +645,15 @@ namespace GMR
         private Controls.GMRButton deleteBtn;
         private System.Windows.Forms.Panel controlBtnsPanel;
         private System.Windows.Forms.Panel personPanel;
-        private System.Windows.Forms.Panel transactionsDGVPanel;
-        private System.Windows.Forms.Panel totalTransactionsPanel;
-        private System.Windows.Forms.TextBox totalCurencyTB;
-        private System.Windows.Forms.TextBox totalPriceTB;
-        private System.Windows.Forms.TextBox totalTransactionTB;
-        private System.Windows.Forms.TextBox totalSumTB;
         private System.Windows.Forms.ContextMenuStrip contractorContextMenu;
         private System.Windows.Forms.ToolStripMenuItem addTransactionsToolStripMenuItem;
         private ToolStripMenuItem renameContractorToolStripMenuItem;
         private ToolStripMenuItem removeContractorToolStripMenuItem;
         private Panel datesPanel;
+        private Panel topLeftPanel;
+        private Panel contractorDGVPanel;
+        private Panel transactionsDGVPanel;
+        private Panel topRightPanel;
         private Panel userAccountMenuPanel;
         private MenuStrip userAccountMenuStrip;
         private ToolStripMenuItem userAccountToolStrip;
@@ -622,5 +661,11 @@ namespace GMR
         private ToolStripMenuItem languageMenuItem;
         private ToolStripMenuItem signOutMenuItem;
         private ToolStripMenuItem closeMenuItem;
+        private Panel totalTransactionsPanel;
+        private TextBox totalCurencyTB;
+        private TextBox totalPriceTB;
+        private TextBox totalTransactionTB;
+        private TextBox totalSumTB;
+        private MenuStrip miniToolStrip;
     }
 }

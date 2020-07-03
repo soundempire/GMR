@@ -450,8 +450,8 @@ namespace GMR
 
         //TODO: Vadim investigate potential exceptions by resizing
         //TODO: Vadim затираются даты на ресайзе.
-        //TODO: Vadim в сплиттер опустить топ панели
-        //TODO: Vadim минимальная ширина окна в панели импорта (всей формы)
+        //TODO: Vadim добавить иконку на все формы.
+        //TODO: Vadim заменить кнопки на круглые на всех формах.
 
 
         private void SetFormsSizes()
@@ -480,18 +480,13 @@ namespace GMR
                 contractorIdColumn.MinimumWidth = 40;
                 contractorIdColumn.Width = (int)(contractorsDGView.Size.Width * 0.15);
                 contractorsDGView.Columns[nameof(ContractorViewModel.Name)].Width = (int)(contractorsDGView.Size.Width * 0.85);
-
-                //contractorsCBox resizing
-                contractorsCBoxPanel.SetBounds(contractorsDGView.Location.X, contractorsCBoxPanel.Location.Y, contractorsDGView.Width+5, contractorsCBoxPanel.Height);
-                contractorsCBox.Width = contractorsDGView.Size.Width;
-                datesPanel.SetBounds(transactionsDGView.Location.X, datesPanel.Location.Y, datesPanel.Width, datesPanel.Height);
             }
         }
         
         private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
         {
             const short centerSlitContainerLeftSideMinSize = 300;
-            const short centerSlitContainerRightSideMinSize = 450;
+            const short centerSlitContainerRightSideMinSize = 550;
             const float centerSplitContainerMultiplier = 0.3f;
 
             if (e.SplitX < centerSlitContainerLeftSideMinSize)
