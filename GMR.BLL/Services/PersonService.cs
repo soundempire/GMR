@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
+using GMR.Infrastructure;
 
 namespace GMR.BLL.Services
 {
@@ -13,8 +14,10 @@ namespace GMR.BLL.Services
 
         private readonly IRepository<Person> _personRepository;
 
-        public PersonService(ILanguagesService languagesService, IRepository<Person> personRepository) 
-            => (_languagesService, _personRepository) = (languagesService, personRepository);
+        private readonly IСryptographer _сryptographer;
+
+        public PersonService(ILanguagesService languagesService, IRepository<Person> personRepository, IСryptographer сryptographer) 
+            => (_languagesService, _personRepository, _сryptographer) = (languagesService, personRepository, сryptographer);
 
         public async Task<PersonModel> GetPersonAsync(long id)
         {
@@ -28,9 +31,8 @@ namespace GMR.BLL.Services
         {
             var query = _personRepository.GetAll();
             if (includePasswords)
-            {
                 query = query.Include(p => p.Password);
-            }
+
             var persons = await query.ToListAsync();
             var personModels = Mapper.Map<IEnumerable<Person>, IEnumerable<PersonModel>>(persons)
                                     .GroupBy(_ => _.Language.Id)
@@ -49,6 +51,9 @@ namespace GMR.BLL.Services
 
         public async Task<PersonModel> UpdatePersonAsync(PersonModel person)
         {
+            if (person.Password != null)
+                person.Password.Value = _сryptographer.Encrypt(person.Password.Value);
+
             var personEntity = Mapper.Map<PersonModel, Person>(person);
 
             await _personRepository.UpdateAsync(personEntity);
@@ -58,6 +63,8 @@ namespace GMR.BLL.Services
 
         public async Task<PersonModel> AddPersonAsync(PersonModel person)
         {
+            person.Password.Value = _сryptographer.Encrypt(person.Password.Value);
+
             var newPerson = Mapper.Map<PersonModel, Person>(person);
 
             var personEntity = await _personRepository.CreateAsync(newPerson);

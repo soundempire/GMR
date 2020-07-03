@@ -85,6 +85,10 @@
       <Project>{BE0F2FE2-043B-4C0E-A270-9CCD7661CCE0}</Project>
       <Name>GMR.DAL.Abstractions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GMR.Infrastructure.Abstractions\GMR.Infrastructure.Abstractions.csproj">
+      <Project>{1fe1ee23-8f97-4583-97b4-0f510d9f8145}</Project>
+      <Name>GMR.Infrastructure.Abstractions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

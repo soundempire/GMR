@@ -14,9 +14,9 @@ namespace GMR.DAL.Context
 
             context.Persons.AddRange(new List<Person>() { abrazumovaPerson, admin, avdejPerson });
 
-            var adminPassword = new Password() { ID = 1, Person = admin, Login = "admin", Value = "admin", LastUpdated = DateTime.Now, PersonID = 1 };
-            var abrazumovaPassword = new Password() { ID = 2, Person = abrazumovaPerson, Login = "p1", Value = "Абразумова", LastUpdated = DateTime.Now, PersonID = 2 };
-            var avdejPassword = new Password() { ID = 3, Person = avdejPerson, Login = "p2", Value = "Авдей", LastUpdated = DateTime.Now, PersonID = 3 };
+            var adminPassword = new Password() { ID = 1, Person = admin, Login = "admin", Value = "pIbvhgmpVHahDBTYUgQvew==", LastUpdated = DateTime.Now, PersonID = 1 };
+            var abrazumovaPassword = new Password() { ID = 2, Person = abrazumovaPerson, Login = "p1", Value = "LXWtRje9AMTjVuOEllULSG+xJFCUBetWCHhcQlhw/f4=", LastUpdated = DateTime.Now, PersonID = 2 };
+            var avdejPassword = new Password() { ID = 3, Person = avdejPerson, Login = "p2", Value = "vDCuPP9IMye6c/gbhVi8zQ==", LastUpdated = DateTime.Now, PersonID = 3 };
 
             context.Passwords.AddRange(new List<Password>() { adminPassword, abrazumovaPassword, avdejPassword });
 
