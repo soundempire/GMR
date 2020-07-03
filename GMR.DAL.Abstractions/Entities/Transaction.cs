@@ -12,9 +12,9 @@ namespace GMR.DAL
 
         public DateTime Date { get; set; }
 
-        public double? Value { get; set; } = null;
+        public double? Value { get; set; }
 
-        public double? Price { get; set; } = null;
+        public double? Price { get; set; }
 
         public double Currency { get; set; }
     }

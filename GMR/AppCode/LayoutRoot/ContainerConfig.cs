@@ -4,7 +4,7 @@ using GMR.BLL.Services;
 using GMR.DAL;
 using GMR.DAL.Context;
 using GMR.DAL.Repositories;
-using GMR.Logging;
+using GMR.Infrastructure;
 
 namespace GMR
 {
@@ -24,6 +24,7 @@ namespace GMR
             builder.RegisterType<UpdateUserAccountForm>();
             builder.RegisterType<CreateUserAccountForm>();
             builder.RegisterType<ImportMasterForm>();
+            builder.RegisterType<ResetPasswordForm>();
 
             builder.RegisterType<PasswordRepository>().As<IRepository<Password>>();
             builder.RegisterType<ContractorRepository>().As<IRepository<Contractor>>();

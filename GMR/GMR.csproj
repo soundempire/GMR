@@ -148,6 +148,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetPasswordForm.Designer.cs">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateUserAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetPasswordForm.resx">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateUserAccountForm.resx">
       <DependentUpon>UpdateUserAccountForm.cs</DependentUpon>
@@ -222,9 +231,13 @@
       <Project>{9B7DA819-9638-4911-9B50-D3393CFC1467}</Project>
       <Name>GMR.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GMR.Logging\GMR.Logging.csproj">
-      <Project>{35d94c91-f521-4130-b03a-5143dd56b977}</Project>
-      <Name>GMR.Logging</Name>
+    <ProjectReference Include="..\GMR.Infrastructure.Abstractions\GMR.Infrastructure.Abstractions.csproj">
+      <Project>{1fe1ee23-8f97-4583-97b4-0f510d9f8145}</Project>
+      <Name>GMR.Infrastructure.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMR.Infrastructure\GMR.Infrastructure.csproj">
+      <Project>{197dbcb8-faea-433c-848b-17cb3b3c03ac}</Project>
+      <Name>GMR.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
