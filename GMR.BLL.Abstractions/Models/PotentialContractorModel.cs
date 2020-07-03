@@ -6,6 +6,8 @@
 
         public bool IsValid => string.IsNullOrEmpty(Error);
 
+        public override int GetHashCode() => base.GetHashCode();
+
         public override bool Equals(object obj)
         {
             if (obj is PotentialContractorModel contractor)

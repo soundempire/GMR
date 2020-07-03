@@ -7,6 +7,7 @@ namespace GMR.Models
     {
         public long ID { get; set; }
 
+        [Required]
         public long PersonID { get; set; }
 
         [Required]

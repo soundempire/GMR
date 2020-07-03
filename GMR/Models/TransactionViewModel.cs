@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace GMR.Models
 {
@@ -9,10 +10,12 @@ namespace GMR.Models
         public long ID { get; set; }
 
         [Browsable(false)]
+        [Required]
         public long ContractorID { get; set; }
 
         [DisplayName("Дата")]
         [ReadOnly(true)]
+        [Required]
         public DateTime Date { get; set; }
 
         [DisplayName("Транзакция")]
@@ -23,6 +26,7 @@ namespace GMR.Models
 
         [DisplayName("Курс")]
         [ReadOnly(true)]
+        [Required]
         public double Currency { get; set; }
 
         object ICloneable.Clone() => MemberwiseClone();

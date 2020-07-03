@@ -172,5 +172,17 @@ namespace GMR
 
         private void UpdateCreateButtonEnabledState()
             => createAccountBtn.Enabled = !_errorLabels.Any(_ => _.Visible) && !_requaredTextBoxes.Any(_ => string.IsNullOrWhiteSpace(_.Text));
+
+        private void PhoneTBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)
+                && (e.KeyChar != '+') && (e.KeyChar != '-') && (e.KeyChar != '(') && (e.KeyChar != ')'))
+                e.Handled = true;
+
+            if ((e.KeyChar == '+') && ((sender as TextBox).Text.IndexOf('+') > -1) ||
+                (e.KeyChar == '(') && ((sender as TextBox).Text.IndexOf('(') > -1) ||
+                (e.KeyChar == ')') && ((sender as TextBox).Text.IndexOf(')') > -1))
+                e.Handled = true;
+        }
     }
 }

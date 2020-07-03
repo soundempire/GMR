@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GMR;
@@ -113,11 +115,19 @@ namespace GMR
         {
             var currentContractor = contractorsDGView.Rows[e.RowIndex].DataBoundItem as ContractorViewModel;
 
+            var isModelValid = true;
             if (string.IsNullOrWhiteSpace(currentContractor.Name))
             {
                 MessageBox.Show("У контрагента не может быть пустого имени.", "Переименование контрагента", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                currentContractor.Name = _previousEditableModel.Contractor.Name;
+                isModelValid = false;
             }
+            else if (!ValidateModel(currentContractor, "Некорректно заполнены значения контрагента."))
+            {
+                isModelValid = false;
+            }
+
+            if (!isModelValid)
+                currentContractor.Name = _previousEditableModel.Contractor.Name;
 
             if (!currentContractor.Equals(_previousEditableModel.Contractor))
             {
@@ -125,11 +135,17 @@ namespace GMR
 
                 contractorsCBox.Items.Clear();
                 contractorsCBox.Items.AddRange((await _contractorService.GetContractorsAsync(Session.Person.ID)).Select(c => c.Name).ToArray());
+                contractorsCBox.SelectedIndexChanged -= ContractorsCBox_SelectedIndexChanged;
+                contractorsCBox.Text = currentContractor.Name;
+                contractorsCBox.SelectedIndexChanged += ContractorsCBox_SelectedIndexChanged;
             }
 
             _previousEditableModel.Contractor = null;
         }
-        
+
+        private void ContractorsDGView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+            => MessageBox.Show($"Некорректно заполнены значения контрагента.\n{e.Exception.Message.ToString()}", "Ошибочный ввод", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         private void ContractorsDGView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right && e.ColumnIndex >= 0 && e.RowIndex >= 0)
@@ -187,15 +203,28 @@ namespace GMR
         {
             var currentTransaction = transactionsDGView.Rows[e.RowIndex].DataBoundItem as TransactionViewModel;
 
+            var isModelValid = true;
             if (!currentTransaction.Value.HasValue && !currentTransaction.Price.HasValue)
             {
                 MessageBox.Show("Значение транзакции и платежа не могут быть пустыми одновременно.", "Редактирование транзакции", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isModelValid = false;
+            }
+            else if (!ValidateModel(currentTransaction, "Некорректно заполнены значения транзакции."))
+            {
+                isModelValid = false;
+            }
+
+            if (!isModelValid)
+            {
                 currentTransaction.Value = _previousEditableModel.Transaction.Value;
                 currentTransaction.Price = _previousEditableModel.Transaction.Price;
             }
 
             if (!currentTransaction.Equals(_previousEditableModel.Transaction))
+            {
                 await _transactionService.UpdateTransactionAsync(Mapper.Map<TransactionViewModel, TransactionModel>(currentTransaction));
+                CalculateTotalTransactions();
+            }
 
             _previousEditableModel.Transaction = null;
         }
@@ -209,11 +238,14 @@ namespace GMR
             }
         }
 
+        private void TransactionsDGView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+           => MessageBox.Show($"Некорректно заполнены значения транзакции.\n{e.Exception.Message.ToString()}\nПример ввода: 15 или 15,34", "Ошибочный ввод", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         #endregion
 
         #region ContractorsCBox EventHandlers
-        
-        private async void ContractorsCBox_SelectedValueChanged(object sender, EventArgs e)
+
+        private async void ContractorsCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _contractorsCBoxValueSelected = true;
 
@@ -419,9 +451,9 @@ namespace GMR
         
         private void UpdateContractorsCBoxText(string value)
         {
-            contractorsCBox.SelectedIndexChanged -= ContractorsCBox_SelectedValueChanged;
+            contractorsCBox.SelectedIndexChanged -= ContractorsCBox_SelectedIndexChanged;
             contractorsCBox.Text = value;
-            contractorsCBox.SelectedIndexChanged += ContractorsCBox_SelectedValueChanged;
+            contractorsCBox.SelectedIndexChanged += ContractorsCBox_SelectedIndexChanged;
         }
         
         private void CalculateTotalTransactions(bool allTransactions = default)
@@ -445,6 +477,23 @@ namespace GMR
             }
             else
                 totalTransactionsPanel.Visible = false;
+        }
+
+        private bool ValidateModel<T>(T viewModel, string errorMessage)
+        {
+            var validationErrors = new List<ValidationResult>();
+            var isValid = Validator.TryValidateObject(viewModel, new ValidationContext(viewModel), validationErrors, true);
+
+            if (!isValid)
+            {
+                StringBuilder errors = new StringBuilder();
+                validationErrors.ForEach(_ => errors.AppendLine(_.ErrorMessage));
+                MessageBox.Show($"{errorMessage}\nСписок ошибок:\n{errors.ToString()}", "Ошибочный ввод", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+
+            return true;
         }
 
         //TODO: Vadim investigate potential exceptions by resizing

@@ -263,6 +263,18 @@ namespace GMR
         {
             saveBtn.Enabled = !_errorLabels.Any(_ => _.Visible) 
                               && (updatePasswordChBox.Checked ? !_passwordInputTextBoxes.Any(_ => string.IsNullOrWhiteSpace(_.Text)) : true);
-        } 
+        }
+
+        private void PhoneTBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) 
+                && (e.KeyChar != '+') && (e.KeyChar != '-') && (e.KeyChar != '(') && (e.KeyChar != ')'))
+                e.Handled = true;
+
+            if ((e.KeyChar == '+') && ((sender as TextBox).Text.IndexOf('+') > -1) ||
+                (e.KeyChar == '(') && ((sender as TextBox).Text.IndexOf('(') > -1) ||
+                (e.KeyChar == ')') && ((sender as TextBox).Text.IndexOf(')') > -1))
+                e.Handled = true;
+        }
     }
 }
