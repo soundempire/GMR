@@ -113,7 +113,7 @@ namespace GMR
             if (importForm.ShowDialog() == DialogResult.OK)
             {
                 var importResult = (ImportResult)importForm.Tag;
-                //TODO: validate models
+                //TODO: Pavel validate models
                 foreach (var contractor in Mapper.Map<ContractorViewModel[], ContractorModel[]>(importResult.SuccessContractors))
                 {
                     if (contractor.ID > 0)
