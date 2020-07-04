@@ -1,26 +1,34 @@
 ﻿using GMR.DAL.Context;
+using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GMR.DAL.Repositories
 {
-    public class PersonRepository : IRepository<Person>
+    public class PersonRepository : IPersonRepository
     {
         private readonly GMRContext _context;
 
         public PersonRepository(GMRContext context) => _context = context;
 
-        public IQueryable<Person> GetAll(long? parentIdFilter = null)
-            => _context.Persons.AsNoTracking();
+        public async Task<IEnumerable<Person>> GetAll(long? parentIdFilter = default, params string[] includes)
+        {
+            var query = _context.Persons.AsQueryable();
+            if (includes.Contains(nameof(Person.Password).ToLower()))
+                query = query.Include(_ => _.Password);
 
-        public async Task<Person> GetAsync(long id)
-            => await _context.Persons
-                             .Include(p => p.Password)
-                             .Where(p => p.ID == id)
-                             .AsNoTracking()
-                             .FirstOrDefaultAsync();
+            return await query.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<Person> GetAsync(long id, params string[] includes)
+        {
+            var query = _context.Persons.AsQueryable();
+            if (includes.Contains(nameof(Person.Password).ToLower()))
+                query = query.Include(_ => _.Password);
+
+            return await query.Where(_ => _.ID == id).AsNoTracking().FirstOrDefaultAsync();
+        }
 
         public async Task<Person> CreateAsync(Person person)
         {

@@ -27,10 +27,10 @@ namespace GMR
             builder.RegisterType<ImportMasterForm>();
             builder.RegisterType<ResetPasswordForm>();
 
-            builder.RegisterType<PasswordRepository>().As<IRepository<Password>>();
-            builder.RegisterType<ContractorRepository>().As<IRepository<Contractor>>();
-            builder.RegisterType<PersonRepository>().As<IRepository<Person>>();
-            builder.RegisterType<TransactionRepository>().As<IRepository<Transaction>>();
+            builder.RegisterType<PasswordRepository>().As<IPasswordRepository>();
+            builder.RegisterType<ContractorRepository>().As<IContractorRepository>();
+            builder.RegisterType<PersonRepository>().As<IPersonRepository>();
+            builder.RegisterType<TransactionRepository>().As<ITransactionRepository>();
 
             builder.RegisterType<AuthorizationService>().As<IAuthorizationService>();
             builder.RegisterType<PersonService>().As<IPersonService>();

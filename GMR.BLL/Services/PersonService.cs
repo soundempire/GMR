@@ -1,7 +1,6 @@
 ﻿using GMR.DAL;
 using System;
 using System.Threading.Tasks;
-using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using GMR.Infrastructure;
@@ -12,11 +11,11 @@ namespace GMR.BLL.Services
     {
         private readonly ILanguagesService _languagesService;
 
-        private readonly IRepository<Person> _personRepository;
+        private readonly IPersonRepository _personRepository;
 
         private readonly IСryptographer _сryptographer;
 
-        public PersonService(ILanguagesService languagesService, IRepository<Person> personRepository, IСryptographer сryptographer) 
+        public PersonService(ILanguagesService languagesService, IPersonRepository personRepository, IСryptographer сryptographer) 
             => (_languagesService, _personRepository, _сryptographer) = (languagesService, personRepository, сryptographer);
 
         public async Task<PersonModel> GetPersonAsync(long id)
@@ -27,13 +26,11 @@ namespace GMR.BLL.Services
             return personModel;
         }
 
-        public async Task<IEnumerable<PersonModel>> GetPersonsAsync(bool includePasswords)
+        public async Task<IEnumerable<PersonModel>> GetPersonsAsync(params string[] includes)
         {
-            var query = _personRepository.GetAll();
-            if (includePasswords)
-                query = query.Include(p => p.Password);
-
-            var persons = await query.ToListAsync();
+            var persons = includes.Contains(nameof(PersonModel.Password).ToLower()) ? 
+                          await _personRepository.GetAll(null, nameof(PersonModel.Password).ToLower()) :
+                          await _personRepository.GetAll();
             var personModels = Mapper.Map<IEnumerable<Person>, IEnumerable<PersonModel>>(persons)
                                     .GroupBy(_ => _.Language.Id)
                                     .ToDictionary(group => group.Key, group => group.ToList());
@@ -46,7 +43,7 @@ namespace GMR.BLL.Services
                     models.ToList().ForEach(_ => _.Language = language);
             }
 
-            return personModels.SelectMany(_ => _.Value);
+            return personModels.SelectMany(_ => _.Value).ToList();
         }
 
         public async Task<PersonModel> UpdatePersonAsync(PersonModel person)

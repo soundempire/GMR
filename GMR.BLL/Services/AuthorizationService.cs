@@ -16,7 +16,7 @@ namespace GMR.BLL.Services
 
         public async Task<PersonModel> AuthorizeAsync(string login, string password)
         {
-            var persons = await _personService.GetPersonsAsync(true);
+            var persons = await _personService.GetPersonsAsync(nameof(PersonModel.Password).ToLower());
 
             var person = persons.FirstOrDefault(_ => _.Password.Login == login && _сryptographer.Decrypt(_.Password.Value) == password);
 

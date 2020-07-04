@@ -46,7 +46,11 @@
     <Compile Include="Entities\Password.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Transaction.cs" />
+    <Compile Include="IContractorRepository.cs" />
+    <Compile Include="IPasswordRepository.cs" />
+    <Compile Include="IPersonRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="ITransactionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

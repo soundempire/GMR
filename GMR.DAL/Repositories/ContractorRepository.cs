@@ -1,33 +1,41 @@
 ﻿using GMR.DAL.Context;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace GMR.DAL.Repositories
 {
-    public class ContractorRepository : IRepository<Contractor>
+    public class ContractorRepository : IContractorRepository
     {
         private readonly GMRContext _context;
 
         public ContractorRepository(GMRContext context) => _context = context;
 
-        public IQueryable<Contractor> GetAll(long? parentIdFilter = null)
+        public async Task<IEnumerable<Contractor>> GetAll(long? parentIdFilter = default, string nameFilter = default, params string[] includes)
         {
             var query = _context.Contractors.AsQueryable();
-            if (parentIdFilter.HasValue)
-                query = query.Where(c => c.PersonID == parentIdFilter.Value);
+            if (includes.Contains(nameof(Contractor.Transactions).ToLower()))
+                query = query.Include(_ => _.Transactions);
 
-            return query.AsNoTracking();
+            if (parentIdFilter.HasValue)
+                query = query.Where(_ => _.PersonID == parentIdFilter.Value);
+
+            if (!string.IsNullOrWhiteSpace(nameFilter))
+                query = query.Where(_ => _.Name.ToLower().Contains(nameFilter.ToLower()));
+
+            return await query.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Contractor> GetAsync(long id)
-            => await _context.Contractors
-                             .Include(c => c.Transactions)
-                             .Where(c => c.ID == id)
-                             .AsNoTracking()
-                             .FirstOrDefaultAsync();
+        public async Task<Contractor> GetAsync(long id, params string[] includes)
+        {
+            var query = _context.Contractors.AsQueryable();
+            if (includes.Contains(nameof(Contractor.Transactions).ToLower()))
+                query = query.Include(_ => _.Transactions);
+
+            return await query.Where(_ => _.ID == id).AsNoTracking().FirstOrDefaultAsync();
+        }
 
         public async Task<Contractor> CreateAsync(Contractor contractor)
         {

@@ -5,7 +5,7 @@ namespace GMR.BLL
 {
     public interface IContractorService
     {
-        Task<ContractorModel> GetContractorAsync(long id);
+        Task<ContractorModel> GetContractorAsync(long id, params string[] includes);
 
         Task<IEnumerable<ContractorModel>> GetContractorsAsync(long personId, string filter = null, params string[] includes);
 

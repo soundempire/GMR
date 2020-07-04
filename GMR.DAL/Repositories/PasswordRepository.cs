@@ -1,21 +1,22 @@
 ﻿using GMR.DAL.Context;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GMR.DAL.Repositories
 {
-    public class PasswordRepository : IRepository<Password>
+    public class PasswordRepository : IPasswordRepository
     {
         private readonly GMRContext _context;
 
         public PasswordRepository(GMRContext context) => _context = context;
 
-        public IQueryable<Password> GetAll(long? parentIdFilter = null)
-            => _context.Passwords.AsNoTracking();
+        public async Task<bool> IsLoginExists(string potentialLogin)
+            => await _context.Passwords.AnyAsync(_ => _.Login.Equals(potentialLogin));
 
-        public async Task<Password> GetAsync(long id)
-            => await _context.Passwords.FindAsync(id);
+        public async Task<Password> GetAsync(long id, params string[] includes)
+            => await _context.Passwords.Where(_ => _.ID == id).AsNoTracking().FirstOrDefaultAsync();
 
         public async Task<Password> CreateAsync(Password pwd)
         {
