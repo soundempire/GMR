@@ -22,7 +22,6 @@ namespace GMR
                 var logger = DIContainer.Resolve<ILogger>();
                 try
                 {
-                    logger.LogInfo("GMR");
                     Context.SetExecutableForm(DIContainer.Resolve<LoginForm>());
                     Application.Run(Context.MainContext);
                 }
