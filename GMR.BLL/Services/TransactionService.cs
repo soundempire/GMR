@@ -18,9 +18,9 @@ namespace GMR.BLL.Services
             return Mapper.Map<Transaction, TransactionModel>(dataModel);
         }
 
-        public async Task<IEnumerable<TransactionModel>> GetTransactionsAsync(long contractorId)
+        public async Task<IEnumerable<TransactionModel>> GetTransactionsAsync(long contractorId, DateTime? startDate = default, DateTime? endDate = default)
         {
-            var transactions = await _transactionRepository.GetAll(contractorId);
+            var transactions = await _transactionRepository.GetAll(contractorId, startDate, endDate);
             return Mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionModel>>(transactions);
         }
 

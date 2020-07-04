@@ -425,8 +425,8 @@ namespace GMR
         private async Task BindTransactionsToDataGridViewAsync()
         {
             var selectedContractorID = (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorViewModel).ID;
-            var transactions = Mapper.Map<IEnumerable<TransactionModel>, List<TransactionViewModel>>(await _transactionService.GetTransactionsAsync(selectedContractorID));
-            _loadedTransactions = transactions.Where(tr => tr.Date.Date >= startsDTP.Value.Date && tr.Date.Date <= endsDTP.Value.Date).ToList();
+            _loadedTransactions = Mapper.Map<IEnumerable<TransactionModel>, List<TransactionViewModel>>(
+                                    await _transactionService.GetTransactionsAsync(selectedContractorID, startsDTP.Value, endsDTP.Value));
 
             transactionsDGView.DataSource = new SortableBindingList<TransactionViewModel>(_loadedTransactions);
 

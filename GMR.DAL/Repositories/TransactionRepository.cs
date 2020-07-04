@@ -1,4 +1,5 @@
 ﻿using GMR.DAL.Context;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
@@ -13,7 +14,7 @@ namespace GMR.DAL.Repositories
 
         public TransactionRepository(GMRContext context) => _context = context;
 
-        public async Task<IEnumerable<Transaction>> GetAll(long? parentIdFilter = default, params string[] includes)
+        public async Task<IEnumerable<Transaction>> GetAll(long? parentIdFilter = default, DateTime? startDate = default, DateTime? endDate = default, params string[] includes)
         {
             var query = _context.Transactions.AsQueryable();
             if (includes.Contains(nameof(Transaction.Contractor).ToLower()))
@@ -21,6 +22,10 @@ namespace GMR.DAL.Repositories
 
             if (parentIdFilter.HasValue)
                 query = query.Where(_ => _.ContractorID == parentIdFilter.Value);
+
+            if (startDate.HasValue && endDate.HasValue)
+                query = query.Where(_ => DbFunctions.TruncateTime(_.Date) >= DbFunctions.TruncateTime(startDate.Value) && 
+                                         DbFunctions.TruncateTime(_.Date) <= DbFunctions.TruncateTime(endDate.Value));
 
             return await query.AsNoTracking().ToListAsync();
         }
