@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateUserAccountForm));
             this.userProfilePanel = new System.Windows.Forms.Panel();
             this.errorPasswordLabel = new System.Windows.Forms.Label();
             this.passwordTBox = new System.Windows.Forms.TextBox();
@@ -53,7 +54,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.firstNameTBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.createAccountBtn = new System.Windows.Forms.Button();
+            this.createAccountBtn = new GMR.Controls.GMRButton();
             this.userProfilePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -324,13 +325,18 @@
             // 
             // createAccountBtn
             // 
-            this.createAccountBtn.Enabled = false;
-            this.createAccountBtn.Location = new System.Drawing.Point(227, 476);
+            this.createAccountBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
+            this.createAccountBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createAccountBtn.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.createAccountBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.createAccountBtn.Location = new System.Drawing.Point(225, 478);
             this.createAccountBtn.Name = "createAccountBtn";
-            this.createAccountBtn.Size = new System.Drawing.Size(148, 33);
-            this.createAccountBtn.TabIndex = 12;
+            this.createAccountBtn.Rounding = 100;
+            this.createAccountBtn.RoundingEnabled = true;
+            this.createAccountBtn.Size = new System.Drawing.Size(150, 33);
+            this.createAccountBtn.TabIndex = 13;
             this.createAccountBtn.Text = "Создать аккаунт";
-            this.createAccountBtn.UseVisualStyleBackColor = true;
+            this.createAccountBtn.UseVisualStyleBackColor = false;
             this.createAccountBtn.Click += new System.EventHandler(this.CreateAccountBtn_Click);
             // 
             // CreateUserAccountForm
@@ -341,6 +347,7 @@
             this.Controls.Add(this.createAccountBtn);
             this.Controls.Add(this.userProfilePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateUserAccountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создание нового аккаунта";
@@ -379,6 +386,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox confirmPasswordTBox;
-        private System.Windows.Forms.Button createAccountBtn;
+        private Controls.GMRButton createAccountBtn;
     }
 }

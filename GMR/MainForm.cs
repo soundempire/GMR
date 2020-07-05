@@ -450,9 +450,6 @@ namespace GMR
 
         //TODO: Vadim investigate potential exceptions by resizing
         //TODO: Vadim затираются даты на ресайзе.
-        //TODO: Vadim добавить иконку на все формы.
-        //TODO: Vadim заменить кнопки на круглые на всех формах.
-
 
         private void SetFormsSizes()
         {
