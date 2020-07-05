@@ -8,7 +8,6 @@ using Context = GMR.ApplicationContext;
 
 namespace GMR
 {
-    //TODO: refactor BL services
     static class Program
     {
         [STAThread]

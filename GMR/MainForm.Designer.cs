@@ -51,25 +51,25 @@ namespace GMR
             this.CenterSplitContainer = new System.Windows.Forms.SplitContainer();
             this.contractorDGVPanel = new System.Windows.Forms.Panel();
             this.topLeftPanel = new System.Windows.Forms.Panel();
-            this.contractorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.transactionsDGVPanel = new System.Windows.Forms.Panel();
-            this.totalTransactionsPanel = new System.Windows.Forms.Panel();
-            this.totalSumTB = new System.Windows.Forms.TextBox();
-            this.totalTransactionTB = new System.Windows.Forms.TextBox();
-            this.totalPriceTB = new System.Windows.Forms.TextBox();
-            this.totalCurencyTB = new System.Windows.Forms.TextBox();
             this.topRightPanel = new System.Windows.Forms.Panel();
+            this.userAccountMenuPanel = new System.Windows.Forms.Panel();
             this.userAccountMenuStrip = new System.Windows.Forms.MenuStrip();
             this.userAccountToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.signOutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userAccountMenuPanel = new System.Windows.Forms.Panel();
+            this.totalTransactionsPanel = new System.Windows.Forms.Panel();
+            this.totalCurencyTB = new System.Windows.Forms.TextBox();
+            this.totalPriceTB = new System.Windows.Forms.TextBox();
+            this.totalTransactionTB = new System.Windows.Forms.TextBox();
+            this.totalSumTB = new System.Windows.Forms.TextBox();
+            this.contractorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).BeginInit();
             this.datesPanel.SuspendLayout();
@@ -82,12 +82,12 @@ namespace GMR
             this.CenterSplitContainer.SuspendLayout();
             this.contractorDGVPanel.SuspendLayout();
             this.topLeftPanel.SuspendLayout();
-            this.contractorContextMenu.SuspendLayout();
             this.transactionsDGVPanel.SuspendLayout();
-            this.totalTransactionsPanel.SuspendLayout();
             this.topRightPanel.SuspendLayout();
-            this.userAccountMenuStrip.SuspendLayout();
             this.userAccountMenuPanel.SuspendLayout();
+            this.userAccountMenuStrip.SuspendLayout();
+            this.totalTransactionsPanel.SuspendLayout();
+            this.contractorContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // contractorsDGView
@@ -113,6 +113,7 @@ namespace GMR
             this.contractorsDGView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ContractorsDGView_CellEndEdit);
             this.contractorsDGView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContractorsDGView_CellMouseClick);
             this.contractorsDGView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContractorsDGView_CellMouseDown);
+            this.contractorsDGView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.ContractorsDGView_DataError);
             this.contractorsDGView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContractorsDGView_RowHeaderMouseClick);
             this.contractorsDGView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContractorsDGView_KeyDown);
             // 
@@ -137,6 +138,7 @@ namespace GMR
             this.transactionsDGView.TabIndex = 1;
             this.transactionsDGView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.TransactionsDGView_CellBeginEdit);
             this.transactionsDGView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionsDGView_CellEndEdit);
+            this.transactionsDGView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.TransactionsDGView_DataError);
             this.transactionsDGView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TransactionsDGView_KeyDown);
             // 
             // startsDTP
@@ -202,7 +204,7 @@ namespace GMR
             this.contractorsCBox.Size = new System.Drawing.Size(278, 24);
             this.contractorsCBox.TabIndex = 14;
             this.contractorsCBox.Text = "Все";
-            this.contractorsCBox.SelectedIndexChanged += new System.EventHandler(this.ContractorsCBox_SelectedValueChanged);
+            this.contractorsCBox.SelectedIndexChanged += new System.EventHandler(this.ContractorsCBox_SelectedIndexChanged);
             this.contractorsCBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContractorsCBox_KeyDown);
             // 
             // datesPanel
@@ -376,56 +378,6 @@ namespace GMR
             this.topLeftPanel.Size = new System.Drawing.Size(283, 32);
             this.topLeftPanel.TabIndex = 17;
             // 
-            // contractorContextMenu
-            // 
-            this.contractorContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contractorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addTransactionsToolStripMenuItem,
-            this.renameContractorToolStripMenuItem,
-            this.removeContractorToolStripMenuItem});
-            this.contractorContextMenu.Name = "contractorContextMenu";
-            this.contractorContextMenu.Size = new System.Drawing.Size(237, 70);
-            // 
-            // addTransactionsToolStripMenuItem
-            // 
-            this.addTransactionsToolStripMenuItem.Name = "addTransactionsToolStripMenuItem";
-            this.addTransactionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.addTransactionsToolStripMenuItem.Text = "Добавить транзакцию";
-            this.addTransactionsToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionsToolStripMenuItem_Click);
-            // 
-            // renameContractorToolStripMenuItem
-            // 
-            this.renameContractorToolStripMenuItem.Name = "renameContractorToolStripMenuItem";
-            this.renameContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.renameContractorToolStripMenuItem.Text = "Переименовать";
-            this.renameContractorToolStripMenuItem.Click += new System.EventHandler(this.RenameContractorToolStripMenuItem_Click);
-            // 
-            // removeContractorToolStripMenuItem
-            // 
-            this.removeContractorToolStripMenuItem.Name = "removeContractorToolStripMenuItem";
-            this.removeContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.removeContractorToolStripMenuItem.Text = "Удалить";
-            this.removeContractorToolStripMenuItem.Click += new System.EventHandler(this.RemoveContractorToolStripMenuItem_Click);
-            // 
-            // miniToolStrip
-            // 
-            this.miniToolStrip.AccessibleName = "New item selection";
-            this.miniToolStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
-            this.miniToolStrip.AutoSize = false;
-            this.miniToolStrip.BackColor = System.Drawing.SystemColors.Control;
-            this.miniToolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.miniToolStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.miniToolStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.miniToolStrip.Location = new System.Drawing.Point(127, 34);
-            this.miniToolStrip.Name = "miniToolStrip";
-            this.miniToolStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.miniToolStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.miniToolStrip.Size = new System.Drawing.Size(109, 32);
-            this.miniToolStrip.TabIndex = 0;
-            // 
             // transactionsDGVPanel
             // 
             this.transactionsDGVPanel.Controls.Add(this.transactionsDGView);
@@ -435,76 +387,6 @@ namespace GMR
             this.transactionsDGVPanel.Name = "transactionsDGVPanel";
             this.transactionsDGVPanel.Size = new System.Drawing.Size(570, 317);
             this.transactionsDGVPanel.TabIndex = 4;
-            // 
-            // totalTransactionsPanel
-            // 
-            this.totalTransactionsPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalTransactionsPanel.Controls.Add(this.totalCurencyTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalPriceTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalTransactionTB);
-            this.totalTransactionsPanel.Controls.Add(this.totalSumTB);
-            this.totalTransactionsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 349);
-            this.totalTransactionsPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.totalTransactionsPanel.Name = "totalTransactionsPanel";
-            this.totalTransactionsPanel.Size = new System.Drawing.Size(570, 34);
-            this.totalTransactionsPanel.TabIndex = 3;
-            this.totalTransactionsPanel.Visible = false;
-            // 
-            // totalSumTB
-            // 
-            this.totalSumTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalSumTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalSumTB.Enabled = false;
-            this.totalSumTB.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalSumTB.Location = new System.Drawing.Point(0, 0);
-            this.totalSumTB.Margin = new System.Windows.Forms.Padding(2);
-            this.totalSumTB.Multiline = true;
-            this.totalSumTB.Name = "totalSumTB";
-            this.totalSumTB.Size = new System.Drawing.Size(142, 35);
-            this.totalSumTB.TabIndex = 0;
-            // 
-            // totalTransactionTB
-            // 
-            this.totalTransactionTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalTransactionTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalTransactionTB.Enabled = false;
-            this.totalTransactionTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalTransactionTB.Location = new System.Drawing.Point(142, 0);
-            this.totalTransactionTB.Margin = new System.Windows.Forms.Padding(2);
-            this.totalTransactionTB.Multiline = true;
-            this.totalTransactionTB.Name = "totalTransactionTB";
-            this.totalTransactionTB.Size = new System.Drawing.Size(142, 35);
-            this.totalTransactionTB.TabIndex = 1;
-            this.totalTransactionTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // totalPriceTB
-            // 
-            this.totalPriceTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalPriceTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalPriceTB.Enabled = false;
-            this.totalPriceTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalPriceTB.Location = new System.Drawing.Point(281, 0);
-            this.totalPriceTB.Margin = new System.Windows.Forms.Padding(2);
-            this.totalPriceTB.Multiline = true;
-            this.totalPriceTB.Name = "totalPriceTB";
-            this.totalPriceTB.Size = new System.Drawing.Size(143, 34);
-            this.totalPriceTB.TabIndex = 2;
-            this.totalPriceTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // totalCurencyTB
-            // 
-            this.totalCurencyTB.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.totalCurencyTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalCurencyTB.Enabled = false;
-            this.totalCurencyTB.Font = new System.Drawing.Font("Tahoma", 17F);
-            this.totalCurencyTB.Location = new System.Drawing.Point(423, 0);
-            this.totalCurencyTB.Margin = new System.Windows.Forms.Padding(2);
-            this.totalCurencyTB.Multiline = true;
-            this.totalCurencyTB.Name = "totalCurencyTB";
-            this.totalCurencyTB.Size = new System.Drawing.Size(147, 34);
-            this.totalCurencyTB.TabIndex = 2;
-            this.totalCurencyTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // topRightPanel
             // 
@@ -516,6 +398,15 @@ namespace GMR
             this.topRightPanel.Name = "topRightPanel";
             this.topRightPanel.Size = new System.Drawing.Size(570, 32);
             this.topRightPanel.TabIndex = 16;
+            // 
+            // userAccountMenuPanel
+            // 
+            this.userAccountMenuPanel.Controls.Add(this.userAccountMenuStrip);
+            this.userAccountMenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userAccountMenuPanel.Location = new System.Drawing.Point(256, 0);
+            this.userAccountMenuPanel.Name = "userAccountMenuPanel";
+            this.userAccountMenuPanel.Size = new System.Drawing.Size(314, 32);
+            this.userAccountMenuPanel.TabIndex = 17;
             // 
             // userAccountMenuStrip
             // 
@@ -575,14 +466,125 @@ namespace GMR
             this.closeMenuItem.Text = "Закрыть";
             this.closeMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
-            // userAccountMenuPanel
+            // totalTransactionsPanel
             // 
-            this.userAccountMenuPanel.Controls.Add(this.userAccountMenuStrip);
-            this.userAccountMenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userAccountMenuPanel.Location = new System.Drawing.Point(256, 0);
-            this.userAccountMenuPanel.Name = "userAccountMenuPanel";
-            this.userAccountMenuPanel.Size = new System.Drawing.Size(314, 32);
-            this.userAccountMenuPanel.TabIndex = 17;
+            this.totalTransactionsPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalTransactionsPanel.Controls.Add(this.totalCurencyTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalPriceTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalTransactionTB);
+            this.totalTransactionsPanel.Controls.Add(this.totalSumTB);
+            this.totalTransactionsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.totalTransactionsPanel.Location = new System.Drawing.Point(0, 349);
+            this.totalTransactionsPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.totalTransactionsPanel.Name = "totalTransactionsPanel";
+            this.totalTransactionsPanel.Size = new System.Drawing.Size(570, 34);
+            this.totalTransactionsPanel.TabIndex = 3;
+            this.totalTransactionsPanel.Visible = false;
+            // 
+            // totalCurencyTB
+            // 
+            this.totalCurencyTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalCurencyTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalCurencyTB.Enabled = false;
+            this.totalCurencyTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalCurencyTB.Location = new System.Drawing.Point(423, 0);
+            this.totalCurencyTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalCurencyTB.Multiline = true;
+            this.totalCurencyTB.Name = "totalCurencyTB";
+            this.totalCurencyTB.Size = new System.Drawing.Size(147, 34);
+            this.totalCurencyTB.TabIndex = 2;
+            this.totalCurencyTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // totalPriceTB
+            // 
+            this.totalPriceTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalPriceTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalPriceTB.Enabled = false;
+            this.totalPriceTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalPriceTB.Location = new System.Drawing.Point(281, 0);
+            this.totalPriceTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalPriceTB.Multiline = true;
+            this.totalPriceTB.Name = "totalPriceTB";
+            this.totalPriceTB.Size = new System.Drawing.Size(143, 34);
+            this.totalPriceTB.TabIndex = 2;
+            this.totalPriceTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // totalTransactionTB
+            // 
+            this.totalTransactionTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalTransactionTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalTransactionTB.Enabled = false;
+            this.totalTransactionTB.Font = new System.Drawing.Font("Tahoma", 17F);
+            this.totalTransactionTB.Location = new System.Drawing.Point(142, 0);
+            this.totalTransactionTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalTransactionTB.Multiline = true;
+            this.totalTransactionTB.Name = "totalTransactionTB";
+            this.totalTransactionTB.Size = new System.Drawing.Size(142, 35);
+            this.totalTransactionTB.TabIndex = 1;
+            this.totalTransactionTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // totalSumTB
+            // 
+            this.totalSumTB.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.totalSumTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalSumTB.Enabled = false;
+            this.totalSumTB.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalSumTB.Location = new System.Drawing.Point(0, 0);
+            this.totalSumTB.Margin = new System.Windows.Forms.Padding(2);
+            this.totalSumTB.Multiline = true;
+            this.totalSumTB.Name = "totalSumTB";
+            this.totalSumTB.Size = new System.Drawing.Size(142, 35);
+            this.totalSumTB.TabIndex = 0;
+            // 
+            // contractorContextMenu
+            // 
+            this.contractorContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contractorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTransactionsToolStripMenuItem,
+            this.renameContractorToolStripMenuItem,
+            this.removeContractorToolStripMenuItem});
+            this.contractorContextMenu.Name = "contractorContextMenu";
+            this.contractorContextMenu.Size = new System.Drawing.Size(236, 70);
+            // 
+            // addTransactionsToolStripMenuItem
+            // 
+            this.addTransactionsToolStripMenuItem.Name = "addTransactionsToolStripMenuItem";
+            this.addTransactionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.addTransactionsToolStripMenuItem.Text = "Добавить транзакцию";
+            this.addTransactionsToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionsToolStripMenuItem_Click);
+            // 
+            // renameContractorToolStripMenuItem
+            // 
+            this.renameContractorToolStripMenuItem.Name = "renameContractorToolStripMenuItem";
+            this.renameContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.renameContractorToolStripMenuItem.Text = "Переименовать";
+            this.renameContractorToolStripMenuItem.Click += new System.EventHandler(this.RenameContractorToolStripMenuItem_Click);
+            // 
+            // removeContractorToolStripMenuItem
+            // 
+            this.removeContractorToolStripMenuItem.Name = "removeContractorToolStripMenuItem";
+            this.removeContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.removeContractorToolStripMenuItem.Text = "Удалить";
+            this.removeContractorToolStripMenuItem.Click += new System.EventHandler(this.RemoveContractorToolStripMenuItem_Click);
+            // 
+            // miniToolStrip
+            // 
+            this.miniToolStrip.AccessibleName = "New item selection";
+            this.miniToolStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
+            this.miniToolStrip.AutoSize = false;
+            this.miniToolStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.miniToolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.miniToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.miniToolStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.miniToolStrip.Location = new System.Drawing.Point(127, 34);
+            this.miniToolStrip.Name = "miniToolStrip";
+            this.miniToolStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.miniToolStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.miniToolStrip.Size = new System.Drawing.Size(109, 32);
+            this.miniToolStrip.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -614,15 +616,15 @@ namespace GMR
             this.CenterSplitContainer.ResumeLayout(false);
             this.contractorDGVPanel.ResumeLayout(false);
             this.topLeftPanel.ResumeLayout(false);
-            this.contractorContextMenu.ResumeLayout(false);
             this.transactionsDGVPanel.ResumeLayout(false);
-            this.totalTransactionsPanel.ResumeLayout(false);
-            this.totalTransactionsPanel.PerformLayout();
             this.topRightPanel.ResumeLayout(false);
-            this.userAccountMenuStrip.ResumeLayout(false);
-            this.userAccountMenuStrip.PerformLayout();
             this.userAccountMenuPanel.ResumeLayout(false);
             this.userAccountMenuPanel.PerformLayout();
+            this.userAccountMenuStrip.ResumeLayout(false);
+            this.userAccountMenuStrip.PerformLayout();
+            this.totalTransactionsPanel.ResumeLayout(false);
+            this.totalTransactionsPanel.PerformLayout();
+            this.contractorContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

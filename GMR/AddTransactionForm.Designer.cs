@@ -1,6 +1,6 @@
 ﻿namespace GMR
 {
-    partial class AddContractorForm
+    partial class AddTransactionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddContractorForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTransactionForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.importBtn = new GMR.Controls.GMRButton();
             this.label4 = new System.Windows.Forms.Label();

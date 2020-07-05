@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace GMR.Models
 {
@@ -11,16 +12,19 @@ namespace GMR.Models
 
         [DisplayName("ID")]
         [ReadOnly(true)]
+        [Required]
         public string ContractorID { get; set; }
 
         [Browsable(false)]
+        [Required]
         public long PersonID { get; set; }
 
         [DisplayName("Контрагент")]
+        [Required]
         public string Name { get; set; }
 
         [Browsable(false)]
-        public ICollection<TransactionViewModel> Transactions { get; set; }
+        public List<TransactionViewModel> Transactions { get; set; }
 
         object ICloneable.Clone() => MemberwiseClone();
 

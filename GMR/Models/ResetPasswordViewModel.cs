@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace GMR.Models
 {
-    internal class UpdatePasswordViewModel
+    internal class ResetPasswordViewModel
     {
+        [Required]
         public long ID { get; set; }
 
         [Required]
@@ -15,13 +20,6 @@ namespace GMR.Models
 
         [Required]
         [Compare(nameof(Value))]
-        public string OldValue { get; set; }
-
-        [Required]
-        public string NewValue { get; set; }
-
-        [Required]
-        [Compare(nameof(NewValue))]
         public string ConfirmValue { get; set; }
 
         [Required]

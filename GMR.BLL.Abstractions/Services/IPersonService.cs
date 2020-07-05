@@ -7,7 +7,7 @@ namespace GMR.BLL
     {
         Task<PersonModel> GetPersonAsync(long id);
 
-        Task<IEnumerable<PersonModel>> GetPersonsAsync(bool includePasswords);
+        Task<IEnumerable<PersonModel>> GetPersonsAsync(params string[] includes);
 
         Task<PersonModel> UpdatePersonAsync(PersonModel person);
 

@@ -25,6 +25,7 @@ namespace GMR.Models
         public LanguageViewModel Language { get; set; }
 
         [Required]
+        [RegularExpression(@"^[0-9\+\-()]+$")]
         [MaxLength(18)]
         public string Phone { get; set; }
     }

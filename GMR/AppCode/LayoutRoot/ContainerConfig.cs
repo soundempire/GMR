@@ -13,23 +13,24 @@ namespace GMR
         public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
-
+            
             builder.RegisterType<Logger>().As<ILogger>().SingleInstance();
+            builder.RegisterType<Сryptographer>().As<IСryptographer>().SingleInstance();
 
             builder.RegisterType<GMRContext>();
 
             builder.RegisterType<LoginForm>();
             builder.RegisterType<MainForm>();
-            builder.RegisterType<AddContractorForm>();
+            builder.RegisterType<AddTransactionForm>();
             builder.RegisterType<UpdateUserAccountForm>();
             builder.RegisterType<CreateUserAccountForm>();
             builder.RegisterType<ImportMasterForm>();
             builder.RegisterType<ResetPasswordForm>();
 
-            builder.RegisterType<PasswordRepository>().As<IRepository<Password>>();
-            builder.RegisterType<ContractorRepository>().As<IRepository<Contractor>>();
-            builder.RegisterType<PersonRepository>().As<IRepository<Person>>();
-            builder.RegisterType<TransactionRepository>().As<IRepository<Transaction>>();
+            builder.RegisterType<PasswordRepository>().As<IPasswordRepository>();
+            builder.RegisterType<ContractorRepository>().As<IContractorRepository>();
+            builder.RegisterType<PersonRepository>().As<IPersonRepository>();
+            builder.RegisterType<TransactionRepository>().As<ITransactionRepository>();
 
             builder.RegisterType<AuthorizationService>().As<IAuthorizationService>();
             builder.RegisterType<PersonService>().As<IPersonService>();

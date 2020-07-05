@@ -19,15 +19,28 @@ namespace GMR.BLL.Services
             {
                 foreach (var contractor in contractors)
                 {
-                    if (string.IsNullOrEmpty(contractor.Name) || contractor.Name.Length > 50)
+                    if (string.IsNullOrWhiteSpace(contractor.ContractorID))
                     {
-                        AddInvalidPotentialContractor(contractor, "Имя контрагента не может быть пустым или его длина превышать 50 символов.");
+                        AddInvalidPotentialContractor(contractor, "Идентификатор контрагента не может быть пустым.");
+                        continue;
+                    }
+
+                    const int contractorNameLength = 50;
+                    if (string.IsNullOrWhiteSpace(contractor.Name) || contractor.Name.Length > contractorNameLength)
+                    {
+                        AddInvalidPotentialContractor(contractor, $"Имя контрагента не может быть пустым или его длина превышать {contractorNameLength.ToString()} символов.");
                         continue;
                     }
 
                     var transaction = contractor.Transactions.FirstOrDefault();
                     if (transaction != null)
                     {
+                        if (transaction.Date == default)
+                        {
+                            AddInvalidPotentialContractor(contractor, "Должно быть установлено значение даты транзакции.");
+                            continue;
+                        }
+
                         if (transaction.Value.HasValue && transaction.Value < 0)
                         {
                             AddInvalidPotentialContractor(contractor, "Значение транзакции не может быть отрицательным.");
@@ -40,9 +53,9 @@ namespace GMR.BLL.Services
                             continue;
                         }
 
-                        if (transaction.Currency < 0)
+                        if (transaction.Currency <= 0)
                         {
-                            AddInvalidPotentialContractor(contractor, "Курс не может быть отрицательным.");
+                            AddInvalidPotentialContractor(contractor, "Курс не может быть отрицательным или равным нулю.");
                             continue;
                         }
                     }
@@ -59,7 +72,7 @@ namespace GMR.BLL.Services
                     potentialContractors = potentialContractors.Where(_ => !_.IsValid)
                                            .Union(await CompareWithCurrentContractors(validPotentialContractors, personId))
                                            .ToList();
-            }
+                }
             }
 
             return potentialContractors;
@@ -76,11 +89,10 @@ namespace GMR.BLL.Services
 
         private async Task<IEnumerable<PotentialContractorModel>> CompareWithCurrentContractors(IEnumerable<PotentialContractorModel> validPotentialContractors, long personId)
         {
-            //TODO: HashSets
             var personContractors = (await _contractorService.GetContractorsAsync(personId, includes: new[] { nameof(ContractorModel.Transactions).ToLower() }))
                                     .ToDictionary(_ => ( _.ContractorID, _.Name ));
-
-            var contractors = new Dictionary<(string ContractorID, string Name), PotentialContractorModel>();
+            
+            HashSet<PotentialContractorModel> contractors = new HashSet<PotentialContractorModel>();
 
             foreach (var potentialContractor in validPotentialContractors)
             {
@@ -99,24 +111,24 @@ namespace GMR.BLL.Services
                     }
                 }
 
-                if (contractors.TryGetValue((potentialContractor.ContractorID, potentialContractor.Name), out var contractor))
+                if (contractors.TryGetValue(potentialContractor, out var contractor))
                 {
                     if (contractor.Transactions != null && potentialTransaction != null)
                     {
                         contractor.Transactions.Add(potentialTransaction);
                     }
-                    else if(potentialTransaction != null)
+                    else if (potentialTransaction != null)
                     {
                         contractor.Transactions = new List<TransactionModel>() { potentialTransaction };
                     }
                 }
                 else
                 {
-                    contractors[(potentialContractor.ContractorID, potentialContractor.Name)] = potentialContractor;
+                    contractors.Add(potentialContractor);
                 }
             }
 
-            return contractors.Values.ToList();
+            return contractors.ToList();
         }
     }
 }

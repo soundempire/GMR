@@ -8,7 +8,6 @@ namespace GMR.DAL.Configurations
         {
             ToTable("Passwords");
             HasKey(_ => _.ID);
-            HasRequired(_ => _.Person).WithRequiredPrincipal(_ => _.Password);
             Property(_ => _.Login).IsRequired();
             Property(_ => _.Value).IsRequired();
             Property(_ => _.LastUpdated).IsRequired();

@@ -246,6 +246,7 @@
             this.phoneTBox.Size = new System.Drawing.Size(196, 23);
             this.phoneTBox.TabIndex = 9;
             this.phoneTBox.TextChanged += new System.EventHandler(this.PhoneTBox_TextChanged);
+            this.phoneTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneTBox_KeyPress);
             // 
             // label1
             // 

@@ -8,6 +8,8 @@ namespace GMR.DAL.Configurations
         {
             ToTable("People");
             HasKey(_ => _.ID);
+            HasRequired(_ => _.Password).WithRequiredPrincipal(_ => _.Person)
+                                        .WillCascadeOnDelete();
             Property(_ => _.FirstName).IsRequired()
                                       .HasMaxLength(50);
             Property(_ => _.LastName).IsRequired()

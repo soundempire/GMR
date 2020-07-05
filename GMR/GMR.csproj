@@ -95,11 +95,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddContractorForm.cs">
+    <Compile Include="AddTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddContractorForm.Designer.cs">
-      <DependentUpon>AddContractorForm.cs</DependentUpon>
+    <Compile Include="AddTransactionForm.Designer.cs">
+      <DependentUpon>AddTransactionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppCode\ImportResult.cs" />
     <Compile Include="AppCode\LayoutRoot\ContainerConfig.cs" />
@@ -137,6 +137,7 @@
     <Compile Include="Models\CreatePersonViewModel.cs" />
     <Compile Include="Models\ImportContractorViewModel.cs" />
     <Compile Include="Models\LanguageViewModel.cs" />
+    <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Models\TransactionViewModel.cs" />
     <Compile Include="Models\UpdatePasswordViewModel.cs" />
     <Compile Include="Models\UpdatePersonViewModel.cs" />
@@ -160,8 +161,8 @@
     <Compile Include="UpdateUserAccountForm.Designer.cs">
       <DependentUpon>UpdateUserAccountForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddContractorForm.resx">
-      <DependentUpon>AddContractorForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddTransactionForm.resx">
+      <DependentUpon>AddTransactionForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateUserAccountForm.resx">
@@ -270,7 +271,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />

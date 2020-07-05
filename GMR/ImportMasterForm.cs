@@ -79,10 +79,8 @@ namespace GMR
 
             if (potentialContractorsGroups.TryGetValue(false, out var invalidPotentialContractors))
             {
-                var isConfirm = DisplayPotentialContractorsErrors(invalidPotentialContractors.ToArray());
-
-                if (!isConfirm)
-                    return;
+                DisplayPotentialContractorsErrors(invalidPotentialContractors.ToArray());
+                return;
             }
 
             if (potentialContractorsGroups.TryGetValue(true, out var successPotentialContractors) && successPotentialContractors.Any())
@@ -185,9 +183,9 @@ namespace GMR
             if (_unRequiredToggles.Any(_ => !_.Checked))
             {
                 if (transactionToggleSwitch.Checked)
-                    selectedContractors = selectedContractors.Where(_ => _.Transactions.Single().Value.HasValue).ToList();
+                    selectedContractors = selectedContractors.Where(_ => _.Transactions[0].Value.HasValue).ToList();
                 else if (priceToggleSwitch.Checked)
-                    selectedContractors = selectedContractors.Where(_ => _.Transactions.Single().Price.HasValue).ToList();
+                    selectedContractors = selectedContractors.Where(_ => _.Transactions[0].Price.HasValue).ToList();
                 else
                     selectedContractors.ForEach(_ => _.Transactions.Clear());
             }
@@ -215,7 +213,7 @@ namespace GMR
             tabControl.Visible = true;
         }
         
-        private bool DisplayPotentialContractorsErrors(PotentialContractorModel[] contractors)
+        private void DisplayPotentialContractorsErrors(PotentialContractorModel[] contractors)
         {
             var errors = new StringBuilder();
             for (var i = 0; i < contractors.Length; i++)
@@ -223,12 +221,7 @@ namespace GMR
                     errors.AppendLine($"{contractors[i].ContractorID} {contractors[i].Name}: {contractors[i].Error}");
 
             if (errors.Length > 0)
-            {
-                errors.AppendLine("\nПродолжить?");
-                return MessageBox.Show(errors.ToString(), "Ошибка импорта", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;
-            }
-
-            return true;
+                MessageBox.Show(errors.ToString(), "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void FitFormSize()

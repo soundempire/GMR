@@ -3,13 +3,14 @@ using GMR.BLL;
 using GMR.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace GMR
 {
-    public partial class AddContractorForm : Form
+    public partial class AddTransactionForm : Form
     {
         private readonly IContractorService _contractorService;
 
@@ -19,7 +20,7 @@ namespace GMR
 
         private Dictionary<string, ContractorViewModel> _contractors;
 
-        public AddContractorForm(IContractorService contractorService, ITransactionService transactionService, string defaultContractorName = default)
+        public AddTransactionForm(IContractorService contractorService, ITransactionService transactionService, string defaultContractorName = default)
         {
             InitializeComponent();
 
@@ -67,6 +68,9 @@ namespace GMR
                     Price = string.IsNullOrWhiteSpace(transactionPriceTBox.Text) ? default(double?) : double.Parse(transactionPriceTBox.Text.Trim()),
                     Value = string.IsNullOrWhiteSpace(transactionValueTBox.Text) ? default(double?) : double.Parse(transactionValueTBox.Text.Trim())
                 };
+
+                if (!ValidateModel(transaction, "Некорректно заполнены значения транзакции."))
+                    return;
 
                 await _transactionService.AddTransactionAsync(Mapper.Map<TransactionViewModel, TransactionModel>(transaction));
 
@@ -159,6 +163,23 @@ namespace GMR
                 transactionCurrencyTBox.Clear();
                 transactionCurrencyTBox.Enabled = true;
             }
+        }
+
+        private bool ValidateModel<T>(T viewModel, string errorMessage)
+        {
+            var validationErrors = new List<ValidationResult>();
+            var isValid = Validator.TryValidateObject(viewModel, new ValidationContext(viewModel), validationErrors, true);
+
+            if (!isValid)
+            {
+                StringBuilder errors = new StringBuilder();
+                validationErrors.ForEach(_ => errors.AppendLine(_.ErrorMessage));
+                MessageBox.Show($"{errorMessage}\nСписок ошибок:\n{errors.ToString()}", "Ошибочный ввод", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+
+            return true;
         }
     }
 }

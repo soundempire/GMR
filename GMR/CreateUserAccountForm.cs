@@ -51,17 +51,21 @@ namespace GMR
 
         private async void CreateAccountBtn_Click(object sender, EventArgs e)
         {
-            var viewModel = new CreatePersonViewModel() { Password = new CreatePasswordViewModel() };
-            viewModel.FirstName = firstNameTBox.Text;
-            viewModel.LastName = lastNameTBox.Text;
-            viewModel.Country = countryTBox.Text;
-            viewModel.Company = companyTBox.Text;
-            viewModel.Phone = phoneTBox.Text;
+            var viewModel = new CreatePersonViewModel()
+            {
+                FirstName = firstNameTBox.Text,
+                LastName = lastNameTBox.Text,
+                Country = countryTBox.Text,
+                Company = companyTBox.Text,
+                Phone = phoneTBox.Text,
+                Language = (LanguageViewModel)languagesCBox.SelectedItem,
+                Password = new CreatePasswordViewModel()
+            };
+            
             viewModel.Password.Login = loginTBox.Text;
             viewModel.Password.Value = passwordTBox.Text;
             viewModel.Password.ConfirmValue = confirmPasswordTBox.Text;
             viewModel.Password.LastUpdated = DateTime.Now;
-            viewModel.Language = (LanguageViewModel)languagesCBox.SelectedItem;
 
             if (ValidateModel(viewModel, out var validationErrors))
             {
@@ -172,5 +176,17 @@ namespace GMR
 
         private void UpdateCreateButtonEnabledState()
             => createAccountBtn.Enabled = !_errorLabels.Any(_ => _.Visible) && !_requaredTextBoxes.Any(_ => string.IsNullOrWhiteSpace(_.Text));
+
+        private void PhoneTBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)
+                && (e.KeyChar != '+') && (e.KeyChar != '-') && (e.KeyChar != '(') && (e.KeyChar != ')'))
+                e.Handled = true;
+
+            if ((e.KeyChar == '+') && ((sender as TextBox).Text.IndexOf('+') > -1) ||
+                (e.KeyChar == '(') && ((sender as TextBox).Text.IndexOf('(') > -1) ||
+                (e.KeyChar == ')') && ((sender as TextBox).Text.IndexOf(')') > -1))
+                e.Handled = true;
+        }
     }
 }

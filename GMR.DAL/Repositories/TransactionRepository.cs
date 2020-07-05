@@ -1,21 +1,43 @@
 ﻿using GMR.DAL.Context;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GMR.DAL.Repositories
 {
-    public class TransactionRepository : IRepository<Transaction>
+    public class TransactionRepository : ITransactionRepository
     {
         private readonly GMRContext _context;
 
         public TransactionRepository(GMRContext context) => _context = context;
 
-        public IQueryable<Transaction> GetAll(long? parentIdFilter = null)
-            => _context.Transactions.AsNoTracking();
+        public async Task<IEnumerable<Transaction>> GetAll(long? parentIdFilter = default, DateTime? startDate = default, DateTime? endDate = default, params string[] includes)
+        {
+            var query = _context.Transactions.AsQueryable();
+            if (includes.Contains(nameof(Transaction.Contractor).ToLower()))
+                query = query.Include(_ => _.Contractor);
 
-        public async Task<Transaction> GetAsync(long id)
-            => await _context.Transactions.FindAsync(id);
+            if (parentIdFilter.HasValue)
+                query = query.Where(_ => _.ContractorID == parentIdFilter.Value);
+
+            if (startDate.HasValue && endDate.HasValue)
+                query = query.Where(_ => DbFunctions.TruncateTime(_.Date) >= DbFunctions.TruncateTime(startDate.Value) && 
+                                         DbFunctions.TruncateTime(_.Date) <= DbFunctions.TruncateTime(endDate.Value));
+
+            return await query.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<Transaction> GetAsync(long id, params string[] includes)
+        {
+            var query = _context.Transactions.AsQueryable();
+            if (includes.Contains(nameof(Transaction.Contractor).ToLower()))
+                query = query.Include(_ => _.Contractor);
+
+            return await query.Where(_ => _.ID == id).AsNoTracking().FirstOrDefaultAsync();
+        }
 
         public async Task<Transaction> CreateAsync(Transaction transaction)
         {
