@@ -29,47 +29,171 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetPasswordForm));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.closeBtn = new System.Windows.Forms.Button();
+            this.resetBtn = new System.Windows.Forms.Button();
+            this.errorPasswordLabel = new System.Windows.Forms.Label();
+            this.passwordTBox = new System.Windows.Forms.TextBox();
+            this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.confirmPasswordTBox = new System.Windows.Forms.TextBox();
+            this.errorLoginLabel = new System.Windows.Forms.Label();
+            this.loginTBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // closeBtn
             // 
-            this.button1.Location = new System.Drawing.Point(74, 205);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
+            this.closeBtn.Location = new System.Drawing.Point(110, 194);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(110, 23);
+            this.closeBtn.TabIndex = 0;
+            this.closeBtn.Text = "Отмена";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
-            // button2
+            // resetBtn
             // 
-            this.button2.Location = new System.Drawing.Point(312, 205);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Обновить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.resetBtn.Enabled = false;
+            this.resetBtn.Location = new System.Drawing.Point(245, 194);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(120, 23);
+            this.resetBtn.TabIndex = 1;
+            this.resetBtn.Text = "Обновить";
+            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
+            // 
+            // errorPasswordLabel
+            // 
+            this.errorPasswordLabel.AutoSize = true;
+            this.errorPasswordLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorPasswordLabel.Location = new System.Drawing.Point(139, 111);
+            this.errorPasswordLabel.Name = "errorPasswordLabel";
+            this.errorPasswordLabel.Size = new System.Drawing.Size(88, 13);
+            this.errorPasswordLabel.TabIndex = 33;
+            this.errorPasswordLabel.Text = "Введите пароль";
+            this.errorPasswordLabel.Visible = false;
+            // 
+            // passwordTBox
+            // 
+            this.passwordTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTBox.Location = new System.Drawing.Point(139, 85);
+            this.passwordTBox.Name = "passwordTBox";
+            this.passwordTBox.Size = new System.Drawing.Size(226, 23);
+            this.passwordTBox.TabIndex = 30;
+            this.passwordTBox.UseSystemPasswordChar = true;
+            this.passwordTBox.TextChanged += new System.EventHandler(this.PasswordTBox_TextChanged);
+            // 
+            // errorConfirmPasswordLabel
+            // 
+            this.errorConfirmPasswordLabel.AutoSize = true;
+            this.errorConfirmPasswordLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorConfirmPasswordLabel.Location = new System.Drawing.Point(139, 163);
+            this.errorConfirmPasswordLabel.Name = "errorConfirmPasswordLabel";
+            this.errorConfirmPasswordLabel.Size = new System.Drawing.Size(0, 13);
+            this.errorConfirmPasswordLabel.TabIndex = 32;
+            this.errorConfirmPasswordLabel.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(31, 88);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 16);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Новый пароль*";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(31, 140);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(92, 16);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Подтвердить*";
+            // 
+            // confirmPasswordTBox
+            // 
+            this.confirmPasswordTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.confirmPasswordTBox.Location = new System.Drawing.Point(139, 137);
+            this.confirmPasswordTBox.Name = "confirmPasswordTBox";
+            this.confirmPasswordTBox.Size = new System.Drawing.Size(226, 23);
+            this.confirmPasswordTBox.TabIndex = 31;
+            this.confirmPasswordTBox.UseSystemPasswordChar = true;
+            this.confirmPasswordTBox.TextChanged += new System.EventHandler(this.ConfirmPasswordTBox_TextChanged);
+            // 
+            // errorLoginLabel
+            // 
+            this.errorLoginLabel.AutoSize = true;
+            this.errorLoginLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLoginLabel.Location = new System.Drawing.Point(139, 59);
+            this.errorLoginLabel.Name = "errorLoginLabel";
+            this.errorLoginLabel.Size = new System.Drawing.Size(81, 13);
+            this.errorLoginLabel.TabIndex = 27;
+            this.errorLoginLabel.Text = "Введите логин";
+            this.errorLoginLabel.Visible = false;
+            // 
+            // loginTBox
+            // 
+            this.loginTBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginTBox.Location = new System.Drawing.Point(139, 33);
+            this.loginTBox.Name = "loginTBox";
+            this.loginTBox.Size = new System.Drawing.Size(226, 23);
+            this.loginTBox.TabIndex = 26;
+            this.loginTBox.TextChanged += new System.EventHandler(this.LoginTBox_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(31, 36);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 16);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Логин*";
             // 
             // ResetPasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 240);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(429, 248);
+            this.Controls.Add(this.errorPasswordLabel);
+            this.Controls.Add(this.passwordTBox);
+            this.Controls.Add(this.errorConfirmPasswordLabel);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.confirmPasswordTBox);
+            this.Controls.Add(this.errorLoginLabel);
+            this.Controls.Add(this.loginTBox);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.resetBtn);
+            this.Controls.Add(this.closeBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ResetPasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Обновить пароль";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResetPasswordForm_FormClosing);
+            this.Load += new System.EventHandler(this.ResetPasswordForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button closeBtn;
+        private System.Windows.Forms.Button resetBtn;
+        private System.Windows.Forms.Label errorPasswordLabel;
+        private System.Windows.Forms.TextBox passwordTBox;
+        private System.Windows.Forms.Label errorConfirmPasswordLabel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox confirmPasswordTBox;
+        private System.Windows.Forms.Label errorLoginLabel;
+        private System.Windows.Forms.TextBox loginTBox;
+        private System.Windows.Forms.Label label9;
     }
 }

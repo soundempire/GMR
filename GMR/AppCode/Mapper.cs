@@ -22,6 +22,7 @@ namespace GMR
                 cfg.CreateMap<PotentialContractorModel, ContractorViewModel>();
                 cfg.CreateMap<CreatePersonViewModel, PersonModel>();
                 cfg.CreateMap<CreatePasswordViewModel, PasswordModel>();
+                cfg.CreateMap<ResetPasswordViewModel, PasswordModel>();
                 cfg.CreateMap<PasswordModel, UpdatePasswordViewModel>();
                 cfg.CreateMap<ContractorModel, ImportContractorViewModel>()
                    .ForMember(x => x.Date, op => op.MapFrom(y => y.Transactions == null || y.Transactions.Count == 0 ? default : y.Transactions[0].Date))
