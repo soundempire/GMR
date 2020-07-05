@@ -267,7 +267,7 @@ namespace GMR
             // 
             this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.closeBtn.Location = new System.Drawing.Point(473, 10);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -284,7 +284,7 @@ namespace GMR
             // 
             this.addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.addBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.addBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.addBtn.Location = new System.Drawing.Point(7, 10);
             this.addBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -301,7 +301,7 @@ namespace GMR
             // 
             this.deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.deleteBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.deleteBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.deleteBtn.Location = new System.Drawing.Point(111, 10);
             this.deleteBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -318,7 +318,7 @@ namespace GMR
             // 
             this.printBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.printBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.printBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.printBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.printBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.printBtn.Location = new System.Drawing.Point(205, 10);
             this.printBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -544,13 +544,13 @@ namespace GMR
             this.renameContractorToolStripMenuItem,
             this.removeContractorToolStripMenuItem});
             this.contractorContextMenu.Name = "contractorContextMenu";
-            this.contractorContextMenu.Size = new System.Drawing.Size(236, 70);
+            this.contractorContextMenu.Size = new System.Drawing.Size(237, 70);
             // 
             // addTransactionsToolStripMenuItem
             // 
             this.addTransactionsToolStripMenuItem.Name = "addTransactionsToolStripMenuItem";
             this.addTransactionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.addTransactionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.addTransactionsToolStripMenuItem.Text = "Добавить транзакцию";
             this.addTransactionsToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionsToolStripMenuItem_Click);
             // 
@@ -558,7 +558,7 @@ namespace GMR
             // 
             this.renameContractorToolStripMenuItem.Name = "renameContractorToolStripMenuItem";
             this.renameContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.renameContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.renameContractorToolStripMenuItem.Text = "Переименовать";
             this.renameContractorToolStripMenuItem.Click += new System.EventHandler(this.RenameContractorToolStripMenuItem_Click);
             // 
@@ -566,7 +566,7 @@ namespace GMR
             // 
             this.removeContractorToolStripMenuItem.Name = "removeContractorToolStripMenuItem";
             this.removeContractorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.removeContractorToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.removeContractorToolStripMenuItem.Text = "Удалить";
             this.removeContractorToolStripMenuItem.Click += new System.EventHandler(this.RemoveContractorToolStripMenuItem_Click);
             // 

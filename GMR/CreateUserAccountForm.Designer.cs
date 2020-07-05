@@ -328,6 +328,7 @@
             // 
             this.createAccountBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.createAccountBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createAccountBtn.Enabled = false;
             this.createAccountBtn.Font = new System.Drawing.Font("Tahoma", 12F);
             this.createAccountBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.createAccountBtn.Location = new System.Drawing.Point(225, 478);

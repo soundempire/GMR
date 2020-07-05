@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetPasswordForm));
-            this.closeBtn = new System.Windows.Forms.Button();
-            this.resetBtn = new System.Windows.Forms.Button();
             this.errorPasswordLabel = new System.Windows.Forms.Label();
             this.passwordTBox = new System.Windows.Forms.TextBox();
             this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
@@ -40,28 +38,9 @@
             this.errorLoginLabel = new System.Windows.Forms.Label();
             this.loginTBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.closeBtn = new GMR.Controls.GMRButton();
+            this.resetBtn = new GMR.Controls.GMRButton();
             this.SuspendLayout();
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Location = new System.Drawing.Point(110, 194);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(110, 23);
-            this.closeBtn.TabIndex = 0;
-            this.closeBtn.Text = "Отмена";
-            this.closeBtn.UseVisualStyleBackColor = true;
-            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
-            // 
-            // resetBtn
-            // 
-            this.resetBtn.Enabled = false;
-            this.resetBtn.Location = new System.Drawing.Point(245, 194);
-            this.resetBtn.Name = "resetBtn";
-            this.resetBtn.Size = new System.Drawing.Size(120, 23);
-            this.resetBtn.TabIndex = 1;
-            this.resetBtn.Text = "Обновить";
-            this.resetBtn.UseVisualStyleBackColor = true;
-            this.resetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
             // errorPasswordLabel
             // 
@@ -154,11 +133,48 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "Логин*";
             // 
+            // closeBtn
+            // 
+            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
+            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.closeBtn.Location = new System.Drawing.Point(117, 192);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Rounding = 80;
+            this.closeBtn.RoundingEnabled = true;
+            this.closeBtn.Size = new System.Drawing.Size(110, 26);
+            this.closeBtn.TabIndex = 34;
+            this.closeBtn.Text = "Отмена";
+            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
+            // 
+            // resetBtn
+            // 
+            this.resetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
+            this.resetBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.resetBtn.Enabled = false;
+            this.resetBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.resetBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.resetBtn.Location = new System.Drawing.Point(255, 192);
+            this.resetBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Rounding = 80;
+            this.resetBtn.RoundingEnabled = true;
+            this.resetBtn.Size = new System.Drawing.Size(110, 26);
+            this.resetBtn.TabIndex = 35;
+            this.resetBtn.Text = "Обновить";
+            this.resetBtn.UseVisualStyleBackColor = false;
+            this.resetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
+            // 
             // ResetPasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 248);
+            this.Controls.Add(this.resetBtn);
+            this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.errorPasswordLabel);
             this.Controls.Add(this.passwordTBox);
             this.Controls.Add(this.errorConfirmPasswordLabel);
@@ -168,8 +184,6 @@
             this.Controls.Add(this.errorLoginLabel);
             this.Controls.Add(this.loginTBox);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.resetBtn);
-            this.Controls.Add(this.closeBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ResetPasswordForm";
@@ -183,9 +197,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button closeBtn;
-        private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Label errorPasswordLabel;
         private System.Windows.Forms.TextBox passwordTBox;
         private System.Windows.Forms.Label errorConfirmPasswordLabel;
@@ -195,5 +206,7 @@
         private System.Windows.Forms.Label errorLoginLabel;
         private System.Windows.Forms.TextBox loginTBox;
         private System.Windows.Forms.Label label9;
+        private Controls.GMRButton closeBtn;
+        private Controls.GMRButton resetBtn;
     }
 }

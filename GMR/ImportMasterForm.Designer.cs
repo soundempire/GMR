@@ -342,7 +342,7 @@
             // 
             this.openFileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.openFileBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.openFileBtn.Location = new System.Drawing.Point(476, 9);
             this.openFileBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -390,7 +390,7 @@
             // 
             this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.cancelBtn.Location = new System.Drawing.Point(753, 9);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -408,7 +408,7 @@
             this.okBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.okBtn.Enabled = false;
-            this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.okBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.okBtn.Location = new System.Drawing.Point(653, 9);
             this.okBtn.Margin = new System.Windows.Forms.Padding(2);

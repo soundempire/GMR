@@ -73,7 +73,7 @@
             // 
             this.importBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.importBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.importBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.importBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.importBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.importBtn.Location = new System.Drawing.Point(29, 220);
             this.importBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -207,7 +207,7 @@
             // 
             this.okBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.okBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.okBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.okBtn.Location = new System.Drawing.Point(20, 12);
             this.okBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -224,7 +224,7 @@
             // 
             this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.cancelBtn.Location = new System.Drawing.Point(107, 12);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -241,7 +241,7 @@
             // 
             this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.closeBtn.Location = new System.Drawing.Point(210, 12);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -254,7 +254,7 @@
             this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
-            // AddContractorForm
+            // AddTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -263,7 +263,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AddContractorForm";
+            this.Name = "AddTransactionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ввод";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddContractorForm_FormClosing);
