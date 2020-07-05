@@ -62,7 +62,7 @@ namespace GMR.BLL.Services
                             Date = row[3].ToString().Trim() == string.Empty ? default : Convert.ToDateTime(row[3].ToString()),
                             Value = row[4].ToString().Trim() == string.Empty ? default(double?) : double.Parse(row[4].ToString().Trim()),
                             Price = row[5].ToString().Trim() == string.Empty ? default(double?) : double.Parse(row[5].ToString().Trim()),
-                            Currency = double.Parse(row[6].ToString().Trim())
+                            Currency = row[6].ToString().Trim() == string.Empty ? default : double.Parse(row[6].ToString().Trim())
                         }
                     }
                 };

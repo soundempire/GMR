@@ -19,15 +19,28 @@ namespace GMR.BLL.Services
             {
                 foreach (var contractor in contractors)
                 {
-                    if (string.IsNullOrEmpty(contractor.Name) || contractor.Name.Length > 50)
+                    if (string.IsNullOrWhiteSpace(contractor.ContractorID))
                     {
-                        AddInvalidPotentialContractor(contractor, "Имя контрагента не может быть пустым или его длина превышать 50 символов.");
+                        AddInvalidPotentialContractor(contractor, "Идентификатор контрагента не может быть пустым.");
+                        continue;
+                    }
+
+                    const int contractorNameLength = 50;
+                    if (string.IsNullOrWhiteSpace(contractor.Name) || contractor.Name.Length > contractorNameLength)
+                    {
+                        AddInvalidPotentialContractor(contractor, $"Имя контрагента не может быть пустым или его длина превышать {contractorNameLength.ToString()} символов.");
                         continue;
                     }
 
                     var transaction = contractor.Transactions.FirstOrDefault();
                     if (transaction != null)
                     {
+                        if (transaction.Date == default)
+                        {
+                            AddInvalidPotentialContractor(contractor, "Должно быть установлено значение даты транзакции.");
+                            continue;
+                        }
+
                         if (transaction.Value.HasValue && transaction.Value < 0)
                         {
                             AddInvalidPotentialContractor(contractor, "Значение транзакции не может быть отрицательным.");
@@ -40,9 +53,9 @@ namespace GMR.BLL.Services
                             continue;
                         }
 
-                        if (transaction.Currency < 0)
+                        if (transaction.Currency <= 0)
                         {
-                            AddInvalidPotentialContractor(contractor, "Курс не может быть отрицательным.");
+                            AddInvalidPotentialContractor(contractor, "Курс не может быть отрицательным или равным нулю.");
                             continue;
                         }
                     }
