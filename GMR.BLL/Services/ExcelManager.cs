@@ -1,5 +1,6 @@
-﻿using ExcelDataReader;
+﻿using Aspose.Cells;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -9,41 +10,28 @@ using System.Threading.Tasks;
 
 namespace GMR.BLL.Services
 {
-    public class ImportService : IImportService
+    public class ExcelManager : IExcelManager
     {
+        private readonly string[] _headers = new string[] { "№ п/п", "Id", "Контрагент", "Дата", "Транзакция", "Платеж", "Курс" };
         public async Task<IEnumerable<ContractorModel>> ImportContractors(string fileName)
         {
-            return await Task.Run(() => 
+            return await Task.Run(() =>
             {
-                var contractors = new List<ContractorModel>();
-
                 using (FileStream fStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    using (var excelReader = ExcelReaderFactory.CreateReader(fStream))
+                    using (var workSheet = new Workbook(fileName).Worksheets[0])
                     {
-                        var result = excelReader.AsDataSet(new ExcelDataSetConfiguration()
-                        {
-                            ConfigureDataTable = _ => new ExcelDataTableConfiguration() { UseHeaderRow = true },
-                            UseColumnDataType = true
-                        });
+                        var table = workSheet.Cells.ExportDataTableAsString(0, 0, workSheet.Cells.MaxRow + 1, 7, true);
 
-                        if (excelReader.FieldCount > 0)
-                        {
-                            if (excelReader.AsDataSet().Tables?.Count > 0)
-                            {
-                                var table = result.Tables[0];
-                                if (IsContractorFormat(table.Columns, out var _))
-                                {
-                                    contractors = CreateImportedContractors(table.AsEnumerable());
-                                }
-                            }
-                        }
-                        return contractors;
+                        if (IsContractorFormat(table.Columns, out var _))
+                            return CreateImportedContractors(table.AsEnumerable());
+
+                        return Enumerable.Empty<ContractorModel>();
                     }
                 }
-            }); 
+            });
         }
-       
+
         private List<ContractorModel> CreateImportedContractors(IEnumerable<DataRow> importDataRows)
         {
             var importedContractors = new List<ContractorModel>(importDataRows.Count());
@@ -72,11 +60,43 @@ namespace GMR.BLL.Services
 
             return importedContractors;
         }
-       
+
+        public Task ExportContractors(IEnumerable<ContractorModel> contractors, string fileName)
+        {
+            return Task.Run(() =>
+            {
+                var workBook = new Workbook();
+                var workSheet = workBook.Worksheets[0];
+                var counter = 0;
+
+                workSheet.Cells.ImportArray(_headers, counter, 0, false);
+
+                foreach (var contractor in contractors)
+                {
+                    foreach (var transaction in contractor.Transactions)
+                    {
+                        var rowToAdd = new string[] {
+                            counter++.ToString(),
+                            contractor.ContractorID.ToString(),
+                            contractor.Name,
+                            transaction.Date.ToShortDateString(),
+                            transaction.Value?.ToString() ?? string.Empty,
+                            transaction.Price?.ToString() ?? string.Empty,
+                            transaction.Currency.ToString()
+                        };
+                        workSheet.Cells.ImportArray(rowToAdd, counter, 0, false);
+                    }
+                }
+
+                workBook.Worksheets[0].AutoFitColumns();
+                workBook.Save(fileName + ".xls");
+            });
+        }
+
+
         private bool IsContractorFormat(DataColumnCollection columns, out string error)
         {
             error = string.Empty;
-            var headers = new List<string>() { "№ п/п", "Id", "Контрагент" , "Дата" , "Транзакция", "Платеж", "Курс"};
 
             if (columns.Count != 7)
             {
@@ -87,9 +107,9 @@ namespace GMR.BLL.Services
             var errorBuilder = new StringBuilder();
             for (int i = 0; i < columns.Count; i++)
             {
-                if (columns[i].ToString().Trim() != headers[i].Trim())
+                if (columns[i].ToString().Trim() != _headers[i].Trim())
                 {
-                    errorBuilder.AppendLine($"Колонка {(i + 1).ToString()} в заголовке должна называться '{headers[i]}'."); 
+                    errorBuilder.AppendLine($"Колонка {(i + 1).ToString()} в заголовке должна называться '{_headers[i]}'.");
                 }
             }
 

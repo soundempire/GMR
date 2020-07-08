@@ -36,7 +36,7 @@ namespace GMR
             builder.RegisterType<PersonService>().As<IPersonService>();
             builder.RegisterType<ContractorService>().As<IContractorService>();
             builder.RegisterType<TransactionService>().As<ITransactionService>();
-            builder.RegisterType<ImportService>().As<IImportService>();
+            builder.RegisterType<ExcelManager>().As<IExcelManager>();
             builder.RegisterType<PotentialContractorsService>().As<IPotentialContractorsService>();
             builder.RegisterType<PotentialLoginService>().As<IPotentialLoginService>();
             builder.RegisterType<LanguagesService>().As<ILanguagesService>();

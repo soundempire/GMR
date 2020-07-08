@@ -16,14 +16,14 @@ namespace GMR
     //TODO: Vadim think about tab panel (not main order)
     public partial class ImportMasterForm : Form
     {
-        private readonly IImportService _importService;
+        private readonly IExcelManager _importService;
 
         private readonly IPotentialContractorsService _potentialContractorsService;
 
         private readonly GMRToggleSwitch[] _requiredToggles;
         private readonly GMRToggleSwitch[] _unRequiredToggles;
 
-        public ImportMasterForm(IImportService importService, IPotentialContractorsService potentialContractorsService)
+        public ImportMasterForm(IExcelManager importService, IPotentialContractorsService potentialContractorsService)
         {
             InitializeComponent();
 

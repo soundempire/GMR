@@ -22,6 +22,8 @@ namespace GMR
 
         private readonly ILanguagesService _languagesService;
 
+        private readonly IExcelManager _excelManager;
+
         private List<TransactionViewModel> _loadedTransactions;
 
         private (ContractorViewModel Contractor, TransactionViewModel Transaction) _previousEditableModel;
@@ -32,17 +34,18 @@ namespace GMR
 
         private const string allContractorsValue = "Все";
 
-        public MainForm(IContractorService contractorService, ITransactionService transactionService, ILanguagesService languagesService)
+        public MainForm(IContractorService contractorService, ITransactionService transactionService, ILanguagesService languagesService, IExcelManager excelManager)
         {
             InitializeComponent();
 
             _contractorService = contractorService;
             _transactionService = transactionService;
             _languagesService = languagesService;
+            _excelManager = excelManager;
         }
 
         #region Main Form EventHandlers
-        
+
         private async void MainForm_Load(object sender, EventArgs e)
         {
             await LoadContractorsAsync();
@@ -57,7 +60,7 @@ namespace GMR
 
             SetFormsSizes();
         }
-        
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_isSignOut)
@@ -78,7 +81,7 @@ namespace GMR
                 e.Cancel = true;
 
         }
-        
+
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (_isSignOut)
@@ -87,13 +90,13 @@ namespace GMR
                 Context.ShowExecutableForm();
             }
         }
-        
+
         private void MainForm_Resize(object sender, EventArgs e) => SetFormsSizes();
 
         #endregion
 
         #region DateTimePickers EventHandlers
-        
+
         private async void DatePicker_ValueChanged(object sender, EventArgs e)
         {
             if (contractorsDGView.SelectedRows.Count == 1)
@@ -105,12 +108,12 @@ namespace GMR
         #endregion
 
         #region ContractorsDGView EventHandlers
-        
+
         private void ContractorsDGView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             _previousEditableModel.Contractor = (ContractorViewModel)(contractorsDGView.Rows[e.RowIndex].DataBoundItem as ICloneable).Clone();
         }
-        
+
         private async void ContractorsDGView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var currentContractor = contractorsDGView.Rows[e.RowIndex].DataBoundItem as ContractorViewModel;
@@ -159,7 +162,7 @@ namespace GMR
                 }
             }
         }
-        
+
         private async void ContractorsDGView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex < 0 && e.RowIndex < 0)
@@ -172,13 +175,13 @@ namespace GMR
                     UpdateContractorsCBoxText((contractorsDGView.Rows[e.RowIndex].DataBoundItem as ContractorViewModel).Name);
             }
         }
-        
+
         private async void ContractorsDGView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && contractorsDGView.SelectedRows.Count == 1)
                 await BindTransactionsToDataGridViewAsync();
         }
-        
+
         private async void ContractorsDGView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == (Keys.Control | Keys.T) && contractorsDGView.CurrentRow != null)
@@ -193,12 +196,12 @@ namespace GMR
         #endregion
 
         #region TransactionsDGView EventHandlers
-        
+
         private void TransactionsDGView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             _previousEditableModel.Transaction = (TransactionViewModel)(transactionsDGView.Rows[e.RowIndex].DataBoundItem as ICloneable).Clone();
         }
-        
+
         private async void TransactionsDGView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var currentTransaction = transactionsDGView.Rows[e.RowIndex].DataBoundItem as TransactionViewModel;
@@ -228,7 +231,7 @@ namespace GMR
 
             _previousEditableModel.Transaction = null;
         }
-        
+
         private async void TransactionsDGView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -253,7 +256,7 @@ namespace GMR
 
             _contractorsCBoxValueSelected = false;
         }
-        
+
         private async void ContractorsCBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && !_contractorsCBoxValueSelected)
@@ -263,15 +266,15 @@ namespace GMR
         #endregion
 
         #region AccountMenu EventHandlers
-        
+
         private void AccountSettingsMenuItem_Click(object sender, EventArgs e)
         {
             if (DIContainer.Resolve<UpdateUserAccountForm>().ShowDialog() == DialogResult.OK)
                 userAccountToolStrip.Text = Session.Person.FullName;
-        } 
-        
+        }
+
         private void CloseMenuItem_Click(object sender, EventArgs e) => Close();
-        
+
         private void SignOutMenuItem_Click(object sender, EventArgs e)
         {
             _isSignOut = true;
@@ -281,10 +284,10 @@ namespace GMR
         #endregion
 
         #region ContractorToolStripMenuItems EventHandlers
-        
+
         private async void AddTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
             => await AddTransactionsAsync((((ToolStripMenuItem)sender).Tag as ContractorViewModel).Name);
-        
+
         private void RenameContractorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var clickedContractorId = (((ToolStripMenuItem)sender).Tag as ContractorViewModel).ID;
@@ -298,7 +301,7 @@ namespace GMR
             contractorsDGView.CurrentCell = editingCell;
             contractorsDGView.BeginEdit(true);
         }
-        
+
         private async void RemoveContractorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var clickedContractorId = (((ToolStripMenuItem)sender).Tag as ContractorViewModel).ID;
@@ -309,16 +312,26 @@ namespace GMR
         #endregion
 
         #region Control buttons EventHandlers
-        
+
         private async void AddBtn_Click(object sender, EventArgs e)
             => await AddTransactionsAsync();
-        
+
         private void CloseBtn_Click(object sender, EventArgs e) => Close();
-        
+
         private async void DeleteBtn_Click(object sender, EventArgs e) => await RemoveSelectedTransactionsAsync();
 
+        private async void ExportBtn_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var contractors = await _contractorService.GetContractorsAsync(Session.Person.ID, includes: new[] { nameof(ContractorViewModel.Transactions).ToLower() });
+
+                await _excelManager.ExportContractors(contractors, saveFileDialog.FileName);
+            }
+        }
+
         #endregion
-        
+
         private async Task AddTransactionsAsync(string contractorName = default)
         {
             var addForm = DIContainer.Resolve<AddTransactionForm>(new Parameter { Name = "defaultContractorName", Value = contractorName });
@@ -336,7 +349,7 @@ namespace GMR
                 }
             }
         }
-        
+
         private async Task LoadContractorsAsync()
         {
             var contractorNames = await BindContractorsToDataGridViewAsync(allContractorsValue);
@@ -345,7 +358,7 @@ namespace GMR
             contractorsCBox.Items.Add(allContractorsValue);
             contractorsCBox.Items.AddRange(contractorNames.ToArray());
         }
-        
+
         private async Task<bool> RemoveSelectedContractorsAsync()
         {
             if (contractorsDGView.SelectedRows.Count > 0 &&
@@ -362,7 +375,7 @@ namespace GMR
 
             return false;
         }
-        
+
         private async Task<bool> RemoveSelectedTransactionsAsync()
         {
             if (contractorsDGView.SelectedRows.Count != 1)
@@ -384,7 +397,7 @@ namespace GMR
 
             return false;
         }
-        
+
         private async Task<IEnumerable<string>> BindContractorsToDataGridViewAsync(string nameFilter = null)
         {
             List<ContractorViewModel> contractors;
@@ -421,7 +434,7 @@ namespace GMR
 
             return contractors.Select(c => c.Name);
         }
-        
+
         private async Task BindTransactionsToDataGridViewAsync()
         {
             var selectedContractorID = (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorViewModel).ID;
@@ -432,7 +445,7 @@ namespace GMR
 
             CalculateTotalTransactions();
         }
-        
+
         private void SelectContractorById(long id, out ContractorViewModel contractor)
         {
             contractor = default;
@@ -447,14 +460,14 @@ namespace GMR
                 row.Selected = true;
             }
         }
-        
+
         private void UpdateContractorsCBoxText(string value)
         {
             contractorsCBox.SelectedIndexChanged -= ContractorsCBox_SelectedIndexChanged;
             contractorsCBox.Text = value;
             contractorsCBox.SelectedIndexChanged += ContractorsCBox_SelectedIndexChanged;
         }
-        
+
         private void CalculateTotalTransactions(bool allTransactions = default)
         {
             if (_loadedTransactions.Count > 0)
@@ -497,6 +510,7 @@ namespace GMR
 
         //TODO: Vadim investigate potential exceptions by resizing
         //TODO: Vadim затираются даты на ресайзе.
+        //TODO: Vadim экспорт сервис (список контракторов и имя файла). настрока в пропертях
 
         private void SetFormsSizes()
         {
@@ -515,7 +529,7 @@ namespace GMR
             controlBtnsPanel.SetBounds(personPanel.Width, controlBtnsPanel.Location.Y, bottomPanel.Width - personPanel.Width, controlBtnsPanel.Height);
             addBtn.SetBounds(addBtn.Location.X, 10, 110, 30);
             deleteBtn.SetBounds(addBtn.Location.X + addBtn.Width + 5, 10, 100, 30);
-            printBtn.SetBounds(deleteBtn.Location.X + deleteBtn.Width + 5, 10, 95, 30);
+            exportBtn.SetBounds(deleteBtn.Location.X + deleteBtn.Width + 5, 10, 125, 30);
             closeBtn.SetBounds(controlBtnsPanel.Width - 120, 10, 105, 30);
 
             if (contractorsDGView.DataSource != null)
@@ -526,7 +540,7 @@ namespace GMR
                 contractorsDGView.Columns[nameof(ContractorViewModel.Name)].Width = (int)(contractorsDGView.Size.Width * 0.85);
             }
         }
-        
+
         private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
         {
             const short centerSlitContainerLeftSideMinSize = 300;
