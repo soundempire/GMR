@@ -76,7 +76,7 @@ namespace GMR.BLL.Services
                     foreach (var transaction in contractor.Transactions)
                     {
                         var rowToAdd = new string[] {
-                            counter++.ToString(),
+                            (++counter).ToString(),
                             contractor.ContractorID.ToString(),
                             contractor.Name,
                             transaction.Date.ToShortDateString(),
