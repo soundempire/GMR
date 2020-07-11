@@ -508,10 +508,6 @@ namespace GMR
             return true;
         }
 
-        //TODO: Vadim investigate potential exceptions by resizing
-        //TODO: Vadim затираются даты на ресайзе.
-        //TODO: Vadim экспорт сервис (список контракторов и имя файла). настрока в пропертях
-
         private void SetFormsSizes()
         {
             personPanel.SetBounds(personPanel.Location.X, personPanel.Location.Y, contractorsDGView.Size.Width, personPanel.Size.Height);

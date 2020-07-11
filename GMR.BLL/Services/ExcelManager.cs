@@ -1,6 +1,5 @@
 ﻿using Aspose.Cells;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -13,6 +12,7 @@ namespace GMR.BLL.Services
     public class ExcelManager : IExcelManager
     {
         private readonly string[] _headers = new string[] { "№ п/п", "Id", "Контрагент", "Дата", "Транзакция", "Платеж", "Курс" };
+        
         public async Task<IEnumerable<ContractorModel>> ImportContractors(string fileName)
         {
             return await Task.Run(() =>
@@ -89,7 +89,7 @@ namespace GMR.BLL.Services
                 }
 
                 workBook.Worksheets[0].AutoFitColumns();
-                workBook.Save(fileName + ".xls");
+                workBook.Save(fileName);
             });
         }
 

@@ -57,6 +57,9 @@
             this.okBtn = new GMR.Controls.GMRButton();
             this.importingDataDGV = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnsPanel = new System.Windows.Forms.Panel();
+            this.botomPanel = new System.Windows.Forms.Panel();
+            this.okCancelPanel = new System.Windows.Forms.Panel();
             this.chooseColumnsPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.importTabPage.SuspendLayout();
@@ -66,11 +69,13 @@
             this.choosePanel3.SuspendLayout();
             this.choosePanel2.SuspendLayout();
             this.choosePanel7.SuspendLayout();
-            this.importingDataPanel.SuspendLayout();
             this.controlsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.importingDataDGV)).BeginInit();
+            this.btnsPanel.SuspendLayout();
+            this.botomPanel.SuspendLayout();
+            this.okCancelPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // chooseColumnsPanel
@@ -300,10 +305,7 @@
             // 
             // importingDataPanel
             // 
-            this.importingDataPanel.Controls.Add(this.controlsPanel);
-            this.importingDataPanel.Controls.Add(this.importingDataDGV);
-            this.importingDataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.importingDataPanel.Location = new System.Drawing.Point(0, 54);
+            this.importingDataPanel.Location = new System.Drawing.Point(843, 74);
             this.importingDataPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importingDataPanel.Name = "importingDataPanel";
             this.importingDataPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -313,17 +315,14 @@
             // controlsPanel
             // 
             this.controlsPanel.Controls.Add(this.overwriteNamesCheckBox);
-            this.controlsPanel.Controls.Add(this.openFileBtn);
             this.controlsPanel.Controls.Add(this.numericUpDownRight);
             this.controlsPanel.Controls.Add(this.numericUpDownLeft);
             this.controlsPanel.Controls.Add(this.label1);
-            this.controlsPanel.Controls.Add(this.cancelBtn);
-            this.controlsPanel.Controls.Add(this.okBtn);
-            this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.controlsPanel.Location = new System.Drawing.Point(3, 363);
+            this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.controlsPanel.Location = new System.Drawing.Point(0, 0);
             this.controlsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlsPanel.Name = "controlsPanel";
-            this.controlsPanel.Size = new System.Drawing.Size(878, 44);
+            this.controlsPanel.Size = new System.Drawing.Size(460, 46);
             this.controlsPanel.TabIndex = 2;
             // 
             // overwriteNamesCheckBox
@@ -344,7 +343,7 @@
             this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.openFileBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.openFileBtn.Location = new System.Drawing.Point(476, 9);
+            this.openFileBtn.Location = new System.Drawing.Point(18, 9);
             this.openFileBtn.Margin = new System.Windows.Forms.Padding(2);
             this.openFileBtn.Name = "openFileBtn";
             this.openFileBtn.Rounding = 80;
@@ -392,7 +391,7 @@
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.cancelBtn.Location = new System.Drawing.Point(753, 9);
+            this.cancelBtn.Location = new System.Drawing.Point(150, 9);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Rounding = 80;
@@ -410,7 +409,7 @@
             this.okBtn.Enabled = false;
             this.okBtn.Font = new System.Drawing.Font("Tahoma", 11F);
             this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.okBtn.Location = new System.Drawing.Point(653, 9);
+            this.okBtn.Location = new System.Drawing.Point(40, 9);
             this.okBtn.Margin = new System.Windows.Forms.Padding(2);
             this.okBtn.Name = "okBtn";
             this.okBtn.Rounding = 80;
@@ -437,8 +436,8 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.importingDataDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.importingDataDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.importingDataDGV.Dock = System.Windows.Forms.DockStyle.Top;
-            this.importingDataDGV.Location = new System.Drawing.Point(3, 0);
+            this.importingDataDGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.importingDataDGV.Location = new System.Drawing.Point(0, 54);
             this.importingDataDGV.Margin = new System.Windows.Forms.Padding(2);
             this.importingDataDGV.Name = "importingDataDGV";
             this.importingDataDGV.ReadOnly = true;
@@ -446,7 +445,7 @@
             this.importingDataDGV.RowHeadersWidth = 62;
             this.importingDataDGV.RowTemplate.Height = 28;
             this.importingDataDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.importingDataDGV.Size = new System.Drawing.Size(878, 356);
+            this.importingDataDGV.Size = new System.Drawing.Size(884, 361);
             this.importingDataDGV.TabIndex = 0;
             this.importingDataDGV.Resize += new System.EventHandler(this.ImportingDataDGV_Resize);
             // 
@@ -455,11 +454,43 @@
             this.openFileDialog.FileName = "new file";
             this.openFileDialog.Filter = "Книга Excel 97-2003|*.xls|Книга Excel|*.xlsx|CSV (разделитель - запятая)|*.csv";
             // 
+            // btnsPanel
+            // 
+            this.btnsPanel.Controls.Add(this.okCancelPanel);
+            this.btnsPanel.Controls.Add(this.openFileBtn);
+            this.btnsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnsPanel.Location = new System.Drawing.Point(460, 0);
+            this.btnsPanel.Name = "btnsPanel";
+            this.btnsPanel.Size = new System.Drawing.Size(424, 46);
+            this.btnsPanel.TabIndex = 30;
+            // 
+            // botomPanel
+            // 
+            this.botomPanel.Controls.Add(this.btnsPanel);
+            this.botomPanel.Controls.Add(this.controlsPanel);
+            this.botomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.botomPanel.Location = new System.Drawing.Point(0, 415);
+            this.botomPanel.Name = "botomPanel";
+            this.botomPanel.Size = new System.Drawing.Size(884, 46);
+            this.botomPanel.TabIndex = 31;
+            // 
+            // okCancelPanel
+            // 
+            this.okCancelPanel.Controls.Add(this.cancelBtn);
+            this.okCancelPanel.Controls.Add(this.okBtn);
+            this.okCancelPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.okCancelPanel.Location = new System.Drawing.Point(158, 0);
+            this.okCancelPanel.Name = "okCancelPanel";
+            this.okCancelPanel.Size = new System.Drawing.Size(266, 46);
+            this.okCancelPanel.TabIndex = 29;
+            // 
             // ImportMasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.importingDataDGV);
+            this.Controls.Add(this.botomPanel);
             this.Controls.Add(this.importingDataPanel);
             this.Controls.Add(this.chooseColumnsPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -478,12 +509,14 @@
             this.choosePanel3.ResumeLayout(false);
             this.choosePanel2.ResumeLayout(false);
             this.choosePanel7.ResumeLayout(false);
-            this.importingDataPanel.ResumeLayout(false);
             this.controlsPanel.ResumeLayout(false);
             this.controlsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.importingDataDGV)).EndInit();
+            this.btnsPanel.ResumeLayout(false);
+            this.botomPanel.ResumeLayout(false);
+            this.okCancelPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -517,5 +550,8 @@
         private Animation.Controls.ToggleSwitch.GMRToggleSwitch priceToggleSwitch;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.CheckBox overwriteNamesCheckBox;
+        private System.Windows.Forms.Panel botomPanel;
+        private System.Windows.Forms.Panel btnsPanel;
+        private System.Windows.Forms.Panel okCancelPanel;
     }
 }

@@ -13,7 +13,6 @@ using System.Windows.Forms;
 
 namespace GMR
 {
-    //TODO: Vadim think about tab panel (not main order)
     public partial class ImportMasterForm : Form
     {
         private readonly IExcelManager _importService;
@@ -104,6 +103,8 @@ namespace GMR
 
         #region Toggle EventHandlers
         //TODO: Vadim fix toggle switching behavior (first order)
+        //TODO: Vadim aspose
+
         private void ToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
             var toggle = (GMRToggleSwitch)sender;
