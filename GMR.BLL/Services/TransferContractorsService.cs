@@ -73,18 +73,38 @@ namespace GMR.BLL.Services
 
                 foreach (var contractor in contractors)
                 {
-                    foreach (var transaction in contractor.Transactions)
+                    string[] rowToAdd = null;
+
+                    if (contractor.Transactions.Count == 0)
                     {
-                        var rowToAdd = new string[] {
+                        rowToAdd = new string[] {
                             (++counter).ToString(),
                             contractor.ContractorID.ToString(),
                             contractor.Name,
-                            transaction.Date.ToShortDateString(),
-                            transaction.Value?.ToString() ?? string.Empty,
-                            transaction.Price?.ToString() ?? string.Empty,
-                            transaction.Currency.ToString()
+                            string.Empty,
+                            string.Empty,
+                            string.Empty,
+                            string.Empty
                         };
+
                         workSheet.Cells.ImportArray(rowToAdd, counter, 0, false);
+                    }
+                    else
+                    {
+                        foreach (var transaction in contractor.Transactions)
+                        {
+                            rowToAdd = new string[] {
+                                (++counter).ToString(),
+                                contractor.ContractorID.ToString(),
+                                contractor.Name,
+                                transaction.Date.ToShortDateString(),
+                                transaction.Value?.ToString() ?? string.Empty,
+                                transaction.Price?.ToString() ?? string.Empty,
+                                transaction.Currency.ToString()
+                            };
+
+                            workSheet.Cells.ImportArray(rowToAdd, counter, 0, false);
+                        } 
                     }
                 }
 
