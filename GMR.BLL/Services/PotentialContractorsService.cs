@@ -35,28 +35,35 @@ namespace GMR.BLL.Services
                     var transaction = contractor.Transactions.FirstOrDefault();
                     if (transaction != null)
                     {
-                        if (transaction.Date == default)
+                        if (IsTransactionDefault(transaction))
                         {
-                            AddInvalidPotentialContractor(contractor, "Должно быть установлено значение даты транзакции.");
-                            continue;
+                            contractor.Transactions.Clear();
                         }
-
-                        if (transaction.Value.HasValue && transaction.Value < 0)
+                        else
                         {
-                            AddInvalidPotentialContractor(contractor, "Значение транзакции не может быть отрицательным.");
-                            continue;
-                        }
+                            if (transaction.Date == default)
+                            {
+                                AddInvalidPotentialContractor(contractor, "Должно быть установлено значение даты транзакции.");
+                                continue;
+                            }
 
-                        if (transaction.Price.HasValue && transaction.Price < 0)
-                        {
-                            AddInvalidPotentialContractor(contractor, "Значение платежа не может быть отрицательным.");
-                            continue;
-                        }
+                            if (transaction.Value.HasValue && transaction.Value < 0)
+                            {
+                                AddInvalidPotentialContractor(contractor, "Значение транзакции не может быть отрицательным.");
+                                continue;
+                            }
 
-                        if (transaction.Currency <= 0)
-                        {
-                            AddInvalidPotentialContractor(contractor, "Курс не может быть отрицательным или равным нулю.");
-                            continue;
+                            if (transaction.Price.HasValue && transaction.Price < 0)
+                            {
+                                AddInvalidPotentialContractor(contractor, "Значение платежа не может быть отрицательным.");
+                                continue;
+                            }
+
+                            if (transaction.Currency <= 0)
+                            {
+                                AddInvalidPotentialContractor(contractor, "Курс не может быть отрицательным или равным нулю.");
+                                continue;
+                            }
                         }
                     }
 
@@ -86,6 +93,9 @@ namespace GMR.BLL.Services
         }
 
         public void Dispose() => (_contractorService as IDisposable).Dispose();
+
+        private bool IsTransactionDefault(TransactionModel transaction)
+            => transaction.Date == default && transaction.Value == default && transaction.Price == default && transaction.Currency == default;
 
         private async Task<IEnumerable<PotentialContractorModel>> CompareWithCurrentContractors(IEnumerable<PotentialContractorModel> validPotentialContractors, long personId)
         {

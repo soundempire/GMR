@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +16,14 @@ namespace GMR.BLL.Services
         {
             return await Task.Run(() =>
             {
-                using (FileStream fStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+                using (var workSheet = new Workbook(fileName).Worksheets[0])
                 {
-                    using (var workSheet = new Workbook(fileName).Worksheets[0])
-                    {
-                        var table = workSheet.Cells.ExportDataTableAsString(0, 0, workSheet.Cells.MaxRow + 1, 7, true);
+                    var table = workSheet.Cells.ExportDataTableAsString(0, 0, workSheet.Cells.MaxRow + 1, 7, true);
 
-                        if (IsContractorFormat(table.Columns, out var _))
-                            return CreateImportedContractors(table.AsEnumerable());
+                    if (IsContractorFormat(table.Columns, out var _))
+                        return CreateImportedContractors(table.AsEnumerable());
 
-                        return Enumerable.Empty<ContractorModel>();
-                    }
+                    return Enumerable.Empty<ContractorModel>();
                 }
             });
         }
@@ -40,14 +36,14 @@ namespace GMR.BLL.Services
             {
                 ContractorModel contractor = new ContractorModel()
                 {
-                    ID = Convert.ToInt64(row[0].ToString().Trim()),
+                    ID = long.Parse(row[0].ToString().Trim()),
                     ContractorID = row[1].ToString().Trim(),
                     Name = row[2].ToString().Trim(),
                     Transactions = new List<TransactionModel>
                     {
                         new TransactionModel
                         {
-                            Date = row[3].ToString().Trim() == string.Empty ? default : Convert.ToDateTime(row[3].ToString()),
+                            Date = row[3].ToString().Trim() == string.Empty ? default : DateTime.Parse(row[3].ToString()),
                             Value = row[4].ToString().Trim() == string.Empty ? default(double?) : double.Parse(row[4].ToString().Trim()),
                             Price = row[5].ToString().Trim() == string.Empty ? default(double?) : double.Parse(row[5].ToString().Trim()),
                             Currency = row[6].ToString().Trim() == string.Empty ? default : double.Parse(row[6].ToString().Trim())
@@ -65,51 +61,42 @@ namespace GMR.BLL.Services
         {
             await Task.Run(() =>
             {
-                var workBook = new Workbook();
-                var workSheet = workBook.Worksheets[0];
-                var counter = 0;
-
-                workSheet.Cells.ImportArray(_headers, counter, 0, false);
-
-                foreach (var contractor in contractors)
+                using (var workBook = new Workbook())
                 {
-                    string[] rowToAdd = null;
+                    var workSheet = workBook.Worksheets[0];
+                    var counter = 0;
 
-                    if (contractor.Transactions.Count == 0)
-                    {
-                        rowToAdd = new string[] {
-                            (++counter).ToString(),
-                            contractor.ContractorID.ToString(),
-                            contractor.Name,
-                            string.Empty,
-                            string.Empty,
-                            string.Empty,
-                            string.Empty
-                        };
+                    workSheet.Cells.ImportArray(_headers, counter, 0, false);
 
-                        workSheet.Cells.ImportArray(rowToAdd, counter, 0, false);
-                    }
-                    else
+                    foreach (var contractor in contractors)
                     {
-                        foreach (var transaction in contractor.Transactions)
+                        if (contractor.Transactions.Count == 0)
                         {
-                            rowToAdd = new string[] {
-                                (++counter).ToString(),
-                                contractor.ContractorID.ToString(),
-                                contractor.Name,
-                                transaction.Date.ToShortDateString(),
-                                transaction.Value?.ToString() ?? string.Empty,
-                                transaction.Price?.ToString() ?? string.Empty,
-                                transaction.Currency.ToString()
+                            var rowToAdd = new string[] {
+                                (++counter).ToString(), contractor.ContractorID, contractor.Name,
+                                string.Empty, string.Empty, string.Empty, string.Empty
                             };
 
                             workSheet.Cells.ImportArray(rowToAdd, counter, 0, false);
-                        } 
-                    }
-                }
+                        }
+                        else
+                        {
+                            foreach (var transaction in contractor.Transactions)
+                            {
+                                var rowToAdd = new string[] {
+                                    (++counter).ToString(), contractor.ContractorID, contractor.Name,
+                                    transaction.Date.ToShortDateString(), transaction.Value?.ToString() ?? string.Empty,
+                                    transaction.Price?.ToString() ?? string.Empty, transaction.Currency.ToString()
+                                };
 
-                workSheet.AutoFitColumns();
-                workBook.Save(fileName);
+                                workSheet.Cells.ImportArray(rowToAdd, counter, 0, false);
+                            }
+                        }
+                    }
+
+                    workSheet.AutoFitColumns();
+                    workBook.Save(fileName);
+                }
             });
         }
 
