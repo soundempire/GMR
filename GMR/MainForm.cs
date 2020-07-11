@@ -22,7 +22,7 @@ namespace GMR
 
         private readonly ILanguagesService _languagesService;
 
-        private readonly IExcelManager _excelManager;
+        private readonly ITransferContractorsService _transferContractorsService;
 
         private List<TransactionViewModel> _loadedTransactions;
 
@@ -34,14 +34,14 @@ namespace GMR
 
         private const string allContractorsValue = "Все";
 
-        public MainForm(IContractorService contractorService, ITransactionService transactionService, ILanguagesService languagesService, IExcelManager excelManager)
+        public MainForm(IContractorService contractorService, ITransactionService transactionService, ILanguagesService languagesService, ITransferContractorsService transferContractorsService)
         {
             InitializeComponent();
 
             _contractorService = contractorService;
             _transactionService = transactionService;
             _languagesService = languagesService;
-            _excelManager = excelManager;
+            _transferContractorsService = transferContractorsService;
         }
 
         #region Main Form EventHandlers
@@ -326,7 +326,15 @@ namespace GMR
             {
                 var contractors = await _contractorService.GetContractorsAsync(Session.Person.ID, includes: new[] { nameof(ContractorViewModel.Transactions).ToLower() });
 
-                await _excelManager.ExportContractors(contractors, saveFileDialog.FileName);
+                if (contractors.Count() == 0)
+                {
+                    MessageBox.Show("Список контрагентов пуст", "Экспорт в файл", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                await _transferContractorsService.ExportContractors(contractors, saveFileDialog.FileName);
+
+                MessageBox.Show($"Файл '{saveFileDialog.FileName}' сохранен на диск", "Экспорт в файл", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

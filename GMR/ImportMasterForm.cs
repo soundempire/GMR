@@ -15,18 +15,19 @@ namespace GMR
 {
     public partial class ImportMasterForm : Form
     {
-        private readonly IExcelManager _importService;
+        private readonly ITransferContractorsService _transferContractorsService;
 
         private readonly IPotentialContractorsService _potentialContractorsService;
 
         private readonly GMRToggleSwitch[] _requiredToggles;
+
         private readonly GMRToggleSwitch[] _unRequiredToggles;
 
-        public ImportMasterForm(IExcelManager importService, IPotentialContractorsService potentialContractorsService)
+        public ImportMasterForm(ITransferContractorsService transferContractorsService, IPotentialContractorsService potentialContractorsService)
         {
             InitializeComponent();
 
-            _importService = importService;
+            _transferContractorsService = transferContractorsService;
             _potentialContractorsService = potentialContractorsService;
             _requiredToggles = new GMRToggleSwitch[2] { dateToggleSwitch, currencyToggleSwitch };
             _unRequiredToggles = new GMRToggleSwitch[2] { transactionToggleSwitch, priceToggleSwitch };
@@ -50,7 +51,7 @@ namespace GMR
                 okBtn.Enabled = true;
                 Text = $"{Text} ({openFileDialog.FileName})";
 
-                var importedContractors = await _importService.ImportContractors(openFileDialog.FileName);
+                var importedContractors = await _transferContractorsService.ImportContractors(openFileDialog.FileName);
                 importingDataDGV.DataSource = Mapper.Map<IEnumerable<ContractorModel>, IEnumerable<ImportContractorViewModel>>(importedContractors);
 
                 SetImportDataToDataGridViewColumnsSize();
@@ -238,7 +239,5 @@ namespace GMR
                 choosePanel6.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Size.Height);
             }
         }
-
-
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GMR.BLL.Services
 {
-    public class ExcelManager : IExcelManager
+    public class TransferContractorsService : ITransferContractorsService
     {
         private readonly string[] _headers = new string[] { "№ п/п", "Id", "Контрагент", "Дата", "Транзакция", "Платеж", "Курс" };
         
@@ -61,9 +61,9 @@ namespace GMR.BLL.Services
             return importedContractors;
         }
 
-        public Task ExportContractors(IEnumerable<ContractorModel> contractors, string fileName)
+        public async Task ExportContractors(IEnumerable<ContractorModel> contractors, string fileName)
         {
-            return Task.Run(() =>
+            await Task.Run(() =>
             {
                 var workBook = new Workbook();
                 var workSheet = workBook.Worksheets[0];
@@ -88,7 +88,7 @@ namespace GMR.BLL.Services
                     }
                 }
 
-                workBook.Worksheets[0].AutoFitColumns();
+                workSheet.AutoFitColumns();
                 workBook.Save(fileName);
             });
         }

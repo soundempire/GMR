@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GMR.BLL
 {
-    public interface IExcelManager
+    public interface ITransferContractorsService
     {
         Task<IEnumerable<ContractorModel>> ImportContractors(string fileName);
 

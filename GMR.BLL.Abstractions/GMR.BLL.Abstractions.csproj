@@ -51,7 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\IContractorService.cs" />
-    <Compile Include="Services\IExcelManager.cs" />
+    <Compile Include="Services\ITransferContractorsService.cs" />
     <Compile Include="Services\ILanguagesService.cs" />
     <Compile Include="Services\IPersonService.cs" />
     <Compile Include="Services\IPotentialLoginService.cs" />
