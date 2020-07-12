@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,10 @@ namespace GMR.BLL.Services
             {
                 using (var workSheet = new Workbook(fileName).Worksheets[0])
                 {
+                    workSheet.Cells.DeleteBlankRows();
+                    workSheet.Cells.DeleteBlankColumns();
                     var table = workSheet.Cells.ExportDataTableAsString(0, 0, workSheet.Cells.MaxRow + 1, 7, true);
-
+                    
                     if (IsContractorFormat(table.Columns, out var _))
                         return CreateImportedContractors(table.AsEnumerable());
 
@@ -61,12 +64,13 @@ namespace GMR.BLL.Services
         {
             await Task.Run(() =>
             {
-                using (var workBook = new Workbook())
+                using (var workbook = new Workbook())
                 {
-                    var workSheet = workBook.Worksheets[0];
+                    var worksheet = workbook.Worksheets[0];
+                    worksheet.Name = $"Контрагенты на { DateTime.Now.ToShortDateString() }";
                     var counter = 0;
 
-                    workSheet.Cells.ImportArray(_headers, counter, 0, false);
+                    worksheet.Cells.ImportArray(_headers, counter, 0, false);
 
                     foreach (var contractor in contractors)
                     {
@@ -77,7 +81,7 @@ namespace GMR.BLL.Services
                                 string.Empty, string.Empty, string.Empty, string.Empty
                             };
 
-                            workSheet.Cells.ImportArray(rowToAdd, counter, 0, false);
+                            worksheet.Cells.ImportArray(rowToAdd, counter, 0, false);
                         }
                         else
                         {
@@ -89,17 +93,38 @@ namespace GMR.BLL.Services
                                     transaction.Price?.ToString() ?? string.Empty, transaction.Currency.ToString()
                                 };
 
-                                workSheet.Cells.ImportArray(rowToAdd, counter, 0, false);
+                                worksheet.Cells.ImportArray(rowToAdd, counter, 0, false);
                             }
                         }
                     }
 
-                    workSheet.AutoFitColumns();
-                    workBook.Save(fileName);
+                    SetBorders(worksheet);
+
+                    worksheet.AutoFitColumns();
+                    workbook.Save(fileName);
                 }
             });
         }
 
+        private void SetBorders(Worksheet worksheet)
+        {
+            var range = worksheet.Cells.MaxDisplayRange;
+
+            var style = worksheet.Workbook.CreateStyle();
+            style.SetBorder(BorderType.BottomBorder, CellBorderType.Thin, Color.Black);
+            style.SetBorder(BorderType.LeftBorder, CellBorderType.Thin, Color.Black);
+            style.SetBorder(BorderType.RightBorder, CellBorderType.Thin, Color.Black);
+            style.SetBorder(BorderType.TopBorder, CellBorderType.Thin, Color.Black);
+
+            for (int r = range.FirstRow; r < range.RowCount; r++)
+            {
+                for (int c = range.FirstColumn; c < range.ColumnCount; c++)
+                {
+                    Cell cell = worksheet.Cells[r, c];
+                    cell.SetStyle(style, new StyleFlag() { TopBorder = true, BottomBorder = true, LeftBorder = true, RightBorder = true });
+                }
+            }
+        }
 
         private bool IsContractorFormat(DataColumnCollection columns, out string error)
         {
