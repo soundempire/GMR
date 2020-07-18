@@ -11,6 +11,7 @@ namespace GMR.DAL.Configurations
             Property(_ => _.ContractorID).IsRequired();
             Property(_ => _.Name).IsRequired()
                                  .HasMaxLength(50);
+            Property(_ => _.Deleted).IsRequired();
             HasMany(_ => _.Transactions).WithRequired(_ => _.Contractor)
                                         .HasForeignKey(_ => _.ContractorID)
                                         .WillCascadeOnDelete();

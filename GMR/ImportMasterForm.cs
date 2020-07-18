@@ -36,7 +36,7 @@ namespace GMR
         #region ImportMasterForm EventHandlers
         
         private void ImportMasterForm_FormClosing(object sender, FormClosingEventArgs e)
-            => (_potentialContractorsService as IDisposable).Dispose();
+            => (_potentialContractorsService as IDisposable)?.Dispose();
 
         private void ImportingDataDGV_Resize(object sender, EventArgs e) => FitFormSize();
 

@@ -45,6 +45,6 @@ namespace GMR.BLL.Services
         public async Task RemoveTransactionAsync(long id)
             => await _transactionRepository.DeleteAsync(id);
 
-        public void Dispose() => _transactionRepository.Dispose();
+        public void Dispose() => _transactionRepository?.Dispose();
     }
 }

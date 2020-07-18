@@ -20,7 +20,7 @@ namespace GMR.BLL.Services
 
         public async Task<IEnumerable<ContractorModel>> GetContractorsAsync(long personId, string filter = null, params string[] includes)
         {
-            var contractors = await _contractorRepository.GetAll(personId, filter, includes);
+            var contractors = await _contractorRepository.GetAll(personId, false, filter, includes);
             return Mapper.Map<IEnumerable<Contractor>, IEnumerable<ContractorModel>>(contractors);
         }
 
@@ -45,6 +45,6 @@ namespace GMR.BLL.Services
         public async Task RemoveContractorAsync(long id)
            => await _contractorRepository.DeleteAsync(id);
 
-        public void Dispose() => _contractorRepository.Dispose(); 
+        public void Dispose() => _contractorRepository?.Dispose(); 
     }
 }

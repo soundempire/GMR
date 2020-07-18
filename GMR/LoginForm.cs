@@ -54,7 +54,7 @@ namespace GMR
             }
         }
 
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e) => (_authorizationService as IDisposable).Dispose();
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e) => (_authorizationService as IDisposable)?.Dispose();
 
         #endregion
 

@@ -135,6 +135,7 @@
     <Compile Include="Models\ContractorViewModel.cs" />
     <Compile Include="Models\CreatePasswordViewModel.cs" />
     <Compile Include="Models\CreatePersonViewModel.cs" />
+    <Compile Include="Models\DeletedContractorViewModel.cs" />
     <Compile Include="Models\ImportContractorViewModel.cs" />
     <Compile Include="Models\LanguageViewModel.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
@@ -148,6 +149,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RecycleBinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecycleBinForm.Designer.cs">
+      <DependentUpon>RecycleBinForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ResetPasswordForm.cs">
       <SubType>Form</SubType>
@@ -182,6 +189,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecycleBinForm.resx">
+      <DependentUpon>RecycleBinForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResetPasswordForm.resx">
       <DependentUpon>ResetPasswordForm.cs</DependentUpon>

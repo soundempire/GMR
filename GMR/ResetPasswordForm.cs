@@ -35,7 +35,7 @@ namespace GMR
         }
 
         private void ResetPasswordForm_FormClosing(object sender, FormClosingEventArgs e)
-            => (_personService as IDisposable).Dispose();
+            => (_personService as IDisposable)?.Dispose();
 
         private void CloseBtn_Click(object sender, EventArgs e)
             => DialogResult = DialogResult.Cancel;

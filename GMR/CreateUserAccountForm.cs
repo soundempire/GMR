@@ -45,8 +45,8 @@ namespace GMR
 
         private void CreateUserAccountForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            (_personService as IDisposable).Dispose();
-            (_potentialLoginService as IDisposable).Dispose();
+            (_personService as IDisposable)?.Dispose();
+            (_potentialLoginService as IDisposable)?.Dispose();
         }
 
         private async void CreateAccountBtn_Click(object sender, EventArgs e)

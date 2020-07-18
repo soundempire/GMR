@@ -26,6 +26,7 @@ namespace GMR
             builder.RegisterType<CreateUserAccountForm>();
             builder.RegisterType<ImportMasterForm>();
             builder.RegisterType<ResetPasswordForm>();
+            builder.RegisterType<RecycleBinForm>();
 
             builder.RegisterType<PasswordRepository>().As<IPasswordRepository>();
             builder.RegisterType<ContractorRepository>().As<IContractorRepository>();
@@ -40,6 +41,7 @@ namespace GMR
             builder.RegisterType<PotentialContractorsService>().As<IPotentialContractorsService>();
             builder.RegisterType<PotentialLoginService>().As<IPotentialLoginService>();
             builder.RegisterType<LanguagesService>().As<ILanguagesService>();
+            builder.RegisterType<RecycleBinService>().As<IRecycleBinService>();
 
             return builder.Build();
         }

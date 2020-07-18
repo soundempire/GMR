@@ -26,6 +26,6 @@ namespace GMR.BLL.Services
             return person;
         }
 
-        public void Dispose() => (_personService as IDisposable).Dispose();
+        public void Dispose() => (_personService as IDisposable)?.Dispose();
     }
 }

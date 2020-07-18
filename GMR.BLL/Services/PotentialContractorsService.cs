@@ -92,7 +92,7 @@ namespace GMR.BLL.Services
             }
         }
 
-        public void Dispose() => (_contractorService as IDisposable).Dispose();
+        public void Dispose() => (_contractorService as IDisposable)?.Dispose();
 
         private bool IsTransactionDefault(TransactionModel transaction)
             => transaction.Date == default && transaction.Value == default && transaction.Price == default && transaction.Currency == default;

@@ -12,6 +12,8 @@ namespace GMR.BLL
 
         public string Name { get; set; }
 
+        public bool Deleted { get; set; }
+
         public List<TransactionModel> Transactions { get; set; }
 
         public override int GetHashCode() => (ContractorID, Name).GetHashCode();

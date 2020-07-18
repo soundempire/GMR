@@ -131,8 +131,8 @@ namespace GMR
 
         private void UserAccountForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            (_personService as IDisposable).Dispose();
-            (_potentialLoginService as IDisposable).Dispose();
+            (_personService as IDisposable)?.Dispose();
+            (_potentialLoginService as IDisposable)?.Dispose();
         }
 
         private bool ValidateModel(UpdatePersonViewModel viewModel, out List<ValidationResult> validationErrors)

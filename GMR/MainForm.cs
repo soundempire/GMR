@@ -24,6 +24,8 @@ namespace GMR
 
         private readonly ITransferContractorsService _transferContractorsService;
 
+        private readonly IRecycleBinService _recycleBinService;
+
         private List<TransactionViewModel> _loadedTransactions;
 
         private (ContractorViewModel Contractor, TransactionViewModel Transaction) _previousEditableModel;
@@ -34,7 +36,7 @@ namespace GMR
 
         private const string allContractorsValue = "Все";
 
-        public MainForm(IContractorService contractorService, ITransactionService transactionService, ILanguagesService languagesService, ITransferContractorsService transferContractorsService)
+        public MainForm(IContractorService contractorService, ITransactionService transactionService, ILanguagesService languagesService, ITransferContractorsService transferContractorsService, IRecycleBinService recycleBinService)
         {
             InitializeComponent();
 
@@ -42,6 +44,7 @@ namespace GMR
             _transactionService = transactionService;
             _languagesService = languagesService;
             _transferContractorsService = transferContractorsService;
+            _recycleBinService = recycleBinService;
         }
 
         #region Main Form EventHandlers
@@ -65,21 +68,19 @@ namespace GMR
         {
             if (_isSignOut)
             {
-                (_contractorService as IDisposable).Dispose();
-                (_transactionService as IDisposable).Dispose();
-
+                Dispose();
                 return;
             }
 
             if (MessageBox.Show("Вы действительно хотите закрыть приложение?", "Закрытие", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
                 == DialogResult.OK)
             {
-                (_contractorService as IDisposable).Dispose();
-                (_transactionService as IDisposable).Dispose();
+                Dispose();
             }
             else
+            {
                 e.Cancel = true;
-
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -285,6 +286,13 @@ namespace GMR
 
         #region ContractorToolStripMenuItems EventHandlers
 
+        private void Dispose()
+        {
+            (_contractorService as IDisposable)?.Dispose();
+            (_transactionService as IDisposable)?.Dispose();
+            (_recycleBinService as IDisposable)?.Dispose();
+        }
+
         private async void AddTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
             => await AddTransactionsAsync((((ToolStripMenuItem)sender).Tag as ContractorViewModel).Name);
 
@@ -338,7 +346,14 @@ namespace GMR
             }
         }
 
+        private void TrashBtn_Click(object sender, EventArgs e)
+        {
+            DIContainer.Resolve<RecycleBinForm>().ShowDialog();
+        }
+
         #endregion
+
+        private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e) => SetFormsSizes();
 
         private async Task AddTransactionsAsync(string contractorName = default)
         {
@@ -369,13 +384,24 @@ namespace GMR
 
         private async Task<bool> RemoveSelectedContractorsAsync()
         {
-            if (contractorsDGView.SelectedRows.Count > 0 &&
-                MessageBox.Show($"Вы действительно хотите удалить {(contractorsDGView.SelectedRows.Count == 1 ? (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorViewModel).Name + " и" : "выбранных контрагентов и их")} транзакции?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                == DialogResult.Yes)
+            if (contractorsDGView.SelectedRows.Count > 0)
             {
-                var ids = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as ContractorViewModel).ID).ToArray();
-                foreach (var id in ids)
-                    await _contractorService.RemoveContractorAsync(id);
+                var dialogResult = MessageBox.Show($"Вы действительно хотите удалить {(contractorsDGView.SelectedRows.Count == 1 ? (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorViewModel).Name + " и" : "выбранных контрагентов и их")} транзакции?\nДля помещения в корзину нажмите 'Нет'", "Удаление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var ids = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as ContractorViewModel).ID).ToArray();
+                    foreach (var id in ids)
+                        await _contractorService.RemoveContractorAsync(id);
+                }
+                else if(dialogResult == DialogResult.No)
+                {
+                    var contractors = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => _.DataBoundItem as ContractorViewModel).ToArray();
+                    await _recycleBinService.PutContractorsAsync(Mapper.Map<IEnumerable<ContractorViewModel>, IEnumerable<ContractorModel>>(contractors));
+                }
+                else
+                {
+                    return false;
+                }
 
                 await LoadContractorsAsync();
                 return true;
@@ -518,7 +544,7 @@ namespace GMR
 
         private void SetFormsSizes()
         {
-            personPanel.SetBounds(personPanel.Location.X, personPanel.Location.Y, contractorsDGView.Size.Width, personPanel.Size.Height);
+            trashPanel.SetBounds(trashPanel.Location.X, trashPanel.Location.Y, contractorsDGView.Size.Width, trashPanel.Size.Height);
             contractorsCBox.SetBounds(contractorsCBox.Location.X, contractorsCBox.Location.Y, contractorsDGView.Size.Width, contractorsCBox.Size.Height);
 
             if (_loadedTransactions != null)
@@ -529,7 +555,7 @@ namespace GMR
                 totalCurencyTB.SetBounds(totalPriceTB.Location.X + totalPriceTB.Width, totalCurencyTB.Location.Y, transactionsDGView.Columns[3].Width, totalCurencyTB.Height);
             }
 
-            controlBtnsPanel.SetBounds(personPanel.Width, controlBtnsPanel.Location.Y, bottomPanel.Width - personPanel.Width, controlBtnsPanel.Height);
+            controlBtnsPanel.SetBounds(trashPanel.Width, controlBtnsPanel.Location.Y, bottomPanel.Width - trashPanel.Width, controlBtnsPanel.Height);
             addBtn.SetBounds(addBtn.Location.X, 10, 110, 30);
             deleteBtn.SetBounds(addBtn.Location.X + addBtn.Width + 5, 10, 100, 30);
             exportBtn.SetBounds(deleteBtn.Location.X + deleteBtn.Width + 5, 10, 125, 30);
@@ -542,20 +568,6 @@ namespace GMR
                 contractorIdColumn.Width = (int)(contractorsDGView.Size.Width * 0.15);
                 contractorsDGView.Columns[nameof(ContractorViewModel.Name)].Width = (int)(contractorsDGView.Size.Width * 0.85);
             }
-        }
-
-        private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-            const short centerSlitContainerLeftSideMinSize = 300;
-            const short centerSlitContainerRightSideMinSize = 550;
-            const float centerSplitContainerMultiplier = 0.3f;
-
-            if (e.SplitX < centerSlitContainerLeftSideMinSize)
-                CenterSplitContainer.Panel1MinSize = (int)(CenterSplitContainer.Width * centerSplitContainerMultiplier);
-            else if (e.SplitX > CenterSplitContainer.Width - centerSlitContainerRightSideMinSize)
-                CenterSplitContainer.Panel2MinSize = (int)(CenterSplitContainer.Width * centerSplitContainerMultiplier);
-
-            SetFormsSizes();
         }
     }
 }

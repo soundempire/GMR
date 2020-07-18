@@ -13,7 +13,7 @@ namespace GMR.DAL.Repositories
 
         public ContractorRepository(GMRContext context) => _context = context;
 
-        public async Task<IEnumerable<Contractor>> GetAll(long? parentIdFilter = default, string nameFilter = default, params string[] includes)
+        public async Task<IEnumerable<Contractor>> GetAll(long? parentIdFilter = default, bool deleted = default, string nameFilter = default, params string[] includes)
         {
             var query = _context.Contractors.AsQueryable();
             if (includes.Contains(nameof(Contractor.Transactions).ToLower()))
@@ -25,7 +25,7 @@ namespace GMR.DAL.Repositories
             if (!string.IsNullOrWhiteSpace(nameFilter))
                 query = query.Where(_ => _.Name.ToLower().Contains(nameFilter.ToLower()));
 
-            return await query.AsNoTracking().ToListAsync();
+            return await query.Where(_ => _.Deleted == deleted).AsNoTracking().ToListAsync();
         }
 
         public async Task<Contractor> GetAsync(long id, params string[] includes)

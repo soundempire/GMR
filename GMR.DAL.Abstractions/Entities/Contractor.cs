@@ -14,6 +14,8 @@ namespace GMR.DAL
 
         public string Name { get; set; }
 
+        public bool Deleted { get; set; }
+
         public ICollection<Transaction> Transactions { get; set; }
 
         public Contractor() => Transactions = new HashSet<Transaction>();

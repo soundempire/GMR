@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
     <Compile Include="Services\ContractorService.cs" />
+    <Compile Include="Services\RecycleBinService.cs" />
     <Compile Include="Services\TransferContractorsService.cs" />
     <Compile Include="Services\LanguagesService.cs" />
     <Compile Include="Services\PersonService.cs" />

@@ -97,8 +97,8 @@ namespace GMR
         
         private void AddContractorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            (_contractorService as IDisposable).Dispose();
-            (_transactionService as IDisposable).Dispose();
+            (_contractorService as IDisposable)?.Dispose();
+            (_transactionService as IDisposable)?.Dispose();
         }
         
         private void TransactionCurrencyTBox_TextChanged(object sender, EventArgs e)
