@@ -35,7 +35,7 @@ namespace GMR
                             await _contractorService.GetContractorsAsync(Session.Person.ID, includes: new[] { nameof(ContractorViewModel.Transactions).ToLower() }))
                            .ToDictionary(_ => _.ContractorID);
 
-            contractorCmBox.DataSource = _contractors.Values.ToList();
+            contractorCmBox.DataSource = _contractors.Values.OrderBy(_ => _.Name).ToList();
             contractorCmBox.DisplayMember = nameof(ContractorViewModel.Name);
             if (!string.IsNullOrEmpty(_defaultContractorName))
                 contractorCmBox.Text = _defaultContractorName;
@@ -56,7 +56,7 @@ namespace GMR
                 return;
             }
 
-            if (contractorCmBox.SelectedItem is ContractorViewModel contractor)
+            if (!string.IsNullOrWhiteSpace(contractorCmBox.Text) && contractorCmBox.SelectedItem is ContractorViewModel contractor)
             {
                 Tag = contractor.ID;
 

@@ -40,26 +40,26 @@
             this.choosePanel4 = new System.Windows.Forms.Panel();
             this.dateToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
             this.choosePanel3 = new System.Windows.Forms.Panel();
-            this.idToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
-            this.choosePanel2 = new System.Windows.Forms.Panel();
             this.contractorToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
+            this.choosePanel2 = new System.Windows.Forms.Panel();
+            this.idToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
             this.choosePanel7 = new System.Windows.Forms.Panel();
             this.currencyToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
             this.choosePanel1 = new System.Windows.Forms.Panel();
             this.importingDataPanel = new System.Windows.Forms.Panel();
             this.controlsPanel = new System.Windows.Forms.Panel();
             this.overwriteNamesCheckBox = new System.Windows.Forms.CheckBox();
-            this.openFileBtn = new GMR.Controls.GMRButton();
             this.numericUpDownRight = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownLeft = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.openFileBtn = new GMR.Controls.GMRButton();
             this.cancelBtn = new GMR.Controls.GMRButton();
             this.okBtn = new GMR.Controls.GMRButton();
             this.importingDataDGV = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnsPanel = new System.Windows.Forms.Panel();
-            this.botomPanel = new System.Windows.Forms.Panel();
             this.okCancelPanel = new System.Windows.Forms.Panel();
+            this.botomPanel = new System.Windows.Forms.Panel();
             this.chooseColumnsPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.importTabPage.SuspendLayout();
@@ -74,8 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.importingDataDGV)).BeginInit();
             this.btnsPanel.SuspendLayout();
-            this.botomPanel.SuspendLayout();
             this.okCancelPanel.SuspendLayout();
+            this.botomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // chooseColumnsPanel
@@ -209,42 +209,13 @@
             // 
             // choosePanel3
             // 
-            this.choosePanel3.Controls.Add(this.idToggleSwitch);
+            this.choosePanel3.Controls.Add(this.contractorToggleSwitch);
             this.choosePanel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.choosePanel3.Location = new System.Drawing.Point(242, 2);
+            this.choosePanel3.Location = new System.Drawing.Point(165, 2);
             this.choosePanel3.Margin = new System.Windows.Forms.Padding(2);
             this.choosePanel3.Name = "choosePanel3";
-            this.choosePanel3.Size = new System.Drawing.Size(123, 22);
+            this.choosePanel3.Size = new System.Drawing.Size(200, 22);
             this.choosePanel3.TabIndex = 3;
-            // 
-            // idToggleSwitch
-            // 
-            this.idToggleSwitch.Checked = true;
-            this.idToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.idToggleSwitch.Enabled = false;
-            this.idToggleSwitch.ForceCheckedChanged = true;
-            this.idToggleSwitch.GrayWhenDisabled = false;
-            this.idToggleSwitch.Location = new System.Drawing.Point(0, 0);
-            this.idToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
-            this.idToggleSwitch.Name = "idToggleSwitch";
-            this.idToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.idToggleSwitch.OffText = "OFF";
-            this.idToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
-            this.idToggleSwitch.OnText = "ON";
-            this.idToggleSwitch.Size = new System.Drawing.Size(123, 22);
-            this.idToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
-            this.idToggleSwitch.TabIndex = 1;
-            this.idToggleSwitch.MouseEnter += new System.EventHandler(this.ToggleSwitch_MouseEnter);
-            // 
-            // choosePanel2
-            // 
-            this.choosePanel2.Controls.Add(this.contractorToggleSwitch);
-            this.choosePanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.choosePanel2.Location = new System.Drawing.Point(42, 2);
-            this.choosePanel2.Margin = new System.Windows.Forms.Padding(2);
-            this.choosePanel2.Name = "choosePanel2";
-            this.choosePanel2.Size = new System.Drawing.Size(200, 22);
-            this.choosePanel2.TabIndex = 2;
             // 
             // contractorToggleSwitch
             // 
@@ -256,14 +227,43 @@
             this.contractorToggleSwitch.Location = new System.Drawing.Point(0, 0);
             this.contractorToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
             this.contractorToggleSwitch.Name = "contractorToggleSwitch";
-            this.contractorToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contractorToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.contractorToggleSwitch.OffText = "OFF";
-            this.contractorToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contractorToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F);
             this.contractorToggleSwitch.OnText = "ON";
             this.contractorToggleSwitch.Size = new System.Drawing.Size(200, 22);
             this.contractorToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
-            this.contractorToggleSwitch.TabIndex = 0;
+            this.contractorToggleSwitch.TabIndex = 1;
             this.contractorToggleSwitch.MouseEnter += new System.EventHandler(this.ToggleSwitch_MouseEnter);
+            // 
+            // choosePanel2
+            // 
+            this.choosePanel2.Controls.Add(this.idToggleSwitch);
+            this.choosePanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.choosePanel2.Location = new System.Drawing.Point(42, 2);
+            this.choosePanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.choosePanel2.Name = "choosePanel2";
+            this.choosePanel2.Size = new System.Drawing.Size(123, 22);
+            this.choosePanel2.TabIndex = 2;
+            // 
+            // idToggleSwitch
+            // 
+            this.idToggleSwitch.Checked = true;
+            this.idToggleSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.idToggleSwitch.Enabled = false;
+            this.idToggleSwitch.ForceCheckedChanged = true;
+            this.idToggleSwitch.GrayWhenDisabled = false;
+            this.idToggleSwitch.Location = new System.Drawing.Point(0, 0);
+            this.idToggleSwitch.Margin = new System.Windows.Forms.Padding(2);
+            this.idToggleSwitch.Name = "idToggleSwitch";
+            this.idToggleSwitch.OffFont = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.idToggleSwitch.OffText = "OFF";
+            this.idToggleSwitch.OnFont = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.idToggleSwitch.OnText = "ON";
+            this.idToggleSwitch.Size = new System.Drawing.Size(123, 22);
+            this.idToggleSwitch.Style = GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch.ToggleSwitchStyle.Carbon;
+            this.idToggleSwitch.TabIndex = 0;
+            this.idToggleSwitch.MouseEnter += new System.EventHandler(this.ToggleSwitch_MouseEnter);
             // 
             // choosePanel7
             // 
@@ -337,23 +337,6 @@
             this.overwriteNamesCheckBox.Text = "Перезаписать имена";
             this.overwriteNamesCheckBox.UseVisualStyleBackColor = true;
             // 
-            // openFileBtn
-            // 
-            this.openFileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.openFileBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.openFileBtn.Location = new System.Drawing.Point(18, 9);
-            this.openFileBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.openFileBtn.Name = "openFileBtn";
-            this.openFileBtn.Rounding = 80;
-            this.openFileBtn.RoundingEnabled = true;
-            this.openFileBtn.Size = new System.Drawing.Size(113, 26);
-            this.openFileBtn.TabIndex = 28;
-            this.openFileBtn.Text = "Открыть файл";
-            this.openFileBtn.UseVisualStyleBackColor = false;
-            this.openFileBtn.Click += new System.EventHandler(this.OpenFileBtn_Click);
-            // 
             // numericUpDownRight
             // 
             this.numericUpDownRight.Enabled = false;
@@ -384,6 +367,23 @@
             this.label1.Size = new System.Drawing.Size(112, 17);
             this.label1.TabIndex = 25;
             this.label1.Text = "Выбирать строки с:";
+            // 
+            // openFileBtn
+            // 
+            this.openFileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
+            this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.openFileBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.openFileBtn.Location = new System.Drawing.Point(18, 9);
+            this.openFileBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.openFileBtn.Name = "openFileBtn";
+            this.openFileBtn.Rounding = 80;
+            this.openFileBtn.RoundingEnabled = true;
+            this.openFileBtn.Size = new System.Drawing.Size(113, 26);
+            this.openFileBtn.TabIndex = 28;
+            this.openFileBtn.Text = "Открыть файл";
+            this.openFileBtn.UseVisualStyleBackColor = false;
+            this.openFileBtn.Click += new System.EventHandler(this.OpenFileBtn_Click);
             // 
             // cancelBtn
             // 
@@ -464,16 +464,6 @@
             this.btnsPanel.Size = new System.Drawing.Size(424, 46);
             this.btnsPanel.TabIndex = 30;
             // 
-            // botomPanel
-            // 
-            this.botomPanel.Controls.Add(this.btnsPanel);
-            this.botomPanel.Controls.Add(this.controlsPanel);
-            this.botomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.botomPanel.Location = new System.Drawing.Point(0, 415);
-            this.botomPanel.Name = "botomPanel";
-            this.botomPanel.Size = new System.Drawing.Size(884, 46);
-            this.botomPanel.TabIndex = 31;
-            // 
             // okCancelPanel
             // 
             this.okCancelPanel.Controls.Add(this.cancelBtn);
@@ -483,6 +473,16 @@
             this.okCancelPanel.Name = "okCancelPanel";
             this.okCancelPanel.Size = new System.Drawing.Size(266, 46);
             this.okCancelPanel.TabIndex = 29;
+            // 
+            // botomPanel
+            // 
+            this.botomPanel.Controls.Add(this.btnsPanel);
+            this.botomPanel.Controls.Add(this.controlsPanel);
+            this.botomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.botomPanel.Location = new System.Drawing.Point(0, 415);
+            this.botomPanel.Name = "botomPanel";
+            this.botomPanel.Size = new System.Drawing.Size(884, 46);
+            this.botomPanel.TabIndex = 31;
             // 
             // ImportMasterForm
             // 
@@ -515,8 +515,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.importingDataDGV)).EndInit();
             this.btnsPanel.ResumeLayout(false);
-            this.botomPanel.ResumeLayout(false);
             this.okCancelPanel.ResumeLayout(false);
+            this.botomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -541,9 +541,9 @@
         private System.Windows.Forms.Panel choosePanel1;
         private System.Windows.Forms.Panel choosePanel5;
         private System.Windows.Forms.Panel choosePanel4;
-        private Animation.Controls.ToggleSwitch.GMRToggleSwitch contractorToggleSwitch;
-        private Animation.Controls.ToggleSwitch.GMRToggleSwitch dateToggleSwitch;
         private Animation.Controls.ToggleSwitch.GMRToggleSwitch idToggleSwitch;
+        private Animation.Controls.ToggleSwitch.GMRToggleSwitch dateToggleSwitch;
+        private Animation.Controls.ToggleSwitch.GMRToggleSwitch contractorToggleSwitch;
         private Animation.Controls.ToggleSwitch.GMRToggleSwitch transactionToggleSwitch;
         private Animation.Controls.ToggleSwitch.GMRToggleSwitch currencyToggleSwitch;
         private System.Windows.Forms.Panel choosePanel6;

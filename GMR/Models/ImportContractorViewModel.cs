@@ -12,11 +12,11 @@ namespace GMR.Models
         [DisplayName("№ п/п")]
         public long ID { get; set; }
 
-        [DisplayName("Контрагент")]
-        public string Name { get; set; }
-
         [DisplayName("ID")]
         public string ContractorID { get; set; }
+
+        [DisplayName("Контрагент")]
+        public string Name { get; set; }
 
         [DisplayName("Дата")]
         public DateTime Date { get; set; }

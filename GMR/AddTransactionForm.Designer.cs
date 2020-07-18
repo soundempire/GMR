@@ -148,7 +148,7 @@
             this.contractorCmBox.FormattingEnabled = true;
             this.contractorCmBox.Location = new System.Drawing.Point(134, 74);
             this.contractorCmBox.Name = "contractorCmBox";
-            this.contractorCmBox.Size = new System.Drawing.Size(204, 24);
+            this.contractorCmBox.Size = new System.Drawing.Size(234, 24);
             this.contractorCmBox.TabIndex = 3;
             // 
             // transactionPriceTBox
@@ -157,7 +157,7 @@
             this.transactionPriceTBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.transactionPriceTBox.Location = new System.Drawing.Point(134, 161);
             this.transactionPriceTBox.Name = "transactionPriceTBox";
-            this.transactionPriceTBox.Size = new System.Drawing.Size(204, 24);
+            this.transactionPriceTBox.Size = new System.Drawing.Size(234, 24);
             this.transactionPriceTBox.TabIndex = 2;
             this.transactionPriceTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
@@ -167,7 +167,7 @@
             this.transactionValueTBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.transactionValueTBox.Location = new System.Drawing.Point(134, 117);
             this.transactionValueTBox.Name = "transactionValueTBox";
-            this.transactionValueTBox.Size = new System.Drawing.Size(204, 24);
+            this.transactionValueTBox.Size = new System.Drawing.Size(234, 24);
             this.transactionValueTBox.TabIndex = 1;
             this.transactionValueTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
@@ -176,7 +176,7 @@
             this.transactionCurrencyTBox.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.transactionCurrencyTBox.Location = new System.Drawing.Point(134, 33);
             this.transactionCurrencyTBox.Name = "transactionCurrencyTBox";
-            this.transactionCurrencyTBox.Size = new System.Drawing.Size(204, 24);
+            this.transactionCurrencyTBox.Size = new System.Drawing.Size(234, 24);
             this.transactionCurrencyTBox.TabIndex = 0;
             this.transactionCurrencyTBox.TextChanged += new System.EventHandler(this.TransactionCurrencyTBox_TextChanged);
             this.transactionCurrencyTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);

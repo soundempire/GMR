@@ -11,7 +11,7 @@ namespace GMR.BLL.Services
 {
     public class TransferContractorsService : ITransferContractorsService
     {
-        private readonly string[] _headers = new string[] { "№ п/п", "Id", "Контрагент", "Дата", "Транзакция", "Платеж", "Курс" };
+        private readonly string[] _headers = new string[] { "№ п/п", "id", "контрагент", "дата", "транзакция", "платеж", "курс" };
         
         public async Task<IEnumerable<ContractorModel>> ImportContractors(string fileName)
         {
@@ -26,7 +26,7 @@ namespace GMR.BLL.Services
                     if (IsContractorFormat(table.Columns, out var _))
                         return CreateImportedContractors(table.AsEnumerable());
 
-                    return Enumerable.Empty<ContractorModel>();
+                    return null;
                 }
             });
         }
@@ -139,7 +139,7 @@ namespace GMR.BLL.Services
             var errorBuilder = new StringBuilder();
             for (int i = 0; i < columns.Count; i++)
             {
-                if (columns[i].ToString().Trim() != _headers[i].Trim())
+                if (columns[i].ToString().ToLower().Trim() != _headers[i])
                 {
                     errorBuilder.AppendLine($"Колонка {(i + 1).ToString()} в заголовке должна называться '{_headers[i]}'.");
                 }

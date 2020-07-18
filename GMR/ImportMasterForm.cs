@@ -52,14 +52,24 @@ namespace GMR
                 Text = $"{Text} ({openFileDialog.FileName})";
 
                 var importedContractors = await _transferContractorsService.ImportContractors(openFileDialog.FileName);
+                if (importedContractors == null)
+                {
+                    MessageBox.Show("Некорректная схема загружаемой таблицы.", "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 importingDataDGV.DataSource = Mapper.Map<IEnumerable<ContractorModel>, IEnumerable<ImportContractorViewModel>>(importedContractors);
 
                 SetImportDataToDataGridViewColumnsSize();
 
                 numericUpDownLeft.Enabled = numericUpDownRight.Enabled = true;
                 numericUpDownLeft.Maximum = numericUpDownRight.Maximum = importingDataDGV.Rows.Count;
+
+                foreach (DataGridViewColumn column in importingDataDGV.Columns)
+                    column.MinimumWidth = 55;
+
+                FitFormSize();
             }
-            FitFormSize();
         }
 
         private async void OkBtn_Click(object sender, EventArgs e)
@@ -103,8 +113,6 @@ namespace GMR
         #endregion
 
         #region Toggle EventHandlers
-        //TODO: Vadim fix toggle switching behavior (first order)
-        //TODO: Vadim aspose
 
         private void ToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
@@ -230,13 +238,18 @@ namespace GMR
         {
             if (importingDataDGV.DataSource != null)
             {
+                
                 choosePanel1.SetBounds(choosePanel1.Location.X, choosePanel1.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.ID)].Width, choosePanel1.Size.Height);
-                choosePanel2.SetBounds(choosePanel1.Location.X + choosePanel1.Size.Width, choosePanel2.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Name)].Width, choosePanel2.Size.Height);
-                choosePanel3.SetBounds(choosePanel2.Location.X + choosePanel2.Size.Width, choosePanel3.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.ContractorID)].Width, choosePanel3.Size.Height);
+                choosePanel2.SetBounds(choosePanel1.Location.X + choosePanel1.Size.Width, choosePanel2.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.ContractorID)].Width, choosePanel2.Size.Height);
+                choosePanel3.SetBounds(choosePanel2.Location.X + choosePanel2.Size.Width, choosePanel3.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Name)].Width, choosePanel3.Size.Height);
                 choosePanel4.SetBounds(choosePanel3.Location.X + choosePanel3.Size.Width, choosePanel4.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Date)].Width, choosePanel4.Size.Height);
                 choosePanel5.SetBounds(choosePanel4.Location.X + choosePanel4.Size.Width, choosePanel5.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Value)].Width, choosePanel5.Size.Height);
-                choosePanel7.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width, choosePanel7.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel7.Size.Height);
-                choosePanel6.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Size.Height);
+
+                choosePanel6.SetBounds(choosePanel5.Location.X + choosePanel5.Size.Width, choosePanel6.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Size.Height);
+                choosePanel7.SetBounds(choosePanel6.Location.X + choosePanel6.Size.Width, choosePanel7.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width + (importingDataDGV.ScrollBars == ScrollBars.Vertical ? SystemInformation.VerticalScrollBarWidth : 0), choosePanel7.Size.Height);
+
+                //choosePanel7.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width, choosePanel7.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel7.Size.Height);
+                //choosePanel6.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Size.Height);
             }
         }
     }

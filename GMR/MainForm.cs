@@ -364,7 +364,7 @@ namespace GMR
 
             contractorsCBox.Items.Clear();
             contractorsCBox.Items.Add(allContractorsValue);
-            contractorsCBox.Items.AddRange(contractorNames.ToArray());
+            contractorsCBox.Items.AddRange(contractorNames.OrderBy(_ => _).ToArray());
         }
 
         private async Task<bool> RemoveSelectedContractorsAsync()
@@ -420,14 +420,14 @@ namespace GMR
                 transactionsDGView.DataSource = Enumerable.Empty<TransactionViewModel>();
                 CalculateTotalTransactions(true);
 
-                contractorsDGView.DataSource = new SortableBindingList<ContractorViewModel>(contractors);
+                contractorsDGView.DataSource = new SortableBindingList<ContractorViewModel>(contractors.OrderBy(_ => _.Name).ToList());
                 contractorsDGView.ClearSelection();
             }
             else
             {
                 contractors = Mapper.Map<IEnumerable<ContractorModel>, List<ContractorViewModel>>(
                     await _contractorService.GetContractorsAsync(Session.Person.ID, nameFilter));
-                contractorsDGView.DataSource = new SortableBindingList<ContractorViewModel>(contractors);
+                contractorsDGView.DataSource = new SortableBindingList<ContractorViewModel>(contractors.OrderBy(_ => _.Name).ToList());
 
                 if (contractors.Count == 1)
                 {
@@ -523,7 +523,6 @@ namespace GMR
 
             if (_loadedTransactions != null)
             {
-                //total line form bounding
                 totalSumTB.SetBounds(totalSumTB.Location.X, totalSumTB.Location.Y, transactionsDGView.Columns[0].Width, totalSumTB.Height);
                 totalTransactionTB.SetBounds(totalSumTB.Width, totalTransactionTB.Location.Y, transactionsDGView.Columns[1].Width, totalTransactionTB.Height);
                 totalPriceTB.SetBounds(totalTransactionTB.Location.X + totalTransactionTB.Width, totalPriceTB.Location.Y, transactionsDGView.Columns[2].Width, totalPriceTB.Height);
