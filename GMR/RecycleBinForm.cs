@@ -42,6 +42,9 @@ namespace GMR
             contractorsDGView.DataSource = new SortableBindingList<DeletedContractorViewModel>(deletedContractors.OrderBy(_ => _.Name).ToList());
             contractorsDGView.ClearSelection();
 
+            if (contractorsDGView.DataSource != null)
+                contractorsDGView.Columns[nameof(DeletedContractorViewModel.ContractorID)].MinimumWidth = 40;
+
             SetFormsSizes();
         }
 
@@ -68,6 +71,16 @@ namespace GMR
             }
         }
 
+        private async void RetrieveBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void DeleteBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void RecycleBinForm_Resize(object sender, EventArgs e) => SetFormsSizes();
 
         private void DeletedContractorsSplitContainer_SplitterMoved(object sender, SplitterEventArgs e) => SetFormsSizes();
@@ -78,9 +91,7 @@ namespace GMR
         {
             if (contractorsDGView.DataSource != null)
             {
-                var contractorIdColumn = contractorsDGView.Columns[nameof(DeletedContractorViewModel.ContractorID)];
-                contractorIdColumn.MinimumWidth = 40;
-                contractorIdColumn.Width = (int)(contractorsDGView.Size.Width * 0.15);
+                contractorsDGView.Columns[nameof(DeletedContractorViewModel.ContractorID)].Width = (int)(contractorsDGView.Size.Width * 0.15);
                 contractorsDGView.Columns[nameof(DeletedContractorViewModel.Name)].Width = (int)(contractorsDGView.Size.Width * 0.85);
             }
         }

@@ -71,6 +71,7 @@
             this.deleteBtn.TabIndex = 18;
             this.deleteBtn.Text = "Удалить";
             this.deleteBtn.UseVisualStyleBackColor = false;
+            this.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // retrieveBtn
             // 
@@ -87,6 +88,7 @@
             this.retrieveBtn.TabIndex = 18;
             this.retrieveBtn.Text = "Вернуть";
             this.retrieveBtn.UseVisualStyleBackColor = false;
+            this.retrieveBtn.Click += new System.EventHandler(this.RetrieveBtn_Click);
             // 
             // closeBtn
             // 
