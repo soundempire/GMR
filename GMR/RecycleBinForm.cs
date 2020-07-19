@@ -20,6 +20,8 @@ namespace GMR
 
         private long _selectedContractorId;
 
+        private bool isRetrieved;
+
         public RecycleBinForm(IRecycleBinService recycleBinService, ITransactionService transactionService)
         {
             InitializeComponent();
@@ -30,23 +32,13 @@ namespace GMR
 
         private void RecycleBinForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Tag = isRetrieved;
+
             (_recycleBinService as IDisposable)?.Dispose();
             (_transactionService as IDisposable)?.Dispose();
         }
 
-        private async void RecycleBinForm_Load(object sender, EventArgs e)
-        {
-            var deletedContractors = Mapper.Map<IEnumerable<ContractorModel>, List<DeletedContractorViewModel>>(
-                                     await _recycleBinService.GetContractorsAsync(Session.Person.ID));
-
-            contractorsDGView.DataSource = new SortableBindingList<DeletedContractorViewModel>(deletedContractors.OrderBy(_ => _.Name).ToList());
-            contractorsDGView.ClearSelection();
-
-            if (contractorsDGView.DataSource != null)
-                contractorsDGView.Columns[nameof(DeletedContractorViewModel.ContractorID)].MinimumWidth = 40;
-
-            SetFormsSizes();
-        }
+        private async void RecycleBinForm_Load(object sender, EventArgs e) => await LoadData();
 
         private async void ContractorsDGView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -75,7 +67,12 @@ namespace GMR
         {
             if (contractorsDGView.SelectedRows.Count > 0)
             {
-                
+                var contractors = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => _.DataBoundItem as DeletedContractorViewModel).ToList();
+                await _recycleBinService.RetrieveContractorsAsync(Mapper.Map<List<DeletedContractorViewModel>, List<ContractorModel>>(contractors));
+
+                await RefreshData();
+
+                isRetrieved = true;
             }
             else
             {
@@ -91,6 +88,8 @@ namespace GMR
                 {
                     var ids = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as DeletedContractorViewModel).ID).ToArray();
                     await _recycleBinService.RemoveContractorsAsync(ids);
+
+                    await RefreshData();
                 }
             }
             else
@@ -112,6 +111,28 @@ namespace GMR
                 contractorsDGView.Columns[nameof(DeletedContractorViewModel.ContractorID)].Width = (int)(contractorsDGView.Size.Width * 0.15);
                 contractorsDGView.Columns[nameof(DeletedContractorViewModel.Name)].Width = (int)(contractorsDGView.Size.Width * 0.85);
             }
+        }
+
+        private async Task LoadData()
+        {
+            var deletedContractors = Mapper.Map<IEnumerable<ContractorModel>, List<DeletedContractorViewModel>>(
+                                     await _recycleBinService.GetContractorsAsync(Session.Person.ID));
+
+            contractorsDGView.DataSource = new SortableBindingList<DeletedContractorViewModel>(deletedContractors.OrderBy(_ => _.Name).ToList());
+            contractorsDGView.ClearSelection();
+
+            if (contractorsDGView.DataSource != null)
+                contractorsDGView.Columns[nameof(DeletedContractorViewModel.ContractorID)].MinimumWidth = 40;
+
+            SetFormsSizes();
+        }
+
+        private async Task RefreshData()
+        {
+            await LoadData();
+
+            _selectedContractorId = 0;
+            transactionsDGView.DataSource = null;
         }
     }
 }

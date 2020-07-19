@@ -346,9 +346,13 @@ namespace GMR
             }
         }
 
-        private void TrashBtn_Click(object sender, EventArgs e)
+        private async void TrashBtn_Click(object sender, EventArgs e)
         {
-            DIContainer.Resolve<RecycleBinForm>().ShowDialog();
+            var recycleBinForm = DIContainer.Resolve<RecycleBinForm>();
+            recycleBinForm.ShowDialog();
+
+            if (recycleBinForm.Tag is bool isRetrieved && isRetrieved)
+                await LoadContractorsAsync();
         }
 
         #endregion
