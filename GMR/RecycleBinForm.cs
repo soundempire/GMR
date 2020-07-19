@@ -73,12 +73,30 @@ namespace GMR
 
         private async void RetrieveBtn_Click(object sender, EventArgs e)
         {
-
+            if (contractorsDGView.SelectedRows.Count > 0)
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show("Выберете контрагентов для восстановления.", "Восстановление", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private async void DeleteBtn_Click(object sender, EventArgs e)
         {
-
+            if (contractorsDGView.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show($"Вы действительно хотите безвозвратно удалить {(contractorsDGView.SelectedRows.Count == 1 ? (contractorsDGView.SelectedRows[0].DataBoundItem as DeletedContractorViewModel).Name + " и" : "выбранных контрагентов и их")} транзакции?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var ids = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as DeletedContractorViewModel).ID).ToArray();
+                    await _recycleBinService.RemoveContractorsAsync(ids);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберете контрагентов для удаления.", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void RecycleBinForm_Resize(object sender, EventArgs e) => SetFormsSizes();

@@ -386,7 +386,7 @@ namespace GMR
         {
             if (contractorsDGView.SelectedRows.Count > 0)
             {
-                var dialogResult = MessageBox.Show($"Вы действительно хотите удалить {(contractorsDGView.SelectedRows.Count == 1 ? (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorViewModel).Name + " и" : "выбранных контрагентов и их")} транзакции?\nДля помещения в корзину нажмите 'Нет'", "Удаление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var dialogResult = MessageBox.Show($"Вы действительно хотите безвозвратно удалить {(contractorsDGView.SelectedRows.Count == 1 ? (contractorsDGView.SelectedRows[0].DataBoundItem as ContractorViewModel).Name + " и" : "выбранных контрагентов и их")} транзакции?\nДля помещения в корзину нажмите 'Нет'", "Удаление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     var ids = contractorsDGView.SelectedRows.OfType<DataGridViewRow>().Select(_ => (_.DataBoundItem as ContractorViewModel).ID).ToArray();
