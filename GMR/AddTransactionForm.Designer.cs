@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTransactionForm));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.addTransactionPanel = new System.Windows.Forms.Panel();
             this.importBtn = new GMR.Controls.GMRButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,29 +45,29 @@
             this.okBtn = new GMR.Controls.GMRButton();
             this.cancelBtn = new GMR.Controls.GMRButton();
             this.closeBtn = new GMR.Controls.GMRButton();
-            this.panel1.SuspendLayout();
+            this.addTransactionPanel.SuspendLayout();
             this.currentUserPanel.SuspendLayout();
             this.controlBtnsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // addTransactionPanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.importBtn);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.transactionDateDTPicker);
-            this.panel1.Controls.Add(this.contractorCmBox);
-            this.panel1.Controls.Add(this.transactionPriceTBox);
-            this.panel1.Controls.Add(this.transactionValueTBox);
-            this.panel1.Controls.Add(this.transactionCurrencyTBox);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 316);
-            this.panel1.TabIndex = 0;
+            this.addTransactionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addTransactionPanel.Controls.Add(this.importBtn);
+            this.addTransactionPanel.Controls.Add(this.label4);
+            this.addTransactionPanel.Controls.Add(this.label3);
+            this.addTransactionPanel.Controls.Add(this.label2);
+            this.addTransactionPanel.Controls.Add(this.label1);
+            this.addTransactionPanel.Controls.Add(this.transactionDateDTPicker);
+            this.addTransactionPanel.Controls.Add(this.contractorCmBox);
+            this.addTransactionPanel.Controls.Add(this.transactionPriceTBox);
+            this.addTransactionPanel.Controls.Add(this.transactionValueTBox);
+            this.addTransactionPanel.Controls.Add(this.transactionCurrencyTBox);
+            this.addTransactionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addTransactionPanel.Location = new System.Drawing.Point(0, 0);
+            this.addTransactionPanel.Name = "addTransactionPanel";
+            this.addTransactionPanel.Size = new System.Drawing.Size(605, 316);
+            this.addTransactionPanel.TabIndex = 0;
             // 
             // importBtn
             // 
@@ -260,7 +260,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 316);
             this.Controls.Add(this.currentUserPanel);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.addTransactionPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddTransactionForm";
@@ -268,8 +268,8 @@
             this.Text = "Ввод";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddContractorForm_FormClosing);
             this.Load += new System.EventHandler(this.AddContractorForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.addTransactionPanel.ResumeLayout(false);
+            this.addTransactionPanel.PerformLayout();
             this.currentUserPanel.ResumeLayout(false);
             this.controlBtnsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -278,7 +278,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel addTransactionPanel;
         private System.Windows.Forms.ComboBox contractorCmBox;
         private System.Windows.Forms.TextBox transactionPriceTBox;
         private System.Windows.Forms.TextBox transactionValueTBox;

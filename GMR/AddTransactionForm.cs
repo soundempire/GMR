@@ -87,11 +87,18 @@ namespace GMR
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
                 e.Handled = true;
 
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            if ((e.KeyChar == ',') && (((sender as TextBox).Text.IndexOf(',') > -1) || ((TextBox)sender).Text.Length == 0))
                 e.Handled = true;
         }
-        
-        private void CancelBtn_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            var textBoxes = addTransactionPanel.Controls.OfType<TextBox>().Where(_ => _.Enabled).OrderBy(_ => _.Location.Y).ToList();
+            foreach (var textBox in textBoxes)
+                textBox.Clear();
+
+            textBoxes[0].Focus();
+        }
         
         private void CloseBtn_Click(object sender, EventArgs e) => Close();
         
