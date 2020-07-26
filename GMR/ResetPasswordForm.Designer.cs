@@ -38,8 +38,8 @@
             this.errorLoginLabel = new System.Windows.Forms.Label();
             this.loginTBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.closeBtn = new GMR.Controls.GMRButton();
-            this.resetBtn = new GMR.Controls.GMRButton();
+            this.closeBtn = new System.Windows.Forms.Button();
+            this.resetBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // errorPasswordLabel
@@ -135,37 +135,27 @@
             // 
             // closeBtn
             // 
-            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.closeBtn.Location = new System.Drawing.Point(117, 192);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.closeBtn.Location = new System.Drawing.Point(72, 195);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Rounding = 80;
-            this.closeBtn.RoundingEnabled = true;
             this.closeBtn.Size = new System.Drawing.Size(110, 26);
-            this.closeBtn.TabIndex = 34;
+            this.closeBtn.TabIndex = 36;
             this.closeBtn.Text = "Отмена";
-            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.UseVisualStyleBackColor = true;
             this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // resetBtn
             // 
-            this.resetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.resetBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.resetBtn.Enabled = false;
             this.resetBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.resetBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.resetBtn.Location = new System.Drawing.Point(255, 192);
-            this.resetBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.resetBtn.Location = new System.Drawing.Point(255, 195);
             this.resetBtn.Name = "resetBtn";
-            this.resetBtn.Rounding = 80;
-            this.resetBtn.RoundingEnabled = true;
             this.resetBtn.Size = new System.Drawing.Size(110, 26);
-            this.resetBtn.TabIndex = 35;
+            this.resetBtn.TabIndex = 37;
             this.resetBtn.Text = "Обновить";
-            this.resetBtn.UseVisualStyleBackColor = false;
+            this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
             // ResetPasswordForm
@@ -206,7 +196,7 @@
         private System.Windows.Forms.Label errorLoginLabel;
         private System.Windows.Forms.TextBox loginTBox;
         private System.Windows.Forms.Label label9;
-        private Controls.GMRButton closeBtn;
-        private Controls.GMRButton resetBtn;
+        private System.Windows.Forms.Button closeBtn;
+        private System.Windows.Forms.Button resetBtn;
     }
 }

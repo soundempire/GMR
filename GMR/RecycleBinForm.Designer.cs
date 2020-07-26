@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecycleBinForm));
             this.controlPanel = new System.Windows.Forms.Panel();
-            this.deleteBtn = new GMR.Controls.GMRButton();
-            this.retrieveBtn = new GMR.Controls.GMRButton();
-            this.closeBtn = new GMR.Controls.GMRButton();
+            this.retrieveBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.closeBtn = new System.Windows.Forms.Button();
             this.deletedContractorsSplitContainer = new System.Windows.Forms.SplitContainer();
             this.contractorsDGView = new System.Windows.Forms.DataGridView();
             this.transactionsDGView = new System.Windows.Forms.DataGridView();
@@ -47,8 +47,8 @@
             // 
             // controlPanel
             // 
-            this.controlPanel.Controls.Add(this.deleteBtn);
             this.controlPanel.Controls.Add(this.retrieveBtn);
+            this.controlPanel.Controls.Add(this.deleteBtn);
             this.controlPanel.Controls.Add(this.closeBtn);
             this.controlPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.controlPanel.Location = new System.Drawing.Point(0, 374);
@@ -56,56 +56,41 @@
             this.controlPanel.Size = new System.Drawing.Size(856, 54);
             this.controlPanel.TabIndex = 0;
             // 
-            // deleteBtn
-            // 
-            this.deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.deleteBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.deleteBtn.Location = new System.Drawing.Point(176, 17);
-            this.deleteBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Rounding = 80;
-            this.deleteBtn.RoundingEnabled = true;
-            this.deleteBtn.Size = new System.Drawing.Size(100, 26);
-            this.deleteBtn.TabIndex = 18;
-            this.deleteBtn.Text = "Удалить";
-            this.deleteBtn.UseVisualStyleBackColor = false;
-            this.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
-            // 
             // retrieveBtn
             // 
-            this.retrieveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.retrieveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.retrieveBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.retrieveBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.retrieveBtn.Location = new System.Drawing.Point(34, 17);
-            this.retrieveBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.retrieveBtn.Location = new System.Drawing.Point(12, 17);
             this.retrieveBtn.Name = "retrieveBtn";
-            this.retrieveBtn.Rounding = 80;
-            this.retrieveBtn.RoundingEnabled = true;
             this.retrieveBtn.Size = new System.Drawing.Size(100, 26);
-            this.retrieveBtn.TabIndex = 18;
+            this.retrieveBtn.TabIndex = 21;
             this.retrieveBtn.Text = "Вернуть";
-            this.retrieveBtn.UseVisualStyleBackColor = false;
+            this.retrieveBtn.UseVisualStyleBackColor = true;
             this.retrieveBtn.Click += new System.EventHandler(this.RetrieveBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.deleteBtn.Location = new System.Drawing.Point(137, 17);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(100, 26);
+            this.deleteBtn.TabIndex = 20;
+            this.deleteBtn.Text = "Удалить";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // closeBtn
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.closeBtn.Location = new System.Drawing.Point(728, 17);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.closeBtn.Location = new System.Drawing.Point(744, 17);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Rounding = 80;
-            this.closeBtn.RoundingEnabled = true;
             this.closeBtn.Size = new System.Drawing.Size(100, 26);
-            this.closeBtn.TabIndex = 17;
+            this.closeBtn.TabIndex = 19;
             this.closeBtn.Text = "Закрыть";
-            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.UseVisualStyleBackColor = true;
             this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // deletedContractorsSplitContainer
@@ -148,6 +133,7 @@
             this.contractorsDGView.Size = new System.Drawing.Size(300, 374);
             this.contractorsDGView.TabIndex = 0;
             this.contractorsDGView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContractorsDGView_CellMouseClick);
+            this.contractorsDGView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContractorsDGView_KeyDown);
             // 
             // transactionsDGView
             // 
@@ -198,11 +184,11 @@
         #endregion
 
         private System.Windows.Forms.Panel controlPanel;
-        private Controls.GMRButton deleteBtn;
-        private Controls.GMRButton retrieveBtn;
-        private Controls.GMRButton closeBtn;
         private System.Windows.Forms.SplitContainer deletedContractorsSplitContainer;
         private System.Windows.Forms.DataGridView contractorsDGView;
         private System.Windows.Forms.DataGridView transactionsDGView;
+        private System.Windows.Forms.Button closeBtn;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button retrieveBtn;
     }
 }

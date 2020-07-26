@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTransactionForm));
             this.addTransactionPanel = new System.Windows.Forms.Panel();
-            this.importBtn = new GMR.Controls.GMRButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,20 +39,20 @@
             this.transactionPriceTBox = new System.Windows.Forms.TextBox();
             this.transactionValueTBox = new System.Windows.Forms.TextBox();
             this.transactionCurrencyTBox = new System.Windows.Forms.TextBox();
-            this.currentUserPanel = new System.Windows.Forms.Panel();
+            this.controlsPanel = new System.Windows.Forms.Panel();
+            this.importBtn = new System.Windows.Forms.Button();
             this.controlBtnsPanel = new System.Windows.Forms.Panel();
-            this.okBtn = new GMR.Controls.GMRButton();
-            this.cancelBtn = new GMR.Controls.GMRButton();
-            this.closeBtn = new GMR.Controls.GMRButton();
+            this.closeBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.okBtn = new System.Windows.Forms.Button();
             this.addTransactionPanel.SuspendLayout();
-            this.currentUserPanel.SuspendLayout();
+            this.controlsPanel.SuspendLayout();
             this.controlBtnsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // addTransactionPanel
             // 
             this.addTransactionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addTransactionPanel.Controls.Add(this.importBtn);
             this.addTransactionPanel.Controls.Add(this.label4);
             this.addTransactionPanel.Controls.Add(this.label3);
             this.addTransactionPanel.Controls.Add(this.label2);
@@ -68,23 +67,6 @@
             this.addTransactionPanel.Name = "addTransactionPanel";
             this.addTransactionPanel.Size = new System.Drawing.Size(605, 316);
             this.addTransactionPanel.TabIndex = 0;
-            // 
-            // importBtn
-            // 
-            this.importBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.importBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.importBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.importBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.importBtn.Location = new System.Drawing.Point(29, 220);
-            this.importBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.importBtn.Name = "importBtn";
-            this.importBtn.Rounding = 80;
-            this.importBtn.RoundingEnabled = true;
-            this.importBtn.Size = new System.Drawing.Size(139, 26);
-            this.importBtn.TabIndex = 21;
-            this.importBtn.Text = "Импорт из Excel";
-            this.importBtn.UseVisualStyleBackColor = false;
-            this.importBtn.Click += new System.EventHandler(this.ImportBtn_Click);
             // 
             // label4
             // 
@@ -181,21 +163,34 @@
             this.transactionCurrencyTBox.TextChanged += new System.EventHandler(this.TransactionCurrencyTBox_TextChanged);
             this.transactionCurrencyTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
-            // currentUserPanel
+            // controlsPanel
             // 
-            this.currentUserPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.currentUserPanel.Controls.Add(this.controlBtnsPanel);
-            this.currentUserPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.currentUserPanel.Location = new System.Drawing.Point(0, 263);
-            this.currentUserPanel.Name = "currentUserPanel";
-            this.currentUserPanel.Size = new System.Drawing.Size(605, 53);
-            this.currentUserPanel.TabIndex = 1;
+            this.controlsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.controlsPanel.Controls.Add(this.importBtn);
+            this.controlsPanel.Controls.Add(this.controlBtnsPanel);
+            this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.controlsPanel.Location = new System.Drawing.Point(0, 263);
+            this.controlsPanel.Name = "controlsPanel";
+            this.controlsPanel.Size = new System.Drawing.Size(605, 53);
+            this.controlsPanel.TabIndex = 1;
+            // 
+            // importBtn
+            // 
+            this.importBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.importBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.importBtn.Location = new System.Drawing.Point(29, 12);
+            this.importBtn.Name = "importBtn";
+            this.importBtn.Size = new System.Drawing.Size(139, 26);
+            this.importBtn.TabIndex = 22;
+            this.importBtn.Text = "Импорт из Excel";
+            this.importBtn.UseVisualStyleBackColor = true;
+            this.importBtn.Click += new System.EventHandler(this.ImportBtn_Click);
             // 
             // controlBtnsPanel
             // 
-            this.controlBtnsPanel.Controls.Add(this.okBtn);
-            this.controlBtnsPanel.Controls.Add(this.cancelBtn);
             this.controlBtnsPanel.Controls.Add(this.closeBtn);
+            this.controlBtnsPanel.Controls.Add(this.cancelBtn);
+            this.controlBtnsPanel.Controls.Add(this.okBtn);
             this.controlBtnsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.controlBtnsPanel.Location = new System.Drawing.Point(290, 0);
             this.controlBtnsPanel.Margin = new System.Windows.Forms.Padding(2);
@@ -203,63 +198,48 @@
             this.controlBtnsPanel.Size = new System.Drawing.Size(313, 51);
             this.controlBtnsPanel.TabIndex = 0;
             // 
-            // okBtn
+            // closeBtn
             // 
-            this.okBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.okBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.okBtn.Location = new System.Drawing.Point(20, 12);
-            this.okBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.okBtn.Name = "okBtn";
-            this.okBtn.Rounding = 80;
-            this.okBtn.RoundingEnabled = true;
-            this.okBtn.Size = new System.Drawing.Size(80, 26);
-            this.okBtn.TabIndex = 22;
-            this.okBtn.Text = "Ок";
-            this.okBtn.UseVisualStyleBackColor = false;
-            this.okBtn.Click += new System.EventHandler(this.OkBtn_Click);
+            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.closeBtn.Location = new System.Drawing.Point(215, 12);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(87, 26);
+            this.closeBtn.TabIndex = 9;
+            this.closeBtn.Text = "Закрыть";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // cancelBtn
             // 
-            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.cancelBtn.Location = new System.Drawing.Point(107, 12);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cancelBtn.Location = new System.Drawing.Point(111, 12);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Rounding = 80;
-            this.cancelBtn.RoundingEnabled = true;
             this.cancelBtn.Size = new System.Drawing.Size(87, 26);
-            this.cancelBtn.TabIndex = 21;
+            this.cancelBtn.TabIndex = 9;
             this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.UseVisualStyleBackColor = false;
+            this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
-            // closeBtn
+            // okBtn
             // 
-            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.closeBtn.Location = new System.Drawing.Point(210, 12);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Rounding = 80;
-            this.closeBtn.RoundingEnabled = true;
-            this.closeBtn.Size = new System.Drawing.Size(93, 26);
-            this.closeBtn.TabIndex = 20;
-            this.closeBtn.Text = "Закрыть";
-            this.closeBtn.UseVisualStyleBackColor = false;
-            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
+            this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.okBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.okBtn.Location = new System.Drawing.Point(13, 12);
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(80, 26);
+            this.okBtn.TabIndex = 9;
+            this.okBtn.Text = "Ок";
+            this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.OkBtn_Click);
             // 
             // AddTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 316);
-            this.Controls.Add(this.currentUserPanel);
+            this.Controls.Add(this.controlsPanel);
             this.Controls.Add(this.addTransactionPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -270,7 +250,7 @@
             this.Load += new System.EventHandler(this.AddContractorForm_Load);
             this.addTransactionPanel.ResumeLayout(false);
             this.addTransactionPanel.PerformLayout();
-            this.currentUserPanel.ResumeLayout(false);
+            this.controlsPanel.ResumeLayout(false);
             this.controlBtnsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -283,16 +263,16 @@
         private System.Windows.Forms.TextBox transactionPriceTBox;
         private System.Windows.Forms.TextBox transactionValueTBox;
         private System.Windows.Forms.TextBox transactionCurrencyTBox;
-        private System.Windows.Forms.Panel currentUserPanel;
+        private System.Windows.Forms.Panel controlsPanel;
         private System.Windows.Forms.DateTimePicker transactionDateDTPicker;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel controlBtnsPanel;
-        private Controls.GMRButton closeBtn;
-        private Controls.GMRButton okBtn;
-        private Controls.GMRButton cancelBtn;
-        private Controls.GMRButton importBtn;
+        private System.Windows.Forms.Button importBtn;
+        private System.Windows.Forms.Button okBtn;
+        private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Button closeBtn;
     }
 }

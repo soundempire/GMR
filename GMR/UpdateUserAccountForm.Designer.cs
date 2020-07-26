@@ -55,14 +55,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.changeProfilePanel = new System.Windows.Forms.Panel();
-            this.saveBtn = new GMR.Controls.GMRButton();
-            this.cancelBtn = new GMR.Controls.GMRButton();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.errorOldPasswordLabel = new System.Windows.Forms.Label();
             this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
             this.passwordPanel = new System.Windows.Forms.Panel();
             this.errorPasswordLabel = new System.Windows.Forms.Label();
             this.updatePasswordChBox = new System.Windows.Forms.CheckBox();
-            this.changeAccountBtn = new GMR.Controls.GMRButton();
+            this.changeAccountBtn = new System.Windows.Forms.Button();
             this.userProfilePanel.SuspendLayout();
             this.changeProfilePanel.SuspendLayout();
             this.passwordPanel.SuspendLayout();
@@ -330,47 +330,38 @@
             // 
             // changeProfilePanel
             // 
-            this.changeProfilePanel.Controls.Add(this.saveBtn);
             this.changeProfilePanel.Controls.Add(this.cancelBtn);
-            this.changeProfilePanel.Location = new System.Drawing.Point(181, 558);
+            this.changeProfilePanel.Controls.Add(this.saveBtn);
+            this.changeProfilePanel.Location = new System.Drawing.Point(169, 558);
             this.changeProfilePanel.Name = "changeProfilePanel";
-            this.changeProfilePanel.Size = new System.Drawing.Size(193, 39);
+            this.changeProfilePanel.Size = new System.Drawing.Size(205, 39);
             this.changeProfilePanel.TabIndex = 12;
             this.changeProfilePanel.Visible = false;
             // 
-            // saveBtn
-            // 
-            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.saveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.saveBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.saveBtn.Location = new System.Drawing.Point(104, 6);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Rounding = 80;
-            this.saveBtn.RoundingEnabled = true;
-            this.saveBtn.Size = new System.Drawing.Size(87, 26);
-            this.saveBtn.TabIndex = 26;
-            this.saveBtn.Text = "Сохранить";
-            this.saveBtn.UseVisualStyleBackColor = false;
-            this.saveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
-            // 
             // cancelBtn
             // 
-            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.cancelBtn.Location = new System.Drawing.Point(2, 6);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.cancelBtn.Location = new System.Drawing.Point(6, 6);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Rounding = 80;
-            this.cancelBtn.RoundingEnabled = true;
-            this.cancelBtn.Size = new System.Drawing.Size(87, 26);
-            this.cancelBtn.TabIndex = 25;
+            this.cancelBtn.Size = new System.Drawing.Size(95, 26);
+            this.cancelBtn.TabIndex = 20;
             this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.UseVisualStyleBackColor = false;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saveBtn.Enabled = false;
+            this.saveBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.saveBtn.Location = new System.Drawing.Point(107, 6);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(95, 26);
+            this.saveBtn.TabIndex = 20;
+            this.saveBtn.Text = "Сохранить";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // errorOldPasswordLabel
             // 
@@ -436,19 +427,15 @@
             // 
             // changeAccountBtn
             // 
-            this.changeAccountBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.changeAccountBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.changeAccountBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.changeAccountBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.changeAccountBtn.Location = new System.Drawing.Point(11, 560);
+            this.changeAccountBtn.Location = new System.Drawing.Point(11, 561);
             this.changeAccountBtn.Name = "changeAccountBtn";
-            this.changeAccountBtn.Rounding = 100;
-            this.changeAccountBtn.RoundingEnabled = true;
             this.changeAccountBtn.Size = new System.Drawing.Size(145, 33);
-            this.changeAccountBtn.TabIndex = 19;
+            this.changeAccountBtn.TabIndex = 20;
             this.changeAccountBtn.Text = "Изменить аккаунт";
-            this.changeAccountBtn.UseVisualStyleBackColor = false;
-            this.changeAccountBtn.Click += new System.EventHandler(this.changeProfileBtn_Click);
+            this.changeAccountBtn.UseVisualStyleBackColor = true;
+            this.changeAccountBtn.Click += new System.EventHandler(this.ChangeProfileBtn_Click);
             // 
             // UpdateUserAccountForm
             // 
@@ -510,8 +497,8 @@
         private System.Windows.Forms.ComboBox languagesCBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label errorPasswordLabel;
-        private Controls.GMRButton changeAccountBtn;
-        private Controls.GMRButton saveBtn;
-        private Controls.GMRButton cancelBtn;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Button changeAccountBtn;
     }
 }

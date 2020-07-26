@@ -54,7 +54,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.firstNameTBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.createAccountBtn = new GMR.Controls.GMRButton();
+            this.createAccountBtn = new System.Windows.Forms.Button();
             this.userProfilePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -326,19 +326,15 @@
             // 
             // createAccountBtn
             // 
-            this.createAccountBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
             this.createAccountBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.createAccountBtn.Enabled = false;
             this.createAccountBtn.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.createAccountBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.createAccountBtn.Location = new System.Drawing.Point(225, 478);
             this.createAccountBtn.Name = "createAccountBtn";
-            this.createAccountBtn.Rounding = 100;
-            this.createAccountBtn.RoundingEnabled = true;
             this.createAccountBtn.Size = new System.Drawing.Size(150, 33);
-            this.createAccountBtn.TabIndex = 13;
+            this.createAccountBtn.TabIndex = 14;
             this.createAccountBtn.Text = "Создать аккаунт";
-            this.createAccountBtn.UseVisualStyleBackColor = false;
+            this.createAccountBtn.UseVisualStyleBackColor = true;
             this.createAccountBtn.Click += new System.EventHandler(this.CreateAccountBtn_Click);
             // 
             // CreateUserAccountForm
@@ -388,6 +384,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox confirmPasswordTBox;
-        private Controls.GMRButton createAccountBtn;
+        private System.Windows.Forms.Button createAccountBtn;
     }
 }

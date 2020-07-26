@@ -52,13 +52,13 @@
             this.numericUpDownRight = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownLeft = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.openFileBtn = new GMR.Controls.GMRButton();
-            this.cancelBtn = new GMR.Controls.GMRButton();
-            this.okBtn = new GMR.Controls.GMRButton();
             this.importingDataDGV = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnsPanel = new System.Windows.Forms.Panel();
+            this.openFileBtn = new System.Windows.Forms.Button();
             this.okCancelPanel = new System.Windows.Forms.Panel();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.okBtn = new System.Windows.Forms.Button();
             this.botomPanel = new System.Windows.Forms.Panel();
             this.chooseColumnsPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -368,58 +368,6 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Выбирать строки с:";
             // 
-            // openFileBtn
-            // 
-            this.openFileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.openFileBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.openFileBtn.Location = new System.Drawing.Point(18, 9);
-            this.openFileBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.openFileBtn.Name = "openFileBtn";
-            this.openFileBtn.Rounding = 80;
-            this.openFileBtn.RoundingEnabled = true;
-            this.openFileBtn.Size = new System.Drawing.Size(113, 26);
-            this.openFileBtn.TabIndex = 28;
-            this.openFileBtn.Text = "Открыть файл";
-            this.openFileBtn.UseVisualStyleBackColor = false;
-            this.openFileBtn.Click += new System.EventHandler(this.OpenFileBtn_Click);
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.cancelBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.cancelBtn.Location = new System.Drawing.Point(150, 9);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Rounding = 80;
-            this.cancelBtn.RoundingEnabled = true;
-            this.cancelBtn.Size = new System.Drawing.Size(87, 26);
-            this.cancelBtn.TabIndex = 24;
-            this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.UseVisualStyleBackColor = false;
-            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
-            // 
-            // okBtn
-            // 
-            this.okBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.okBtn.Enabled = false;
-            this.okBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.okBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.okBtn.Location = new System.Drawing.Point(40, 9);
-            this.okBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.okBtn.Name = "okBtn";
-            this.okBtn.Rounding = 80;
-            this.okBtn.RoundingEnabled = true;
-            this.okBtn.Size = new System.Drawing.Size(80, 26);
-            this.okBtn.TabIndex = 23;
-            this.okBtn.Text = "Ок";
-            this.okBtn.UseVisualStyleBackColor = false;
-            this.okBtn.Click += new System.EventHandler(this.OkBtn_Click);
-            // 
             // importingDataDGV
             // 
             this.importingDataDGV.AllowUserToOrderColumns = true;
@@ -456,13 +404,26 @@
             // 
             // btnsPanel
             // 
-            this.btnsPanel.Controls.Add(this.okCancelPanel);
             this.btnsPanel.Controls.Add(this.openFileBtn);
+            this.btnsPanel.Controls.Add(this.okCancelPanel);
             this.btnsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnsPanel.Location = new System.Drawing.Point(460, 0);
             this.btnsPanel.Name = "btnsPanel";
             this.btnsPanel.Size = new System.Drawing.Size(424, 46);
             this.btnsPanel.TabIndex = 30;
+            // 
+            // openFileBtn
+            // 
+            this.openFileBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.openFileBtn.Location = new System.Drawing.Point(14, 10);
+            this.openFileBtn.Name = "openFileBtn";
+            this.openFileBtn.Size = new System.Drawing.Size(129, 26);
+            this.openFileBtn.TabIndex = 30;
+            this.openFileBtn.Text = "Открыть файл";
+            this.openFileBtn.UseVisualStyleBackColor = true;
+            this.openFileBtn.Click += new System.EventHandler(this.OpenFileBtn_Click);
             // 
             // okCancelPanel
             // 
@@ -473,6 +434,31 @@
             this.okCancelPanel.Name = "okCancelPanel";
             this.okCancelPanel.Size = new System.Drawing.Size(266, 46);
             this.okCancelPanel.TabIndex = 29;
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.cancelBtn.Location = new System.Drawing.Point(153, 10);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(87, 26);
+            this.cancelBtn.TabIndex = 26;
+            this.cancelBtn.Text = "Отмена";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            // 
+            // okBtn
+            // 
+            this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.okBtn.Enabled = false;
+            this.okBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.okBtn.Location = new System.Drawing.Point(36, 10);
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(87, 26);
+            this.okBtn.TabIndex = 25;
+            this.okBtn.Text = "Ок";
+            this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.OkBtn_Click);
             // 
             // botomPanel
             // 
@@ -526,15 +512,12 @@
         private System.Windows.Forms.Panel chooseColumnsPanel;
         private System.Windows.Forms.Panel importingDataPanel;
         private System.Windows.Forms.Panel controlsPanel;
-        private Controls.GMRButton okBtn;
-        private Controls.GMRButton cancelBtn;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage importTabPage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView importingDataDGV;
         private System.Windows.Forms.NumericUpDown numericUpDownLeft;
         private System.Windows.Forms.NumericUpDown numericUpDownRight;
-        private Controls.GMRButton openFileBtn;
         private System.Windows.Forms.Panel choosePanel3;
         private System.Windows.Forms.Panel choosePanel2;
         private System.Windows.Forms.Panel choosePanel7;
@@ -553,5 +536,8 @@
         private System.Windows.Forms.Panel botomPanel;
         private System.Windows.Forms.Panel btnsPanel;
         private System.Windows.Forms.Panel okCancelPanel;
+        private System.Windows.Forms.Button openFileBtn;
+        private System.Windows.Forms.Button okBtn;
+        private System.Windows.Forms.Button cancelBtn;
     }
 }

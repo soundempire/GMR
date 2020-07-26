@@ -16,17 +16,20 @@ namespace GMR
 
         private readonly ITransactionService _transactionService;
 
+        private readonly IRecycleBinService _recycleBinService;
+
         private readonly string _defaultContractorName;
 
         private Dictionary<string, ContractorViewModel> _contractors;
 
-        public AddTransactionForm(IContractorService contractorService, ITransactionService transactionService, string defaultContractorName = default)
+        public AddTransactionForm(IContractorService contractorService, ITransactionService transactionService, IRecycleBinService recycleBinService, string defaultContractorName = default)
         {
             InitializeComponent();
 
             _defaultContractorName = defaultContractorName;
             _contractorService = contractorService;
             _transactionService = transactionService;
+            _recycleBinService = recycleBinService;
         }
         
         private async void AddContractorForm_Load(object sender, EventArgs e)
@@ -106,6 +109,7 @@ namespace GMR
         {
             (_contractorService as IDisposable)?.Dispose();
             (_transactionService as IDisposable)?.Dispose();
+            (_recycleBinService as IDisposable)?.Dispose();
         }
         
         private void TransactionCurrencyTBox_TextChanged(object sender, EventArgs e)
@@ -119,9 +123,15 @@ namespace GMR
             var importForm = DIContainer.Resolve<ImportMasterForm>();
             if (importForm.ShowDialog() == DialogResult.OK)
             {
+                var deletedContractors = (await _recycleBinService.GetContractorsAsync(Session.Person.ID)).ToDictionary(_ => _.ContractorID);
+                var deletedContractorsIds = new List<long>();
+
                 var importResult = (ImportResult)importForm.Tag;
                 foreach (var contractor in Mapper.Map<ContractorViewModel[], ContractorModel[]>(importResult.SuccessContractors))
                 {
+                    if (deletedContractors.TryGetValue(contractor.ContractorID, out var deletedContractor))
+                        deletedContractorsIds.Add(deletedContractor.ID);
+
                     if (contractor.ID > 0)
                     {
                         foreach (var transaction in contractor.Transactions)
@@ -144,9 +154,11 @@ namespace GMR
                         }
                         else
                             await _contractorService.AddContractorAsync(contractor);
-                    }
-                    
+                    } 
                 }
+
+                if (deletedContractorsIds.Count > 0)
+                    await _recycleBinService.RemoveContractorsAsync(deletedContractorsIds.ToArray());
 
                 DialogResult = DialogResult.OK;
             }  

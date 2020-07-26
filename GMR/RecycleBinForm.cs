@@ -63,6 +63,12 @@ namespace GMR
             }
         }
 
+        private async void ContractorsDGView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && !(await RemoveSelectedContractorsAsync()))
+                e.Handled = true;
+        }
+
         private async void RetrieveBtn_Click(object sender, EventArgs e)
         {
             if (contractorsDGView.SelectedRows.Count > 0)
@@ -80,7 +86,15 @@ namespace GMR
             }
         }
 
-        private async void DeleteBtn_Click(object sender, EventArgs e)
+        private async void DeleteBtn_Click(object sender, EventArgs e) => await RemoveSelectedContractorsAsync();
+
+        private void RecycleBinForm_Resize(object sender, EventArgs e) => SetFormsSizes();
+
+        private void DeletedContractorsSplitContainer_SplitterMoved(object sender, SplitterEventArgs e) => SetFormsSizes();
+
+        private void CloseBtn_Click(object sender, EventArgs e) => Close();
+
+        private async Task<bool> RemoveSelectedContractorsAsync()
         {
             if (contractorsDGView.SelectedRows.Count > 0)
             {
@@ -90,19 +104,17 @@ namespace GMR
                     await _recycleBinService.RemoveContractorsAsync(ids);
 
                     await RefreshData();
+
+                    return true;
                 }
             }
             else
             {
                 MessageBox.Show("Выберете контрагентов для удаления.", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            return false;
         }
-
-        private void RecycleBinForm_Resize(object sender, EventArgs e) => SetFormsSizes();
-
-        private void DeletedContractorsSplitContainer_SplitterMoved(object sender, SplitterEventArgs e) => SetFormsSizes();
-
-        private void CloseBtn_Click(object sender, EventArgs e) => Close();
 
         private void SetFormsSizes()
         {

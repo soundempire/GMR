@@ -52,9 +52,9 @@ namespace GMR
             SetCurrentUserValues();
         }
 
-        private void changeProfileBtn_Click(object sender, EventArgs e) => SwitchControls(true);
+        private void ChangeProfileBtn_Click(object sender, EventArgs e) => SwitchControls(true);
 
-        private void cancelBtn_Click(object sender, EventArgs e) => RefreshData();
+        private void CancelBtn_Click(object sender, EventArgs e) => RefreshData();
 
         private async void SaveBtn_Click(object sender, EventArgs e)
         {

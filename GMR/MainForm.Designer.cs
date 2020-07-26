@@ -43,12 +43,7 @@ namespace GMR
             this.contractorsCBoxPanel = new System.Windows.Forms.Panel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.trashPanel = new System.Windows.Forms.Panel();
-            this.trashBtn = new GMR.Controls.GMRButton();
             this.controlBtnsPanel = new System.Windows.Forms.Panel();
-            this.closeBtn = new GMR.Controls.GMRButton();
-            this.addBtn = new GMR.Controls.GMRButton();
-            this.deleteBtn = new GMR.Controls.GMRButton();
-            this.exportBtn = new GMR.Controls.GMRButton();
             this.CenterSplitContainer = new System.Windows.Forms.SplitContainer();
             this.contractorDGVPanel = new System.Windows.Forms.Panel();
             this.topLeftPanel = new System.Windows.Forms.Panel();
@@ -72,6 +67,11 @@ namespace GMR
             this.removeContractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.trashBtn = new System.Windows.Forms.Button();
+            this.closeBtn = new System.Windows.Forms.Button();
+            this.exportBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.addBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.contractorsDGView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsDGView)).BeginInit();
             this.datesPanel.SuspendLayout();
@@ -253,30 +253,12 @@ namespace GMR
             this.trashPanel.Size = new System.Drawing.Size(288, 45);
             this.trashPanel.TabIndex = 21;
             // 
-            // trashBtn
-            // 
-            this.trashBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.trashBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.trashBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.trashBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.trashBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.trashBtn.Location = new System.Drawing.Point(90, 10);
-            this.trashBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.trashBtn.Name = "trashBtn";
-            this.trashBtn.Rounding = 80;
-            this.trashBtn.RoundingEnabled = true;
-            this.trashBtn.Size = new System.Drawing.Size(100, 26);
-            this.trashBtn.TabIndex = 17;
-            this.trashBtn.Text = "Корзина";
-            this.trashBtn.UseVisualStyleBackColor = false;
-            this.trashBtn.Click += new System.EventHandler(this.TrashBtn_Click);
-            // 
             // controlBtnsPanel
             // 
-            this.controlBtnsPanel.Controls.Add(this.closeBtn);
             this.controlBtnsPanel.Controls.Add(this.addBtn);
             this.controlBtnsPanel.Controls.Add(this.deleteBtn);
             this.controlBtnsPanel.Controls.Add(this.exportBtn);
+            this.controlBtnsPanel.Controls.Add(this.closeBtn);
             this.controlBtnsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.controlBtnsPanel.Location = new System.Drawing.Point(283, 0);
             this.controlBtnsPanel.Margin = new System.Windows.Forms.Padding(2);
@@ -284,74 +266,6 @@ namespace GMR
             this.controlBtnsPanel.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.controlBtnsPanel.Size = new System.Drawing.Size(573, 45);
             this.controlBtnsPanel.TabIndex = 20;
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.closeBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.closeBtn.Location = new System.Drawing.Point(473, 10);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Rounding = 80;
-            this.closeBtn.RoundingEnabled = true;
-            this.closeBtn.Size = new System.Drawing.Size(93, 26);
-            this.closeBtn.TabIndex = 19;
-            this.closeBtn.Text = "Закрыть";
-            this.closeBtn.UseVisualStyleBackColor = false;
-            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
-            // 
-            // addBtn
-            // 
-            this.addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.addBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.addBtn.Location = new System.Drawing.Point(7, 10);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Rounding = 80;
-            this.addBtn.RoundingEnabled = true;
-            this.addBtn.Size = new System.Drawing.Size(100, 26);
-            this.addBtn.TabIndex = 16;
-            this.addBtn.Text = "Добавить";
-            this.addBtn.UseVisualStyleBackColor = false;
-            this.addBtn.Click += new System.EventHandler(this.AddBtn_Click);
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.deleteBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.deleteBtn.Location = new System.Drawing.Point(111, 10);
-            this.deleteBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Rounding = 80;
-            this.deleteBtn.RoundingEnabled = true;
-            this.deleteBtn.Size = new System.Drawing.Size(90, 26);
-            this.deleteBtn.TabIndex = 17;
-            this.deleteBtn.Text = "Удалить";
-            this.deleteBtn.UseVisualStyleBackColor = false;
-            this.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
-            // 
-            // exportBtn
-            // 
-            this.exportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(204)))), ((int)(((byte)(211)))));
-            this.exportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exportBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.exportBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.exportBtn.Location = new System.Drawing.Point(205, 10);
-            this.exportBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.exportBtn.Name = "exportBtn";
-            this.exportBtn.Rounding = 80;
-            this.exportBtn.RoundingEnabled = true;
-            this.exportBtn.Size = new System.Drawing.Size(133, 26);
-            this.exportBtn.TabIndex = 18;
-            this.exportBtn.Text = "Экспорт в Excel";
-            this.exportBtn.UseVisualStyleBackColor = false;
-            this.exportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
             // 
             // CenterSplitContainer
             // 
@@ -615,6 +529,67 @@ namespace GMR
             this.saveFileDialog.FileName = "new file";
             this.saveFileDialog.Filter = "Книга Excel 97-2003|*.xls|Книга Excel|*.xlsx|CSV (разделитель - запятая)|*.csv";
             // 
+            // trashBtn
+            // 
+            this.trashBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.trashBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trashBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.trashBtn.Location = new System.Drawing.Point(90, 10);
+            this.trashBtn.Name = "trashBtn";
+            this.trashBtn.Size = new System.Drawing.Size(100, 26);
+            this.trashBtn.TabIndex = 18;
+            this.trashBtn.Text = "Корзина";
+            this.trashBtn.UseVisualStyleBackColor = true;
+            this.trashBtn.Click += new System.EventHandler(this.TrashBtn_Click);
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.closeBtn.Location = new System.Drawing.Point(461, 10);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(100, 26);
+            this.closeBtn.TabIndex = 20;
+            this.closeBtn.Text = "Закрыть";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
+            // 
+            // exportBtn
+            // 
+            this.exportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.exportBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.exportBtn.Location = new System.Drawing.Point(233, 10);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(133, 26);
+            this.exportBtn.TabIndex = 21;
+            this.exportBtn.Text = "Экспорт в Excel";
+            this.exportBtn.UseVisualStyleBackColor = true;
+            this.exportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.deleteBtn.Location = new System.Drawing.Point(127, 10);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(100, 26);
+            this.deleteBtn.TabIndex = 22;
+            this.deleteBtn.Text = "Удалить";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
+            // addBtn
+            // 
+            this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addBtn.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.addBtn.Location = new System.Drawing.Point(21, 10);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(100, 26);
+            this.addBtn.TabIndex = 23;
+            this.addBtn.Text = "Добавить";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.AddBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -672,10 +647,6 @@ namespace GMR
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.SplitContainer CenterSplitContainer;
         private System.Windows.Forms.Panel contractorsCBoxPanel;
-        private Controls.GMRButton addBtn;
-        private Controls.GMRButton closeBtn;
-        private Controls.GMRButton exportBtn;
-        private Controls.GMRButton deleteBtn;
         private System.Windows.Forms.Panel controlBtnsPanel;
         private System.Windows.Forms.Panel trashPanel;
         private System.Windows.Forms.ContextMenuStrip contractorContextMenu;
@@ -701,6 +672,10 @@ namespace GMR
         private TextBox totalSumTB;
         private MenuStrip miniToolStrip;
         private SaveFileDialog saveFileDialog;
-        private Controls.GMRButton trashBtn;
+        private Button trashBtn;
+        private Button closeBtn;
+        private Button exportBtn;
+        private Button deleteBtn;
+        private Button addBtn;
     }
 }
