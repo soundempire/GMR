@@ -138,6 +138,7 @@ namespace GMR
                 await _contractorService.UpdateContractorAsync(Mapper.Map<ContractorViewModel, ContractorModel>(currentContractor));
 
                 contractorsCBox.Items.Clear();
+                contractorsCBox.Items.Add(allContractorsValue);
                 contractorsCBox.Items.AddRange((await _contractorService.GetContractorsAsync(Session.Person.ID)).Select(c => c.Name).ToArray());
                 contractorsCBox.SelectedIndexChanged -= ContractorsCBox_SelectedIndexChanged;
                 contractorsCBox.Text = currentContractor.Name;
@@ -286,13 +287,6 @@ namespace GMR
 
         #region ContractorToolStripMenuItems EventHandlers
 
-        private void Dispose()
-        {
-            (_contractorService as IDisposable)?.Dispose();
-            (_transactionService as IDisposable)?.Dispose();
-            (_recycleBinService as IDisposable)?.Dispose();
-        }
-
         private async void AddTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
             => await AddTransactionsAsync((((ToolStripMenuItem)sender).Tag as ContractorViewModel).Name);
 
@@ -356,6 +350,13 @@ namespace GMR
         }
 
         #endregion
+
+        private void Dispose()
+        {
+            (_contractorService as IDisposable)?.Dispose();
+            (_transactionService as IDisposable)?.Dispose();
+            (_recycleBinService as IDisposable)?.Dispose();
+        }
 
         private void CenterSplitContainer_SplitterMoved(object sender, SplitterEventArgs e) => SetFormsSizes();
 
