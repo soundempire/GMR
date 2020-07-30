@@ -47,6 +47,10 @@ namespace GMR.DAL.Repositories
 
         public async Task<Contractor> UpdateAsync(Contractor contractor)
         {
+            var localEntity = await _context.Contractors.Where(_ => _.ID == contractor.ID).FirstOrDefaultAsync();
+            if (localEntity != null)
+                _context.Entry(localEntity).State = EntityState.Detached;
+
             _context.Set<Contractor>().AddOrUpdate(contractor);
             await SaveAsync();
 

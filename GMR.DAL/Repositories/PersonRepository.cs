@@ -1,6 +1,7 @@
 ﻿using GMR.DAL.Context;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,9 +41,9 @@ namespace GMR.DAL.Repositories
 
         public async Task<Person> UpdateAsync(Person person)
         {
-            _context.Entry(person).State = EntityState.Modified;
+            _context.Set<Person>().AddOrUpdate(person);
             if (person.Password != null)
-                _context.Entry(person.Password).State = EntityState.Modified;
+                _context.Set<Password>().AddOrUpdate(person.Password);
 
             await SaveAsync();
 
