@@ -66,42 +66,44 @@ namespace GMR.BLL.Services
             {
                 using (var workbook = new Workbook())
                 {
-                    var worksheet = workbook.Worksheets[0];
-                    worksheet.Name = $"Контрагенты на { DateTime.Now.ToShortDateString() }";
-                    var counter = 0;
-
-                    worksheet.Cells.ImportArray(_headers, counter, 0, false);
-
-                    foreach (var contractor in contractors)
+                    using (var worksheet = workbook.Worksheets[0])
                     {
-                        if (contractor.Transactions.Count == 0)
+                        worksheet.Name = $"Контрагенты на { DateTime.Now.ToShortDateString() }";
+                        var counter = 0;
+
+                        worksheet.Cells.ImportArray(_headers, counter, 0, false);
+
+                        foreach (var contractor in contractors)
                         {
-                            var rowToAdd = new string[] {
+                            if (contractor.Transactions.Count == 0)
+                            {
+                                var rowToAdd = new string[] {
                                 (++counter).ToString(), contractor.ContractorID, contractor.Name,
                                 string.Empty, string.Empty, string.Empty, string.Empty
                             };
 
-                            worksheet.Cells.ImportArray(rowToAdd, counter, 0, false);
-                        }
-                        else
-                        {
-                            foreach (var transaction in contractor.Transactions)
-                            {
-                                var rowToAdd = new string[] {
-                                    (++counter).ToString(), contractor.ContractorID, contractor.Name,
-                                    transaction.Date.ToShortDateString(), transaction.Value?.ToString() ?? string.Empty,
-                                    transaction.Price?.ToString() ?? string.Empty, transaction.Currency.ToString()
-                                };
-
                                 worksheet.Cells.ImportArray(rowToAdd, counter, 0, false);
                             }
+                            else
+                            {
+                                foreach (var transaction in contractor.Transactions)
+                                {
+                                    var rowToAdd = new string[] {
+                                        (++counter).ToString(), contractor.ContractorID, contractor.Name,
+                                        transaction.Date.ToShortDateString(), transaction.Value?.ToString() ?? string.Empty,
+                                        transaction.Price?.ToString() ?? string.Empty, transaction.Currency.ToString()
+                                    };
+
+                                    worksheet.Cells.ImportArray(rowToAdd, counter, 0, false);
+                                }
+                            }
                         }
+
+                        SetBorders(worksheet);
+
+                        worksheet.AutoFitColumns();
+                        workbook.Save(fileName);
                     }
-
-                    SetBorders(worksheet);
-
-                    worksheet.AutoFitColumns();
-                    workbook.Save(fileName);
                 }
             });
         }
