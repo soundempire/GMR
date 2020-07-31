@@ -73,7 +73,7 @@ namespace GMR.BLL.Services
 
                         worksheet.Cells.ImportArray(_headers, counter, 0, false);
 
-                        foreach (var contractor in contractors)
+                        foreach (var contractor in contractors.OrderBy(_ => _.Name))
                         {
                             if (contractor.Transactions.Count == 0)
                             {
