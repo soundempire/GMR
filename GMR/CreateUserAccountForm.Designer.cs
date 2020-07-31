@@ -55,7 +55,9 @@
             this.firstNameTBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.createAccountBtn = new System.Windows.Forms.Button();
+            this.loadingPictureBox = new System.Windows.Forms.PictureBox();
             this.userProfilePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // userProfilePanel
@@ -337,11 +339,23 @@
             this.createAccountBtn.UseVisualStyleBackColor = true;
             this.createAccountBtn.Click += new System.EventHandler(this.CreateAccountBtn_Click);
             // 
+            // loadingPictureBox
+            // 
+            this.loadingPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("loadingPictureBox.Image")));
+            this.loadingPictureBox.Location = new System.Drawing.Point(12, 466);
+            this.loadingPictureBox.Name = "loadingPictureBox";
+            this.loadingPictureBox.Size = new System.Drawing.Size(105, 50);
+            this.loadingPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loadingPictureBox.TabIndex = 15;
+            this.loadingPictureBox.TabStop = false;
+            this.loadingPictureBox.Visible = false;
+            // 
             // CreateUserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(387, 523);
+            this.Controls.Add(this.loadingPictureBox);
             this.Controls.Add(this.createAccountBtn);
             this.Controls.Add(this.userProfilePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -353,6 +367,7 @@
             this.Load += new System.EventHandler(this.CreateUserAccountForm_Load);
             this.userProfilePanel.ResumeLayout(false);
             this.userProfilePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -385,5 +400,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox confirmPasswordTBox;
         private System.Windows.Forms.Button createAccountBtn;
+        private System.Windows.Forms.PictureBox loadingPictureBox;
     }
 }

@@ -22,7 +22,7 @@ namespace GMR
                 var logger = DIContainer.Resolve<ILogger>();
                 try
                 {
-                    Context.SetExecutableForm(DIContainer.Resolve<LoginForm>());
+                    Context.SetExecutableForm(DIContainer.Resolve<LoadingForm>());
                     Application.Run(Context.MainContext);
                 }
                 catch (Exception ex)

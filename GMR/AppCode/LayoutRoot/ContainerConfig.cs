@@ -19,6 +19,7 @@ namespace GMR
 
             builder.RegisterType<GMRContext>();
 
+            builder.RegisterType<LoadingForm>();
             builder.RegisterType<LoginForm>();
             builder.RegisterType<MainForm>();
             builder.RegisterType<AddTransactionForm>();
@@ -26,12 +27,13 @@ namespace GMR
             builder.RegisterType<CreateUserAccountForm>();
             builder.RegisterType<ImportMasterForm>();
             builder.RegisterType<ResetPasswordForm>();
-            builder.RegisterType<RecycleBinForm>();
+            builder.RegisterType<RecycleBinForm>(); 
 
             builder.RegisterType<PasswordRepository>().As<IPasswordRepository>();
             builder.RegisterType<ContractorRepository>().As<IContractorRepository>();
             builder.RegisterType<PersonRepository>().As<IPersonRepository>();
-            builder.RegisterType<TransactionRepository>().As<ITransactionRepository>();
+            builder.RegisterType<TransactionRepository>().As<ITransactionRepository>(); 
+            builder.RegisterType<HealthCheckRepository>().As<IHealthCheckRepository>();
 
             builder.RegisterType<AuthorizationService>().As<IAuthorizationService>();
             builder.RegisterType<PersonService>().As<IPersonService>();
@@ -41,7 +43,8 @@ namespace GMR
             builder.RegisterType<PotentialContractorsService>().As<IPotentialContractorsService>();
             builder.RegisterType<PotentialLoginService>().As<IPotentialLoginService>();
             builder.RegisterType<LanguagesService>().As<ILanguagesService>();
-            builder.RegisterType<RecycleBinService>().As<IRecycleBinService>();
+            builder.RegisterType<RecycleBinService>().As<IRecycleBinService>(); 
+            builder.RegisterType<HealthCheckService>().As<IHealthCheckService>();
 
             return builder.Build();
         }

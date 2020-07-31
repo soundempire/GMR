@@ -42,11 +42,15 @@ namespace GMR
 
         private async void ResetBtn_Click(object sender, EventArgs e)
         {
+            ReflectResetPasswordProcess(true);
+
             var persons = await _personService.GetPersonsAsync(nameof(PersonModel.Password).ToLower());
             var person = persons.FirstOrDefault(_ => _.Password.Login == loginTBox.Text);
 
             if (person == null)
             {
+                ReflectResetPasswordProcess(false);
+
                 MessageBox.Show($"Логин {loginTBox.Text} не существует в системе", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -72,6 +76,8 @@ namespace GMR
                 validationErrors.ForEach(_ => errors.AppendLine(_.ErrorMessage));
                 MessageBox.Show($"Некорректно заполнены поля ввода.\nСписок ошибок:\n{errors.ToString()}", "Ошибочный ввод", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            ReflectResetPasswordProcess(false);
         }
 
         private void LoginTBox_TextChanged(object sender, EventArgs e)
@@ -122,6 +128,12 @@ namespace GMR
         {
             validationErrors = new List<ValidationResult>();
             return Validator.TryValidateObject(viewModel, new ValidationContext(viewModel), validationErrors, true);
+        }
+
+        private void ReflectResetPasswordProcess(bool isActive)
+        {
+            resetBtn.Enabled = !isActive;
+            loadingPictureBox.Visible = isActive;
         }
     }
 }

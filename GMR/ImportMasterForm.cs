@@ -91,8 +91,9 @@ namespace GMR
 
             if (potentialContractorsGroups.TryGetValue(false, out var invalidPotentialContractors))
             {
-                DisplayPotentialContractorsErrors(invalidPotentialContractors.ToArray());
                 ReflectImportProcess(false);
+
+                DisplayPotentialContractorsErrors(invalidPotentialContractors.ToArray());
                 return;
             }
 

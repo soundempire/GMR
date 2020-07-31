@@ -51,6 +51,8 @@ namespace GMR
 
         private async void CreateAccountBtn_Click(object sender, EventArgs e)
         {
+            ReflectCreatingPersonProcess(true);
+
             var viewModel = new CreatePersonViewModel()
             {
                 FirstName = firstNameTBox.Text,
@@ -71,8 +73,11 @@ namespace GMR
             {
                 if (await _potentialLoginService.IsLoginExists(viewModel.Password.Login))
                 {
+                    ReflectCreatingPersonProcess(false);
+
                     MessageBox.Show("Вводимый логин уже существует в системе.", "Ошибочный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     loginTBox.Focus();
+
                     return;
                 }
 
@@ -86,7 +91,9 @@ namespace GMR
                 StringBuilder errors = new StringBuilder();
                 validationErrors.ForEach(_ => errors.AppendLine(_.ErrorMessage));
                 MessageBox.Show($"Некорректно заполнены поля ввода.\nСписок ошибок:\n{errors.ToString()}", "Ошибочный ввод", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
+
+            ReflectCreatingPersonProcess(false);
         }
 
         private bool ValidateModel(CreatePersonViewModel viewModel, out List<ValidationResult> validationErrors)
@@ -187,6 +194,12 @@ namespace GMR
                 (e.KeyChar == '(') && ((sender as TextBox).Text.IndexOf('(') > -1) ||
                 (e.KeyChar == ')') && ((sender as TextBox).Text.IndexOf(')') > -1))
                 e.Handled = true;
+        }
+
+        private void ReflectCreatingPersonProcess(bool isActive)
+        {
+            createAccountBtn.Enabled = !isActive;
+            loadingPictureBox.Visible = isActive;
         }
     }
 }

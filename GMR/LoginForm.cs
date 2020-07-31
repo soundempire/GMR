@@ -138,11 +138,7 @@ namespace GMR
             var login = loginTB.TextInput;
             var password = passwordTB.TextInput;
 
-            /*
-             Used Task.Run(..) here because here is the first call to DB with context (create connection, etg.)
-             and it will take much time and will lock main UI thread, even though the call is asynchronous
-             */
-            return await Task.Run(() => _authorizationService.AuthorizeAsync(login, password));
+            return await _authorizationService.AuthorizeAsync(login, password);
         }
 
         private void SwitchLoader(bool visible) => loadingPictureBox.Visible = visible;

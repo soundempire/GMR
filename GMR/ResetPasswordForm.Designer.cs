@@ -40,6 +40,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.closeBtn = new System.Windows.Forms.Button();
             this.resetBtn = new System.Windows.Forms.Button();
+            this.loadingPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // errorPasswordLabel
@@ -137,7 +139,7 @@
             // 
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.closeBtn.Location = new System.Drawing.Point(72, 195);
+            this.closeBtn.Location = new System.Drawing.Point(139, 195);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(110, 26);
             this.closeBtn.TabIndex = 36;
@@ -158,11 +160,23 @@
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
+            // loadingPictureBox
+            // 
+            this.loadingPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("loadingPictureBox.Image")));
+            this.loadingPictureBox.Location = new System.Drawing.Point(18, 171);
+            this.loadingPictureBox.Name = "loadingPictureBox";
+            this.loadingPictureBox.Size = new System.Drawing.Size(105, 50);
+            this.loadingPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loadingPictureBox.TabIndex = 38;
+            this.loadingPictureBox.TabStop = false;
+            this.loadingPictureBox.Visible = false;
+            // 
             // ResetPasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 248);
+            this.Controls.Add(this.loadingPictureBox);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.errorPasswordLabel);
@@ -181,6 +195,7 @@
             this.Text = "Обновить пароль";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResetPasswordForm_FormClosing);
             this.Load += new System.EventHandler(this.ResetPasswordForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +213,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button closeBtn;
         private System.Windows.Forms.Button resetBtn;
+        private System.Windows.Forms.PictureBox loadingPictureBox;
     }
 }

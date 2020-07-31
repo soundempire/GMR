@@ -47,6 +47,7 @@
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="IContractorRepository.cs" />
+    <Compile Include="IHealthCheckRepository.cs" />
     <Compile Include="IPasswordRepository.cs" />
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="IRepository.cs" />
