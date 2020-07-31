@@ -46,7 +46,6 @@
             this.choosePanel7 = new System.Windows.Forms.Panel();
             this.currencyToggleSwitch = new GMR.Animation.Controls.ToggleSwitch.GMRToggleSwitch();
             this.choosePanel1 = new System.Windows.Forms.Panel();
-            this.importingDataPanel = new System.Windows.Forms.Panel();
             this.controlsPanel = new System.Windows.Forms.Panel();
             this.overwriteNamesCheckBox = new System.Windows.Forms.CheckBox();
             this.numericUpDownRight = new System.Windows.Forms.NumericUpDown();
@@ -60,6 +59,7 @@
             this.cancelBtn = new System.Windows.Forms.Button();
             this.okBtn = new System.Windows.Forms.Button();
             this.botomPanel = new System.Windows.Forms.Panel();
+            this.loadingPictureBox = new System.Windows.Forms.PictureBox();
             this.chooseColumnsPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.importTabPage.SuspendLayout();
@@ -76,6 +76,7 @@
             this.btnsPanel.SuspendLayout();
             this.okCancelPanel.SuspendLayout();
             this.botomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // chooseColumnsPanel
@@ -303,15 +304,6 @@
             this.choosePanel1.Size = new System.Drawing.Size(40, 22);
             this.choosePanel1.TabIndex = 0;
             // 
-            // importingDataPanel
-            // 
-            this.importingDataPanel.Location = new System.Drawing.Point(843, 74);
-            this.importingDataPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.importingDataPanel.Name = "importingDataPanel";
-            this.importingDataPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.importingDataPanel.Size = new System.Drawing.Size(884, 407);
-            this.importingDataPanel.TabIndex = 1;
-            // 
             // controlsPanel
             // 
             this.controlsPanel.Controls.Add(this.overwriteNamesCheckBox);
@@ -322,7 +314,7 @@
             this.controlsPanel.Location = new System.Drawing.Point(0, 0);
             this.controlsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlsPanel.Name = "controlsPanel";
-            this.controlsPanel.Size = new System.Drawing.Size(460, 46);
+            this.controlsPanel.Size = new System.Drawing.Size(455, 46);
             this.controlsPanel.TabIndex = 2;
             // 
             // overwriteNamesCheckBox
@@ -330,7 +322,7 @@
             this.overwriteNamesCheckBox.AutoSize = true;
             this.overwriteNamesCheckBox.Checked = true;
             this.overwriteNamesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.overwriteNamesCheckBox.Location = new System.Drawing.Point(321, 16);
+            this.overwriteNamesCheckBox.Location = new System.Drawing.Point(315, 15);
             this.overwriteNamesCheckBox.Name = "overwriteNamesCheckBox";
             this.overwriteNamesCheckBox.Size = new System.Drawing.Size(134, 17);
             this.overwriteNamesCheckBox.TabIndex = 29;
@@ -407,9 +399,9 @@
             this.btnsPanel.Controls.Add(this.openFileBtn);
             this.btnsPanel.Controls.Add(this.okCancelPanel);
             this.btnsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnsPanel.Location = new System.Drawing.Point(460, 0);
+            this.btnsPanel.Location = new System.Drawing.Point(455, 0);
             this.btnsPanel.Name = "btnsPanel";
-            this.btnsPanel.Size = new System.Drawing.Size(424, 46);
+            this.btnsPanel.Size = new System.Drawing.Size(429, 46);
             this.btnsPanel.TabIndex = 30;
             // 
             // openFileBtn
@@ -417,7 +409,7 @@
             this.openFileBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.openFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.openFileBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.openFileBtn.Location = new System.Drawing.Point(14, 10);
+            this.openFileBtn.Location = new System.Drawing.Point(6, 10);
             this.openFileBtn.Name = "openFileBtn";
             this.openFileBtn.Size = new System.Drawing.Size(129, 26);
             this.openFileBtn.TabIndex = 30;
@@ -427,19 +419,20 @@
             // 
             // okCancelPanel
             // 
+            this.okCancelPanel.Controls.Add(this.loadingPictureBox);
             this.okCancelPanel.Controls.Add(this.cancelBtn);
             this.okCancelPanel.Controls.Add(this.okBtn);
             this.okCancelPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.okCancelPanel.Location = new System.Drawing.Point(158, 0);
+            this.okCancelPanel.Location = new System.Drawing.Point(141, 0);
             this.okCancelPanel.Name = "okCancelPanel";
-            this.okCancelPanel.Size = new System.Drawing.Size(266, 46);
+            this.okCancelPanel.Size = new System.Drawing.Size(288, 46);
             this.okCancelPanel.TabIndex = 29;
             // 
             // cancelBtn
             // 
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.cancelBtn.Location = new System.Drawing.Point(153, 10);
+            this.cancelBtn.Location = new System.Drawing.Point(189, 10);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(87, 26);
             this.cancelBtn.TabIndex = 26;
@@ -452,7 +445,7 @@
             this.okBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.okBtn.Enabled = false;
             this.okBtn.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.okBtn.Location = new System.Drawing.Point(36, 10);
+            this.okBtn.Location = new System.Drawing.Point(96, 10);
             this.okBtn.Name = "okBtn";
             this.okBtn.Size = new System.Drawing.Size(87, 26);
             this.okBtn.TabIndex = 25;
@@ -470,6 +463,18 @@
             this.botomPanel.Size = new System.Drawing.Size(884, 46);
             this.botomPanel.TabIndex = 31;
             // 
+            // loadingPictureBox
+            // 
+            this.loadingPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.loadingPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("loadingPictureBox.Image")));
+            this.loadingPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.loadingPictureBox.Name = "loadingPictureBox";
+            this.loadingPictureBox.Size = new System.Drawing.Size(87, 46);
+            this.loadingPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loadingPictureBox.TabIndex = 27;
+            this.loadingPictureBox.TabStop = false;
+            this.loadingPictureBox.Visible = false;
+            // 
             // ImportMasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,7 +482,6 @@
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.importingDataDGV);
             this.Controls.Add(this.botomPanel);
-            this.Controls.Add(this.importingDataPanel);
             this.Controls.Add(this.chooseColumnsPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -503,6 +507,7 @@
             this.btnsPanel.ResumeLayout(false);
             this.okCancelPanel.ResumeLayout(false);
             this.botomPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -510,7 +515,6 @@
         #endregion
 
         private System.Windows.Forms.Panel chooseColumnsPanel;
-        private System.Windows.Forms.Panel importingDataPanel;
         private System.Windows.Forms.Panel controlsPanel;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage importTabPage;
@@ -539,5 +543,6 @@
         private System.Windows.Forms.Button openFileBtn;
         private System.Windows.Forms.Button okBtn;
         private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.PictureBox loadingPictureBox;
     }
 }

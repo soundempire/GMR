@@ -522,9 +522,9 @@ namespace GMR
                     totalSumTB.Font = new Font(totalSumTB.Font.FontFamily.Name, 16, totalSumTB.Font.Style);
                     totalSumTB.Text = "Итого:";
                 }
-                totalTransactionTB.Text = _loadedTransactions.Sum(t => t.Value).ToString();
-                totalPriceTB.Text = _loadedTransactions.Sum(t => t.Price).ToString();
-                totalCurencyTB.Text = _loadedTransactions.Average(t => t.Currency).ToString("0.00##");
+                totalTransactionTB.Text = _loadedTransactions.Sum(t => t.Value)?.ToString("#,##0.##") ?? string.Empty;
+                totalPriceTB.Text = _loadedTransactions.Sum(t => t.Price)?.ToString("#,##0.##") ?? string.Empty;
+                totalCurencyTB.Text = _loadedTransactions.Average(t => t.Currency).ToString("#,##0.##");
             }
             else
                 totalTransactionsPanel.Visible = false;

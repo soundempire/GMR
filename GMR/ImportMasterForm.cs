@@ -74,6 +74,8 @@ namespace GMR
 
         private async void OkBtn_Click(object sender, EventArgs e)
         {
+            ReflectImportProcess(true);
+
             IEnumerable<ImportContractorViewModel> tableEntities;
             if (importingDataDGV.SelectedRows.Count > 0)
                 tableEntities = importingDataDGV.SelectedRows.OfType<DataGridViewRow>().Select(_ => _.DataBoundItem as ImportContractorViewModel);
@@ -90,6 +92,7 @@ namespace GMR
             if (potentialContractorsGroups.TryGetValue(false, out var invalidPotentialContractors))
             {
                 DisplayPotentialContractorsErrors(invalidPotentialContractors.ToArray());
+                ReflectImportProcess(false);
                 return;
             }
 
@@ -105,7 +108,9 @@ namespace GMR
             {
                 MessageBox.Show("Не удалось загрузить контрагентов.", "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
+
+            ReflectImportProcess(false);
         }
 
         private void CancelBtn_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
@@ -232,6 +237,12 @@ namespace GMR
 
             if (errors.Length > 0)
                 MessageBox.Show(errors.ToString(), "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void ReflectImportProcess(bool isActive)
+        {
+            okBtn.Enabled = !isActive;
+            loadingPictureBox.Visible = isActive;
         }
 
         private void FitFormSize()
