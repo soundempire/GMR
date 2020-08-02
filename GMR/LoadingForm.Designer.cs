@@ -35,11 +35,10 @@
             // 
             // loadingPictureBox
             // 
-            this.loadingPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loadingPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("loadingPictureBox.Image")));
-            this.loadingPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.loadingPictureBox.Location = new System.Drawing.Point(89, 54);
             this.loadingPictureBox.Name = "loadingPictureBox";
-            this.loadingPictureBox.Size = new System.Drawing.Size(237, 160);
+            this.loadingPictureBox.Size = new System.Drawing.Size(215, 144);
             this.loadingPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loadingPictureBox.TabIndex = 12;
             this.loadingPictureBox.TabStop = false;
@@ -48,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 160);
+            this.ClientSize = new System.Drawing.Size(412, 266);
             this.Controls.Add(this.loadingPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoadingForm";
