@@ -68,14 +68,14 @@ namespace GMR
         {
             if (_isSignOut)
             {
-                Dispose();
+                DisposeServices();
                 return;
             }
 
             if (MessageBox.Show("Вы действительно хотите закрыть приложение?", "Закрытие", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
                 == DialogResult.OK)
             {
-                Dispose();
+                DisposeServices();
             }
             else
             {
@@ -351,7 +351,7 @@ namespace GMR
 
         #endregion
 
-        private void Dispose()
+        private void DisposeServices()
         {
             (_contractorService as IDisposable)?.Dispose();
             (_transactionService as IDisposable)?.Dispose();
