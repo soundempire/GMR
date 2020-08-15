@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
-using GMR;
 using GMR.Infrastructure;
 using Context = GMR.ApplicationContext;
 
