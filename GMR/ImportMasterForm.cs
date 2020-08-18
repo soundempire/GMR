@@ -259,9 +259,6 @@ namespace GMR
 
                 choosePanel6.SetBounds(choosePanel5.Location.X + choosePanel5.Size.Width, choosePanel6.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Size.Height);
                 choosePanel7.SetBounds(choosePanel6.Location.X + choosePanel6.Size.Width, choosePanel7.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width + (importingDataDGV.ScrollBars == ScrollBars.Vertical ? SystemInformation.VerticalScrollBarWidth : 0), choosePanel7.Size.Height);
-
-                //choosePanel7.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width, choosePanel7.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel7.Size.Height);
-                //choosePanel6.SetBounds(chooseColumnsPanel.Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Currency)].Width - importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Location.Y, importingDataDGV.Columns[nameof(ImportContractorViewModel.Price)].Width, choosePanel6.Size.Height);
             }
         }
     }
